@@ -9,7 +9,7 @@ public class CamController : MonoBehaviour
 
     public float smoothSpeed;
 
-    bool startDelayed;
+    public static bool startDelayed;
     void Start()
     {     
         startDelayed = false;
@@ -21,11 +21,8 @@ public class CamController : MonoBehaviour
     {
         if (startDelayed)
         {
-            Vector3 desiredPosition = new Vector3(targetMissile.transform.position.x, targetMissile.transform.position.y, targetMissile.transform.position.z);
-            Vector3 SmoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
-
-            transform.position = new Vector3(targetMissile.transform.position.x, targetMissile.transform.position.y, targetMissile.transform.position.z);
-            transform.Rotate(new Vector3(targetMissile.transform.rotation.x, targetMissile.transform.rotation.y, targetMissile.transform.rotation.z));
+      //      transform.position = new Vector3(targetMissile.transform.position.x, targetMissile.transform.position.y, targetMissile.transform.position.z);
+       //     transform.Rotate(new Vector3(targetMissile.transform.rotation.x, targetMissile.transform.rotation.y, targetMissile.transform.rotation.z));
         }
     }
 
