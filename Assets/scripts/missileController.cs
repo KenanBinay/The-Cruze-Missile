@@ -6,18 +6,18 @@ using DG.Tweening;
 public class missileController : MonoBehaviour
 {
     public static Vector2 handleInput;
-
+   
     public float flySpeed, yawAmount;
     float yaw, pitch;
 
     void Start()
     {
-
+      
     }
 
     void Update()
     {
-        if (CamController.startDelayed)
+        if (gameController.startDelayed)
         {
             //move forward
             transform.position += transform.forward * flySpeed * Time.deltaTime;
