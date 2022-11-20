@@ -6,6 +6,9 @@ TagManager:
   tags:
   - missileM
   - target
+  - outside
+  - killZone
+  - crashColl
   layers:
   - Default
   - TransparentFX

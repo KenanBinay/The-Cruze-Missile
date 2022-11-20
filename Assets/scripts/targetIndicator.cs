@@ -37,19 +37,6 @@ public class targetIndicator : MonoBehaviour
         }
     }
 
-    Collider GetTargetFromMouseClick()
-    {
-        RaycastHit hitInfo = new RaycastHit();
-        Ray ray = targetCamera.ScreenPointToRay(Input.mousePosition);
-        bool hit = Physics.Raycast(ray, out hitInfo);
-        if (hit)
-        {
-            return hitInfo.collider;
-        }
-
-        return null;
-    }
-
     void OnGUI()
     {
         for (int i = 0; i < targets.Count; i++)

@@ -132,7 +132,7 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
     public virtual void OnPointerUp(PointerEventData eventData)
     {
-        input = Vector2.zero;
+        input = missileController.handleInput = Vector2.zero;
         handle.anchoredPosition = Vector2.zero;
     }
 
