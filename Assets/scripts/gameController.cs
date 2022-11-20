@@ -7,13 +7,14 @@ public class gameController : MonoBehaviour
     public Animator startAnim;
     public GameObject missileHud;
 
-    public static bool startDelayed;
+    public static bool startDelay;
+
     void Start()
     {
         missileHud.SetActive(false);
-        startDelayed = false;
+        startDelay = false;
 
-        StartCoroutine(startDelay());
+        StartCoroutine(delayForStart());
     }
 
     void Update()
@@ -21,10 +22,10 @@ public class gameController : MonoBehaviour
         
     }
 
-    IEnumerator startDelay()
+    IEnumerator delayForStart()
     {
         yield return new WaitForSeconds(3f);
-        startDelayed = true;
+        startDelay = true;
         startAnim.enabled = false;
         missileHud.SetActive(true);
         Debug.Log("missileCam");

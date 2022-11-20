@@ -7,18 +7,21 @@ public class missileController : MonoBehaviour
 {
     public static Vector2 handleInput;
     public Transform hudYawUi;
-   
+    Rigidbody missileRigid;
+
     public float flySpeed, yawAmount;
     float yaw, pitch, yawHudHorizontal, yawHudVertical;
 
+    public static bool crashed, targetHit;
+
     void Start()
     {
-      
+        missileRigid.GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-        if (gameController.startDelayed)
+        if (gameController.startDelay && crashed == false && targetHit == false)
         {
             //move forward
             transform.position += transform.forward * flySpeed * Time.deltaTime;
@@ -42,10 +45,14 @@ public class missileController : MonoBehaviour
         if (collision.gameObject.CompareTag("crashColl"))
         {
             Debug.Log("crashed");
+            crashed = true;
+            missileRigid.constraints = RigidbodyConstraints.FreezeAll;
         }
         if (collision.gameObject.CompareTag("target"))
         {
             Debug.Log("targetHit");
+            targetHit = true;
+            missileRigid.constraints = RigidbodyConstraints.FreezeAll;
         }
     }
 
