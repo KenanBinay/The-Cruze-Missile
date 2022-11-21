@@ -8,6 +8,7 @@ public class missileController : MonoBehaviour
     Vector3 normal;
     public static Vector2 handleInput;
     public Transform hudYawUi;
+    public GameObject mainHudUi;
     Rigidbody rigidM;
 
     public float flySpeed, yawAmount;
@@ -57,6 +58,8 @@ public class missileController : MonoBehaviour
             targetHit = true;
             rigidM.constraints = RigidbodyConstraints.FreezeAll;
             Debug.Log("targetHit");
+
+            gameController.targetHit(mainHudUi);
         }
 
         normal = collision.contacts[0].normal;

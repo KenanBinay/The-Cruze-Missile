@@ -25,15 +25,21 @@ public class gameController : MonoBehaviour
 
     void Update()
     {
-        Ray ray = new Ray(missileBody.transform.position, -Vector3.up);
-        Debug.DrawRay(missileBody.transform.position, Vector3.down * alt, Color.red);
-        if(Physics.Raycast(ray,out hit))
-        {
-          //  float heightUpGround = hit.distance + 2.5f;
-            altitute.text = hit.distance.ToString("#");
-        }
-        else { altitute.text = "!!!"; }
-        
+        //calculating distance to closest collision by using raycast physics
+        /*   Ray ray = new Ray(missileBody.transform.position, -Vector3.up);
+           Debug.DrawRay(missileBody.transform.position, Vector3.down * alt, Color.red);
+           if(Physics.Raycast(ray,out hit)) { altitute.text = hit.distance.ToString("#"); }
+           else { altitute.text = "!!!"; }  */
+
+        //calculate main height to ground by using missiles position in unity
+        altitute.text = missileBody.transform.position.y.ToString("#");
+
+
+    }
+
+    public static void targetHit(GameObject hudUi)
+    {
+        hudUi.SetActive(false);
     }
 
     IEnumerator delayForStart()
