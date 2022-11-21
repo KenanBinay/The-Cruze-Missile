@@ -5,9 +5,10 @@ using DG.Tweening;
 
 public class missileController : MonoBehaviour
 {
+    Vector3 normal;
     public static Vector2 handleInput;
     public Transform hudYawUi;
-    Rigidbody missileRigid;
+    Rigidbody rigidM;
 
     public float flySpeed, yawAmount;
     float yaw, pitch, yawHudHorizontal, yawHudVertical;
@@ -16,7 +17,7 @@ public class missileController : MonoBehaviour
 
     void Start()
     {
-        missileRigid.GetComponent<Rigidbody>();
+        rigidM = gameObject.GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -29,14 +30,17 @@ public class missileController : MonoBehaviour
             //input
             yaw += handleInput.x * yawAmount * Time.deltaTime;
             pitch += handleInput.y * yawAmount * Time.deltaTime;
-            yawHudHorizontal += handleInput.x * yawAmount * Time.deltaTime;
+
+            if (yawHudHorizontal <= -90 && handleInput.x < 0 || yawHudHorizontal >= 90 && handleInput.x > 0) { }
+            else { yawHudHorizontal += handleInput.x * yawAmount * Time.deltaTime; }
+           
             yawHudVertical += handleInput.y * yawAmount * Time.deltaTime;
 
             //apply rotation
             transform.localRotation = Quaternion.Euler(Vector3.up * yaw + Vector3.right * pitch);
 
-            if (handleInput == Vector2.zero) { hudYawUi.DOLocalRotate(new Vector3(0, 0, 0), 1); yawHudVertical = yawHudHorizontal = 0; }
-            else { hudYawUi.localRotation = Quaternion.Euler(1 * yawHudVertical, 0, -1f * yawHudHorizontal); }
+            if (handleInput == Vector2.zero) { hudYawUi.DOLocalRotate(new Vector3(yawHudVertical, 0, 0), 1); yawHudHorizontal = 0; }
+            else { hudYawUi.localRotation = Quaternion.Euler(Vector3.back * yawHudHorizontal + Vector3.right * yawHudVertical); }
         }
     }
 
@@ -44,16 +48,20 @@ public class missileController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("crashColl"))
         {
-            Debug.Log("crashed");
             crashed = true;
-            missileRigid.constraints = RigidbodyConstraints.FreezeAll;
+            rigidM.constraints = RigidbodyConstraints.FreezeAll;
+            Debug.Log("crashed");
         }
         if (collision.gameObject.CompareTag("target"))
         {
-            Debug.Log("targetHit");
             targetHit = true;
-            missileRigid.constraints = RigidbodyConstraints.FreezeAll;
+            rigidM.constraints = RigidbodyConstraints.FreezeAll;
+            Debug.Log("targetHit");
         }
+
+        normal = collision.contacts[0].normal;
+
+        Debug.Log(normal);
     }
 
     private void OnTriggerStay(Collider other)

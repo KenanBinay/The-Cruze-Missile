@@ -4,20 +4,23 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
+
 public class MissionWaypoint : MonoBehaviour
 {
     public Transform target;
     public TextMeshProUGUI meterText;
     public Vector3 offset;
-
+ 
     private void Start()
     {
      
     }
 
     private void Update()
-    {
-        meterText.text = ((int)Vector3.Distance(target.position, transform.position)).ToString() + "m";
+    {  
+
+        meterText.text = ((int)Vector3.Distance(target.position, transform.position)).ToString() + "m"; 
+
         //  transform.LookAt(new Vector3(0,0, target.transform.position.z));
         Vector3 intoPlane = Vector3.up;
 

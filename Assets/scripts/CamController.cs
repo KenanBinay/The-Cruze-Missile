@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
 public class CamController : MonoBehaviour
 {
-    public GameObject targetMissile;
+    public GameObject Missile, endPos, target;
 
     public float smoothSpeed;
 
@@ -15,9 +15,16 @@ public class CamController : MonoBehaviour
 
     void FixedUpdate()
     {
-       
-      //      transform.position = new Vector3(targetMissile.transform.position.x, targetMissile.transform.position.y, targetMissile.transform.position.z);
-       //     transform.Rotate(new Vector3(targetMissile.transform.rotation.x, targetMissile.transform.rotation.y, targetMissile.transform.rotation.z));
-        
+        if (missileController.crashed == false && missileController.targetHit == false && gameController.startDelay)
+        {
+            transform.DOMove(Missile.transform.position, 0);
+            transform.DORotate(Missile.transform.eulerAngles, 0);
+
+        }
+        if (missileController.targetHit)
+        {
+            transform.DOMove(endPos.transform.position, 2f);
+            transform.DOLookAt(target.transform.position, 0.5f);
+        }
     }   
 }
