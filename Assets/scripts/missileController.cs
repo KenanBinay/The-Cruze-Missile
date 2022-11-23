@@ -52,7 +52,7 @@ public class missileController : MonoBehaviour
             if (crashed == false)
             {
                 crashed = true;
-                gameController.crash(mainHudUi,controllerJoystick);
+                gameController.crash(mainHudUi, controllerJoystick);
                 Debug.Log("crashed");
             }
         }
@@ -61,7 +61,7 @@ public class missileController : MonoBehaviour
             if (targetHit == false)
             {
                 targetHit = true;
-                gameController.targetHit(mainHudUi,controllerJoystick);
+                gameController.targetHit(mainHudUi, controllerJoystick);
                 Debug.Log("targetHit");
             }
         }

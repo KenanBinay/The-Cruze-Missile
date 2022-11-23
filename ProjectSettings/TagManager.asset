@@ -9,6 +9,7 @@ TagManager:
   - outside
   - killZone
   - crashColl
+  - plane
   layers:
   - Default
   - TransparentFX
