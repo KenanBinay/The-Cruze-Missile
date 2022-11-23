@@ -8,7 +8,7 @@ public class missileController : MonoBehaviour
     Vector3 normal;
     public static Vector2 handleInput;
     public Transform hudYawUi;
-    public GameObject mainHudUi;
+    public GameObject mainHudUi, controllerJoystick;
     Rigidbody rigidM;
 
     public float flySpeed, yawAmount;
@@ -51,7 +51,8 @@ public class missileController : MonoBehaviour
         {
             if (crashed == false)
             {
-                crashed = true;           
+                crashed = true;
+                gameController.crash(mainHudUi,controllerJoystick);
                 Debug.Log("crashed");
             }
         }
@@ -60,7 +61,7 @@ public class missileController : MonoBehaviour
             if (targetHit == false)
             {
                 targetHit = true;
-                gameController.targetHit(mainHudUi);
+                gameController.targetHit(mainHudUi,controllerJoystick);
                 Debug.Log("targetHit");
             }
         }
@@ -68,6 +69,13 @@ public class missileController : MonoBehaviour
         rigidM.constraints = RigidbodyConstraints.FreezeAll;
         normal = collision.contacts[0].normal;
         Debug.Log(normal);
+
+        if (normal.x > 0.5f) { Debug.Log("left"); }
+        if (normal.x < -0.5f) { Debug.Log("right"); }
+        if (normal.y > 0.5f) { Debug.Log("front"); }
+        if (normal.y < -0.5f) { Debug.Log("back"); }
+        if (normal.z > 0.5f) { Debug.Log("up"); }
+        if (normal.z < -0.5f) { Debug.Log("down"); }
     }
 
     private void OnTriggerStay(Collider other)
