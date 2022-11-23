@@ -49,21 +49,24 @@ public class missileController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("crashColl"))
         {
-            crashed = true;
-            rigidM.constraints = RigidbodyConstraints.FreezeAll;
-            Debug.Log("crashed");
+            if (crashed == false)
+            {
+                crashed = true;           
+                Debug.Log("crashed");
+            }
         }
         if (collision.gameObject.CompareTag("target"))
         {
-            targetHit = true;
-            rigidM.constraints = RigidbodyConstraints.FreezeAll;
-            Debug.Log("targetHit");
-
-            gameController.targetHit(mainHudUi);
+            if (targetHit == false)
+            {
+                targetHit = true;
+                gameController.targetHit(mainHudUi);
+                Debug.Log("targetHit");
+            }
         }
 
+        rigidM.constraints = RigidbodyConstraints.FreezeAll;
         normal = collision.contacts[0].normal;
-
         Debug.Log(normal);
     }
 
