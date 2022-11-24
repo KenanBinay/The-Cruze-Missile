@@ -8,16 +8,17 @@ public class missileController : MonoBehaviour
     Vector3 normal;
     public static Vector2 handleInput;
     public Transform hudYawUi;
-    public GameObject mainHudUi, controllerJoystick;
+    public GameObject mainHudUi, controllerJoystick, waypointArrow, warningUi;
     Rigidbody rigidM;
 
     public float flySpeed, yawAmount;
     float yaw, pitch, yawHudHorizontal, yawHudVertical;
 
-    public static bool crashed, targetHit;
+    public static bool crashed, targetHit, outside;
 
     void Start()
     {
+        outside = false;
         rigidM = gameObject.GetComponent<Rigidbody>();
     }
 
@@ -80,9 +81,18 @@ public class missileController : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        if (other.gameObject.CompareTag("outside") && crashed == false)
+        {
+            outside = true;
+            Debug.Log("returnToCombat");
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
         if (other.gameObject.CompareTag("outside"))
         {
-            Debug.Log("outOfTheMap");
+            outside = false;
+            Debug.Log("returned");
         }
     }
 }
