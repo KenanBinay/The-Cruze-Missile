@@ -41,7 +41,7 @@ public class gameController : MonoBehaviour
                     missileController.crashed = true;
             }
         }
-        if (missileController.outside) { giveWarning(); }
+        if (missileController.outside && missileController.crashed == false) { giveWarning(); }
         else { warningUi_parent.SetActive(false); arrrowIndicator.SetActive(true); countdownBool = false; }
 
         //calculate main height to ground by using missiles position in unity
