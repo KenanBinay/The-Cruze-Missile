@@ -20,8 +20,8 @@ public class CamController : MonoBehaviour
             transform.DOMove(Missile.transform.position, 0);
             transform.DORotate(Missile.transform.eulerAngles, 0);
         }
-        if (missileController.targetHit)
-        {       
+        if (missileController.crashed == false && missileController.targetHit)
+        {
             if (targetController.target_type == 0)
             {
                 transform.DOLookAt(target.transform.position, 0.5f);
@@ -32,12 +32,11 @@ public class CamController : MonoBehaviour
                 transform.DOLookAt(propCarController.vehicle.transform.position, 0.5f);
                 transform.DOMove(new Vector3(propCarController.vehicle.transform.position.x, propCarController.vehicle.transform.position.y + 100, propCarController.vehicle.transform.position.z - 10), 2f);
             }
-
         }
-        if (missileController.crashed)
+        if (missileController.crashed && missileController.targetHit == false)
         {
             transform.DOMove(new Vector3(Missile.transform.position.x, Missile.transform.position.y + 150, Missile.transform.position.z - 150), 2f);
             transform.DOLookAt(Missile.transform.position, 0.5f);
         }
-    }   
+    }
 }

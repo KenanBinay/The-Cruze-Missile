@@ -50,7 +50,7 @@ public class missileController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("crashColl"))
         {
-            if (crashed == false)
+            if (crashed == false && targetHit == false)
             {
                 crashed = true;
                 gameController.crash(mainHudUi, controllerJoystick);
@@ -59,7 +59,7 @@ public class missileController : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("target"))
         {
-            if (targetHit == false)
+            if (targetHit == false && crashed == false)
             {
                 targetHit = true;
                 gameController.targetHit(mainHudUi, controllerJoystick);
@@ -68,7 +68,7 @@ public class missileController : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("vehicleTarget"))
         {
-            if (targetHit == false)
+            if (targetHit == false && crashed == false)
             {
                 targetHit = true;
                 gameController.targetHit(mainHudUi, controllerJoystick);
