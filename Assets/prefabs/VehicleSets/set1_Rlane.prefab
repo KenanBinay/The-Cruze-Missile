@@ -954,6 +954,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1958822079378101061}
   - component: {fileID: 1958822079378101062}
+  - component: {fileID: 4917781503866445457}
   m_Layer: 0
   m_Name: Bus (1)
   m_TagString: crashColl
@@ -1650,6 +1651,19 @@ MonoBehaviour:
   lastSrcRotation: {x: -0, y: -0.5741308, z: -0, w: 0.8187636}
   wpsDropdown: 1
   dropToFloorOffset: 0
+--- !u!65 &4917781503866445457
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958822079378101060}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.1845555, y: 3.9012952, z: 13.38024}
+  m_Center: {x: -1.0769882, y: 2.0325475, z: -0.09943246}
 --- !u!1 &1958822079399522997
 GameObject:
   m_ObjectHideFlags: 0
@@ -4791,6 +4805,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1958822079722980308}
   - component: {fileID: 1958822079722980309}
+  - component: {fileID: 62741536702671576}
   m_Layer: 0
   m_Name: Truck with trailer (1)
   m_TagString: crashColl
@@ -7450,6 +7465,19 @@ MonoBehaviour:
   lastSrcRotation: {x: -0.012951645, y: 0.94371414, z: 0.037218068, w: 0.3284064}
   wpsDropdown: 1
   dropToFloorOffset: 0
+--- !u!65 &62741536702671576
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958822079722980315}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.0662675, y: 3.6476288, z: 13.38024}
+  m_Center: {x: -0.046104904, y: 1.9057144, z: -0.099432476}
 --- !u!1 &1958822079752690281
 GameObject:
   m_ObjectHideFlags: 0
@@ -8177,6 +8205,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1958822079975050651}
   - component: {fileID: 1958822079975050644}
+  - component: {fileID: 7256773850209018620}
   m_Layer: 0
   m_Name: Pickup (1)
   m_TagString: crashColl
@@ -10575,6 +10604,19 @@ MonoBehaviour:
   lastSrcRotation: {x: 0.0042932993, y: 0.9955044, z: -0.056087147, w: 0.07620281}
   wpsDropdown: 1
   dropToFloorOffset: 0
+--- !u!65 &7256773850209018620
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958822079975050650}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.1951609, y: 2.0289104, z: 4.9758844}
+  m_Center: {x: 0.04604854, y: 1.0963691, z: 0.080539465}
 --- !u!1 &1958822080019163989
 GameObject:
   m_ObjectHideFlags: 0
@@ -10669,6 +10711,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1958822080069160331}
   - component: {fileID: 1958822080069160324}
+  - component: {fileID: 3395135718796250837}
   m_Layer: 0
   m_Name: Police Muscle (2)
   m_TagString: crashColl
@@ -12699,6 +12742,19 @@ MonoBehaviour:
   lastSrcRotation: {x: -0, y: 0.8294669, z: -0, w: 0.5585559}
   wpsDropdown: 1
   dropToFloorOffset: 0
+--- !u!65 &3395135718796250837
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958822080069160330}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.1951609, y: 1.8195691, z: 5.976136}
+  m_Center: {x: 0.046048522, y: 0.9916963, z: 0.022817137}
 --- !u!1 &1958822080150996892
 GameObject:
   m_ObjectHideFlags: 0
@@ -12709,6 +12765,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1958822080150996893}
   - component: {fileID: 1958822080150996894}
+  - component: {fileID: 7114925859857047190}
   m_Layer: 0
   m_Name: Police Muscle (1)
   m_TagString: crashColl
@@ -15429,6 +15486,19 @@ MonoBehaviour:
   lastSrcRotation: {x: 0.0155169275, y: 0.7612488, z: -0.018228272, w: 0.6480178}
   wpsDropdown: 1
   dropToFloorOffset: 0
+--- !u!65 &7114925859857047190
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958822080150996892}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.1951609, y: 1.8195691, z: 5.976136}
+  m_Center: {x: 0.046048522, y: 0.9916963, z: 0.022817137}
 --- !u!1 &1958822080160668738
 GameObject:
   m_ObjectHideFlags: 0
@@ -16371,6 +16441,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1958822080403071922}
   - component: {fileID: 1958822080403071923}
+  - component: {fileID: 4212725843421357113}
   m_Layer: 0
   m_Name: Truck with trailer (2)
   m_TagString: crashColl
@@ -17995,6 +18066,19 @@ MonoBehaviour:
   lastSrcRotation: {x: 0.01847799, y: 0.18896447, z: -0.0035563973, w: 0.98180366}
   wpsDropdown: 1
   dropToFloorOffset: 0
+--- !u!65 &4212725843421357113
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958822080403071921}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.0662675, y: 3.6476288, z: 13.38024}
+  m_Center: {x: -0.046104904, y: 1.9057144, z: -0.099432476}
 --- !u!1 &1958822080409930067
 GameObject:
   m_ObjectHideFlags: 0
@@ -18602,6 +18686,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1958822080759752212}
   - component: {fileID: 1958822080759752213}
+  - component: {fileID: 6091229411320540876}
   m_Layer: 0
   m_Name: Pickup (2)
   m_TagString: crashColl
@@ -20080,6 +20165,19 @@ MonoBehaviour:
   lastSrcRotation: {x: -0, y: -0, z: -0, w: 1}
   wpsDropdown: 1
   dropToFloorOffset: 0
+--- !u!65 &6091229411320540876
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958822080759752219}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.1951609, y: 2.0289104, z: 4.9758844}
+  m_Center: {x: 0.04604854, y: 1.0963691, z: 0.080539465}
 --- !u!1 &1958822080912568611
 GameObject:
   m_ObjectHideFlags: 0
@@ -29711,6 +29809,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7906360541112513358}
   - component: {fileID: 7418230856736401909}
+  - component: {fileID: 1460482399112762388}
   m_Layer: 0
   m_Name: Police Muscle
   m_TagString: crashColl
@@ -32776,6 +32875,19 @@ MonoBehaviour:
   lastSrcRotation: {x: -0, y: 0.10497468, z: -0, w: 0.9944749}
   wpsDropdown: 1
   dropToFloorOffset: 0
+--- !u!65 &1460482399112762388
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7418230856736401908}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.1951609, y: 1.8195691, z: 5.976136}
+  m_Center: {x: 0.046048522, y: 0.9916963, z: 0.022817137}
 --- !u!1 &7484896873909562732
 GameObject:
   m_ObjectHideFlags: 0
@@ -36304,6 +36416,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8727867768759382518}
   - component: {fileID: 8238295186091518797}
+  - component: {fileID: 4460653820922728175}
   m_Layer: 0
   m_Name: Bus
   m_TagString: crashColl
@@ -39116,6 +39229,19 @@ MonoBehaviour:
   lastSrcRotation: {x: -0, y: 0.51302165, z: -0, w: 0.8583757}
   wpsDropdown: 1
   dropToFloorOffset: 0
+--- !u!65 &4460653820922728175
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8238295186091518796}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.1845555, y: 3.9012952, z: 13.38024}
+  m_Center: {x: -1.0769882, y: 2.0325475, z: -0.09943246}
 --- !u!1 &8845817905295577099
 GameObject:
   m_ObjectHideFlags: 0
@@ -39126,6 +39252,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8181202311597427377}
   - component: {fileID: 8181202311597427378}
+  - component: {fileID: 7036762120648208905}
   m_Layer: 0
   m_Name: Pickup
   m_TagString: crashColl
@@ -42283,6 +42410,19 @@ MonoBehaviour:
   lastSrcRotation: {x: -0, y: 0.0204174, z: -0, w: 0.9997916}
   wpsDropdown: 1
   dropToFloorOffset: 0
+--- !u!65 &7036762120648208905
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8845817905295577099}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.1951609, y: 2.0289104, z: 4.9758844}
+  m_Center: {x: 0.04604854, y: 1.0963691, z: 0.080539465}
 --- !u!1 &8883371274133060605
 GameObject:
   m_ObjectHideFlags: 0

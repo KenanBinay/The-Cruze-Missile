@@ -8,11 +8,9 @@ public class CamController : MonoBehaviour
 
     public float smoothSpeed;
 
-    float alt;
-    RaycastHit hit;
     void Start()
     {
-        alt = 200;
+
     }
 
     void FixedUpdate()
@@ -21,12 +19,20 @@ public class CamController : MonoBehaviour
         {
             transform.DOMove(Missile.transform.position, 0);
             transform.DORotate(Missile.transform.eulerAngles, 0);
-
         }
         if (missileController.targetHit)
-        {
-            transform.DOMove(endPos.transform.position, 2f);
-            transform.DOLookAt(target.transform.position, 0.5f);
+        {       
+            if (targetController.target_type == 0)
+            {
+                transform.DOLookAt(target.transform.position, 0.5f);
+                transform.DOMove(endPos.transform.position, 2f);
+            }
+            if (targetController.target_type == 1)
+            {
+                transform.DOLookAt(propCarController.vehicle.transform.position, 0.5f);
+                transform.DOMove(new Vector3(propCarController.vehicle.transform.position.x, propCarController.vehicle.transform.position.y + 100, propCarController.vehicle.transform.position.z - 10), 2f);
+            }
+
         }
         if (missileController.crashed)
         {

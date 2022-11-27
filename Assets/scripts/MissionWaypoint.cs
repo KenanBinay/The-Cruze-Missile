@@ -7,29 +7,33 @@ using DG.Tweening;
 
 public class MissionWaypoint : MonoBehaviour
 {
-    public Transform target;
     public TextMeshProUGUI meterText;
     public Vector3 offset;
  
     private void Start()
     {
-     
+
     }
 
     private void Update()
-    {  
-
-        meterText.text = ((int)Vector3.Distance(target.position, transform.position)).ToString() + "m"; 
-
+    {        
         //  transform.LookAt(new Vector3(0,0, target.transform.position.z));
         Vector3 intoPlane = Vector3.up;
 
         // Calculate a vector pointing to the target.
-        Vector3 toTarget = target.transform.position - transform.position;
+        if (targetController.target_type == 0) 
+        {
+            meterText.text = ((int)Vector3.Distance(targetController.staticTarget.transform.position, transform.position)).ToString() + "m";
 
-        // Point our Z+ into the gameplay plane, 
-        // and our Y+ away from the target.
-        // (Since our "front" is at the bottom/Y- extreme)
-        transform.rotation = Quaternion.LookRotation(intoPlane, -toTarget);
+            Vector3 toTarget = targetController.staticTarget.transform.position - transform.position;
+            transform.rotation = Quaternion.LookRotation(intoPlane, -toTarget);
+        }
+        if (targetController.target_type == 1)
+        {
+            meterText.text = ((int)Vector3.Distance(propCarController.vehicle.transform.position, transform.position)).ToString() + "m";
+
+            Vector3 toVehicleTarget = propCarController.vehicle.transform.position - transform.position;
+            transform.rotation = Quaternion.LookRotation(intoPlane, -toVehicleTarget);
+        }
     }
 }

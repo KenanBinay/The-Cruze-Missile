@@ -66,6 +66,16 @@ public class missileController : MonoBehaviour
                 Debug.Log("targetHit");
             }
         }
+        if (collision.gameObject.CompareTag("vehicleTarget"))
+        {
+            if (targetHit == false)
+            {
+                targetHit = true;
+                gameController.targetHit(mainHudUi, controllerJoystick);
+                collision.gameObject.transform.DOPause();
+                Debug.Log("vehicleTargetHit");
+            }
+        }
 
         rigidM.constraints = RigidbodyConstraints.FreezeAll;
         normal = collision.contacts[0].normal;

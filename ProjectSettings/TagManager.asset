@@ -10,6 +10,7 @@ TagManager:
   - killZone
   - crashColl
   - plane
+  - vehicleTarget
   layers:
   - Default
   - TransparentFX

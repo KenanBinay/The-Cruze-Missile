@@ -17,6 +17,8 @@ public class targetIndicator : MonoBehaviour
     void Start()
     {
         targetCamera = GetComponent<Camera>();
+        if (targetController.target_type == 0) { targetCollider = GameObject.Find("targetObject_static").GetComponent<Collider>(); }
+        if (targetController.target_type == 1) { targetCollider = propCarController.vehicle.GetComponent<Collider>(); }
     }
 
     // Update is called once per frame
@@ -35,82 +37,86 @@ public class targetIndicator : MonoBehaviour
             }
             targets.Add(targetCollider);
         }
+        if (targetCollider == null&& targetController.target_type == 1) { targetCollider = propCarController.vehicle.GetComponent<Collider>(); }
     }
 
     void OnGUI()
     {
-        for (int i = 0; i < targets.Count; i++)
+        if (missileController.targetHit == false)
         {
-            if (targets[i])
+            for (int i = 0; i < targets.Count; i++)
             {
-                Vector3 boundPoint1 = targets[i].bounds.min;
-                Vector3 boundPoint2 = targets[i].bounds.max;
-                Vector3 boundPoint3 = new Vector3(boundPoint1.x, boundPoint1.y, boundPoint2.z);
-                Vector3 boundPoint4 = new Vector3(boundPoint1.x, boundPoint2.y, boundPoint1.z);
-                Vector3 boundPoint5 = new Vector3(boundPoint2.x, boundPoint1.y, boundPoint1.z);
-                Vector3 boundPoint6 = new Vector3(boundPoint1.x, boundPoint2.y, boundPoint2.z);
-                Vector3 boundPoint7 = new Vector3(boundPoint2.x, boundPoint1.y, boundPoint2.z);
-                Vector3 boundPoint8 = new Vector3(boundPoint2.x, boundPoint2.y, boundPoint1.z);
-
-                Vector2[] screenPoints = new Vector2[8];
-                screenPoints[0] = targetCamera.WorldToScreenPoint(boundPoint1);
-                screenPoints[1] = targetCamera.WorldToScreenPoint(boundPoint2);
-                screenPoints[2] = targetCamera.WorldToScreenPoint(boundPoint3);
-                screenPoints[3] = targetCamera.WorldToScreenPoint(boundPoint4);
-                screenPoints[4] = targetCamera.WorldToScreenPoint(boundPoint5);
-                screenPoints[5] = targetCamera.WorldToScreenPoint(boundPoint6);
-                screenPoints[6] = targetCamera.WorldToScreenPoint(boundPoint7);
-                screenPoints[7] = targetCamera.WorldToScreenPoint(boundPoint8);
-
-                Vector2 topLeftPosition = Vector2.zero;
-                Vector2 topRightPosition = Vector2.zero;
-                Vector2 bottomLeftPosition = Vector2.zero;
-                Vector2 bottomRightPosition = Vector2.zero;
-
-                for (int a = 0; a < screenPoints.Length; a++)
+                if (targets[i])
                 {
-                    //Top Left
-                    if (topLeftPosition.x == 0 || topLeftPosition.x > screenPoints[a].x)
-                    {
-                        topLeftPosition.x = screenPoints[a].x;
-                    }
-                    if (topLeftPosition.y == 0 || topLeftPosition.y > Screen.height - screenPoints[a].y)
-                    {
-                        topLeftPosition.y = Screen.height - screenPoints[a].y;
-                    }
-                    //Top Right
-                    if (topRightPosition.x == 0 || topRightPosition.x < screenPoints[a].x)
-                    {
-                        topRightPosition.x = screenPoints[a].x;
-                    }
-                    if (topRightPosition.y == 0 || topRightPosition.y > Screen.height - screenPoints[a].y)
-                    {
-                        topRightPosition.y = Screen.height - screenPoints[a].y;
-                    }
-                    //Bottom Left
-                    if (bottomLeftPosition.x == 0 || bottomLeftPosition.x > screenPoints[a].x)
-                    {
-                        bottomLeftPosition.x = screenPoints[a].x;
-                    }
-                    if (bottomLeftPosition.y == 0 || bottomLeftPosition.y < Screen.height - screenPoints[a].y)
-                    {
-                        bottomLeftPosition.y = Screen.height - screenPoints[a].y;
-                    }
-                    //Bottom Right
-                    if (bottomRightPosition.x == 0 || bottomRightPosition.x < screenPoints[a].x)
-                    {
-                        bottomRightPosition.x = screenPoints[a].x;
-                    }
-                    if (bottomRightPosition.y == 0 || bottomRightPosition.y < Screen.height - screenPoints[a].y)
-                    {
-                        bottomRightPosition.y = Screen.height - screenPoints[a].y;
-                    }
-                }
+                    Vector3 boundPoint1 = targets[i].bounds.min;
+                    Vector3 boundPoint2 = targets[i].bounds.max;
+                    Vector3 boundPoint3 = new Vector3(boundPoint1.x, boundPoint1.y, boundPoint2.z);
+                    Vector3 boundPoint4 = new Vector3(boundPoint1.x, boundPoint2.y, boundPoint1.z);
+                    Vector3 boundPoint5 = new Vector3(boundPoint2.x, boundPoint1.y, boundPoint1.z);
+                    Vector3 boundPoint6 = new Vector3(boundPoint1.x, boundPoint2.y, boundPoint2.z);
+                    Vector3 boundPoint7 = new Vector3(boundPoint2.x, boundPoint1.y, boundPoint2.z);
+                    Vector3 boundPoint8 = new Vector3(boundPoint2.x, boundPoint2.y, boundPoint1.z);
 
-                GUI.DrawTexture(new Rect(topLeftPosition.x - 16, topLeftPosition.y - 16, 16, 16), topLeftBorder);
-                GUI.DrawTexture(new Rect(topRightPosition.x, topRightPosition.y - 16, 16, 16), topRightBorder);
-                GUI.DrawTexture(new Rect(bottomLeftPosition.x - 16, bottomLeftPosition.y, 16, 16), bottomLeftBorder);
-                GUI.DrawTexture(new Rect(bottomRightPosition.x, bottomRightPosition.y, 16, 16), bottomRightBorder);
+                    Vector2[] screenPoints = new Vector2[8];
+                    screenPoints[0] = targetCamera.WorldToScreenPoint(boundPoint1);
+                    screenPoints[1] = targetCamera.WorldToScreenPoint(boundPoint2);
+                    screenPoints[2] = targetCamera.WorldToScreenPoint(boundPoint3);
+                    screenPoints[3] = targetCamera.WorldToScreenPoint(boundPoint4);
+                    screenPoints[4] = targetCamera.WorldToScreenPoint(boundPoint5);
+                    screenPoints[5] = targetCamera.WorldToScreenPoint(boundPoint6);
+                    screenPoints[6] = targetCamera.WorldToScreenPoint(boundPoint7);
+                    screenPoints[7] = targetCamera.WorldToScreenPoint(boundPoint8);
+
+                    Vector2 topLeftPosition = Vector2.zero;
+                    Vector2 topRightPosition = Vector2.zero;
+                    Vector2 bottomLeftPosition = Vector2.zero;
+                    Vector2 bottomRightPosition = Vector2.zero;
+
+                    for (int a = 0; a < screenPoints.Length; a++)
+                    {
+                        //Top Left
+                        if (topLeftPosition.x == 0 || topLeftPosition.x > screenPoints[a].x)
+                        {
+                            topLeftPosition.x = screenPoints[a].x;
+                        }
+                        if (topLeftPosition.y == 0 || topLeftPosition.y > Screen.height - screenPoints[a].y)
+                        {
+                            topLeftPosition.y = Screen.height - screenPoints[a].y;
+                        }
+                        //Top Right
+                        if (topRightPosition.x == 0 || topRightPosition.x < screenPoints[a].x)
+                        {
+                            topRightPosition.x = screenPoints[a].x;
+                        }
+                        if (topRightPosition.y == 0 || topRightPosition.y > Screen.height - screenPoints[a].y)
+                        {
+                            topRightPosition.y = Screen.height - screenPoints[a].y;
+                        }
+                        //Bottom Left
+                        if (bottomLeftPosition.x == 0 || bottomLeftPosition.x > screenPoints[a].x)
+                        {
+                            bottomLeftPosition.x = screenPoints[a].x;
+                        }
+                        if (bottomLeftPosition.y == 0 || bottomLeftPosition.y < Screen.height - screenPoints[a].y)
+                        {
+                            bottomLeftPosition.y = Screen.height - screenPoints[a].y;
+                        }
+                        //Bottom Right
+                        if (bottomRightPosition.x == 0 || bottomRightPosition.x < screenPoints[a].x)
+                        {
+                            bottomRightPosition.x = screenPoints[a].x;
+                        }
+                        if (bottomRightPosition.y == 0 || bottomRightPosition.y < Screen.height - screenPoints[a].y)
+                        {
+                            bottomRightPosition.y = Screen.height - screenPoints[a].y;
+                        }
+                    }
+
+                    GUI.DrawTexture(new Rect(topLeftPosition.x - 16, topLeftPosition.y - 16, 16, 16), topLeftBorder);
+                    GUI.DrawTexture(new Rect(topRightPosition.x, topRightPosition.y - 16, 16, 16), topRightBorder);
+                    GUI.DrawTexture(new Rect(bottomLeftPosition.x - 16, bottomLeftPosition.y, 16, 16), bottomLeftBorder);
+                    GUI.DrawTexture(new Rect(bottomRightPosition.x, bottomRightPosition.y, 16, 16), bottomRightBorder);
+                }
             }
         }
     }

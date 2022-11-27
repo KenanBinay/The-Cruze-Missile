@@ -7,8 +7,9 @@ public class propCarController : MonoBehaviour
 {
     public GameObject[] sets_R , sets_L;
 
-    int setNumberR, setNumberL;
+    int setNumberR, setNumberL, vehicleNumb,parentPropNumb;
 
+    public static GameObject vehicle;
     void Start()
     {
         int[] setLenghtR = { 0 };
@@ -16,6 +17,12 @@ public class propCarController : MonoBehaviour
 
         int[] setLenghtL = { 0 };
         setNumberL = setLenghtL[Random.Range(0, setLenghtL.Length)];
+
+        int[] vehicleNumbs = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 };
+        vehicleNumb = vehicleNumbs[Random.Range(0, vehicleNumbs.Length)];
+
+        int[] parentProps = { 0, 1 };
+        parentPropNumb = parentProps[Random.Range(0, parentProps.Length)];
 
         if (setNumberR == 0)
         {
@@ -28,6 +35,17 @@ public class propCarController : MonoBehaviour
             GameObject setObject = sets_L[0];
             setObject = Instantiate(setObject, setObject.transform.position, setObject.transform.rotation);
             setObject.transform.parent = gameObject.transform;
+        }
+       
+    }
+    private void Update()
+    {
+        if (targetController.target_type == 1 && vehicle == null)
+        {
+            if (parentPropNumb == 0) { GameObject parentLane = gameObject.transform.Find("set1_Rlane(Clone)").gameObject; vehicle = parentLane.transform.GetChild(vehicleNumb).gameObject; }
+            if (parentPropNumb == 1) { GameObject parentLane = gameObject.transform.Find("set1_Llane(Clone)").gameObject; vehicle = parentLane.transform.GetChild(vehicleNumb).gameObject; }
+
+            vehicle.tag = "vehicleTarget";
         }
     }
 }
