@@ -7,12 +7,12 @@ public class gameController : MonoBehaviour
 {
     public Camera mainCam;
     public Animator startAnim;
-    public GameObject missileHud, missileBody, warningUi_parent, arrrowIndicator;
+    public GameObject missileHud, missileBody, warningUi_parent, arrrowIndicator, tutoUi, joystickMain;
     public TextMeshProUGUI altitute, countdownTxt;
 
     public static bool startDelay;
 
-    bool countdownBool;
+    bool countdownBool, startClick;
     float alt, countdownVal;
     RaycastHit hit;
     void Start()
@@ -21,15 +21,19 @@ public class gameController : MonoBehaviour
    
         missileHud.SetActive(false);
         warningUi_parent.SetActive(false);
-        startDelay = false;
+        joystickMain.SetActive(false);
+
+        startDelay = startClick = false;
 
         StartCoroutine(delayForStart());
     }
 
     void FixedUpdate()
     {
-        if (missileController.crashed == false && missileController.targetHit == false)
+        if (missileController.crashed == false && missileController.targetHit == false && startDelay)
         {
+            if (startClick == false & Input.GetMouseButtonDown(0)) { tutoUi.SetActive(false); }
+
             Debug.DrawRay(missileBody.transform.position, Vector3.down * alt, Color.red);
             Ray rayDown = new Ray(missileBody.transform.position, Vector3.down);
 
@@ -83,6 +87,7 @@ public class gameController : MonoBehaviour
         startDelay = true;
         startAnim.enabled = false;
         missileHud.SetActive(true);
+        joystickMain.SetActive(true);
         Debug.Log("missileCam");
     }
 }

@@ -34,12 +34,12 @@ public class targetController : MonoBehaviour
             if (carSpawnPoint == 8) { staticTarget.transform.position = spawnPoints[8]; endPos.transform.position = endCamPoses[8]; }
             if (carSpawnPoint == 9) { staticTarget.transform.position = spawnPoints[9]; endPos.transform.position = endCamPoses[9]; }
 
-            Debug.Log("staticTarget point " + carSpawnPoint);
+            Debug.Log("staticTargetSelected point " + carSpawnPoint);
         }
         if (target_type == 1)
         {
             staticTarget.SetActive(false);
-            Debug.Log("vehicleTarget");
+            Debug.Log("vehicleTargetSelected");
         }
     }
 }
