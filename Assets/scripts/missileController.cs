@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class missileController : MonoBehaviour
 {
-    Vector3 normal;
+    public static Vector3 normal;
     public static Vector2 handleInput;
     public Transform hudYawUi;
     public GameObject mainHudUi, controllerJoystick, waypointArrow, warningUi;
@@ -24,7 +24,7 @@ public class missileController : MonoBehaviour
 
     void Update()
     {
-        if (gameController.startDelay && crashed == false && targetHit == false)
+        if (gameController.startDelay && !crashed && !targetHit)
         {
             //move forward
             transform.position += transform.forward * flySpeed * Time.deltaTime;
@@ -50,30 +50,30 @@ public class missileController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("crashColl"))
         {
-            if (crashed == false && targetHit == false)
+            if (!crashed && !targetHit)
             {
                 crashed = true;
-                gameController.crash(mainHudUi, controllerJoystick);
                 Debug.Log("crashed");
-            }
+                gameController.crash(mainHudUi, controllerJoystick);
+            }           
         }
         if (collision.gameObject.CompareTag("target"))
         {
-            if (targetHit == false && crashed == false)
+            if (!crashed && !targetHit)
             {
                 targetHit = true;
-                gameController.targetHit(mainHudUi, controllerJoystick);
                 Debug.Log("targetHit");
+                gameController.targetHit(mainHudUi, controllerJoystick);
             }
         }
         if (collision.gameObject.CompareTag("vehicleTarget"))
         {
-            if (targetHit == false && crashed == false)
+            if (!crashed && !targetHit)
             {
                 targetHit = true;
-                gameController.targetHit(mainHudUi, controllerJoystick);
-                collision.gameObject.transform.DOPause();
                 Debug.Log("vehicleTargetHit");
+                collision.gameObject.transform.DOPause();
+                gameController.targetHit(mainHudUi, controllerJoystick);
             }
         }
 
@@ -91,7 +91,7 @@ public class missileController : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("outside") && crashed == false)
+        if (other.gameObject.CompareTag("outside") && !crashed)
         {
             outside = true;
             Debug.Log("returnToCombat");

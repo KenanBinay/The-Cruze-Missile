@@ -42,7 +42,7 @@ public class targetIndicator : MonoBehaviour
 
     void OnGUI()
     {
-        if (missileController.targetHit == false)
+        if (!missileController.targetHit)
         {
             for (int i = 0; i < targets.Count; i++)
             {

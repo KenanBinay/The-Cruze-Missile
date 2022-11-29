@@ -30,9 +30,9 @@ public class gameController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (missileController.crashed == false && missileController.targetHit == false && startDelay)
+        if (!missileController.crashed && !missileController.targetHit && startDelay)
         {
-            if (startClick == false & Input.GetMouseButtonDown(0)) { tutoUi.SetActive(false); }
+            if (!startClick & Input.GetMouseButtonDown(0)) { tutoUi.SetActive(false); }
 
             Debug.DrawRay(missileBody.transform.position, Vector3.down * alt, Color.red);
             Ray rayDown = new Ray(missileBody.transform.position, Vector3.down);
@@ -45,7 +45,7 @@ public class gameController : MonoBehaviour
                     missileController.crashed = true;
             }
         }
-        if (missileController.outside && missileController.crashed == false) { giveWarning(); }
+        if (missileController.outside && !missileController.crashed) { giveWarning(); }
         else { warningUi_parent.SetActive(false); arrrowIndicator.SetActive(true); countdownBool = false; }
 
         //calculate main height to ground by using missiles position in unity
@@ -64,7 +64,7 @@ public class gameController : MonoBehaviour
     }
     void giveWarning()
     {
-        if (countdownBool == false)
+        if (!countdownBool)
         {
             warningUi_parent.SetActive(true);
             arrrowIndicator.SetActive(false);
