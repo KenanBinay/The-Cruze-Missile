@@ -52,8 +52,9 @@ public class missileController : MonoBehaviour
         {
             if (!crashed && !targetHit)
             {
-                crashed = true;
                 Debug.Log("crashed");
+
+                crashed = true;
                 gameController.crash(mainHudUi, controllerJoystick);
             }           
         }
@@ -61,8 +62,12 @@ public class missileController : MonoBehaviour
         {
             if (!crashed && !targetHit)
             {
-                targetHit = true;
                 Debug.Log("targetHit");
+
+                int missionVal = PlayerPrefs.GetInt("mission", 0) + 1;
+                PlayerPrefs.SetInt("mission", missionVal++);
+
+                targetHit = true;
                 gameController.targetHit(mainHudUi, controllerJoystick);
             }
         }
@@ -70,8 +75,12 @@ public class missileController : MonoBehaviour
         {
             if (!crashed && !targetHit)
             {
-                targetHit = true;
                 Debug.Log("vehicleTargetHit");
+
+                int missionVal = PlayerPrefs.GetInt("mission", 0) + 1;
+                PlayerPrefs.SetInt("mission", missionVal);
+
+                targetHit = true;
                 collision.gameObject.transform.DOPause();
                 gameController.targetHit(mainHudUi, controllerJoystick);
             }

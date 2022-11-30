@@ -8,13 +8,14 @@ public class gameController : MonoBehaviour
     public Camera mainCam;
     public Animator startAnim;
     public GameObject missileHud, missileBody, warningUi_parent, arrrowIndicator, tutoUi, joystickMain;
-    public TextMeshProUGUI altitute, countdownTxt;
+    public TextMeshProUGUI altitute, countdownTxt, missionTxt;
 
     public static bool startDelay;
 
     bool countdownBool, startClick;
     float alt, countdownVal;
     RaycastHit hit;
+
     void Start()
     {
         alt = 400;
@@ -24,6 +25,12 @@ public class gameController : MonoBehaviour
         joystickMain.SetActive(false);
 
         startDelay = startClick = false;
+
+        if (PlayerPrefs.GetInt("mission", 0) == 0) { PlayerPrefs.SetInt("mission", 1); }
+
+        missionTxt.text = "MISSION " + PlayerPrefs.GetInt("mission", 0);
+
+        Debug.Log("mission: " + PlayerPrefs.GetInt("mission", 0));
 
         StartCoroutine(delayForStart());
     }
