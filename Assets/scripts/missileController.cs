@@ -16,8 +16,10 @@ public class missileController : MonoBehaviour
 
     public static bool crashed, targetHit, outside;
 
+    public static int hitVal;
     void Start()
     {
+        hitVal = 0;
         outside = false;
         rigidM = gameObject.GetComponent<Rigidbody>();
     }
@@ -84,7 +86,7 @@ public class missileController : MonoBehaviour
                 collision.gameObject.transform.DOPause();
                 gameController.targetHit(mainHudUi, controllerJoystick);
             }
-        }
+        }    
 
         rigidM.constraints = RigidbodyConstraints.FreezeAll;
         normal = collision.contacts[0].normal;
@@ -98,6 +100,19 @@ public class missileController : MonoBehaviour
         if (normal.z < -0.5f) { Debug.Log("down"); }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("roundColl"))
+        {
+            if (!crashed && !targetHit && ciwsController.targetDetected)
+            {
+                hitVal++;
+                Debug.Log("hit: " + hitVal);
+
+                if (hitVal >= 2) { crashed = true; }
+            }
+        }
+    }
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("outside") && !crashed)
@@ -112,6 +127,10 @@ public class missileController : MonoBehaviour
         {
             outside = false;
             Debug.Log("returned");
+        }
+        if (other.gameObject.CompareTag("ciwsRadar"))
+        {
+            hitVal = 0;
         }
     }
 }

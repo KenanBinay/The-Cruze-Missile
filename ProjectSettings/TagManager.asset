@@ -11,6 +11,8 @@ TagManager:
   - crashColl
   - plane
   - vehicleTarget
+  - roundColl
+  - ciwsRadar
   layers:
   - Default
   - TransparentFX

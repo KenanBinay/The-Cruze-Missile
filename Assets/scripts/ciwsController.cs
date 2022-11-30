@@ -5,47 +5,48 @@ using DG.Tweening;
 
 public class ciwsController : MonoBehaviour
 {
-    public GameObject gunM, gunUp, missile;
+    public GameObject gunM, gunUp, missile, roundEffect;
 
-    bool targetDetected;
+    public static bool targetDetected;
 
     void Start()
     {
-        
+        roundEffect.SetActive(false);
     }
 
     private void Update()
     {
-        if (!targetDetected)
+        if (missileController.crashed || missileController.targetHit || !targetDetected)
         {
-            gunM.transform.DORotate(new Vector3(0, 0, 0), 1);
-            gunUp.transform.DORotate(new Vector3(0, 0, 0), 1);
+            gunM.transform.DORotate(new Vector3(0, 0, 0), 3);
+            gunUp.transform.DORotate(new Vector3(0, 0, 0), 3);
+
+            roundEffect.SetActive(false);
         }
     }
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("missileM")) { targetDetected = true; }
+        if (other.gameObject.CompareTag("missileM")) { targetDetected = true; Debug.Log("lockedOn runAway"); }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("missileM"))
+        if (other.gameObject.CompareTag("missileM") && !missileController.crashed && !missileController.targetHit)
         {
-            var lookPos = missile.transform.position - gunM.transform.position;
-            lookPos.y = 0;
-            var rotation = Quaternion.LookRotation(lookPos);
-            gunM.transform.rotation = Quaternion.Slerp(gunM.transform.rotation, rotation, Time.deltaTime * 3f);
+            roundEffect.SetActive(true);
 
-            var lookPosTurret = missile.transform.position - gunUp.transform.position;
-            lookPosTurret.x = 0;
-            var rotationturret = Quaternion.LookRotation(lookPosTurret);
-            gunUp.transform.rotation = Quaternion.Slerp(gunUp.transform.rotation, rotationturret, Time.deltaTime * 3f);
+            gunM.transform.DOLookAt(missile.transform.position, 5);
+            gunUp.transform.DOLookAt(missile.transform.position, 5);
         }
     }
 
     public void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("missileM")) { targetDetected = false; }
+        if (other.gameObject.CompareTag("missileM")) 
+        {
+            Debug.Log("lockedOff");
+            targetDetected = false;
+        }
     }
 }
