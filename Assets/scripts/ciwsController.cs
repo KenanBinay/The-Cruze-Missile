@@ -32,11 +32,26 @@ public class ciwsController : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+     /*   if (other.gameObject.CompareTag("missileM") && !missileController.crashed && !missileController.targetHit)
+        {
+            roundEffect.SetActive(true);
+
+            var lookPos = missile.transform.position - gunM.transform.position;
+            lookPos.y = 0;
+            var rotation = Quaternion.LookRotation(lookPos);
+            gunM.transform.rotation = Quaternion.Slerp(gunM.transform.rotation, rotation, Time.deltaTime * 5);
+
+            var lookPosTurret = missile.transform.position - gunUp.transform.position;
+            lookPosTurret.x = 0;
+            var rotationturret = Quaternion.LookRotation(lookPosTurret);
+            gunUp.transform.rotation = Quaternion.Slerp(gunUp.transform.rotation, rotationturret, Time.deltaTime * 5);
+        }*/
+
         if (other.gameObject.CompareTag("missileM") && !missileController.crashed && !missileController.targetHit)
         {
             roundEffect.SetActive(true);
 
-            gunM.transform.DOLookAt(missile.transform.position, 5);
+            gunM.transform.DOLookAt(new Vector3(0, missile.transform.position.y, 0), 5);
             gunUp.transform.DOLookAt(missile.transform.position, 5);
         }
     }
@@ -46,7 +61,7 @@ public class ciwsController : MonoBehaviour
         if (other.gameObject.CompareTag("missileM")) 
         {
             Debug.Log("lockedOff");
-            targetDetected = false;
+            targetDetected = false;    
         }
     }
 }
