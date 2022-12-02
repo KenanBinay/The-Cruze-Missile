@@ -8,7 +8,7 @@ public class missileController : MonoBehaviour
     public static Vector3 normal;
     public static Vector2 handleInput;
     public Transform hudYawUi;
-    public GameObject mainHudUi, controllerJoystick, waypointArrow, warningUi;
+    public GameObject mainHudUi, controllerJoystick, waypointArrow, warningUi, hitFlash, hitEffect;
     Rigidbody rigidM;
 
 
@@ -110,12 +110,13 @@ public class missileController : MonoBehaviour
         if (other.gameObject.CompareTag("roundColl"))
         {
             if (!crashed && !targetHit && ciwsController.targetDetected)
-            {
+            {           
                 hitVal++;
                 ciwsHit = true;
                 Debug.Log("hit: " + hitVal);  
 
                 if (hitVal >= 2) { crashed = true; }
+                StartCoroutine(roundHit());
             }
         }
     }
@@ -138,5 +139,15 @@ public class missileController : MonoBehaviour
         {
             hitVal = 0;
         }
+    }
+
+    IEnumerator roundHit()
+    {
+        hitFlash.SetActive(true);
+        hitEffect.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        hitFlash.SetActive(false);
+        yield return new WaitForSeconds(0.1f);
+        hitEffect.SetActive(false);
     }
 }
