@@ -27,7 +27,7 @@ public class ciwsController : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("missileM")) { targetDetected = true; Debug.Log("lockedOn runAway"); }
+        if (other.gameObject.CompareTag("missileM")) { targetDetected = true; Debug.Log("lockedOn"); }
     }
 
     private void OnTriggerStay(Collider other)
@@ -51,8 +51,8 @@ public class ciwsController : MonoBehaviour
         {
             roundEffect.SetActive(true);
 
-            gunM.transform.DOLookAt(new Vector3(0, missile.transform.position.y, 0), 5);
-            gunUp.transform.DOLookAt(missile.transform.position, 5);
+            gunM.transform.DOLookAt(new Vector3(0, missile.transform.position.y, 0), 2);
+            gunUp.transform.DOLookAt(missile.transform.position, 2);
         }
     }
 

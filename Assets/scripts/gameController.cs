@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using DG.Tweening;
 
 public class gameController : MonoBehaviour
 {
     public Camera mainCam;
     public Animator startAnim;
-    public GameObject missileHud, missileBody, warningUi_parent, arrrowIndicator, tutoUi, joystickMain;
+    public GameObject missileHud, missileBody, warningUi_parent, arrrowIndicator, tutoUi, joystickMain, ciwslockedUi;
     public TextMeshProUGUI altitute, countdownTxt, missionTxt;
 
     public static bool startDelay;
@@ -54,6 +55,9 @@ public class gameController : MonoBehaviour
         }
         if (missileController.outside && !missileController.crashed) { giveWarning(); }
         else { warningUi_parent.SetActive(false); arrrowIndicator.SetActive(true); countdownBool = false; }
+
+        if (ciwsController.targetDetected) { ciwslockedUi.transform.DOScaleX(1, 0.25f); }
+        else { ciwslockedUi.transform.DOScaleX(0, 0.25f); }
 
         //calculate main height to ground by using missiles position in unity
         altitute.text = missileBody.transform.position.y.ToString("#");

@@ -11,16 +11,17 @@ public class missileController : MonoBehaviour
     public GameObject mainHudUi, controllerJoystick, waypointArrow, warningUi;
     Rigidbody rigidM;
 
+
     public float flySpeed, yawAmount;
     float yaw, pitch, yawHudHorizontal, yawHudVertical;
 
-    public static bool crashed, targetHit, outside;
+    public static bool crashed, targetHit, outside, ciwsHit;
 
     public static int hitVal;
     void Start()
     {
         hitVal = 0;
-        outside = false;
+        outside = ciwsHit = false;
         rigidM = gameObject.GetComponent<Rigidbody>();
     }
 
@@ -45,8 +46,12 @@ public class missileController : MonoBehaviour
 
             if (handleInput == Vector2.zero) { hudYawUi.DOLocalRotate(new Vector3(yawHudVertical, 0, 0), 1); yawHudHorizontal = 0; }
             else { hudYawUi.localRotation = Quaternion.Euler(Vector3.back * yawHudHorizontal + Vector3.right * yawHudVertical); }
+
+            if (ciwsHit) mainHudUi.transform.DOShakeScale(0.4f, 0.03f).onComplete = mHudTweenDone;
         }
     }
+
+    void mHudTweenDone() { ciwsHit = false; mainHudUi.transform.localScale = new Vector3(1, 1, 1); }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -107,7 +112,8 @@ public class missileController : MonoBehaviour
             if (!crashed && !targetHit && ciwsController.targetDetected)
             {
                 hitVal++;
-                Debug.Log("hit: " + hitVal);
+                ciwsHit = true;
+                Debug.Log("hit: " + hitVal);  
 
                 if (hitVal >= 2) { crashed = true; }
             }
