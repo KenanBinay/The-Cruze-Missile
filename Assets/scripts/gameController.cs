@@ -56,12 +56,13 @@ public class gameController : MonoBehaviour
         if (missileController.outside && !missileController.crashed) { giveWarning(); }
         else { warningUi_parent.SetActive(false); arrrowIndicator.SetActive(true); countdownBool = false; }
 
-        if (ciwsController.targetDetected) { ciwslockedUi.transform.DOScaleX(1, 0.25f); }
-        else { ciwslockedUi.transform.DOScaleX(0, 0.25f); }
+        if (ciwsController.targetDetected) { ciwslockedUi.SetActive(true); ciwslockedUi.transform.DOScaleX(1, 0.2f); }
+        else { ciwslockedUi.transform.DOScaleX(0, 0.2f).onComplete = tweenCiwsUi; }
 
         //calculate main height to ground by using missiles position in unity
         altitute.text = missileBody.transform.position.y.ToString("#");
     }
+    void tweenCiwsUi() { ciwslockedUi.SetActive(false); }
 
     public static void targetHit(GameObject hudUi, GameObject controllerJoystick)
     {
