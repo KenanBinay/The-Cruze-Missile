@@ -91,7 +91,21 @@ public class missileController : MonoBehaviour
                 collision.gameObject.transform.DOPause();
                 gameController.targetHit(mainHudUi, controllerJoystick);
             }
-        }    
+        }
+        if (collision.gameObject.CompareTag("airTarget"))
+        {
+            if (!crashed && !targetHit)
+            {
+                Debug.Log("aircraftTargetHit");
+
+                int missionVal = PlayerPrefs.GetInt("mission", 0) + 1;
+                PlayerPrefs.SetInt("mission", missionVal);
+
+                targetHit = true;
+                collision.gameObject.transform.DOPause();
+                gameController.targetHit(mainHudUi, controllerJoystick);
+            }
+        }
 
         rigidM.constraints = RigidbodyConstraints.FreezeAll;
         normal = collision.contacts[0].normal;

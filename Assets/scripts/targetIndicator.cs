@@ -19,6 +19,7 @@ public class targetIndicator : MonoBehaviour
         targetCamera = GetComponent<Camera>();
         if (targetController.target_type == 0) { targetCollider = GameObject.Find("targetObject_static").GetComponent<Collider>(); }
         if (targetController.target_type == 1) { targetCollider = propCarController.vehicle.GetComponent<Collider>(); }
+        if (targetController.target_type == 2) { targetCollider = propAircraftController.aircraft.GetComponent<BoxCollider>(); }
     }
 
     // Update is called once per frame
@@ -37,7 +38,8 @@ public class targetIndicator : MonoBehaviour
             }
             targets.Add(targetCollider);
         }
-        if (targetCollider == null&& targetController.target_type == 1) { targetCollider = propCarController.vehicle.GetComponent<Collider>(); }
+        if (targetCollider == null && targetController.target_type == 1) { targetCollider = propCarController.vehicle.GetComponent<Collider>(); }
+        if (targetCollider == null && targetController.target_type == 2) { targetCollider = propAircraftController.aircraft.GetComponent<Collider>(); }
     }
 
     void OnGUI()

@@ -18,7 +18,7 @@ public class targetController : MonoBehaviour
         int[] carPoints = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
         carSpawnPoint = carPoints[Random.Range(0, carPoints.Length)];
 
-        int[] targetNumbs = { 0, 1 };
+        int[] targetNumbs = { 0, 1, 2 };
         target_type = targetNumbs[Random.Range(0, targetNumbs.Length)];
 
         if (target_type == 0)
@@ -40,6 +40,11 @@ public class targetController : MonoBehaviour
         {
             staticTarget.SetActive(false);
             Debug.Log("vehicleTargetSelected");
+        }
+        if (target_type == 2)
+        {
+            staticTarget.SetActive(false);
+            Debug.Log("airCraftTargetSelected");
         }
     }
 }

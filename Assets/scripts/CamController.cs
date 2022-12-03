@@ -28,6 +28,11 @@ public class CamController : MonoBehaviour
                 transform.DOLookAt(propCarController.vehicle.transform.position, 0.5f);
                 transform.DOMove(new Vector3(propCarController.vehicle.transform.position.x, propCarController.vehicle.transform.position.y + 100, propCarController.vehicle.transform.position.z - 10), 2f);
             }
+            if (targetController.target_type == 2)
+            {
+                transform.DOLookAt(propAircraftController.aircraft.transform.position, 0.5f);
+                transform.DOMove(new Vector3(propAircraftController.aircraft.transform.position.x, propAircraftController.aircraft.transform.position.y + 100, propAircraftController.aircraft.transform.position.z - 10), 2f);
+            }
         }
         if (missileController.crashed && !missileController.targetHit)
         {

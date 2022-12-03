@@ -13,6 +13,7 @@ TagManager:
   - vehicleTarget
   - roundColl
   - ciwsRadar
+  - airTarget
   layers:
   - Default
   - TransparentFX
