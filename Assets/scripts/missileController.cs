@@ -11,12 +11,10 @@ public class missileController : MonoBehaviour
     public GameObject mainHudUi, controllerJoystick, waypointArrow, warningUi, hitFlash, hitEffect;
     Rigidbody rigidM;
 
-
     public float flySpeed, yawAmount;
     float yaw, pitch, yawHudHorizontal, yawHudVertical;
 
     public static bool crashed, targetHit, outside, ciwsHit;
-
     public static int hitVal;
     void Start()
     {

@@ -9,6 +9,8 @@ public class CamController : MonoBehaviour
 
     public float smoothSpeed;
 
+    RaycastHit hit;
+
     void FixedUpdate()
     {
         if (!missileController.crashed && !missileController.targetHit && gameController.startDelay)
@@ -26,18 +28,27 @@ public class CamController : MonoBehaviour
             if (targetController.target_type == 1)
             {
                 transform.DOLookAt(propCarController.vehicle.transform.position, 0.5f);
-                transform.DOMove(new Vector3(propCarController.vehicle.transform.position.x, propCarController.vehicle.transform.position.y + 100, propCarController.vehicle.transform.position.z - 10), 2f);
+
+                if (Physics.Linecast(transform.position, transform.position + transform.localRotation * transform.localPosition, out hit))
+                { transform.DOLocalMove(new Vector3(0, 0, -Vector3.Distance(transform.position, hit.point)), 2); }
+                else
+                { transform.DOMoveY(propCarController.vehicle.transform.position.y + 100, 2f); }
             }
             if (targetController.target_type == 2)
             {
                 transform.DOLookAt(propAircraftController.aircraft.transform.position, 0.5f);
-                transform.DOMove(new Vector3(propAircraftController.aircraft.transform.position.x, propAircraftController.aircraft.transform.position.y + 100, propAircraftController.aircraft.transform.position.z - 10), 2f);
+
+                if (Physics.Linecast(transform.position, transform.position + transform.localRotation * transform.localPosition, out hit))
+                { transform.DOLocalMove(new Vector3(0, 0, -Vector3.Distance(transform.position, hit.point)), 2); }
+                else
+                { transform.DOMoveY(propAircraftController.aircraft.transform.position.y + 100, 2f); }               
             }
         }
         if (missileController.crashed && !missileController.targetHit)
         {
             if (missileController.normal.x < -0.5f) { transform.DOMove(new Vector3(Missile.transform.position.x, Missile.transform.position.y + 150, Missile.transform.position.z + 150), 2f); }
             else { transform.DOMove(new Vector3(Missile.transform.position.x, Missile.transform.position.y + 150, Missile.transform.position.z - 150), 2f); }
+
             transform.DOLookAt(Missile.transform.position, 0.5f);
         }
     }
