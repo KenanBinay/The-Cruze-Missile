@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class targetController : MonoBehaviour
 {
-    public Vector3[] spawnPoints, endCamPoses;
-    public GameObject endPos;
+    public Vector3[] spawnPoints;
     public static GameObject staticTarget;
 
     int carSpawnPoint;
@@ -23,16 +22,16 @@ public class targetController : MonoBehaviour
 
         if (target_type == 0)
         {
-            if (carSpawnPoint == 0) { staticTarget.transform.position = spawnPoints[0]; endPos.transform.position = endCamPoses[0]; }
-            if (carSpawnPoint == 1) { staticTarget.transform.position = spawnPoints[1]; endPos.transform.position = endCamPoses[1]; }
-            if (carSpawnPoint == 2) { staticTarget.transform.position = spawnPoints[2]; endPos.transform.position = endCamPoses[2]; }
-            if (carSpawnPoint == 3) { staticTarget.transform.position = spawnPoints[3]; endPos.transform.position = endCamPoses[3]; }
-            if (carSpawnPoint == 4) { staticTarget.transform.position = spawnPoints[4]; endPos.transform.position = endCamPoses[4]; }
-            if (carSpawnPoint == 5) { staticTarget.transform.position = spawnPoints[5]; endPos.transform.position = endCamPoses[5]; }
-            if (carSpawnPoint == 6) { staticTarget.transform.position = spawnPoints[6]; endPos.transform.position = endCamPoses[6]; }
-            if (carSpawnPoint == 7) { staticTarget.transform.position = spawnPoints[7]; endPos.transform.position = endCamPoses[7]; }
-            if (carSpawnPoint == 8) { staticTarget.transform.position = spawnPoints[8]; endPos.transform.position = endCamPoses[8]; }
-            if (carSpawnPoint == 9) { staticTarget.transform.position = spawnPoints[9]; endPos.transform.position = endCamPoses[9]; }
+            if (carSpawnPoint == 0) { staticTarget.transform.position = spawnPoints[0]; }
+            if (carSpawnPoint == 1) { staticTarget.transform.position = spawnPoints[1]; }
+            if (carSpawnPoint == 2) { staticTarget.transform.position = spawnPoints[2]; }
+            if (carSpawnPoint == 3) { staticTarget.transform.position = spawnPoints[3]; }
+            if (carSpawnPoint == 4) { staticTarget.transform.position = spawnPoints[4]; }
+            if (carSpawnPoint == 5) { staticTarget.transform.position = spawnPoints[5]; }
+            if (carSpawnPoint == 6) { staticTarget.transform.position = spawnPoints[6]; }
+            if (carSpawnPoint == 7) { staticTarget.transform.position = spawnPoints[7]; }
+            if (carSpawnPoint == 8) { staticTarget.transform.position = spawnPoints[8]; }
+            if (carSpawnPoint == 9) { staticTarget.transform.position = spawnPoints[9]; }
 
             Debug.Log("staticTargetSelected point " + carSpawnPoint);
         }
