@@ -27,7 +27,7 @@ public class helicopterController : MonoBehaviour
             rotorM.transform.Rotate(new Vector3(0, 400 * Time.deltaTime, 0));
 
             transform.Rotate(new Vector3(0, 300 * Time.deltaTime, 0));
-            transform.DORotate(new Vector3(50, transform.position.y, transform.position.z), 1.5f);
+            transform.DORotate(new Vector3(25, transform.position.y, transform.position.z), 3f);
         }
     }
 

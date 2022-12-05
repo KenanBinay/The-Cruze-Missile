@@ -104,7 +104,7 @@ Material:
     - _EmissionChannel: 4
     - _FresnelMax: 1.5
     - _FresnelMin: 0
-    - _GlossMapScale: 0.05
+    - _GlossMapScale: 0.2
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _IndirectIntensity: 1
@@ -166,7 +166,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.78699994, g: 0.5393147, b: 0.33157864, a: 1}
+    - _Color: {r: 0.801, g: 0.54441303, b: 0.329211, a: 1}
     - _EmissionColor: {r: 0.12326835, g: 0.033784334, b: 0.009884727, a: 1}
     - _HColor: {r: 1, g: 1, b: 1, a: 1}
     - _MatCapColor: {r: 1, g: 1, b: 1, a: 1}
