@@ -95,8 +95,9 @@ GameObject:
   - component: {fileID: 3827382924355793287}
   - component: {fileID: 2561884629800999471}
   - component: {fileID: 816838699751089628}
+  - component: {fileID: 9142511216364967519}
   m_Layer: 0
-  m_Name: Military_Helicopter02
+  m_Name: Military_Helicopter03
   m_TagString: crashColl
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -180,9 +181,25 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: 4300082, guid: 7c8f1c5ca31156243a1c63f61bd2d8a3, type: 3}
+  m_Mesh: {fileID: 4300076, guid: 7c8f1c5ca31156243a1c63f61bd2d8a3, type: 3}
+--- !u!54 &9142511216364967519
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4719157068898287960}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!1 &4854597276407951510
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,6 +212,7 @@ GameObject:
   - component: {fileID: 4854597276407953260}
   - component: {fileID: 4854597276407953261}
   - component: {fileID: 4854597276407951506}
+  - component: {fileID: 7523313842236608207}
   - component: {fileID: 4854597276407951507}
   - component: {fileID: 4854597276407951504}
   m_Layer: 0
@@ -283,9 +301,25 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300082, guid: 7c8f1c5ca31156243a1c63f61bd2d8a3, type: 3}
+--- !u!54 &7523313842236608207
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4854597276407951510}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!114 &4854597276407951507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -934,9 +968,10 @@ GameObject:
   - component: {fileID: 4854597277178708281}
   - component: {fileID: 4854597277178708286}
   - component: {fileID: 4854597277178708287}
+  - component: {fileID: 1791439965076608309}
   - component: {fileID: 4854597277178708284}
   m_Layer: 0
-  m_Name: Military_Helicopter01
+  m_Name: Military_Helicopter02
   m_TagString: crashColl
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1021,9 +1056,25 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300082, guid: 7c8f1c5ca31156243a1c63f61bd2d8a3, type: 3}
+--- !u!54 &1791439965076608309
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4854597277178708258}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!114 &4854597277178708284
 MonoBehaviour:
   m_ObjectHideFlags: 0

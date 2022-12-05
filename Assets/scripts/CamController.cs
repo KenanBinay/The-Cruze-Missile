@@ -26,7 +26,7 @@ public class CamController : MonoBehaviour
             if (targetController.target_type == 0)
             {
                 transform.DOLookAt(targetController.staticTarget.transform.position, 0.5f);
-                transform.DOMoveY(targetController.staticTarget.transform.position.y + 140, 2f);
+                transform.DOMoveY(Missile.transform.position.y + 140, 2f);
 
                 if (Physics.Raycast(ray, out hit))
                 { if (hit.distance < 2) { transform.position += new Vector3(0, 0, 5); } }
@@ -34,7 +34,7 @@ public class CamController : MonoBehaviour
             if (targetController.target_type == 1)
             {
                 transform.DOLookAt(propCarController.vehicle.transform.position, 0.5f);
-                transform.DOMoveY(propCarController.vehicle.transform.position.y + 140, 2f);
+                transform.DOMoveY(Missile.transform.position.y + 140, 2f);
 
                 if (Physics.Raycast(ray, out hit))
                 { if (hit.distance < 2) { transform.position += new Vector3(0, 0, 5); } }
@@ -42,7 +42,7 @@ public class CamController : MonoBehaviour
             if (targetController.target_type == 2)
             {
                 transform.DOLookAt(propAircraftController.aircraft.transform.position, 0.5f);
-                transform.DOMoveY(propAircraftController.aircraft.transform.position.y + 140, 2f);
+                transform.DOMoveY(Missile.transform.position.y + 140, 2f);
 
                 if (Physics.Raycast(ray, out hit))
                 { if (hit.distance < 2) { transform.position += new Vector3(0, 0, 5); } }
