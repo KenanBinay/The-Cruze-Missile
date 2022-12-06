@@ -8,7 +8,7 @@ public class missileController : MonoBehaviour
     public static Vector3 normal;
     public static Vector2 handleInput;
     public Transform hudYawUi;
-    public GameObject mainHudUi, controllerJoystick, waypointArrow, warningUi, hitFlash, hitEffect;
+    public GameObject mainHudUi, controllerJoystick, warningUi, hitFlash, hitEffect;
     Rigidbody rigidM;
 
     public float flySpeed, yawAmount;
@@ -71,6 +71,7 @@ public class missileController : MonoBehaviour
 
                 int missionVal = PlayerPrefs.GetInt("mission", 0) + 1;
                 PlayerPrefs.SetInt("mission", missionVal++);
+                collision.gameObject.GetComponent<Target>().enabled = false;
 
                 targetHit = true;
                 gameController.targetHit(mainHudUi, controllerJoystick);
@@ -84,6 +85,7 @@ public class missileController : MonoBehaviour
 
                 int missionVal = PlayerPrefs.GetInt("mission", 0) + 1;
                 PlayerPrefs.SetInt("mission", missionVal);
+                collision.gameObject.GetComponent<Target>().enabled = false;
 
                 targetHit = true;
                 collision.gameObject.transform.DOPause();
@@ -98,6 +100,7 @@ public class missileController : MonoBehaviour
 
                 int missionVal = PlayerPrefs.GetInt("mission", 0) + 1;
                 PlayerPrefs.SetInt("mission", missionVal);
+                collision.gameObject.GetComponent<Target>().enabled = false;
 
                 targetHit = true;
                 collision.gameObject.transform.DOPause();

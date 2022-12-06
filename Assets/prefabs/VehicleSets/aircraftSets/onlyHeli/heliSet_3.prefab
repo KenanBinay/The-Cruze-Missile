@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 2561884629800999471}
   - component: {fileID: 816838699751089628}
   - component: {fileID: 9142511216364967519}
+  - component: {fileID: 849526038130619769}
   m_Layer: 0
   m_Name: Military_Helicopter03
   m_TagString: crashColl
@@ -200,6 +201,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &849526038130619769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4719157068898287960}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 411060de4483b5e4c9847cd3cbc18554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetColor: {r: 0.27450982, g: 1, b: 0.17254902, a: 1}
+  needBoxIndicator: 1
+  needArrowIndicator: 0
+  needDistanceText: 0
+  indicator: {fileID: 0}
 --- !u!1 &4854597276407951510
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,6 +233,7 @@ GameObject:
   - component: {fileID: 7523313842236608207}
   - component: {fileID: 4854597276407951507}
   - component: {fileID: 4854597276407951504}
+  - component: {fileID: 2081124869840343469}
   m_Layer: 0
   m_Name: Military_Helicopter01
   m_TagString: crashColl
@@ -956,6 +975,23 @@ MonoBehaviour:
   lastSrcRotation: {x: 0.030843573, y: -0.7064338, z: 0.030843573, w: 0.7064338}
   wpsDropdown: 1
   dropToFloorOffset: 0
+--- !u!114 &2081124869840343469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4854597276407951510}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 411060de4483b5e4c9847cd3cbc18554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetColor: {r: 0.27450982, g: 1, b: 0.17254902, a: 1}
+  needBoxIndicator: 1
+  needArrowIndicator: 0
+  needDistanceText: 0
+  indicator: {fileID: 0}
 --- !u!1 &4854597277178708258
 GameObject:
   m_ObjectHideFlags: 0

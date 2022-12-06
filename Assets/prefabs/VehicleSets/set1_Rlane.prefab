@@ -1117,6 +1117,7 @@ GameObject:
   - component: {fileID: 1958822079378101061}
   - component: {fileID: 1958822079378101062}
   - component: {fileID: 4917781503866445457}
+  - component: {fileID: 9214956359967331220}
   m_Layer: 0
   m_Name: Bus (1)
   m_TagString: crashColl
@@ -1826,6 +1827,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.1845555, y: 3.9012952, z: 13.38024}
   m_Center: {x: -1.0769882, y: 2.0325475, z: -0.09943246}
+--- !u!114 &9214956359967331220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958822079378101060}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 411060de4483b5e4c9847cd3cbc18554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetColor: {r: 0.27450982, g: 1, b: 0.17254902, a: 1}
+  needBoxIndicator: 1
+  needArrowIndicator: 0
+  needDistanceText: 0
+  indicator: {fileID: 0}
 --- !u!1 &1958822079399522997
 GameObject:
   m_ObjectHideFlags: 0
@@ -2006,6 +2024,7 @@ GameObject:
   - component: {fileID: 1958822079521891397}
   - component: {fileID: 1958822079521891396}
   - component: {fileID: 1958822079521891403}
+  - component: {fileID: 3005492693228985572}
   m_Layer: 0
   m_Name: SUV (1)
   m_TagString: crashColl
@@ -4616,6 +4635,23 @@ MonoBehaviour:
   lastSrcRotation: {x: -0, y: 0.99610096, z: -0, w: -0.08822072}
   wpsDropdown: 1
   dropToFloorOffset: 0
+--- !u!114 &3005492693228985572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958822079521891401}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 411060de4483b5e4c9847cd3cbc18554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetColor: {r: 0.27450982, g: 1, b: 0.17254902, a: 1}
+  needBoxIndicator: 1
+  needArrowIndicator: 0
+  needDistanceText: 0
+  indicator: {fileID: 0}
 --- !u!1 &1958822079544990049
 GameObject:
   m_ObjectHideFlags: 0
@@ -4879,6 +4915,7 @@ GameObject:
   - component: {fileID: 1958822079722980308}
   - component: {fileID: 1958822079722980309}
   - component: {fileID: 62741536702671576}
+  - component: {fileID: 4156033918561966651}
   m_Layer: 0
   m_Name: Truck with trailer (1)
   m_TagString: crashColl
@@ -7551,6 +7588,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.0662675, y: 3.6476288, z: 13.38024}
   m_Center: {x: -0.046104904, y: 1.9057144, z: -0.099432476}
+--- !u!114 &4156033918561966651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958822079722980315}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 411060de4483b5e4c9847cd3cbc18554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetColor: {r: 0.27450982, g: 1, b: 0.17254902, a: 1}
+  needBoxIndicator: 1
+  needArrowIndicator: 0
+  needDistanceText: 0
+  indicator: {fileID: 0}
 --- !u!1 &1958822079763254789
 GameObject:
   m_ObjectHideFlags: 0
@@ -8111,6 +8165,7 @@ GameObject:
   - component: {fileID: 1958822079975050651}
   - component: {fileID: 1958822079975050644}
   - component: {fileID: 7256773850209018620}
+  - component: {fileID: 7106217951399971063}
   m_Layer: 0
   m_Name: Pickup (1)
   m_TagString: crashColl
@@ -10522,6 +10577,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.1951609, y: 2.0289104, z: 4.9758844}
   m_Center: {x: 0.04604854, y: 1.0963691, z: 0.080539465}
+--- !u!114 &7106217951399971063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958822079975050650}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 411060de4483b5e4c9847cd3cbc18554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetColor: {r: 0.27450982, g: 1, b: 0.17254902, a: 1}
+  needBoxIndicator: 1
+  needArrowIndicator: 0
+  needDistanceText: 0
+  indicator: {fileID: 0}
 --- !u!1 &1958822080019163989
 GameObject:
   m_ObjectHideFlags: 0
@@ -11549,6 +11621,7 @@ GameObject:
   - component: {fileID: 1958822080403071922}
   - component: {fileID: 1958822080403071923}
   - component: {fileID: 4212725843421357113}
+  - component: {fileID: 5959280752434042048}
   m_Layer: 0
   m_Name: Truck with trailer (2)
   m_TagString: crashColl
@@ -13186,6 +13259,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.0662675, y: 3.6476288, z: 13.38024}
   m_Center: {x: -0.046104904, y: 1.9057144, z: -0.099432476}
+--- !u!114 &5959280752434042048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958822080403071921}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 411060de4483b5e4c9847cd3cbc18554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetColor: {r: 0.27450982, g: 1, b: 0.17254902, a: 1}
+  needBoxIndicator: 1
+  needArrowIndicator: 0
+  needDistanceText: 0
+  indicator: {fileID: 0}
 --- !u!1 &1958822080409930067
 GameObject:
   m_ObjectHideFlags: 0
@@ -13794,6 +13884,7 @@ GameObject:
   - component: {fileID: 1958822080759752212}
   - component: {fileID: 1958822080759752213}
   - component: {fileID: 6091229411320540876}
+  - component: {fileID: 307711641185641826}
   m_Layer: 0
   m_Name: Pickup (2)
   m_TagString: crashColl
@@ -15285,6 +15376,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.1951609, y: 2.0289104, z: 4.9758844}
   m_Center: {x: 0.04604854, y: 1.0963691, z: 0.080539465}
+--- !u!114 &307711641185641826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958822080759752219}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 411060de4483b5e4c9847cd3cbc18554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetColor: {r: 0.27450982, g: 1, b: 0.17254902, a: 1}
+  needBoxIndicator: 1
+  needArrowIndicator: 0
+  needDistanceText: 0
+  indicator: {fileID: 0}
 --- !u!1 &1958822080912568611
 GameObject:
   m_ObjectHideFlags: 0
@@ -16397,6 +16505,7 @@ GameObject:
   - component: {fileID: 1958822081183153623}
   - component: {fileID: 1958822081183153622}
   - component: {fileID: 1958822081183153621}
+  - component: {fileID: 4658933638490431782}
   m_Layer: 0
   m_Name: SUV (2)
   m_TagString: crashColl
@@ -19329,6 +19438,23 @@ MonoBehaviour:
   lastSrcRotation: {x: -0, y: 0.6375289, z: -0, w: 0.7704265}
   wpsDropdown: 1
   dropToFloorOffset: 0
+--- !u!114 &4658933638490431782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958822081183153627}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 411060de4483b5e4c9847cd3cbc18554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetColor: {r: 0.27450982, g: 1, b: 0.17254902, a: 1}
+  needBoxIndicator: 1
+  needArrowIndicator: 0
+  needDistanceText: 0
+  indicator: {fileID: 0}
 --- !u!1 &1958822081194434075
 GameObject:
   m_ObjectHideFlags: 0
@@ -20524,6 +20650,7 @@ GameObject:
   - component: {fileID: 2806432944875616184}
   - component: {fileID: 822638398883761171}
   - component: {fileID: 1522629944159455482}
+  - component: {fileID: 7660037413463433855}
   m_Layer: 0
   m_Name: Van
   m_TagString: crashColl
@@ -23602,6 +23729,23 @@ MonoBehaviour:
   lastSrcRotation: {x: -0, y: 0.10497468, z: -0, w: 0.9944749}
   wpsDropdown: 1
   dropToFloorOffset: 0
+--- !u!114 &7660037413463433855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3668890735344651568}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 411060de4483b5e4c9847cd3cbc18554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetColor: {r: 0.27450982, g: 1, b: 0.17254902, a: 1}
+  needBoxIndicator: 1
+  needArrowIndicator: 0
+  needDistanceText: 0
+  indicator: {fileID: 0}
 --- !u!1 &3687807595217266689
 GameObject:
   m_ObjectHideFlags: 0
@@ -24037,6 +24181,7 @@ GameObject:
   - component: {fileID: 823674219823092627}
   - component: {fileID: 3328802381088874832}
   - component: {fileID: 3357059700791792293}
+  - component: {fileID: 5685994624823192886}
   m_Layer: 0
   m_Name: Van (1)
   m_TagString: crashColl
@@ -26770,6 +26915,23 @@ MonoBehaviour:
   lastSrcRotation: {x: 0.022821333, y: 0.76106256, z: -0.0120043075, w: 0.6481657}
   wpsDropdown: 1
   dropToFloorOffset: 0
+--- !u!114 &5685994624823192886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4941925688442092076}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 411060de4483b5e4c9847cd3cbc18554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetColor: {r: 0.27450982, g: 1, b: 0.17254902, a: 1}
+  needBoxIndicator: 1
+  needArrowIndicator: 0
+  needDistanceText: 0
+  indicator: {fileID: 0}
 --- !u!1 &5960737650746605157
 GameObject:
   m_ObjectHideFlags: 0
@@ -26950,6 +27112,7 @@ GameObject:
   - component: {fileID: 6263921137423934981}
   - component: {fileID: 6263921137423934983}
   - component: {fileID: 6263921137423934982}
+  - component: {fileID: 1139869029435498591}
   m_Layer: 0
   m_Name: SUV
   m_TagString: crashColl
@@ -30319,6 +30482,23 @@ MonoBehaviour:
   lastSrcRotation: {x: -0, y: 0.10497468, z: -0, w: 0.9944749}
   wpsDropdown: 1
   dropToFloorOffset: 0
+--- !u!114 &1139869029435498591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6748146764454739121}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 411060de4483b5e4c9847cd3cbc18554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetColor: {r: 0.27450982, g: 1, b: 0.17254902, a: 1}
+  needBoxIndicator: 1
+  needArrowIndicator: 0
+  needDistanceText: 0
+  indicator: {fileID: 0}
 --- !u!1 &6800355145146015762
 GameObject:
   m_ObjectHideFlags: 0
@@ -30753,6 +30933,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7823986893317470166}
   - component: {fileID: 7484896873909562733}
+  - component: {fileID: 2866372437301463832}
   m_Layer: 0
   m_Name: Truck with trailer
   m_TagString: crashColl
@@ -33757,6 +33938,23 @@ MonoBehaviour:
   lastSrcRotation: {x: -0.07337732, y: 0.28888103, z: -0.0018161227, w: 0.95454717}
   wpsDropdown: 1
   dropToFloorOffset: 0
+--- !u!114 &2866372437301463832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7484896873909562732}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 411060de4483b5e4c9847cd3cbc18554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetColor: {r: 0.27450982, g: 1, b: 0.17254902, a: 1}
+  needBoxIndicator: 1
+  needArrowIndicator: 0
+  needDistanceText: 0
+  indicator: {fileID: 0}
 --- !u!1 &7521876579741703878
 GameObject:
   m_ObjectHideFlags: 0
@@ -34272,6 +34470,7 @@ GameObject:
   - component: {fileID: 1642947030842361476}
   - component: {fileID: 719365391341370022}
   - component: {fileID: 6395263146618095969}
+  - component: {fileID: 5354377328120783267}
   m_Layer: 0
   m_Name: Van (2)
   m_TagString: crashColl
@@ -36315,6 +36514,23 @@ MonoBehaviour:
   lastSrcRotation: {x: -0, y: 0.8294669, z: -0, w: 0.5585559}
   wpsDropdown: 1
   dropToFloorOffset: 0
+--- !u!114 &5354377328120783267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8213088368720556154}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 411060de4483b5e4c9847cd3cbc18554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetColor: {r: 0.27450982, g: 1, b: 0.17254902, a: 1}
+  needBoxIndicator: 1
+  needArrowIndicator: 0
+  needDistanceText: 0
+  indicator: {fileID: 0}
 --- !u!1 &8238295186091518796
 GameObject:
   m_ObjectHideFlags: 0
@@ -36326,6 +36542,7 @@ GameObject:
   - component: {fileID: 8727867768759382518}
   - component: {fileID: 8238295186091518797}
   - component: {fileID: 4460653820922728175}
+  - component: {fileID: 2111330821744748578}
   m_Layer: 0
   m_Name: Bus
   m_TagString: crashColl
@@ -39151,6 +39368,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.1845555, y: 3.9012952, z: 13.38024}
   m_Center: {x: -1.0769882, y: 2.0325475, z: -0.09943246}
+--- !u!114 &2111330821744748578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8238295186091518796}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 411060de4483b5e4c9847cd3cbc18554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetColor: {r: 0.27450982, g: 1, b: 0.17254902, a: 1}
+  needBoxIndicator: 1
+  needArrowIndicator: 0
+  needDistanceText: 0
+  indicator: {fileID: 0}
 --- !u!1 &8266554225959138142
 GameObject:
   m_ObjectHideFlags: 0
@@ -39334,6 +39568,7 @@ GameObject:
   - component: {fileID: 8181202311597427377}
   - component: {fileID: 8181202311597427378}
   - component: {fileID: 7036762120648208905}
+  - component: {fileID: 5682248695221606166}
   m_Layer: 0
   m_Name: Pickup
   m_TagString: crashColl
@@ -42504,6 +42739,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.1951609, y: 2.0289104, z: 4.9758844}
   m_Center: {x: 0.04604854, y: 1.0963691, z: 0.080539465}
+--- !u!114 &5682248695221606166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8845817905295577099}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 411060de4483b5e4c9847cd3cbc18554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetColor: {r: 0.27450982, g: 1, b: 0.17254902, a: 1}
+  needBoxIndicator: 1
+  needArrowIndicator: 0
+  needDistanceText: 0
+  indicator: {fileID: 0}
 --- !u!1 &8883371274133060605
 GameObject:
   m_ObjectHideFlags: 0

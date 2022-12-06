@@ -8,7 +8,7 @@ public class gameController : MonoBehaviour
 {
     public Camera mainCam;
     public Animator startAnim;
-    public GameObject missileHud, missileBody, warningUi_parent, arrrowIndicator, tutoUi, joystickMain, ciwslockedUi;
+    public GameObject missileHud, missileBody, warningUi, arrrowIndicator, tutoUi, joystickMain, ciwslockedUi;
     public TextMeshProUGUI altitute, countdownTxt, missionTxt;
 
     public static bool startDelay;
@@ -22,7 +22,7 @@ public class gameController : MonoBehaviour
         alt = 400;
    
         missileHud.SetActive(false);
-        warningUi_parent.SetActive(false);
+        warningUi.SetActive(false);
         joystickMain.SetActive(false);
 
         startDelay = startClick = false;
@@ -54,7 +54,7 @@ public class gameController : MonoBehaviour
             }
         }
         if (missileController.outside && !missileController.crashed) { giveWarning(); }
-        else { warningUi_parent.SetActive(false); arrrowIndicator.SetActive(true); countdownBool = false; }
+        else { warningUi.SetActive(false); arrrowIndicator.SetActive(true); countdownBool = false; }
 
         if (ciwsController.targetDetected) { ciwslockedUi.SetActive(true); ciwslockedUi.transform.DOScaleX(1, 0.2f); }
         else { ciwslockedUi.transform.DOScaleX(0, 0.2f).onComplete = tweenCiwsUi; }
@@ -78,7 +78,7 @@ public class gameController : MonoBehaviour
     {
         if (!countdownBool)
         {
-            warningUi_parent.SetActive(true);
+            warningUi.SetActive(true);
             arrrowIndicator.SetActive(false);
 
             countdownVal = 6; 

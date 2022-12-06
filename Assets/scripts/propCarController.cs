@@ -5,9 +5,9 @@ using DG.Tweening;
 
 public class propCarController : MonoBehaviour
 {
-    public GameObject[] sets_R , sets_L;
+    public GameObject[] sets_R, sets_L;
 
-    int setNumberR, setNumberL, vehicleNumb,parentPropNumb;
+    int setNumberR, setNumberL, vehicleNumb, parentPropNumb;
 
     public static GameObject vehicle;
     void Start()
@@ -36,15 +36,24 @@ public class propCarController : MonoBehaviour
             setObject = Instantiate(setObject, setObject.transform.position, setObject.transform.rotation);
             setObject.transform.parent = gameObject.transform;
         }
-       
+
     }
     private void Update()
     {
         if (targetController.target_type == 1 && vehicle == null)
         {
-            if (parentPropNumb == 0) { GameObject parentLane = gameObject.transform.Find("set1_Rlane(Clone)").gameObject; vehicle = parentLane.transform.GetChild(vehicleNumb).gameObject; }
-            if (parentPropNumb == 1) { GameObject parentLane = gameObject.transform.Find("set1_Llane(Clone)").gameObject; vehicle = parentLane.transform.GetChild(vehicleNumb).gameObject; }
-
+            if (parentPropNumb == 0)
+            {
+                GameObject parentLane = gameObject.transform.Find("set1_Rlane(Clone)").gameObject;
+                vehicle = parentLane.transform.GetChild(vehicleNumb).gameObject;
+                vehicle.GetComponent<Target>().enabled = true;
+            }
+            if (parentPropNumb == 1)
+            {
+                GameObject parentLane = gameObject.transform.Find("set1_Llane(Clone)").gameObject;
+                vehicle = parentLane.transform.GetChild(vehicleNumb).gameObject;
+                vehicle.GetComponent<Target>().enabled = true;
+            }
             vehicle.tag = "vehicleTarget";
         }
     }

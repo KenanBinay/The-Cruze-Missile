@@ -13,7 +13,7 @@ public class targetIndicator : MonoBehaviour
     List<Collider> targets = new List<Collider>();
     Camera targetCamera;
     public Collider targetCollider;
-    // Start is called before the first frame update
+
     void Start()
     {
         targetCamera = GetComponent<Camera>();
@@ -22,7 +22,6 @@ public class targetIndicator : MonoBehaviour
         if (targetController.target_type == 2) { targetCollider = propAircraftController.aircraft.GetComponent<BoxCollider>(); }
     }
 
-    // Update is called once per frame
     void Update()
     {      
         if (targetCollider)

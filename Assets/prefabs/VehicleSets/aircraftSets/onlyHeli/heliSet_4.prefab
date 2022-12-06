@@ -991,6 +991,7 @@ GameObject:
   - component: {fileID: 4700636085695383302}
   - component: {fileID: 3827598345041115564}
   - component: {fileID: 5331015260505264814}
+  - component: {fileID: 9096532806880990236}
   m_Layer: 0
   m_Name: Military_Helicopter01
   m_TagString: crashColl
@@ -1525,6 +1526,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &9096532806880990236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4700636085695383300}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 411060de4483b5e4c9847cd3cbc18554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetColor: {r: 0.27450982, g: 1, b: 0.17254902, a: 1}
+  needBoxIndicator: 1
+  needArrowIndicator: 0
+  needDistanceText: 0
+  indicator: {fileID: 0}
 --- !u!1 &4700636085697505040
 GameObject:
   m_ObjectHideFlags: 0
@@ -1788,6 +1806,7 @@ GameObject:
   - component: {fileID: 5985505695348236134}
   - component: {fileID: 3073149062152040041}
   - component: {fileID: 899929956952766388}
+  - component: {fileID: 5828140559182244316}
   m_Layer: 0
   m_Name: Military_Helicopter03
   m_TagString: crashColl
@@ -1892,6 +1911,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &5828140559182244316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6145949867264984330}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 411060de4483b5e4c9847cd3cbc18554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetColor: {r: 0.27450982, g: 1, b: 0.17254902, a: 1}
+  needBoxIndicator: 1
+  needArrowIndicator: 0
+  needDistanceText: 0
+  indicator: {fileID: 0}
 --- !u!1 &8821855969706578759
 GameObject:
   m_ObjectHideFlags: 0
