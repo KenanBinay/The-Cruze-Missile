@@ -8,7 +8,7 @@ public class missileController : MonoBehaviour
     public static Vector3 normal;
     public static Vector2 handleInput;
     public Transform hudYawUi;
-    public GameObject mainHudUi, controllerJoystick, warningUi, hitFlash, hitEffect;
+    public GameObject mainHudUi, warningUi, hitFlash, hitEffect;
     Rigidbody rigidM;
 
     public float flySpeed, yawAmount;
@@ -19,7 +19,7 @@ public class missileController : MonoBehaviour
     void Start()
     {
         hitVal = 0;
-        outside = ciwsHit = false;
+        outside = ciwsHit = crashed = targetHit = false;
         rigidM = gameObject.GetComponent<Rigidbody>();
     }
 
@@ -60,7 +60,6 @@ public class missileController : MonoBehaviour
                 Debug.Log("crashed");
 
                 crashed = true;
-                gameController.crash(mainHudUi, controllerJoystick);
             }           
         }
         if (collision.gameObject.CompareTag("target"))
@@ -74,7 +73,6 @@ public class missileController : MonoBehaviour
                 collision.gameObject.GetComponent<Target>().enabled = false;
 
                 targetHit = true;
-                gameController.targetHit(mainHudUi, controllerJoystick);
             }
         }
         if (collision.gameObject.CompareTag("vehicleTarget"))
@@ -89,7 +87,6 @@ public class missileController : MonoBehaviour
 
                 targetHit = true;
                 collision.gameObject.transform.DOPause();
-                gameController.targetHit(mainHudUi, controllerJoystick);
             }
         }
         if (collision.gameObject.CompareTag("airTarget"))
@@ -104,7 +101,6 @@ public class missileController : MonoBehaviour
 
                 targetHit = true;
                 collision.gameObject.transform.DOPause();
-                gameController.targetHit(mainHudUi, controllerJoystick);
             }
         }
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 using DG.Tweening;
 
@@ -8,24 +9,26 @@ public class gameController : MonoBehaviour
 {
     public Camera mainCam;
     public Animator startAnim;
-    public GameObject missileHud, missileBody, warningUi, arrrowIndicator, tutoUi, joystickMain, ciwslockedUi;
-    public TextMeshProUGUI altitute, countdownTxt, missionTxt;
+    public GameObject missileHud, missileBody, warningUi, arrrowIndicator, tutoUi, joystickMain, ciwslockedUi, missionComplete_Ui, missionFailed_Ui;
+    public TextMeshProUGUI altitute, countdownTxt, missionTxt, missionDoneTxt;
 
     public static bool startDelay;
 
-    bool countdownBool, startClick;
+    bool countdownBool, startClick, gameover;
     float alt, countdownVal;
     RaycastHit hit;
 
     void Start()
     {
         alt = 400;
-   
+
         missileHud.SetActive(false);
         warningUi.SetActive(false);
         joystickMain.SetActive(false);
+        missionComplete_Ui.SetActive(false);
+        missionFailed_Ui.SetActive(false);
 
-        startDelay = startClick = false;
+        startDelay = startClick = gameover = false;
 
         if (PlayerPrefs.GetInt("mission", 0) == 0) { PlayerPrefs.SetInt("mission", 1); }
 
@@ -59,21 +62,31 @@ public class gameController : MonoBehaviour
         if (ciwsController.targetDetected) { ciwslockedUi.SetActive(true); ciwslockedUi.transform.DOScaleX(1, 0.2f); }
         else { ciwslockedUi.transform.DOScaleX(0, 0.2f).onComplete = tweenCiwsUi; }
 
+        //on missile collide with target or crash
+        if (missileController.targetHit && !gameover)
+        {
+            missileHud.SetActive(false);
+            joystickMain.SetActive(false);
+
+            missionComplete_Ui.SetActive(true);
+            missionDoneTxt.text = "MISSION " + PlayerPrefs.GetInt("mission", -1) + " COMPLETE";
+            gameover = true;
+        }
+        if (missileController.crashed && !gameover)
+        {
+            missileHud.SetActive(false);
+            joystickMain.SetActive(false);
+
+            missionFailed_Ui.SetActive(true);
+            missionDoneTxt.text = "MISSION " + PlayerPrefs.GetInt("mission", 0) + " FAILED";
+            gameover = true;
+        }
+
         //calculate main height to ground by using missiles position in unity
         altitute.text = missileBody.transform.position.y.ToString("#");
     }
     void tweenCiwsUi() { ciwslockedUi.SetActive(false); }
 
-    public static void targetHit(GameObject hudUi, GameObject controllerJoystick)
-    {
-        hudUi.SetActive(false);
-        controllerJoystick.SetActive(false);
-    }
-    public static void crash(GameObject hudUi, GameObject controllerJoystick)
-    {
-        hudUi.SetActive(false);        
-        controllerJoystick.SetActive(false);
-    }
     void giveWarning()
     {
         if (!countdownBool)
@@ -81,16 +94,16 @@ public class gameController : MonoBehaviour
             warningUi.SetActive(true);
             arrrowIndicator.SetActive(false);
 
-            countdownVal = 6; 
-            countdownBool = true; 
+            countdownVal = 6;
+            countdownBool = true;
         }
-        if (countdownBool) 
-        {            
+        if (countdownBool)
+        {
             countdownVal -= Time.deltaTime;
             int seconds = ((int)countdownVal);
             countdownTxt.text = "00:0" + seconds;
             if (seconds == 0) { missileController.crashed = true; missileHud.SetActive(false); arrrowIndicator.SetActive(false); }
-        }   
+        }
     }
     IEnumerator delayForStart()
     {
@@ -101,5 +114,22 @@ public class gameController : MonoBehaviour
         missileHud.SetActive(true);
         joystickMain.SetActive(true);
         Debug.Log("missileCam");
+    }
+
+    public void loadMission(int sceneId)
+    {
+        StartCoroutine(loadSceneAsync(sceneId));
+    }
+
+    IEnumerator loadSceneAsync(int sceneId)
+    {
+        yield return new WaitForSeconds(0.2f);
+
+        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneId);
+
+        while (!operation.isDone)
+        {
+            yield return null;
+        }
     }
 }
