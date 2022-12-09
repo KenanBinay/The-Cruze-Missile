@@ -56,15 +56,17 @@ public class gameController : MonoBehaviour
                     missileController.crashed = true;
             }
         }
-        if (missileController.outside && !missileController.crashed) { giveWarning(); }
-        else { warningUi.SetActive(false); arrrowIndicator.SetActive(true); countdownBool = false; }
 
-        if (ciwsController.targetDetected) { ciwslockedUi.SetActive(true); ciwslockedUi.transform.DOScaleX(1, 0.2f); }
-        else { ciwslockedUi.transform.DOScaleX(0, 0.2f).onComplete = tweenCiwsUi; }
+        if (missileController.outside && !missileController.crashed && !missileController.targetHit) { giveWarning(); }
+        else { warningUi.SetActive(false); countdownBool = false; }
+
+        if (ciwsController.targetDetected) { ciwslockedUi.transform.DOScale(new Vector3(1, 1, 1), 0.2f); }
+        else { ciwslockedUi.transform.DOScale(new Vector3(0, 2.5f, 1), 0.2f); }
 
         //on missile collide with target or crash
         if (missileController.targetHit && !gameover)
         {
+            arrrowIndicator.SetActive(false);
             missileHud.SetActive(false);
             joystickMain.SetActive(false);
 
@@ -74,6 +76,7 @@ public class gameController : MonoBehaviour
         }
         if (missileController.crashed && !gameover)
         {
+            arrrowIndicator.SetActive(false);
             missileHud.SetActive(false);
             joystickMain.SetActive(false);
 
@@ -92,7 +95,6 @@ public class gameController : MonoBehaviour
         if (!countdownBool)
         {
             warningUi.SetActive(true);
-            arrrowIndicator.SetActive(false);
 
             countdownVal = 6;
             countdownBool = true;

@@ -11,6 +11,7 @@ public class ciwsController : MonoBehaviour
 
     void Start()
     {
+        targetDetected = false;
         roundEffect.SetActive(false);
     }
 
