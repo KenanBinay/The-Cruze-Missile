@@ -6,10 +6,16 @@ using DG.Tweening;
 public class CamController : MonoBehaviour
 {
     public GameObject Missile, endPos;
+    private Camera cam;
 
     public float smoothSpeed;
 
     RaycastHit hit;
+
+    private void Start()
+    {
+        cam = GetComponent<Camera>();
+    }
 
     void FixedUpdate()
     {
@@ -23,6 +29,8 @@ public class CamController : MonoBehaviour
         }
         if (!missileController.crashed && missileController.targetHit)
         {
+            if (cam.fieldOfView < 120) { cam.fieldOfView += 6 * Time.deltaTime; }
+
             if (targetController.target_type == 0)
             {
                 transform.DOLookAt(targetController.staticTarget.transform.position, 0.5f);
@@ -35,6 +43,7 @@ public class CamController : MonoBehaviour
             {
                 transform.DOLookAt(propCarController.vehicle.transform.position, 0.5f);
                 transform.DOMoveY(Missile.transform.position.y + 140, 2f);
+                
 
                 if (Physics.Raycast(ray, out hit))
                 { if (hit.distance < 2) { transform.position += new Vector3(0, 0, 5); } }
@@ -50,6 +59,8 @@ public class CamController : MonoBehaviour
         }
         if (missileController.crashed && !missileController.targetHit)
         {
+            if (cam.fieldOfView < 120) { cam.fieldOfView += 6 * Time.deltaTime; }
+
             transform.DOLookAt(Missile.transform.position, 0.5f);
             transform.DOMoveY(Missile.transform.position.y + 140, 2f);
 

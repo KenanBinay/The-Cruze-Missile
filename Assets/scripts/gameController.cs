@@ -9,7 +9,7 @@ public class gameController : MonoBehaviour
 {
     public Camera mainCam;
     public Animator startAnim;
-    public GameObject missileHud, missileBody, warningUi, arrrowIndicator, tutoUi, joystickMain, ciwslockedUi, missionComplete_Ui, missionFailed_Ui;
+    public GameObject missileHud, missileBody, warningUi, arrrowIndicator, tutoUi, joystickMain, ciwslockedUi, missionComplete_Ui, missionFailed_Ui, jet;
     public TextMeshProUGUI altitute, countdownTxt, missionTxt, missionDoneTxt;
 
     public static bool startDelay;
@@ -109,13 +109,16 @@ public class gameController : MonoBehaviour
     }
     IEnumerator delayForStart()
     {
-        yield return new WaitForSeconds(3f);
-        mainCam.cullingMask = ~(1 << LayerMask.NameToLayer("missile"));
+        yield return new WaitForSeconds(3.5f);
+      //  mainCam.cullingMask = ~(1 << LayerMask.NameToLayer("missile"));
         startDelay = true;
         startAnim.enabled = false;
         missileHud.SetActive(true);
         joystickMain.SetActive(true);
         Debug.Log("missileCam");
+
+        yield return new WaitForSeconds(3f);
+        jet.SetActive(false);
     }
 
     public void loadMission(int sceneId)
