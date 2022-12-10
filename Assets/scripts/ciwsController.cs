@@ -5,12 +5,14 @@ using DG.Tweening;
 
 public class ciwsController : MonoBehaviour
 {
-    public GameObject gunM, gunUp, missile, roundEffect;
+    public GameObject gunM, gunUp, roundEffect;
+    GameObject missile;
 
     public static bool targetDetected;
 
     void Start()
     {
+        missile = GameObject.Find("Missile_main").gameObject;
         targetDetected = false;
         roundEffect.SetActive(false);
     }
