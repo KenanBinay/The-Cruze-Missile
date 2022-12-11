@@ -25,6 +25,7 @@ public class ciwsController : MonoBehaviour
             gunUp.transform.DORotate(new Vector3(0, 0, 0), 3);
 
             roundEffect.SetActive(false);
+            targetDetected = false;
         }
     }
 
