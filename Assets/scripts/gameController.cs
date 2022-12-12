@@ -9,19 +9,23 @@ public class gameController : MonoBehaviour
 {
     public Camera mainCam;
     public Animator startAnim;
-    public GameObject missileHud, missileBody, warningUi, arrrowIndicator, tutoUi, joystickMain, ciwslockedUi, missionComplete_Ui, missionFailed_Ui, jet;
+
+    public GameObject missileHud, missileBody, warningUi, arrrowIndicator, tutoUi, joystickMain, ciwslockedUi, missionComplete_Ui, missionFailed_Ui, jet, gamePauseUi;
+    public Sprite iconPause, iconPlay;
+    public SpriteRenderer iconPausePlay;
+
     public TextMeshProUGUI altitute, countdownTxt, missionTxt, missionDoneTxt;
 
     public static bool startDelay;
 
-    bool countdownBool, startClick, gameover;
+    bool countdownBool, startClick, gameover, paused;
     float alt, countdownVal;
     RaycastHit hit;
 
     void Start()
     {
         alt = 400;
-
+       
         missileHud.SetActive(false);
         warningUi.SetActive(false);
         joystickMain.SetActive(false);
@@ -124,6 +128,29 @@ public class gameController : MonoBehaviour
     public void loadMission(int sceneId)
     {
         StartCoroutine(loadSceneAsync(sceneId));
+    }
+
+    public void pausePlay()
+    {
+        if (!missileController.crashed && !missileController.targetHit)
+        {
+            if (!paused)
+            {
+                paused = true;
+                iconPausePlay.sprite = iconPlay;
+
+                Debug.Log("pause");
+                Time.timeScale = 0;
+            }
+            else if (paused)
+            {
+                paused = false;
+                iconPausePlay.sprite = iconPause;
+
+                Debug.Log("play");
+                Time.timeScale = 1;
+            }
+        }
     }
 
     IEnumerator loadSceneAsync(int sceneId)
