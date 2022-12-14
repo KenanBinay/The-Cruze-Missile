@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class gameController : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class gameController : MonoBehaviour
 
     public GameObject missileHud, missileBody, warningUi, arrrowIndicator, tutoUi, joystickMain, ciwslockedUi, missionComplete_Ui, missionFailed_Ui, jet, gamePauseUi;
     public Sprite iconPause, iconPlay;
-    public SpriteRenderer iconPausePlay;
+    public Image iconPausePlay;
 
     public TextMeshProUGUI altitute, countdownTxt, missionTxt, missionDoneTxt;
 
