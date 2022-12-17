@@ -70,7 +70,7 @@ public class missileController : MonoBehaviour
 
                 int missionVal = PlayerPrefs.GetInt("mission", 0) + 1;
                 PlayerPrefs.SetInt("mission", missionVal++);
-                collision.gameObject.GetComponent<Target>().enabled = false;
+                collision.gameObject.SetActive(false);
 
                 targetHit = true;
             }
@@ -83,7 +83,7 @@ public class missileController : MonoBehaviour
 
                 int missionVal = PlayerPrefs.GetInt("mission", 0) + 1;
                 PlayerPrefs.SetInt("mission", missionVal);
-                collision.gameObject.GetComponent<Target>().enabled = false;
+                collision.gameObject.SetActive(false);
 
                 targetHit = true;
                 collision.gameObject.transform.DOPause();
@@ -97,7 +97,6 @@ public class missileController : MonoBehaviour
 
                 int missionVal = PlayerPrefs.GetInt("mission", 0) + 1;
                 PlayerPrefs.SetInt("mission", missionVal);
-                collision.gameObject.GetComponent<Target>().enabled = false;
 
                 targetHit = true;
                 collision.gameObject.transform.DOPause();
