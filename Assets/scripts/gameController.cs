@@ -15,13 +15,15 @@ public class gameController : MonoBehaviour
     public Sprite iconPause, iconPlay;
     public Image iconPausePlay;
 
-    public TextMeshProUGUI altitute, countdownTxt, missionTxt, missionDoneTxt;
+    public TextMeshProUGUI altitute, countdownTxt, missionTxt, missionDoneTxt, missionFailedTxt;
 
     public static bool startDelay;
 
     bool countdownBool, startClick, gameover, paused;
     float alt, countdownVal;
     RaycastHit hit;
+
+    int missionCurrentVal;
 
     void Start()
     {
@@ -38,6 +40,7 @@ public class gameController : MonoBehaviour
         if (PlayerPrefs.GetInt("mission", 0) == 0) { PlayerPrefs.SetInt("mission", 1); }
 
         missionTxt.text = "MISSION " + PlayerPrefs.GetInt("mission", 0);
+        missionCurrentVal = PlayerPrefs.GetInt("mission", 0);
 
         Debug.Log("mission: " + PlayerPrefs.GetInt("mission", 0));
 
@@ -76,7 +79,7 @@ public class gameController : MonoBehaviour
             joystickMain.SetActive(false);
 
             missionComplete_Ui.SetActive(true);
-            missionDoneTxt.text = "MISSION " + PlayerPrefs.GetInt("mission", -1) + " COMPLETE";
+            missionDoneTxt.text = "MISSION " + missionCurrentVal + " COMPLETE";
             gameover = true;
         }
         if (missileController.crashed && !gameover)
@@ -86,7 +89,7 @@ public class gameController : MonoBehaviour
             joystickMain.SetActive(false);
 
             missionFailed_Ui.SetActive(true);
-            missionDoneTxt.text = "MISSION " + PlayerPrefs.GetInt("mission", 0) + " FAILED";
+            missionFailedTxt.text = "MISSION " + missionCurrentVal + " FAILED";
             gameover = true;
         }
 
