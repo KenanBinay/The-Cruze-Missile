@@ -5,6 +5,8 @@ using DG.Tweening;
 
 public class missileController : MonoBehaviour
 {
+    public FxController fx;
+
     public static Vector3 normal;
     public static Vector2 handleInput;
     public Transform hudYawUi;
@@ -47,6 +49,7 @@ public class missileController : MonoBehaviour
 
             if (ciwsHit) mainHudUi.transform.DOShakeScale(0.4f, 0.03f).onComplete = mHudTweenDone;
         }
+        if (crashed && !FxController.fxExplode) { Debug.Log("crashed"); fx.crashFx(); }
     }
 
     void mHudTweenDone() { ciwsHit = false; mainHudUi.transform.localScale = new Vector3(1, 1, 1); }
@@ -58,7 +61,6 @@ public class missileController : MonoBehaviour
             if (!crashed && !targetHit)
             {
                 Debug.Log("crashed");
-
                 crashed = true;
             }           
         }
@@ -72,6 +74,7 @@ public class missileController : MonoBehaviour
                 PlayerPrefs.SetInt("mission", missionVal++);
                 collision.gameObject.SetActive(false);
 
+                fx.targetHitFx();
                 targetHit = true;
             }
         }
@@ -85,6 +88,7 @@ public class missileController : MonoBehaviour
                 PlayerPrefs.SetInt("mission", missionVal);
                 collision.gameObject.SetActive(false);
 
+                fx.targetHitFx();
                 targetHit = true;
                 collision.gameObject.transform.DOPause();
             }
@@ -98,6 +102,7 @@ public class missileController : MonoBehaviour
                 int missionVal = PlayerPrefs.GetInt("mission", 0) + 1;
                 PlayerPrefs.SetInt("mission", missionVal);
 
+                fx.targetHitFx();
                 targetHit = true;
                 collision.gameObject.transform.DOPause();
             }

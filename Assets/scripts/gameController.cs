@@ -61,7 +61,7 @@ public class gameController : MonoBehaviour
                 if (hit.collider.tag == "crashColl")
                     if (hit.distance < 2) { missileController.crashed = true; }
                 if (hit.collider.tag == "plane")
-                    missileController.crashed = true;
+                    missileController.crashed = true; 
             }
         }
 
