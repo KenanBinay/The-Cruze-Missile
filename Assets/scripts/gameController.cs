@@ -11,16 +11,18 @@ public class gameController : MonoBehaviour
     public Camera mainCam;
     public Animator startAnim;
 
+    private Rigidbody missileRb;
     public GameObject missileHud, missileBody, warningUi, arrrowIndicator, tutoUi, joystickMain, ciwslockedUi, missionComplete_Ui, missionFailed_Ui, jet, gamePauseUi;
     public Sprite iconPause, iconPlay;
     public Image iconPausePlay;
 
     public TextMeshProUGUI altitute, countdownTxt, missionTxt, missionDoneTxt, missionFailedTxt;
+    public Slider fuelSlide;
 
     public static bool startDelay;
 
-    bool countdownBool, startClick, gameover, paused;
-    float alt, countdownVal;
+    bool countdownBool, startClick, gameover, paused, outOfFuel;
+    float alt, countdownVal, fuelCountdown;
     RaycastHit hit;
 
     int missionCurrentVal;
@@ -28,6 +30,8 @@ public class gameController : MonoBehaviour
     void Start()
     {
         alt = 400;
+        fuelCountdown = 30;
+        fuelSlide.maxValue = fuelCountdown;
        
         missileHud.SetActive(false);
         warningUi.SetActive(false);
@@ -43,6 +47,8 @@ public class gameController : MonoBehaviour
         missionCurrentVal = PlayerPrefs.GetInt("mission", 0);
 
         Debug.Log("mission: " + PlayerPrefs.GetInt("mission", 0));
+
+        missileRb = missileBody.GetComponent<Rigidbody>();
 
         StartCoroutine(delayForStart());
     }
@@ -63,6 +69,14 @@ public class gameController : MonoBehaviour
                 if (hit.collider.tag == "plane")
                     missileController.crashed = true; 
             }
+
+            if (fuelCountdown > 0 ) 
+            {
+                fuelCountdown -= Time.deltaTime;
+                fuelSlide.value = fuelCountdown; 
+            }
+            else { missileRb.useGravity = true; outOfFuel = true; }
+            
         }
 
         if (missileController.outside && !missileController.crashed && !missileController.targetHit) { giveWarning(); }
