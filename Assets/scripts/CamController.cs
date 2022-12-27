@@ -12,6 +12,7 @@ public class CamController : MonoBehaviour
 
     RaycastHit hit;
 
+    public static Vector3 static_targetVector, car_targetVector, aircraft_targetVector;
     private void Start()
     {
         cam = GetComponent<Camera>();
@@ -33,7 +34,7 @@ public class CamController : MonoBehaviour
 
             if (targetController.target_type == 0)
             {
-                transform.DOLookAt(targetController.staticTarget.transform.position, 0.5f);
+                transform.DOLookAt(static_targetVector, 0.5f);
                 transform.DOMoveY(Missile.transform.position.y + 140, 2f);
 
                 if (Physics.Raycast(ray, out hit))
@@ -41,7 +42,8 @@ public class CamController : MonoBehaviour
             }
             if (targetController.target_type == 1)
             {
-                transform.DOLookAt(propCarController.vehicle.transform.position, 0.5f);
+                // transform.DOLookAt(propCarController.vehicle.transform.position, 0.5f);
+                transform.DOLookAt(car_targetVector, 0.5f);
                 transform.DOMoveY(Missile.transform.position.y + 140, 2f);
                 
 
@@ -50,7 +52,8 @@ public class CamController : MonoBehaviour
             }
             if (targetController.target_type == 2)
             {
-                transform.DOLookAt(propAircraftController.aircraft.transform.position, 0.5f);
+                // transform.DOLookAt(propAircraftController.aircraft.transform.position, 0.5f);
+                transform.DOLookAt(aircraft_targetVector, 0.5f);
                 transform.DOMoveY(Missile.transform.position.y + 140, 2f);
 
                 if (Physics.Raycast(ray, out hit))

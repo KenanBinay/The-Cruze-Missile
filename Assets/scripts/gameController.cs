@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public class gameController : MonoBehaviour
 {
+    public FxController fx;
+
     public Camera mainCam;
     public Animator startAnim;
 
@@ -30,7 +32,7 @@ public class gameController : MonoBehaviour
     void Start()
     {
         alt = 400;
-        fuelCountdown = 30;
+        fuelCountdown = 35;
         fuelSlide.maxValue = fuelCountdown;
        
         missileHud.SetActive(false);
@@ -65,9 +67,7 @@ public class gameController : MonoBehaviour
             if (Physics.Raycast(rayDown, out hit))
             {
                 if (hit.collider.tag == "crashColl")
-                    if (hit.distance < 2) { missileController.crashed = true; }
-                if (hit.collider.tag == "plane")
-                    missileController.crashed = true; 
+                    if (hit.distance < 2) { missileController.crashed = true; fx.crashFx(); }
             }
 
             if (fuelCountdown > 0 ) 
@@ -75,8 +75,7 @@ public class gameController : MonoBehaviour
                 fuelCountdown -= Time.deltaTime;
                 fuelSlide.value = fuelCountdown; 
             }
-            else { missileRb.useGravity = true; outOfFuel = true; }
-            
+            else { missileRb.useGravity = true; outOfFuel = true; }          
         }
 
         if (missileController.outside && !missileController.crashed && !missileController.targetHit) { giveWarning(); }

@@ -33,6 +33,7 @@ public class targetController : MonoBehaviour
             if (carSpawnPoint == 8) { staticTarget.transform.position = spawnPoints[8].position; }
             if (carSpawnPoint == 9) { staticTarget.transform.position = spawnPoints[9].position; }
 
+            CamController.static_targetVector = staticTarget.transform.position;
             Debug.Log("staticTargetSelected point " + carSpawnPoint);
         }
         if (target_type == 1)

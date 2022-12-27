@@ -61,6 +61,7 @@ public class missileController : MonoBehaviour
             if (!crashed && !targetHit)
             {
                 Debug.Log("crashed");
+                fx.crashFx();
                 crashed = true;
             }           
         }
