@@ -24,14 +24,14 @@ public class gameController : MonoBehaviour
     public static bool startDelay;
 
     bool countdownBool, startClick, gameover, paused, outOfFuel;
-    float alt, countdownVal, fuelCountdown;
+    float rayLenght, countdownVal, fuelCountdown;
     RaycastHit hit;
 
     int missionCurrentVal;
 
     void Start()
     {
-        alt = 400;
+        rayLenght = 400;
         fuelCountdown = 35;
         fuelSlide.maxValue = fuelCountdown;
        
@@ -61,13 +61,14 @@ public class gameController : MonoBehaviour
         {
             if (!startClick & Input.GetMouseButtonDown(0)) { tutoUi.SetActive(false); }
 
-            Debug.DrawRay(missileBody.transform.position, Vector3.down * alt, Color.red);
+            Debug.DrawRay(missileBody.transform.position, Vector3.down * rayLenght, Color.red);
             Ray rayDown = new Ray(missileBody.transform.position, Vector3.down);
 
             if (Physics.Raycast(rayDown, out hit))
             {
                 if (hit.collider.tag == "crashColl")
                     if (hit.distance < 2) { missileController.crashed = true; fx.crashFx(); }
+                if (hit.collider.tag == "plane") { missileController.crashed = true; fx.crashFx(); Debug.Log("plane ray hit"); }
             }
 
             if (fuelCountdown > 0 ) 

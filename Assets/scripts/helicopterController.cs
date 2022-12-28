@@ -18,8 +18,6 @@ public class helicopterController : MonoBehaviour
     {
         if (!crashedGround && !missileHit)
         {
-            CamController.aircraft_targetVector = transform.position;
-
             rotorBack.transform.Rotate(new Vector3(1000 * Time.deltaTime, 0, 0));
             rotorM.transform.Rotate(new Vector3(0, 500 * Time.deltaTime, 0));
         }

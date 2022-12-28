@@ -36,5 +36,7 @@ public class propAircraftController : MonoBehaviour
             aircraft.GetComponent<Target>().enabled = true;
             aircraft.tag = "airTarget";
         }
+
+        if (targetController.target_type == 2 && !missileController.targetHit) CamController.aircraft_targetVector = aircraft.transform.position;
     }
 }

@@ -42,7 +42,6 @@ public class CamController : MonoBehaviour
             }
             if (targetController.target_type == 1)
             {
-                // transform.DOLookAt(propCarController.vehicle.transform.position, 0.5f);
                 transform.DOLookAt(car_targetVector, 0.5f);
                 transform.DOMoveY(Missile.transform.position.y + 140, 2f);
                 
@@ -52,7 +51,6 @@ public class CamController : MonoBehaviour
             }
             if (targetController.target_type == 2)
             {
-                // transform.DOLookAt(propAircraftController.aircraft.transform.position, 0.5f);
                 transform.DOLookAt(aircraft_targetVector, 0.5f);
                 transform.DOMoveY(Missile.transform.position.y + 140, 2f);
 
