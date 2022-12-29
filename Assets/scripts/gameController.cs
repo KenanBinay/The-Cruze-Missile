@@ -13,18 +13,16 @@ public class gameController : MonoBehaviour
     public Camera mainCam;
     public Animator startAnim;
 
-    private Rigidbody missileRb;
     public GameObject missileHud, missileBody, warningUi, arrrowIndicator, tutoUi, joystickMain, ciwslockedUi, missionComplete_Ui, missionFailed_Ui, jet, gamePauseUi;
     public Sprite iconPause, iconPlay;
     public Image iconPausePlay;
 
     public TextMeshProUGUI altitute, countdownTxt, missionTxt, missionDoneTxt, missionFailedTxt;
-    public Slider fuelSlide;
 
     public static bool startDelay;
 
-    bool countdownBool, startClick, gameover, paused, outOfFuel;
-    float rayLenght, countdownVal, fuelCountdown;
+    bool countdownBool, startClick, gameover, paused;
+    float rayLenght, countdownVal;
     RaycastHit hit;
 
     int missionCurrentVal;
@@ -32,9 +30,7 @@ public class gameController : MonoBehaviour
     void Start()
     {
         rayLenght = 400;
-        fuelCountdown = 35;
-        fuelSlide.maxValue = fuelCountdown;
-       
+     
         missileHud.SetActive(false);
         warningUi.SetActive(false);
         joystickMain.SetActive(false);
@@ -48,9 +44,7 @@ public class gameController : MonoBehaviour
         missionTxt.text = "MISSION " + PlayerPrefs.GetInt("mission", 0);
         missionCurrentVal = PlayerPrefs.GetInt("mission", 0);
 
-        Debug.Log("mission: " + PlayerPrefs.GetInt("mission", 0));
-
-        missileRb = missileBody.GetComponent<Rigidbody>();
+        Debug.Log("mission: " + PlayerPrefs.GetInt("mission", 0));     
 
         StartCoroutine(delayForStart());
     }
@@ -70,13 +64,6 @@ public class gameController : MonoBehaviour
                     if (hit.distance < 2) { missileController.crashed = true; fx.crashFx(); }
                 if (hit.collider.tag == "plane") { missileController.crashed = true; fx.crashFx(); Debug.Log("plane ray hit"); }
             }
-
-            if (fuelCountdown > 0 ) 
-            {
-                fuelCountdown -= Time.deltaTime;
-                fuelSlide.value = fuelCountdown; 
-            }
-            else { missileRb.useGravity = true; outOfFuel = true; }          
         }
 
         if (missileController.outside && !missileController.crashed && !missileController.targetHit) { giveWarning(); }
