@@ -6,6 +6,8 @@ public class fuelManager : MonoBehaviour
 {
     Rigidbody missileRb;
     GameObject missileObj;
+
+    public GameObject fuelBar;
     public Animator anim_outOfFuel;
     public Slider fuelSlide;
 
@@ -20,12 +22,16 @@ public class fuelManager : MonoBehaviour
         missileRb = missileObj.GetComponent<Rigidbody>();
 
         anim_outOfFuel.enabled = false;
+
+        fuelBar.SetActive(false);
     }
 
-    void Update()
+    void LateUpdate()
     {
-        if (gameController.startDelay)
+        if (gameController.startDelay && !missileController.targetHit && !missileController.crashed)
         {
+            if (!fuelBar.activeSelf) { fuelBar.SetActive(true); }
+
             if (fuelCountdown > 0)
             {
                 fuelCountdown -= Time.deltaTime;

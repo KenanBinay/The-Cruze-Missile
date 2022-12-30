@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class CamController : MonoBehaviour
 {
-    public GameObject Missile, endPos;
+    public GameObject Missile, diveEffect;
     private Camera cam;
 
     public float smoothSpeed;
@@ -27,6 +27,16 @@ public class CamController : MonoBehaviour
         {
             transform.DOMove(Missile.transform.position, 0);
             transform.DORotate(Missile.transform.eulerAngles, 0);
+
+            float missileDegree = Missile.transform.eulerAngles.x;
+            if (missileDegree > 40 && missileDegree < 90)
+            { 
+                if (!diveEffect.activeSelf) diveEffect.SetActive(true);
+            }
+            else
+            { 
+                if (diveEffect.activeSelf) diveEffect.SetActive(false); 
+            }
         }
         if (!missileController.crashed && missileController.targetHit)
         {
