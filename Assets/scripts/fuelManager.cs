@@ -10,6 +10,10 @@ public class fuelManager : MonoBehaviour
     public GameObject fuelBar;
     public Animator anim_outOfFuel;
     public Slider fuelSlide;
+    private Image fillArea;
+
+    public Color a, b, c, d;
+    Color targetColor;
 
     public float fuelCountdown;
     public static bool outOfFuel;
@@ -24,6 +28,8 @@ public class fuelManager : MonoBehaviour
         anim_outOfFuel.enabled = false;
 
         fuelBar.SetActive(false);
+
+        fillArea = fuelSlide.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>();
     }
 
     void LateUpdate()
@@ -36,8 +42,15 @@ public class fuelManager : MonoBehaviour
             {
                 fuelCountdown -= Time.deltaTime;
                 fuelSlide.value = fuelCountdown;
+
+                fillArea.color = Color.Lerp(fillArea.color, targetColor, 0.1f);
             }
             else { missileRb.useGravity = true; outOfFuel = true; anim_outOfFuel.enabled = true; }
         }
+
+        if (fuelCountdown > 20) targetColor = a;
+        if (fuelCountdown > 15 && fuelCountdown < 20) targetColor = b;
+        if (fuelCountdown > 5 && fuelCountdown < 15) targetColor = c;
+        if (fuelCountdown < 5) targetColor = d;
     }
 }

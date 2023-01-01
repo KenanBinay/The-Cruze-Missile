@@ -113,9 +113,10 @@ public class gameController : MonoBehaviour
             countdownVal -= Time.deltaTime;
             int seconds = ((int)countdownVal);
             countdownTxt.text = "00:0" + seconds;
-            if (seconds == 0) { missileController.crashed = true; missileHud.SetActive(false); arrrowIndicator.SetActive(false); }
+            if (seconds == 0) { missileController.crashed = true; fx.crashFx(); missileHud.SetActive(false); arrrowIndicator.SetActive(false); }
         }
     }
+
     IEnumerator delayForStart()
     {
         yield return new WaitForSeconds(3.5f);
