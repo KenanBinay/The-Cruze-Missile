@@ -1,0 +1,608 @@
+fileFormatVersion: 2
+guid: 6e7fbe066e42dd34386cbe594ff3ed50
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Agave_LOD0
+    100002: Agave_LOD1
+    100004: Agave_LOD2
+    100006: Agave_LOD3
+    100008: DesertBahia_LOD0
+    100010: DesertBahia_LOD1
+    100012: DesertBahia_LOD2
+    100014: DesertBahia_LOD3
+    100016: DesertSpoon_LOD0
+    100018: DesertSpoon_LOD1
+    100020: DesertSpoon_LOD2
+    100022: DesertSpoon_LOD3
+    100024: PricklyPearCactus_LOD0
+    100026: PricklyPearCactus_LOD1
+    100028: PricklyPearCactus_LOD2
+    100030: PricklyPearCactus_LOD3
+    100032: PurpleAster_LOD0
+    100034: PurpleAster_LOD1
+    100036: PurpleAster_LOD2
+    100038: PurpleAster_LOD3
+    100040: //RootNode
+    100042: SeguaroCactusLarge1_LOD0
+    100044: SeguaroCactusLarge1_LOD1
+    100046: SeguaroCactusLarge1_LOD2
+    100048: SeguaroCactusLarge1_LOD3
+    100050: SeguaroCactusLarge2_LOD0
+    100052: SeguaroCactusLarge2_LOD1
+    100054: SeguaroCactusLarge2_LOD2
+    100056: SeguaroCactusLarge2_LOD3
+    100058: SeguaroCactusLarge3_LOD0
+    100060: SeguaroCactusLarge3_LOD1
+    100062: SeguaroCactusLarge3_LOD2
+    100064: SeguaroCactusLarge3_LOD3
+    100066: SeguaroCactusMedium1_LOD0
+    100068: SeguaroCactusMedium1_LOD1
+    100070: SeguaroCactusMedium1_LOD2
+    100072: SeguaroCactusMedium1_LOD3
+    100074: SeguaroCactusMedium2_LOD0
+    100076: SeguaroCactusMedium2_LOD1
+    100078: SeguaroCactusMedium2_LOD2
+    100080: SeguaroCactusMedium2_LOD3
+    100082: SeguaroCactusSmall_LOD0
+    100084: SeguaroCactusSmall_LOD1
+    100086: SeguaroCactusSmall_LOD2
+    100088: SeguaroCactusSmall_LOD3
+    100090: WrightBuckwheat_LOD0
+    100092: WrightBuckwheat_LOD1
+    100094: WrightBuckwheat_LOD2
+    100096: WrightBuckwheat_LOD3
+    100098: Yucca_LOD0
+    100100: Yucca_LOD1
+    100102: Yucca_LOD2
+    100104: Yucca_LOD3
+    400000: Agave_LOD0
+    400002: Agave_LOD1
+    400004: Agave_LOD2
+    400006: Agave_LOD3
+    400008: DesertBahia_LOD0
+    400010: DesertBahia_LOD1
+    400012: DesertBahia_LOD2
+    400014: DesertBahia_LOD3
+    400016: DesertSpoon_LOD0
+    400018: DesertSpoon_LOD1
+    400020: DesertSpoon_LOD2
+    400022: DesertSpoon_LOD3
+    400024: PricklyPearCactus_LOD0
+    400026: PricklyPearCactus_LOD1
+    400028: PricklyPearCactus_LOD2
+    400030: PricklyPearCactus_LOD3
+    400032: PurpleAster_LOD0
+    400034: PurpleAster_LOD1
+    400036: PurpleAster_LOD2
+    400038: PurpleAster_LOD3
+    400040: //RootNode
+    400042: SeguaroCactusLarge1_LOD0
+    400044: SeguaroCactusLarge1_LOD1
+    400046: SeguaroCactusLarge1_LOD2
+    400048: SeguaroCactusLarge1_LOD3
+    400050: SeguaroCactusLarge2_LOD0
+    400052: SeguaroCactusLarge2_LOD1
+    400054: SeguaroCactusLarge2_LOD2
+    400056: SeguaroCactusLarge2_LOD3
+    400058: SeguaroCactusLarge3_LOD0
+    400060: SeguaroCactusLarge3_LOD1
+    400062: SeguaroCactusLarge3_LOD2
+    400064: SeguaroCactusLarge3_LOD3
+    400066: SeguaroCactusMedium1_LOD0
+    400068: SeguaroCactusMedium1_LOD1
+    400070: SeguaroCactusMedium1_LOD2
+    400072: SeguaroCactusMedium1_LOD3
+    400074: SeguaroCactusMedium2_LOD0
+    400076: SeguaroCactusMedium2_LOD1
+    400078: SeguaroCactusMedium2_LOD2
+    400080: SeguaroCactusMedium2_LOD3
+    400082: SeguaroCactusSmall_LOD0
+    400084: SeguaroCactusSmall_LOD1
+    400086: SeguaroCactusSmall_LOD2
+    400088: SeguaroCactusSmall_LOD3
+    400090: WrightBuckwheat_LOD0
+    400092: WrightBuckwheat_LOD1
+    400094: WrightBuckwheat_LOD2
+    400096: WrightBuckwheat_LOD3
+    400098: Yucca_LOD0
+    400100: Yucca_LOD1
+    400102: Yucca_LOD2
+    400104: Yucca_LOD3
+    2100000: Cactus
+    2100002: DarkLeaf
+    2100004: SpoonStock
+    2100006: FlowerPetalPurple
+    2100008: Flower Middle
+    2100010: FlowerStock
+    2100012: Agave
+    2100014: Yucca
+    2100016: FlowerPetalYellow
+    2100018: BushOuter
+    2100020: Agave.002
+    2100022: Agave.007
+    2100024: FlowerPetalYellow.001
+    2100026: Flower Middle.001
+    2100028: FlowerStock.001
+    2100030: DarkLeaf.001
+    2100032: SpoonStock.001
+    2100034: Cactus.001
+    2100036: FlowerPetalPurple.001
+    2100038: Agave.006
+    2100040: Yucca.001
+    2100042: BushOuter.001
+    2100044: Agave.009
+    2100046: FlowerPetalYellow.002
+    2100048: FlowerStock.002
+    2100050: Cactus.002
+    2100052: FlowerPetalPurple.002
+    2100054: Agave.008
+    2100056: Yucca.002
+    2100058: BushOuter.002
+    2100060: DarkLeaf.004
+    2100062: SpoonStock.004
+    2100064: Agave.010
+    2100066: FlowerPetalYellow.003
+    2100068: FlowerStock.003
+    2100070: Cactus.003
+    2100072: FlowerPetalPurple.003
+    2100074: Agave.011
+    2100076: Yucca.003
+    2100078: BushOuter.003
+    2100080: DarkLeaf.005
+    2100082: SpoonStock.005
+    2300000: Agave_LOD0
+    2300002: Agave_LOD1
+    2300004: Agave_LOD2
+    2300006: Agave_LOD3
+    2300008: DesertBahia_LOD0
+    2300010: DesertBahia_LOD1
+    2300012: DesertBahia_LOD2
+    2300014: DesertBahia_LOD3
+    2300016: DesertSpoon_LOD0
+    2300018: DesertSpoon_LOD1
+    2300020: DesertSpoon_LOD2
+    2300022: DesertSpoon_LOD3
+    2300024: PricklyPearCactus_LOD0
+    2300026: PricklyPearCactus_LOD1
+    2300028: PricklyPearCactus_LOD2
+    2300030: PricklyPearCactus_LOD3
+    2300032: PurpleAster_LOD0
+    2300034: PurpleAster_LOD1
+    2300036: PurpleAster_LOD2
+    2300038: PurpleAster_LOD3
+    2300040: SeguaroCactusLarge1_LOD0
+    2300042: SeguaroCactusLarge1_LOD1
+    2300044: SeguaroCactusLarge1_LOD2
+    2300046: SeguaroCactusLarge1_LOD3
+    2300048: SeguaroCactusLarge2_LOD0
+    2300050: SeguaroCactusLarge2_LOD1
+    2300052: SeguaroCactusLarge2_LOD2
+    2300054: SeguaroCactusLarge2_LOD3
+    2300056: SeguaroCactusLarge3_LOD0
+    2300058: SeguaroCactusLarge3_LOD1
+    2300060: SeguaroCactusLarge3_LOD2
+    2300062: SeguaroCactusLarge3_LOD3
+    2300064: SeguaroCactusMedium1_LOD0
+    2300066: SeguaroCactusMedium1_LOD1
+    2300068: SeguaroCactusMedium1_LOD2
+    2300070: SeguaroCactusMedium1_LOD3
+    2300072: SeguaroCactusMedium2_LOD0
+    2300074: SeguaroCactusMedium2_LOD1
+    2300076: SeguaroCactusMedium2_LOD2
+    2300078: SeguaroCactusMedium2_LOD3
+    2300080: SeguaroCactusSmall_LOD0
+    2300082: SeguaroCactusSmall_LOD1
+    2300084: SeguaroCactusSmall_LOD2
+    2300086: SeguaroCactusSmall_LOD3
+    2300088: WrightBuckwheat_LOD0
+    2300090: WrightBuckwheat_LOD1
+    2300092: WrightBuckwheat_LOD2
+    2300094: WrightBuckwheat_LOD3
+    2300096: Yucca_LOD0
+    2300098: Yucca_LOD1
+    2300100: Yucca_LOD2
+    2300102: Yucca_LOD3
+    3300000: Agave_LOD0
+    3300002: Agave_LOD1
+    3300004: Agave_LOD2
+    3300006: Agave_LOD3
+    3300008: DesertBahia_LOD0
+    3300010: DesertBahia_LOD1
+    3300012: DesertBahia_LOD2
+    3300014: DesertBahia_LOD3
+    3300016: DesertSpoon_LOD0
+    3300018: DesertSpoon_LOD1
+    3300020: DesertSpoon_LOD2
+    3300022: DesertSpoon_LOD3
+    3300024: PricklyPearCactus_LOD0
+    3300026: PricklyPearCactus_LOD1
+    3300028: PricklyPearCactus_LOD2
+    3300030: PricklyPearCactus_LOD3
+    3300032: PurpleAster_LOD0
+    3300034: PurpleAster_LOD1
+    3300036: PurpleAster_LOD2
+    3300038: PurpleAster_LOD3
+    3300040: SeguaroCactusLarge1_LOD0
+    3300042: SeguaroCactusLarge1_LOD1
+    3300044: SeguaroCactusLarge1_LOD2
+    3300046: SeguaroCactusLarge1_LOD3
+    3300048: SeguaroCactusLarge2_LOD0
+    3300050: SeguaroCactusLarge2_LOD1
+    3300052: SeguaroCactusLarge2_LOD2
+    3300054: SeguaroCactusLarge2_LOD3
+    3300056: SeguaroCactusLarge3_LOD0
+    3300058: SeguaroCactusLarge3_LOD1
+    3300060: SeguaroCactusLarge3_LOD2
+    3300062: SeguaroCactusLarge3_LOD3
+    3300064: SeguaroCactusMedium1_LOD0
+    3300066: SeguaroCactusMedium1_LOD1
+    3300068: SeguaroCactusMedium1_LOD2
+    3300070: SeguaroCactusMedium1_LOD3
+    3300072: SeguaroCactusMedium2_LOD0
+    3300074: SeguaroCactusMedium2_LOD1
+    3300076: SeguaroCactusMedium2_LOD2
+    3300078: SeguaroCactusMedium2_LOD3
+    3300080: SeguaroCactusSmall_LOD0
+    3300082: SeguaroCactusSmall_LOD1
+    3300084: SeguaroCactusSmall_LOD2
+    3300086: SeguaroCactusSmall_LOD3
+    3300088: WrightBuckwheat_LOD0
+    3300090: WrightBuckwheat_LOD1
+    3300092: WrightBuckwheat_LOD2
+    3300094: WrightBuckwheat_LOD3
+    3300096: Yucca_LOD0
+    3300098: Yucca_LOD1
+    3300100: Yucca_LOD2
+    3300102: Yucca_LOD3
+    4300000: SeguaroCactusLarge1_LOD0
+    4300002: SeguaroCactusLarge3_LOD0
+    4300004: SeguaroCactusLarge2_LOD0
+    4300006: SeguaroCactusMedium2_LOD0
+    4300008: SeguaroCactusMedium1_LOD0
+    4300010: SeguaroCactusSmall_LOD0
+    4300012: DesertSpoon_LOD0
+    4300014: PurpleAster_LOD0
+    4300016: Yucca_LOD0
+    4300018: DesertBahia_LOD0
+    4300020: WrightBuckwheat_LOD0
+    4300022: PricklyPearCactus_LOD0
+    4300024: Agave_LOD0
+    4300026: Agave_LOD1
+    4300028: DesertBahia_LOD1
+    4300030: DesertSpoon_LOD1
+    4300032: PricklyPearCactus_LOD1
+    4300034: PurpleAster_LOD1
+    4300036: Yucca_LOD1
+    4300038: SeguaroCactusLarge1_LOD1
+    4300040: SeguaroCactusLarge2_LOD1
+    4300042: SeguaroCactusLarge3_LOD1
+    4300044: SeguaroCactusMedium1_LOD1
+    4300046: SeguaroCactusMedium2_LOD1
+    4300048: SeguaroCactusSmall_LOD1
+    4300050: WrightBuckwheat_LOD1
+    4300052: Agave_LOD2
+    4300054: DesertBahia_LOD2
+    4300056: PricklyPearCactus_LOD2
+    4300058: PurpleAster_LOD2
+    4300060: Yucca_LOD2
+    4300062: SeguaroCactusLarge1_LOD2
+    4300064: SeguaroCactusLarge2_LOD2
+    4300066: SeguaroCactusLarge3_LOD2
+    4300068: SeguaroCactusMedium1_LOD2
+    4300070: SeguaroCactusMedium2_LOD2
+    4300072: SeguaroCactusSmall_LOD2
+    4300074: WrightBuckwheat_LOD2
+    4300076: DesertSpoon_LOD2
+    4300078: Agave_LOD3
+    4300080: DesertBahia_LOD3
+    4300082: PricklyPearCactus_LOD3
+    4300084: PurpleAster_LOD3
+    4300086: Yucca_LOD3
+    4300088: SeguaroCactusLarge1_LOD3
+    4300090: SeguaroCactusLarge2_LOD3
+    4300092: SeguaroCactusLarge3_LOD3
+    4300094: SeguaroCactusMedium1_LOD3
+    4300096: SeguaroCactusMedium2_LOD3
+    4300098: SeguaroCactusSmall_LOD3
+    4300100: WrightBuckwheat_LOD3
+    4300102: DesertSpoon_LOD3
+    20500000: //RootNode
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Agave
+    second: {fileID: 2100000, guid: 7df0046d887cbea4fb169d1cf66d462d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Agave.002
+    second: {fileID: 2100000, guid: 7df0046d887cbea4fb169d1cf66d462d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Agave.006
+    second: {fileID: 2100000, guid: 7df0046d887cbea4fb169d1cf66d462d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Agave.007
+    second: {fileID: 2100000, guid: 7df0046d887cbea4fb169d1cf66d462d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Agave.008
+    second: {fileID: 2100000, guid: 7df0046d887cbea4fb169d1cf66d462d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Agave.009
+    second: {fileID: 2100000, guid: 7df0046d887cbea4fb169d1cf66d462d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Agave.010
+    second: {fileID: 2100000, guid: 7df0046d887cbea4fb169d1cf66d462d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Agave.011
+    second: {fileID: 2100000, guid: 7df0046d887cbea4fb169d1cf66d462d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BushOuter
+    second: {fileID: 2100000, guid: 5cac6bfa009074d4683244f52aff6d96, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BushOuter.001
+    second: {fileID: 2100000, guid: 5cac6bfa009074d4683244f52aff6d96, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BushOuter.002
+    second: {fileID: 2100000, guid: 5cac6bfa009074d4683244f52aff6d96, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BushOuter.003
+    second: {fileID: 2100000, guid: 5cac6bfa009074d4683244f52aff6d96, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cactus
+    second: {fileID: 2100000, guid: 0f62f842e27b3cc43b1bcc56cac4b21e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cactus.001
+    second: {fileID: 2100000, guid: 0f62f842e27b3cc43b1bcc56cac4b21e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cactus.002
+    second: {fileID: 2100000, guid: 0f62f842e27b3cc43b1bcc56cac4b21e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cactus.003
+    second: {fileID: 2100000, guid: 0f62f842e27b3cc43b1bcc56cac4b21e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DarkLeaf
+    second: {fileID: 2100000, guid: 2a813b7492547e04b993387492740096, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DarkLeaf.001
+    second: {fileID: 2100000, guid: 2a813b7492547e04b993387492740096, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DarkLeaf.004
+    second: {fileID: 2100000, guid: 2a813b7492547e04b993387492740096, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DarkLeaf.005
+    second: {fileID: 2100000, guid: 2a813b7492547e04b993387492740096, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Flower Middle
+    second: {fileID: 2100000, guid: 6081c82c1728a824ab233b2a409d39d8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Flower Middle.001
+    second: {fileID: 2100000, guid: 6081c82c1728a824ab233b2a409d39d8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FlowerPetalPurple
+    second: {fileID: 2100000, guid: 32febb18cadb8a8498473dc5a45b54e8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FlowerPetalPurple.001
+    second: {fileID: 2100000, guid: 32febb18cadb8a8498473dc5a45b54e8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FlowerPetalPurple.002
+    second: {fileID: 2100000, guid: 32febb18cadb8a8498473dc5a45b54e8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FlowerPetalPurple.003
+    second: {fileID: 2100000, guid: 32febb18cadb8a8498473dc5a45b54e8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FlowerPetalYellow
+    second: {fileID: 2100000, guid: 9c13cbabd10647149b82e936c13cdb7b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FlowerPetalYellow.001
+    second: {fileID: 2100000, guid: 9c13cbabd10647149b82e936c13cdb7b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FlowerPetalYellow.002
+    second: {fileID: 2100000, guid: 9c13cbabd10647149b82e936c13cdb7b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FlowerPetalYellow.003
+    second: {fileID: 2100000, guid: 9c13cbabd10647149b82e936c13cdb7b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FlowerStock
+    second: {fileID: 2100000, guid: 0a3cff40618b0204f940036ab0cee384, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FlowerStock.001
+    second: {fileID: 2100000, guid: 0a3cff40618b0204f940036ab0cee384, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FlowerStock.002
+    second: {fileID: 2100000, guid: 0a3cff40618b0204f940036ab0cee384, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FlowerStock.003
+    second: {fileID: 2100000, guid: 0a3cff40618b0204f940036ab0cee384, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SpoonStock
+    second: {fileID: 2100000, guid: 77dc6d93e583f5d4fa420c68b4f0969e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SpoonStock.001
+    second: {fileID: 2100000, guid: 77dc6d93e583f5d4fa420c68b4f0969e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SpoonStock.004
+    second: {fileID: 2100000, guid: 77dc6d93e583f5d4fa420c68b4f0969e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SpoonStock.005
+    second: {fileID: 2100000, guid: 77dc6d93e583f5d4fa420c68b4f0969e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Yucca
+    second: {fileID: 2100000, guid: 2d8f77858c492874e90cd5b3c9c6f6ad, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Yucca.001
+    second: {fileID: 2100000, guid: 2d8f77858c492874e90cd5b3c9c6f6ad, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Yucca.002
+    second: {fileID: 2100000, guid: 2d8f77858c492874e90cd5b3c9c6f6ad, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Yucca.003
+    second: {fileID: 2100000, guid: 2d8f77858c492874e90cd5b3c9c6f6ad, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages:
+    - 0.25
+    - 0.125
+    - 0.0625
+    - 0.01
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

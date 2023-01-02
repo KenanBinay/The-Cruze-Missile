@@ -50,7 +50,7 @@ public class fuelManager : MonoBehaviour
 
         if (fuelCountdown > 20) targetColor = a;
         if (fuelCountdown > 15 && fuelCountdown < 20) targetColor = b;
-        if (fuelCountdown > 5 && fuelCountdown < 15) targetColor = c;
-        if (fuelCountdown < 5) targetColor = d;
+        if (fuelCountdown > 8 && fuelCountdown < 15) targetColor = c;
+        if (fuelCountdown < 8) targetColor = d;
     }
 }
