@@ -1,0 +1,208 @@
+fileFormatVersion: 2
+guid: ceb9c87ede50274469039d256fb826a4
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Cube.023
+    100004: Cube.024
+    100006: Cube.027
+    100008: Cube.031
+    100010: Cube.033
+    100012: Food_Stand_Wooden1.001
+    100014: Food_Stand_Wooden1.003
+    100016: Food_Stand_Wooden1.004
+    100018: Food_Stand_Wooden1.005
+    100020: Food_Stand_Wooden1.008
+    100022: Item_crate1
+    100024: Item_crate1_back
+    100026: Item_crate1_bottom
+    100028: Item_crate1_front
+    100030: Item_crate1_side1
+    100032: Item_crate1_side2
+    100034: Item_crate1_top
+    100036: Item_crate2_back
+    100038: Item_crate2_bottom
+    100040: Item_crate2_front
+    100042: Item_crate2_side1
+    100044: Item_crate2_side2
+    100046: Item_crate2_top
+    400000: //RootNode
+    400002: Cube.023
+    400004: Cube.024
+    400006: Cube.027
+    400008: Cube.031
+    400010: Cube.033
+    400012: Food_Stand_Wooden1.001
+    400014: Food_Stand_Wooden1.003
+    400016: Food_Stand_Wooden1.004
+    400018: Food_Stand_Wooden1.005
+    400020: Food_Stand_Wooden1.008
+    400022: Item_crate1
+    400024: Item_crate1_back
+    400026: Item_crate1_bottom
+    400028: Item_crate1_front
+    400030: Item_crate1_side1
+    400032: Item_crate1_side2
+    400034: Item_crate1_top
+    400036: Item_crate2_back
+    400038: Item_crate2_bottom
+    400040: Item_crate2_front
+    400042: Item_crate2_side1
+    400044: Item_crate2_side2
+    400046: Item_crate2_top
+    2300000: Cube.023
+    2300002: Cube.024
+    2300004: Cube.027
+    2300006: Cube.031
+    2300008: Cube.033
+    2300010: Food_Stand_Wooden1.001
+    2300012: Food_Stand_Wooden1.003
+    2300014: Food_Stand_Wooden1.004
+    2300016: Food_Stand_Wooden1.005
+    2300018: Food_Stand_Wooden1.008
+    2300020: Item_crate1
+    2300022: Item_crate1_back
+    2300024: Item_crate1_bottom
+    2300026: Item_crate1_front
+    2300028: Item_crate1_side1
+    2300030: Item_crate1_side2
+    2300032: Item_crate1_top
+    2300034: Item_crate2_back
+    2300036: Item_crate2_bottom
+    2300038: Item_crate2_front
+    2300040: Item_crate2_side1
+    2300042: Item_crate2_side2
+    2300044: Item_crate2_top
+    3300000: Cube.023
+    3300002: Cube.024
+    3300004: Cube.027
+    3300006: Cube.031
+    3300008: Cube.033
+    3300010: Food_Stand_Wooden1.001
+    3300012: Food_Stand_Wooden1.003
+    3300014: Food_Stand_Wooden1.004
+    3300016: Food_Stand_Wooden1.005
+    3300018: Food_Stand_Wooden1.008
+    3300020: Item_crate1
+    3300022: Item_crate1_back
+    3300024: Item_crate1_bottom
+    3300026: Item_crate1_front
+    3300028: Item_crate1_side1
+    3300030: Item_crate1_side2
+    3300032: Item_crate1_top
+    3300034: Item_crate2_back
+    3300036: Item_crate2_bottom
+    3300038: Item_crate2_front
+    3300040: Item_crate2_side1
+    3300042: Item_crate2_side2
+    3300044: Item_crate2_top
+    4300000: Cube.024
+    4300002: Item_crate1
+    4300004: Item_crate1_bottom
+    4300006: Cube.027
+    4300008: Item_crate1_back
+    4300010: Item_crate1_side2
+    4300012: Cube.033
+    4300014: Cube.031
+    4300016: Food_Stand_Wooden1.001
+    4300018: Food_Stand_Wooden1.003
+    4300020: Food_Stand_Wooden1.004
+    4300022: Food_Stand_Wooden1.005
+    4300024: Food_Stand_Wooden1.008
+    4300026: Cube.023
+    4300028: Item_crate1_front
+    4300030: Item_crate1_side1
+    4300032: Item_crate1_top
+    4300034: Item_crate2_top
+    4300036: Item_crate2_side1
+    4300038: Item_crate2_back
+    4300040: Item_crate2_bottom
+    4300042: Item_crate2_side2
+    4300044: Item_crate2_front
+  externalObjects: {}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
