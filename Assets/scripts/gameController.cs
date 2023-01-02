@@ -13,7 +13,7 @@ public class gameController : MonoBehaviour
     public Camera mainCam;
     public Animator startAnim;
 
-    public GameObject missileHud, missileBody, warningUi, arrrowIndicator, tutoUi, joystickMain, ciwslockedUi, missionComplete_Ui, missionFailed_Ui, jet, gamePauseUi;
+    public GameObject missileHud, missileBody, warningUi, arrrowIndicator, tutoUi, joystickMain, ciwslockedUi, missionComplete_Ui, missionFailed_Ui, jet, gamePauseUi, onPlay_Ui;
     public Sprite iconPause, iconPlay;
     public Image iconPausePlay;
 
@@ -88,6 +88,7 @@ public class gameController : MonoBehaviour
             arrrowIndicator.SetActive(false);
             missileHud.SetActive(false);
             joystickMain.SetActive(false);
+            onPlay_Ui.SetActive(false);
 
             missionFailed_Ui.SetActive(true);
             missionFailedTxt.text = "MISSION " + missionCurrentVal + " FAILED";
