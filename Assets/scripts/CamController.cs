@@ -23,6 +23,10 @@ public class CamController : MonoBehaviour
         Debug.DrawRay(transform.position, Vector3.back * 5, Color.blue);
         Ray ray = new Ray(transform.position, Vector3.back);
 
+        if(missileController.crashed || missileController.targetHit)
+        {
+            if (diveEffect.activeSelf) diveEffect.SetActive(false);
+        }
         if (!missileController.crashed && !missileController.targetHit && gameController.startDelay)
         {
             transform.DOMove(Missile.transform.position, 0);

@@ -23,8 +23,13 @@ public class missileController : MonoBehaviour
         hitVal = 0;
         outside = ciwsHit = crashed = targetHit = false;
         rigidM = gameObject.GetComponent<Rigidbody>();
-    }
 
+        if (missileSpawnManager.spawnedTop) { yaw = 0; }
+        if (missileSpawnManager.spawnedRight) { yaw = 90; }
+        if (missileSpawnManager.spawnedLeft) { yaw = -90; }
+        if (missileSpawnManager.spawnedBottom) { yaw = 180; }
+    }
+  
     void Update()
     {
         if (gameController.startDelay && !crashed && !targetHit)

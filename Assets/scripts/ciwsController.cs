@@ -36,7 +36,7 @@ public class ciwsController : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("missileM") && !missileController.crashed && !missileController.targetHit)
+        if (other.gameObject.CompareTag("missileM") && !missileController.crashed && !missileController.targetHit && gameController.startDelay)
         {
             roundEffect.SetActive(true);
 
