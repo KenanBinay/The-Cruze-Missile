@@ -36,7 +36,7 @@ public class missileSpawnManager : MonoBehaviour
 
             missileMain.transform.Rotate(new Vector3(0, 90, 0));
             jetStart.transform.Rotate(new Vector3(0, 90, 0));
-            mainCam.transform.eulerAngles = new Vector3(0, 68, 0);
+            mainCam.transform.eulerAngles = new Vector3(0, -68, 0);
 
             missileMain.transform.position = new Vector3(right_spawnPoses[spawnPoint].x, missileMain.transform.position.y, right_spawnPoses[spawnPoint].z);
             jetStart.transform.position = new Vector3(missileMain.transform.position.x, jetStart.transform.position.y, missileMain.transform.position.z);
