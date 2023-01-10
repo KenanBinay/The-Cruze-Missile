@@ -102,9 +102,9 @@ QualitySettings:
     lodBias: 0.7
     maximumLODLevel: 0
     streamingMipmapsActive: 1
-    streamingMipmapsAddAllCameras: 1
+    streamingMipmapsAddAllCameras: 0
     streamingMipmapsMemoryBudget: 512
-    streamingMipmapsRenderersPerFrame: 512
+    streamingMipmapsRenderersPerFrame: 1024
     streamingMipmapsMaxLevelReduction: 2
     streamingMipmapsMaxFileIORequests: 1024
     particleRaycastBudget: 64

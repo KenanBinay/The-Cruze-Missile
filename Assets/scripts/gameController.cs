@@ -13,7 +13,7 @@ public class gameController : MonoBehaviour
     public Camera mainCam;
     public Animator startAnim;
 
-    public GameObject missileHud, missileBody, warningUi, arrrowIndicator, tutoUi, joystickMain, ciwslockedUi, missionComplete_Ui, missionFailed_Ui, jet, gamePauseUi, onPlay_Ui;
+    public GameObject missileHud, missileBody, warningUi, arrrowIndicator, tutoUi, joystickMain, ciwslockedUi, missionComplete_Ui, missionFailed_Ui, jet, onPlay_Ui, onPauseSlide_Ui;
     public Sprite iconPause, iconPlay;
     public Image iconPausePlay;
 
@@ -30,7 +30,8 @@ public class gameController : MonoBehaviour
     void Start()
     {
         rayLenght = 400;
-     
+
+        onPauseSlide_Ui.SetActive(false);
         missileHud.SetActive(false);
         warningUi.SetActive(false);
         joystickMain.SetActive(false);
@@ -143,6 +144,8 @@ public class gameController : MonoBehaviour
         {
             if (!paused)
             {
+                onPauseSlide_Ui.SetActive(true);
+                joystickMain.SetActive(false);
                 paused = true;
                 iconPausePlay.sprite = iconPlay;
 
@@ -151,6 +154,8 @@ public class gameController : MonoBehaviour
             }
             else if (paused)
             {
+                onPauseSlide_Ui.SetActive(false);
+                joystickMain.SetActive(true);
                 paused = false;
                 iconPausePlay.sprite = iconPause;
 
