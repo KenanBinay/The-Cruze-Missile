@@ -23,38 +23,45 @@ public class missileController : MonoBehaviour
         hitVal = 0;
         outside = ciwsHit = crashed = targetHit = false;
         rigidM = gameObject.GetComponent<Rigidbody>();
-
-        if (missileSpawnManager.spawnedTop) { yaw = 0; }
-        if (missileSpawnManager.spawnedRight) { yaw = 90; }
-        if (missileSpawnManager.spawnedLeft) { yaw = -90; }
-        if (missileSpawnManager.spawnedBottom) { yaw = 180; }
     }
-  
+
     void Update()
     {
         if (gameController.startDelay && !crashed && !targetHit)
         {
+            if (!gameController.firstScreenTouch)
+            {
+                pitch = 0;
+
+                if (missileSpawnManager.spawnedTop) { yaw = 0; }
+                if (missileSpawnManager.spawnedRight) { yaw = 90; }
+                if (missileSpawnManager.spawnedLeft) { yaw = -90; }
+                if (missileSpawnManager.spawnedBottom) { yaw = 180; }
+            }
+
             //move forward
             transform.position += transform.forward * flySpeed * Time.deltaTime;
 
-            //input
-            yaw += handleInput.x * yawAmount * Time.deltaTime;
-            pitch += handleInput.y * yawAmount * Time.deltaTime;
+            if (gameController.firstScreenTouch)
+            {
+                //input
+                yaw += handleInput.x * yawAmount * Time.deltaTime;
+                pitch += handleInput.y * yawAmount * Time.deltaTime;
 
-            if (yawHudHorizontal <= -90 && handleInput.x < 0 || yawHudHorizontal >= 90 && handleInput.x > 0) { }
-            else { yawHudHorizontal += handleInput.x * yawAmount * Time.deltaTime; }
-           
-            yawHudVertical += handleInput.y * yawAmount * Time.deltaTime;
+                if (yawHudHorizontal <= -90 && handleInput.x < 0 || yawHudHorizontal >= 90 && handleInput.x > 0) { }
+                else { yawHudHorizontal += handleInput.x * yawAmount * Time.deltaTime; }
 
-            //apply rotation
-            transform.localRotation = Quaternion.Euler(Vector3.up * yaw + Vector3.right * pitch);
+                yawHudVertical += handleInput.y * yawAmount * Time.deltaTime;
 
-            if (handleInput == Vector2.zero) { hudYawUi.DOLocalRotate(new Vector3(yawHudVertical, 0, 0), 1); yawHudHorizontal = 0; }
-            else { hudYawUi.localRotation = Quaternion.Euler(Vector3.back * yawHudHorizontal + Vector3.right * yawHudVertical); }
+                //apply rotation
+                transform.localRotation = Quaternion.Euler(Vector3.up * yaw + Vector3.right * pitch);
 
+                if (handleInput == Vector2.zero) { hudYawUi.DOLocalRotate(new Vector3(yawHudVertical, 0, 0), 1); yawHudHorizontal = 0; }
+                else { hudYawUi.localRotation = Quaternion.Euler(Vector3.back * yawHudHorizontal + Vector3.right * yawHudVertical); }
+            }
             if (ciwsHit) mainHudUi.transform.DOShakeScale(0.4f, 0.03f).onComplete = mHudTweenDone;
         }
-        if (crashed && !FxController.fxExplode) { Debug.Log("crashed"); fx.crashFx(); }
+        if (targetHit || crashed && !FxController.fxExplode) { Debug.Log("crashed"); fx.crashFx(); }
     }
 
     void mHudTweenDone() { ciwsHit = false; mainHudUi.transform.localScale = new Vector3(1, 1, 1); }

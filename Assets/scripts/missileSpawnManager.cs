@@ -20,7 +20,7 @@ public class missileSpawnManager : MonoBehaviour
 
         if (spawnFace == 0)
         {
-            Debug.Log("spawned on top");
+            Debug.Log("spawned on top, yaw = 0");
 
             spawnedTop = true;
 
@@ -30,7 +30,7 @@ public class missileSpawnManager : MonoBehaviour
         }
         if (spawnFace == 1)
         {
-            Debug.Log("spawned on right");
+            Debug.Log("spawned on right, yaw = 90");
 
             spawnedRight = true;
 
@@ -44,7 +44,7 @@ public class missileSpawnManager : MonoBehaviour
         }
         if (spawnFace == 2)
         {
-            Debug.Log("spawned on left");
+            Debug.Log("spawned on left, yaw = -90");
 
             spawnedLeft = true;
 
@@ -58,7 +58,7 @@ public class missileSpawnManager : MonoBehaviour
         }
         if (spawnFace == 3)
         {
-            Debug.Log("spawned on bottom");
+            Debug.Log("spawned on bottom, yaw = 180");
 
             spawnedBottom = true;
 

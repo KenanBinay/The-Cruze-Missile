@@ -19,7 +19,7 @@ public class gameController : MonoBehaviour
 
     public TextMeshProUGUI altitute, countdownTxt, missionTxt, missionDoneTxt, missionFailedTxt;
 
-    public static bool startDelay;
+    public static bool startDelay, firstScreenTouch;
 
     bool countdownBool, startClick, gameover, paused;
     float rayLenght, countdownVal;
@@ -38,7 +38,7 @@ public class gameController : MonoBehaviour
         missionComplete_Ui.SetActive(false);
         missionFailed_Ui.SetActive(false);
 
-        startDelay = startClick = gameover = false;
+        startDelay = startClick = gameover = firstScreenTouch = false;
 
         if (PlayerPrefs.GetInt("mission", 0) == 0) { PlayerPrefs.SetInt("mission", 1); }
 
@@ -52,6 +52,8 @@ public class gameController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (Input.GetMouseButtonDown(0) && !firstScreenTouch) { firstScreenTouch = true; }
+
         if (!missileController.crashed && !missileController.targetHit && startDelay)
         {
             if (!startClick & Input.GetMouseButtonDown(0)) { tutoUi.SetActive(false); }
