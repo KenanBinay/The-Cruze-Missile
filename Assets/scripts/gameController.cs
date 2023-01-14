@@ -64,8 +64,16 @@ public class gameController : MonoBehaviour
             if (Physics.Raycast(rayDown, out hit))
             {
                 if (hit.collider.tag == "crashColl")
-                    if (hit.distance < 2) { missileController.crashed = true; fx.crashFx(); }
-                if (hit.collider.tag == "plane") { missileController.crashed = true; fx.crashFx(); Debug.Log("plane ray hit"); }
+                    if (hit.distance < 2) 
+                    { 
+                        missileController.crashed = true; 
+                        if (!FxController.fxExplode) fx.crashFx(); 
+                    }
+                if (hit.collider.tag == "plane") 
+                { 
+                    missileController.crashed = true; 
+                    if (!FxController.fxExplode) fx.crashFx(); Debug.Log("plane ray hit"); 
+                }
             }
         }
 
