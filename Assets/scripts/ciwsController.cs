@@ -15,6 +15,8 @@ public class ciwsController : MonoBehaviour
         missile = GameObject.Find("Missile_main").gameObject;
         targetDetected = false;
         roundEffect.SetActive(false);
+
+        DOTween.SetTweensCapacity(3200, 60);
     }
 
     private void Update()
