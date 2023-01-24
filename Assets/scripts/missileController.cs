@@ -45,8 +45,8 @@ public class missileController : MonoBehaviour
             if (gameController.firstScreenTouch)
             {
                 //input
-                yaw += handleInput.x * yawAmount * Time.deltaTime;
-                pitch += handleInput.y * yawAmount * Time.deltaTime;
+                yaw += handleInput.x * yawAmount * Time.deltaTime / 1.2f;
+                pitch += handleInput.y * yawAmount * Time.deltaTime / 1.2f;
 
                 if (yawHudHorizontal <= -90 && handleInput.x < 0 || yawHudHorizontal >= 90 && handleInput.x > 0) { }
                 else { yawHudHorizontal += handleInput.x * yawAmount * Time.deltaTime; }
@@ -54,7 +54,7 @@ public class missileController : MonoBehaviour
                 yawHudVertical += handleInput.y * yawAmount * Time.deltaTime;
 
                 //apply rotation
-                transform.localRotation = Quaternion.Euler(Vector3.up * yaw + Vector3.right * pitch);
+                transform.localRotation = Quaternion.Euler(Vector3.up * yaw + Vector3.left * pitch);
 
                 if (handleInput == Vector2.zero) { hudYawUi.DOLocalRotate(new Vector3(yawHudVertical, 0, 0), 1); yawHudHorizontal = 0; }
                 else { hudYawUi.localRotation = Quaternion.Euler(Vector3.back * yawHudHorizontal + Vector3.right * yawHudVertical); }
