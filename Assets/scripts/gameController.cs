@@ -13,7 +13,7 @@ public class gameController : MonoBehaviour
     public Camera mainCam;
     public Animator startAnim;
 
-    public GameObject missileHud, missileBody, warningUi, arrrowIndicator, tutoUi, joystickMain, ciwslockedUi, missionComplete_Ui, missionFailed_Ui, jet, onPlay_Ui, onPauseSlide_Ui;
+    public GameObject missileHud, missileBody, warningUi, arrrowIndicator, tutoUi, joystickMain, ciwslockedUi, missionComplete_Ui, missionFailed_Ui, jet_main, onPlay_Ui, onPauseSlide_Ui;
     public Sprite iconPause, iconPlay;
     public Image iconPausePlay;
 
@@ -139,8 +139,8 @@ public class gameController : MonoBehaviour
         joystickMain.SetActive(true);
         Debug.Log("missileCam");
 
-        yield return new WaitForSeconds(3f);
-        jet.SetActive(false);
+        yield return new WaitForSeconds(2f);
+        Destroy(jet_main);
     }
 
     public void loadMission(int sceneId)

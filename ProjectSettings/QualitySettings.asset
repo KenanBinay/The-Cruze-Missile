@@ -93,7 +93,7 @@ QualitySettings:
     skinWeights: 2
     textureQuality: 1
     anisotropicTextures: 0
-    antiAliasing: 2
+    antiAliasing: 4
     softParticles: 0
     softVegetation: 0
     realtimeReflectionProbes: 0
@@ -104,7 +104,7 @@ QualitySettings:
     streamingMipmapsActive: 1
     streamingMipmapsAddAllCameras: 0
     streamingMipmapsMemoryBudget: 512
-    streamingMipmapsRenderersPerFrame: 1024
+    streamingMipmapsRenderersPerFrame: 512
     streamingMipmapsMaxLevelReduction: 2
     streamingMipmapsMaxFileIORequests: 1024
     particleRaycastBudget: 64
