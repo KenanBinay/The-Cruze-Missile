@@ -10,7 +10,7 @@ public class targetController : MonoBehaviour
     int carSpawnPoint;
     public static int target_type;
 
-    private void OnLevelWasLoaded()
+    public void targetSelect()
     {
         staticTarget = GameObject.Find("targetObject_static");
 
@@ -46,10 +46,5 @@ public class targetController : MonoBehaviour
             staticTarget.SetActive(false);
             Debug.Log("airCraftTargetSelected");
         }
-    }
-
-    void Start()
-    {
-       
     }
 }

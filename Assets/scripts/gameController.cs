@@ -8,7 +8,10 @@ using UnityEngine.UI;
 
 public class gameController : MonoBehaviour
 {
-    public FxController fx;
+    public FxController script_fx;
+    public targetController script_targetSelection;
+    public missileSpawnManager script_missileSelection;
+    public ciwsSpawner script_ciwsSpawner;
 
     public Camera mainCam;
     public Animator startAnim;
@@ -36,12 +39,8 @@ public class gameController : MonoBehaviour
     {
         rayLenght = 400;
 
-        onPauseSlide_Ui.SetActive(false);
         missileHud.SetActive(false);
-        warningUi.SetActive(false);
         joystickMain.SetActive(false);
-        missionComplete_Ui.SetActive(false);
-        missionFailed_Ui.SetActive(false);
 
         startDelay = startClick = gameover = firstScreenTouch = false;
 
@@ -55,6 +54,16 @@ public class gameController : MonoBehaviour
         StartCoroutine(delayForStart());
     }
 
+    private void loadMapAssets()
+    {
+        script_targetSelection.targetSelect();     
+        script_ciwsSpawner.ciwsSpawn();
+    }
+    public void loadMissilePos()
+    {
+        script_missileSelection.missileSpawn();
+    }
+
     void FixedUpdate()
     {
         if (Input.GetMouseButtonDown(0) && !firstScreenTouch) { firstScreenTouch = true; }
@@ -63,7 +72,7 @@ public class gameController : MonoBehaviour
         {
             if (!startClick & Input.GetMouseButtonDown(0)) { tutoUi.SetActive(false); }
 
-            Debug.DrawRay(missileBody.transform.position, Vector3.down * rayLenght, Color.red);
+     //       Debug.DrawRay(missileBody.transform.position, Vector3.down * rayLenght, Color.red);
             Ray rayDown = new Ray(missileBody.transform.position, Vector3.down);
 
             if (Physics.Raycast(rayDown, out hit))
@@ -72,12 +81,12 @@ public class gameController : MonoBehaviour
                     if (hit.distance < 2) 
                     { 
                         missileController.crashed = true; 
-                        if (!FxController.fxExplode) fx.crashFx(); 
+                        if (!FxController.fxExplode) script_fx.crashFx(); 
                     }
                 if (hit.collider.tag == "plane") 
                 { 
                     missileController.crashed = true; 
-                    if (!FxController.fxExplode) fx.crashFx(); Debug.Log("plane ray hit"); 
+                    if (!FxController.fxExplode) script_fx.crashFx(); Debug.Log("plane ray hit"); 
                 }
             }
         }
@@ -130,21 +139,25 @@ public class gameController : MonoBehaviour
             countdownVal -= Time.deltaTime;
             int seconds = ((int)countdownVal);
             countdownTxt.text = "00:0" + seconds;
-            if (seconds == 0) { missileController.crashed = true; fx.crashFx(); missileHud.SetActive(false); arrrowIndicator.SetActive(false); }
+            if (seconds == 0) { missileController.crashed = true; script_fx.crashFx(); missileHud.SetActive(false); arrrowIndicator.SetActive(false); }
         }
     }
 
     IEnumerator delayForStart()
     {
+        loadMissilePos();
+
         yield return new WaitForSeconds(3.5f);
-      //  mainCam.cullingMask = ~(1 << LayerMask.NameToLayer("missile"));
+
         startDelay = true;
         startAnim.enabled = false;
         missileHud.SetActive(true);
         joystickMain.SetActive(true);
+        loadMapAssets();
         Debug.Log("missileCam");
 
         yield return new WaitForSeconds(2f);
+
         Destroy(jet_main);
     }
 

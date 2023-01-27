@@ -144,7 +144,7 @@ public class missileController : MonoBehaviour
             {           
                 hitVal++;
                 ciwsHit = true;
-      //          Debug.Log("hit: " + hitVal);  
+                Debug.Log("hit: " + hitVal);  
 
                 if (hitVal >= 2) { crashed = true; }
                 StartCoroutine(roundHit());
@@ -156,7 +156,7 @@ public class missileController : MonoBehaviour
         if (other.gameObject.CompareTag("outside") && !crashed)
         {
             outside = true;
-      //      Debug.Log("returnToCombat");
+            Debug.Log("returnToCombat");
         }
     }
     private void OnTriggerExit(Collider other)
@@ -164,7 +164,7 @@ public class missileController : MonoBehaviour
         if (other.gameObject.CompareTag("outside"))
         {
             outside = false;
-      //      Debug.Log("returned");
+            Debug.Log("returned");
         }
         if (other.gameObject.CompareTag("ciwsRadar"))
         {

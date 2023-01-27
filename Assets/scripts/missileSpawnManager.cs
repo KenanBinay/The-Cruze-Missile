@@ -11,7 +11,7 @@ public class missileSpawnManager : MonoBehaviour
     int spawnPoint, spawnFace;
     public static bool spawnedTop, spawnedLeft, spawnedRight, spawnedBottom;
 
-    private void OnLevelWasLoaded()
+    public void missileSpawn()
     {
         int[] spawnFaceNumbs = { 0, 1, 2, 3 };
         spawnFace = spawnFaceNumbs[Random.Range(0, spawnFaceNumbs.Length)];
