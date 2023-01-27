@@ -10,7 +10,7 @@ public class ciwsSpawner : MonoBehaviour
     int spawnDensity;
     private HashSet<int> _selectedValues;
 
-    void Start()
+    private void OnLevelWasLoaded()
     {
         _selectedValues = new HashSet<int>();
 
@@ -18,7 +18,7 @@ public class ciwsSpawner : MonoBehaviour
         spawnDensity = density[Random.Range(0, density.Length)];
 
         int[] lineVal = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-       
+
         Debug.Log("ciwsSpawnDensity: " + spawnDensity);
 
         for (int i = 0; i < spawnDensity; i++)
@@ -38,5 +38,9 @@ public class ciwsSpawner : MonoBehaviour
             ciwsSpawned.transform.parent = GameObject.Find("ciws").transform;
             ciwsSpawned.name = "ciws_" + i;
         }
+    }
+    void Start()
+    {
+       
     }
 }

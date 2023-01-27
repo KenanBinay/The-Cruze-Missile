@@ -10,7 +10,7 @@ public class missileController : MonoBehaviour
     public static Vector3 normal;
     public static Vector2 handleInput;
     public Transform hudYawUi;
-    public GameObject mainHudUi, warningUi, hitFlash, hitEffect;
+    public GameObject mainHudUi, warningUi, hitFlash_image, hitEffect_particle;
     Rigidbody rigidM;
 
     public float flySpeed, yawAmount;
@@ -128,12 +128,12 @@ public class missileController : MonoBehaviour
         normal = collision.contacts[0].normal;
         Debug.Log(normal);
 
-        if (normal.x > 0.5f) { Debug.Log("left"); }
+    /*    if (normal.x > 0.5f) { Debug.Log("left"); }
         if (normal.x < -0.5f) { Debug.Log("right"); }
         if (normal.y > 0.5f) { Debug.Log("front"); }
         if (normal.y < -0.5f) { Debug.Log("back"); }
         if (normal.z > 0.5f) { Debug.Log("up"); }
-        if (normal.z < -0.5f) { Debug.Log("down"); }
+        if (normal.z < -0.5f) { Debug.Log("down"); } */
     }
 
     private void OnTriggerEnter(Collider other)
@@ -144,7 +144,7 @@ public class missileController : MonoBehaviour
             {           
                 hitVal++;
                 ciwsHit = true;
-                Debug.Log("hit: " + hitVal);  
+      //          Debug.Log("hit: " + hitVal);  
 
                 if (hitVal >= 2) { crashed = true; }
                 StartCoroutine(roundHit());
@@ -156,7 +156,7 @@ public class missileController : MonoBehaviour
         if (other.gameObject.CompareTag("outside") && !crashed)
         {
             outside = true;
-            Debug.Log("returnToCombat");
+      //      Debug.Log("returnToCombat");
         }
     }
     private void OnTriggerExit(Collider other)
@@ -164,7 +164,7 @@ public class missileController : MonoBehaviour
         if (other.gameObject.CompareTag("outside"))
         {
             outside = false;
-            Debug.Log("returned");
+      //      Debug.Log("returned");
         }
         if (other.gameObject.CompareTag("ciwsRadar"))
         {
@@ -174,11 +174,11 @@ public class missileController : MonoBehaviour
 
     IEnumerator roundHit()
     {
-        hitFlash.SetActive(true);
-        hitEffect.SetActive(true);
+        hitFlash_image.SetActive(true);
+        hitEffect_particle.SetActive(true);
         yield return new WaitForSeconds(0.1f);
-        hitFlash.SetActive(false);
+        hitFlash_image.SetActive(false);
         yield return new WaitForSeconds(0.1f);
-        hitEffect.SetActive(false);
+        hitEffect_particle.SetActive(false);
     }
 }

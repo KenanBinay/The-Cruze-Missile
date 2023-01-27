@@ -27,6 +27,11 @@ public class gameController : MonoBehaviour
 
     int missionCurrentVal;
 
+    private void Awake()
+    {
+        Debug.unityLogger.logEnabled = false;
+    }
+
     void Start()
     {
         rayLenght = 400;
