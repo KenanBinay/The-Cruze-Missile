@@ -15,13 +15,16 @@ public class missileController : MonoBehaviour
 
     public float flySpeed, yawAmount;
     float yaw, pitch, yawHudHorizontal, yawHudVertical;
+    bool missileYawPitchSet;
 
     public static bool crashed, targetHit, outside, ciwsHit;
     public static int hitVal;
+
     void Start()
     {
         hitVal = 0;
-        outside = ciwsHit = crashed = targetHit = false;
+        pitch = 0f;
+        outside = ciwsHit = crashed = targetHit = missileYawPitchSet = false;
         rigidM = gameObject.GetComponent<Rigidbody>();
     }
 
@@ -29,7 +32,10 @@ public class missileController : MonoBehaviour
     {
         if (gameController.startDelay && !crashed && !targetHit)
         {
-            if (!gameController.firstScreenTouch)
+            //move forward
+            transform.position += transform.forward * flySpeed * Time.deltaTime;
+
+            if (!gameController.firstScreenTouch || gameController.startDelay && !missileYawPitchSet)
             {
                 pitch = 0;
 
@@ -37,12 +43,12 @@ public class missileController : MonoBehaviour
                 if (missileSpawnManager.spawnedRight) { yaw = 90; }
                 if (missileSpawnManager.spawnedLeft) { yaw = -90; }
                 if (missileSpawnManager.spawnedBottom) { yaw = 180; }
+
+                missileYawPitchSet = true;
             }
 
-            //move forward
-            transform.position += transform.forward * flySpeed * Time.deltaTime;
-
-            if (gameController.firstScreenTouch)
+            // controlling yaw & pitch 
+            if (missileYawPitchSet)
             {
                 //input
                 yaw += handleInput.x * yawAmount * Time.deltaTime / 1.2f;
@@ -59,6 +65,7 @@ public class missileController : MonoBehaviour
                 if (handleInput == Vector2.zero) { hudYawUi.DOLocalRotate(new Vector3(yawHudVertical, 0, 0), 1); yawHudHorizontal = 0; }
                 else { hudYawUi.localRotation = Quaternion.Euler(Vector3.back * yawHudHorizontal + Vector3.right * yawHudVertical); }
             }
+
             if (ciwsHit) mainHudUi.transform.DOShakeScale(0.4f, 0.03f).onComplete = mHudTweenDone;
         }
         if (crashed || targetHit) // exploding effect call

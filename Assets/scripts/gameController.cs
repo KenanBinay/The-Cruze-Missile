@@ -64,7 +64,7 @@ public class gameController : MonoBehaviour
         script_missileSelection.missileSpawn();
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (Input.GetMouseButtonDown(0) && !firstScreenTouch) { firstScreenTouch = true; }
 
@@ -149,11 +149,11 @@ public class gameController : MonoBehaviour
 
         yield return new WaitForSeconds(3.5f);
 
+        loadMapAssets();
         startDelay = true;
         startAnim.enabled = false;
         missileHud.SetActive(true);
         joystickMain.SetActive(true);
-        loadMapAssets();
         Debug.Log("missileCam");
 
         yield return new WaitForSeconds(2f);
