@@ -1421,7 +1421,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetColor: {r: 0.27450982, g: 1, b: 0.17254902, a: 1}
   needBoxIndicator: 1
-  needArrowIndicator: 1
+  needArrowIndicator: 0
   needDistanceText: 0
   indicator: {fileID: 0}
 --- !u!1 &1160411321335700403
@@ -1640,7 +1640,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetColor: {r: 0.27450982, g: 1, b: 0.17254902, a: 1}
   needBoxIndicator: 1
-  needArrowIndicator: 1
+  needArrowIndicator: 0
   needDistanceText: 0
   indicator: {fileID: 0}
 --- !u!1 &1160411321663887326

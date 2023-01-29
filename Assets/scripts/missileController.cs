@@ -15,7 +15,7 @@ public class missileController : MonoBehaviour
 
     public float flySpeed, yawAmount;
     float yaw, pitch, yawHudHorizontal, yawHudVertical;
-    bool missileYawPitchSet;
+    bool missileYawPitchSet, clickFixRot;
 
     public static bool crashed, targetHit, outside, ciwsHit;
     public static int hitVal;
@@ -24,7 +24,7 @@ public class missileController : MonoBehaviour
     {
         hitVal = 0;
         pitch = 0f;
-        outside = ciwsHit = crashed = targetHit = missileYawPitchSet = false;
+        outside = ciwsHit = crashed = targetHit = missileYawPitchSet = clickFixRot = false;
         rigidM = gameObject.GetComponent<Rigidbody>();
     }
 
@@ -35,22 +35,20 @@ public class missileController : MonoBehaviour
             //move forward
             transform.position += transform.forward * flySpeed * Time.deltaTime;
 
-            if (!gameController.firstScreenTouch || gameController.startDelay && !missileYawPitchSet)
+            if (!gameController.screenClickedOnPlay)
             {
+                if (missileSpawnManager.spawnedTop) yaw = 0;
+                if (missileSpawnManager.spawnedRight) yaw = 90;
+                if (missileSpawnManager.spawnedLeft) yaw = -90;
+                if (missileSpawnManager.spawnedBottom) yaw = 180;
+
                 pitch = 0;
-
-                if (missileSpawnManager.spawnedTop) { yaw = 0; }
-                if (missileSpawnManager.spawnedRight) { yaw = 90; }
-                if (missileSpawnManager.spawnedLeft) { yaw = -90; }
-                if (missileSpawnManager.spawnedBottom) { yaw = 180; }
-
-                missileYawPitchSet = true;
             }
-
-            // controlling yaw & pitch 
-            if (missileYawPitchSet)
+            else
             {
-                //input
+                if (!clickFixRot) setRotOnClick();
+
+                //input controlling yaw & pitch 
                 yaw += handleInput.x * yawAmount * Time.deltaTime / 1.2f;
                 pitch += handleInput.y * yawAmount * Time.deltaTime / 1.2f;
 
@@ -76,6 +74,16 @@ public class missileController : MonoBehaviour
                 if (targetHit) Debug.Log("targetHit"); fx.targetHitFx();
             }
         }
+    }
+
+    void setRotOnClick()
+    {
+        if (missileSpawnManager.spawnedTop) yaw = 0;
+        if (missileSpawnManager.spawnedRight) yaw = 90;
+        if (missileSpawnManager.spawnedLeft) yaw = -90;
+        if (missileSpawnManager.spawnedBottom) yaw = 180;
+
+        clickFixRot = true;
     }
 
     void mHudTweenDone() { ciwsHit = false; mainHudUi.transform.localScale = new Vector3(1, 1, 1); }

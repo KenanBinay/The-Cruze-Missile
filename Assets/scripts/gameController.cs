@@ -9,9 +9,10 @@ using UnityEngine.UI;
 public class gameController : MonoBehaviour
 {
     public FxController script_fx;
-    public targetController script_targetSelection;
+//    public targetController script_targetSelection;
     public missileSpawnManager script_missileSelection;
     public ciwsSpawner script_ciwsSpawner;
+   // public propAircraftController script_aircraftTargetSelection;
 
     public Camera mainCam;
     public Animator startAnim;
@@ -22,9 +23,9 @@ public class gameController : MonoBehaviour
 
     public TextMeshProUGUI altitute, countdownTxt, missionTxt, missionDoneTxt, missionFailedTxt;
 
-    public static bool startDelay, firstScreenTouch;
+    public static bool startDelay, screenClickedOnPlay;
 
-    bool countdownBool, startClick, gameover, paused;
+    bool countdownBool, gameover, paused;
     float rayLenght, countdownVal;
     RaycastHit hit;
 
@@ -32,7 +33,7 @@ public class gameController : MonoBehaviour
 
     private void Awake()
     {
-        Debug.unityLogger.logEnabled = false;
+     //   Debug.unityLogger.logEnabled = false;
     }
 
     void Start()
@@ -42,7 +43,7 @@ public class gameController : MonoBehaviour
         missileHud.SetActive(false);
         joystickMain.SetActive(false);
 
-        startDelay = startClick = gameover = firstScreenTouch = false;
+        startDelay = screenClickedOnPlay = gameover = false;
 
         if (PlayerPrefs.GetInt("mission", 0) == 0) { PlayerPrefs.SetInt("mission", 1); }
 
@@ -55,8 +56,7 @@ public class gameController : MonoBehaviour
     }
 
     private void loadMapAssets()
-    {
-        script_targetSelection.targetSelect();     
+    {  
         script_ciwsSpawner.ciwsSpawn();
     }
     public void loadMissilePos()
@@ -66,11 +66,9 @@ public class gameController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !firstScreenTouch) { firstScreenTouch = true; }
-
         if (!missileController.crashed && !missileController.targetHit && startDelay)
         {
-            if (!startClick & Input.GetMouseButtonDown(0)) { tutoUi.SetActive(false); }
+            if (!screenClickedOnPlay & Input.GetMouseButtonDown(0)) { tutoUi.SetActive(false); screenClickedOnPlay = true; }
 
      //       Debug.DrawRay(missileBody.transform.position, Vector3.down * rayLenght, Color.red);
             Ray rayDown = new Ray(missileBody.transform.position, Vector3.down);
@@ -195,6 +193,8 @@ public class gameController : MonoBehaviour
 
     IEnumerator loadSceneAsync(int sceneId)
     {
+        if (Time.timeScale != 1) Time.timeScale = 1;
+
         yield return new WaitForSeconds(0.2f);
 
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneId);

@@ -23,7 +23,7 @@ public class propAircraftController : MonoBehaviour
         setObject.transform.parent = gameObject.transform;
     }
 
-    private void Update()
+    void Update()
     {
         if (targetController.target_type == 2 && aircraft == null)
         {
@@ -36,7 +36,5 @@ public class propAircraftController : MonoBehaviour
             aircraft.GetComponent<Target>().enabled = true;
             aircraft.tag = "airTarget";
         }
-
-        if (targetController.target_type == 2 && !missileController.targetHit) CamController.aircraft_targetVector = aircraft.transform.position;
     }
 }

@@ -56,7 +56,5 @@ public class propCarController : MonoBehaviour
             }
             vehicle.tag = "vehicleTarget";
         }
-
-        if (!missileController.targetHit && targetController.target_type == 1) CamController.car_targetVector = vehicle.transform.position;
     }
 }
