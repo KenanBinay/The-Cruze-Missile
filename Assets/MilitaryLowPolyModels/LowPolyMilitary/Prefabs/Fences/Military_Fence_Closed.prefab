@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5872076172799747399}
   m_Layer: 0
   m_Name: Military_Fence_Closed
-  m_TagString: Untagged
+  m_TagString: crashColl
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,6 +29,7 @@ Transform:
   m_LocalRotation: {x: -0.000000081460335, y: 0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5092877911195992381}
   - {fileID: 6256806723809357230}
@@ -54,9 +55,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -68,6 +72,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -80,6 +85,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &5872076172799747399
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -100,10 +106,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4192730432553944130}
     m_Modifications:
-    - target: {fileID: 8121731888419030347, guid: 956e31d94987b5d4ebfb844d86871d59,
+    - target: {fileID: 320513360912560815, guid: 956e31d94987b5d4ebfb844d86871d59,
         type: 3}
-      propertyPath: m_Name
-      value: Military_Fence_Thin_End_Post
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 320513360912560815, guid: 956e31d94987b5d4ebfb844d86871d59,
         type: 3}
@@ -122,6 +128,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 320513360912560815, guid: 956e31d94987b5d4ebfb844d86871d59,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 320513360912560815, guid: 956e31d94987b5d4ebfb844d86871d59,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -134,16 +145,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 320513360912560815, guid: 956e31d94987b5d4ebfb844d86871d59,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 320513360912560815, guid: 956e31d94987b5d4ebfb844d86871d59,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 320513360912560815, guid: 956e31d94987b5d4ebfb844d86871d59,
         type: 3}
@@ -160,6 +161,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8121731888419030347, guid: 956e31d94987b5d4ebfb844d86871d59,
+        type: 3}
+      propertyPath: m_Name
+      value: Military_Fence_Thin_End_Post
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121731888419030347, guid: 956e31d94987b5d4ebfb844d86871d59,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 956e31d94987b5d4ebfb844d86871d59, type: 3}
 --- !u!4 &5092877911195992381 stripped
@@ -175,10 +186,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4192730432553944130}
     m_Modifications:
-    - target: {fileID: 8121731888419030347, guid: 956e31d94987b5d4ebfb844d86871d59,
+    - target: {fileID: 320513360912560815, guid: 956e31d94987b5d4ebfb844d86871d59,
         type: 3}
-      propertyPath: m_Name
-      value: Military_Fence_Thin_End_Post (1)
+      propertyPath: m_RootOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 320513360912560815, guid: 956e31d94987b5d4ebfb844d86871d59,
         type: 3}
@@ -197,6 +208,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 320513360912560815, guid: 956e31d94987b5d4ebfb844d86871d59,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 320513360912560815, guid: 956e31d94987b5d4ebfb844d86871d59,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0.000000081460335
       objectReference: {fileID: 0}
@@ -212,16 +228,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 320513360912560815, guid: 956e31d94987b5d4ebfb844d86871d59,
         type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 320513360912560815, guid: 956e31d94987b5d4ebfb844d86871d59,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 320513360912560815, guid: 956e31d94987b5d4ebfb844d86871d59,
-        type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
@@ -234,6 +240,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121731888419030347, guid: 956e31d94987b5d4ebfb844d86871d59,
+        type: 3}
+      propertyPath: m_Name
+      value: Military_Fence_Thin_End_Post (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121731888419030347, guid: 956e31d94987b5d4ebfb844d86871d59,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 956e31d94987b5d4ebfb844d86871d59, type: 3}

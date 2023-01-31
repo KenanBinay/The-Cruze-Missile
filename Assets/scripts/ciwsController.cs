@@ -21,24 +21,27 @@ public class ciwsController : MonoBehaviour
 
     private void Update()
     {
-        if (missileController.crashed || missileController.targetHit || !targetDetected)
+        if (ciwsSpawner.ciwsSpawned)
         {
-            gunM.transform.DORotate(new Vector3(0, 0, 0), 3);
-            gunUp.transform.DORotate(new Vector3(0, 0, 0), 3);
+            if (missileController.crashed || missileController.targetHit || !targetDetected)
+            {
+                gunM.transform.DORotate(new Vector3(0, 0, 0), 3);
+                gunUp.transform.DORotate(new Vector3(0, 0, 0), 3);
 
-            roundEffect.SetActive(false);
-            targetDetected = false;
+                roundEffect.SetActive(false);
+                targetDetected = false;
+            }
         }
     }
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("missileM")) { targetDetected = true; Debug.Log("lockedOn"); }
+        if (other.gameObject.CompareTag("missileM") && ciwsSpawner.ciwsSpawned) { targetDetected = true; Debug.Log("lockedOn"); }      
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("missileM") && !missileController.crashed && !missileController.targetHit && gameController.startDelay)
+        if (other.gameObject.CompareTag("missileM") && !missileController.crashed && !missileController.targetHit && ciwsSpawner.ciwsSpawned)
         {
             roundEffect.SetActive(true);
 

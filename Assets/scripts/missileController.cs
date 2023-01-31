@@ -140,15 +140,6 @@ public class missileController : MonoBehaviour
         }
 
         rigidM.constraints = RigidbodyConstraints.FreezeAll;
-        normal = collision.contacts[0].normal;
-        Debug.Log(normal);
-
-    /*    if (normal.x > 0.5f) { Debug.Log("left"); }
-        if (normal.x < -0.5f) { Debug.Log("right"); }
-        if (normal.y > 0.5f) { Debug.Log("front"); }
-        if (normal.y < -0.5f) { Debug.Log("back"); }
-        if (normal.z > 0.5f) { Debug.Log("up"); }
-        if (normal.z < -0.5f) { Debug.Log("down"); } */
     }
 
     private void OnTriggerEnter(Collider other)

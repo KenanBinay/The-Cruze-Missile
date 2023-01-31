@@ -33,8 +33,9 @@ public class propAircraftController : MonoBehaviour
             if (setNumber == 3) { parentLane = gameObject.transform.Find("heliSet_4(Clone)").gameObject; }
 
             aircraft = parentLane.transform.GetChild(aircraftNumb).gameObject;
-            aircraft.GetComponent<Target>().enabled = true;
             aircraft.tag = "airTarget";
+
+            aircraft.GetComponent<Target>().enabled = true;
         }
     }
 }

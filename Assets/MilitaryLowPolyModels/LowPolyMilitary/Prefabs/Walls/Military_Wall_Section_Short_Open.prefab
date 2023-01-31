@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2824824511921254351}
   m_Layer: 0
   m_Name: Military_Wall_Section_Short_Open
-  m_TagString: Untagged
+  m_TagString: crashColl
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,6 +29,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4515101232183875473}
   m_Father: {fileID: 0}
@@ -53,9 +54,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -67,6 +71,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -79,6 +84,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &2824824511921254351
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -89,9 +95,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4300120, guid: 7c8f1c5ca31156243a1c63f61bd2d8a3, type: 3}
 --- !u!1001 &6304839559735086700
 PrefabInstance:
@@ -100,10 +106,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2391854561334028979}
     m_Modifications:
-    - target: {fileID: 8116615288114440401, guid: 435720477ce857341b853bfd7378f0da,
+    - target: {fileID: 7626730017164663293, guid: 435720477ce857341b853bfd7378f0da,
         type: 3}
-      propertyPath: m_Name
-      value: Military_Concrete_Pillar (1)
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7626730017164663293, guid: 435720477ce857341b853bfd7378f0da,
         type: 3}
@@ -122,6 +128,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7626730017164663293, guid: 435720477ce857341b853bfd7378f0da,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7626730017164663293, guid: 435720477ce857341b853bfd7378f0da,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -137,16 +148,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7626730017164663293, guid: 435720477ce857341b853bfd7378f0da,
         type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7626730017164663293, guid: 435720477ce857341b853bfd7378f0da,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7626730017164663293, guid: 435720477ce857341b853bfd7378f0da,
-        type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
@@ -159,6 +160,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8116615288114440401, guid: 435720477ce857341b853bfd7378f0da,
+        type: 3}
+      propertyPath: m_Name
+      value: Military_Concrete_Pillar (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 435720477ce857341b853bfd7378f0da, type: 3}

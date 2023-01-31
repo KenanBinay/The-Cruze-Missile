@@ -10,6 +10,8 @@ public class ciwsSpawner : MonoBehaviour
     int spawnDensity;
     private HashSet<int> _selectedValues;
 
+    public static bool ciwsSpawned;
+
     public void ciwsSpawn()
     {
         _selectedValues = new HashSet<int>();
@@ -38,5 +40,7 @@ public class ciwsSpawner : MonoBehaviour
             ciwsSpawned.transform.parent = GameObject.Find("ciws").transform;
             ciwsSpawned.name = "ciws_" + i;
         }
+
+        ciwsSpawned = true;
     }
 }
