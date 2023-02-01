@@ -25,8 +25,8 @@ public class ciwsController : MonoBehaviour
         {
             if (missileController.crashed || missileController.targetHit || !targetDetected)
             {
-                gunM.transform.DORotate(new Vector3(0, 0, 0), 3);
-                gunUp.transform.DORotate(new Vector3(0, 0, 0), 3);
+                if (gunM != null) gunM.transform.DORotate(new Vector3(0, 0, 0), 3);
+                if (gunUp != null) gunUp.transform.DORotate(new Vector3(0, 0, 0), 3);
 
                 roundEffect.SetActive(false);
                 targetDetected = false;
@@ -45,8 +45,8 @@ public class ciwsController : MonoBehaviour
         {
             roundEffect.SetActive(true);
 
-            gunM.transform.DOLookAt(new Vector3(0, missile.transform.position.y, 0), 2);
-            gunUp.transform.DOLookAt(missile.transform.position, 2);
+            if (gunM != null) gunM.transform.DOLookAt(new Vector3(0, missile.transform.position.y, 0), 2);
+            if (gunUp != null) gunUp.transform.DOLookAt(missile.transform.position, 2);
         }
     }
 

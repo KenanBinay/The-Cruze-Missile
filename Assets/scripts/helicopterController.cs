@@ -37,7 +37,7 @@ public class helicopterController : MonoBehaviour
         {
             rbHeli.useGravity = true;
             missileHit = true;
-            transform.DOPause();
+            if (transform != null) transform.DOPause();
         }
         if (collision.gameObject.CompareTag("crashColl")) { crashedGround = true; }
     }

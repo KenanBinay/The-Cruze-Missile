@@ -197,11 +197,13 @@ public class gameController : MonoBehaviour
 
         yield return new WaitForSeconds(0.2f);
 
-        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneId);
+        SceneManager.LoadScene(sceneId);
+
+ /*       AsyncOperation operation = SceneManager.LoadSceneAsync(sceneId);
 
         while (!operation.isDone)
         {
             yield return null;
-        }
+        }*/
     }
 }
