@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 692414994074237204}
   - component: {fileID: 4678819443964045661}
   - component: {fileID: 4299748041011903552}
-  - component: {fileID: 8680271097110052066}
   m_Layer: 0
   m_Name: Gastanks_Large_White
   m_TagString: crashColl
@@ -85,20 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &8680271097110052066
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2363956047885828251}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 1.94
-  m_Height: 7.77
-  m_Direction: 0
-  m_Center: {x: 0, y: 1.78, z: 0.000012397766}
 --- !u!1 &2689934568489692696
 GameObject:
   m_ObjectHideFlags: 0

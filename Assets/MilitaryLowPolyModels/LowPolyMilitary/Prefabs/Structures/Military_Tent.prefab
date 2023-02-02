@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 1587211436411279286}
   - component: {fileID: 2669876794253073001}
   - component: {fileID: 4531368482942901380}
-  - component: {fileID: 5259164127072551287}
+  - component: {fileID: 3836202757493610091}
   m_Layer: 0
   m_Name: Military_Tent
   m_TagString: crashColl
@@ -168,8 +168,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5259164127072551287
-MeshCollider:
+--- !u!65 &3836202757493610091
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -178,7 +178,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -1922689981984603507, guid: 7c8f1c5ca31156243a1c63f61bd2d8a3, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 4.8574004, y: 3.7376575, z: 7.431953}
+  m_Center: {x: 0, y: 1.864147, z: 0}

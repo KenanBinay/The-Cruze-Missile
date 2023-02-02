@@ -52,8 +52,8 @@ MonoBehaviour:
     overrideState: 0
     value: 1
   temperature:
-    overrideState: 1
-    value: 18
+    overrideState: 0
+    value: 20
   tint:
     overrideState: 0
     value: 0
@@ -65,16 +65,16 @@ MonoBehaviour:
     value: 0
   saturation:
     overrideState: 1
-    value: 5
+    value: 15
   brightness:
     overrideState: 0
     value: 0
   postExposure:
     overrideState: 1
-    value: 0.05
+    value: 0.1
   contrast:
     overrideState: 1
-    value: 7
+    value: 10
   mixerRedOutRedIn:
     overrideState: 0
     value: 100

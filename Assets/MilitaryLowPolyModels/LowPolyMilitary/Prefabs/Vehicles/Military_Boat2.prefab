@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4905252813043037839}
   - component: {fileID: 3205805555555722300}
   - component: {fileID: 3489735881979083712}
-  - component: {fileID: -1493470258926695249}
   - component: {fileID: 425213270396411407}
+  - component: {fileID: 4440515711990182169}
   m_Layer: 0
   m_Name: Military_Boat2
   m_TagString: Untagged
@@ -87,20 +87,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &-1493470258926695249
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1261464446019376683}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 8699858357898353597, guid: 7c8f1c5ca31156243a1c63f61bd2d8a3, type: 3}
 --- !u!205 &425213270396411407
 LODGroup:
   m_ObjectHideFlags: 0
@@ -128,6 +114,19 @@ LODGroup:
     renderers:
     - renderer: {fileID: 3489735881979083712}
   m_Enabled: 1
+--- !u!65 &4440515711990182169
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261464446019376683}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.8037438, y: 3.1882107, z: 9.646679}
+  m_Center: {x: 0, y: 0.4229263, z: 0.9573251}
 --- !u!1 &4662750752007553524
 GameObject:
   m_ObjectHideFlags: 0
