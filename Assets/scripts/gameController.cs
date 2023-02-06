@@ -146,7 +146,7 @@ public class gameController : MonoBehaviour
         loadMissilePos();
 
         yield return new WaitForSeconds(3.5f);
-
+        mainCam.cullingMask += (1 << LayerMask.NameToLayer("missile"));
         loadMapAssets();
         startDelay = true;
         startAnim.enabled = false;
@@ -197,13 +197,11 @@ public class gameController : MonoBehaviour
 
         yield return new WaitForSeconds(0.2f);
 
-        SceneManager.LoadScene(sceneId);
-
- /*       AsyncOperation operation = SceneManager.LoadSceneAsync(sceneId);
+        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneId);
 
         while (!operation.isDone)
         {
             yield return null;
-        }*/
+        }
     }
 }

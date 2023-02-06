@@ -9,7 +9,7 @@ public class missileController : MonoBehaviour
 
     public static Vector3 normal;
     public static Vector2 handleInput;
-    public Transform hudYawUi;
+    public Transform hudYawUi, cam;
     public GameObject mainHudUi, warningUi, hitFlash_image, hitEffect_particle;
     Rigidbody rigidM;
 
@@ -28,12 +28,11 @@ public class missileController : MonoBehaviour
         rigidM = gameObject.GetComponent<Rigidbody>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (gameController.startDelay && !crashed && !targetHit)
         {
-            //move forward
-            transform.position += transform.forward * flySpeed * Time.deltaTime;
+            moveForward();
 
             if (!gameController.screenClickedOnPlay)
             {
@@ -75,6 +74,8 @@ public class missileController : MonoBehaviour
             }
         }
     }
+
+    void moveForward() { transform.position += transform.forward * flySpeed * Time.deltaTime; }
 
     void setRotOnClick()
     {

@@ -12,7 +12,7 @@ public class ciwsController : MonoBehaviour
 
     void Start()
     {
-        missile = GameObject.Find("Missile_main").gameObject;
+        missile = GameObject.Find("Missile").gameObject;
         targetDetected = false;
         roundEffect.SetActive(false);
 

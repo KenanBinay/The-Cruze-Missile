@@ -8,7 +8,9 @@ public class CamController : MonoBehaviour
     public GameObject Missile, diveEffect;
     private Camera cam;
 
+    private Vector3 _currentVelocity = Vector3.one;
     public float smoothSpeed;
+    public Vector3 _offset;
 
     RaycastHit hit;
 
@@ -24,8 +26,7 @@ public class CamController : MonoBehaviour
 
         if (!missileController.crashed && !missileController.targetHit && gameController.startDelay)
         {
-            transform.DOMove(Missile.transform.position, 0);
-            transform.DORotate(Missile.transform.eulerAngles, 0);
+            smoothFollow();
 
             float missileDegree = Missile.transform.eulerAngles.x;
             if (missileDegree > 40 && missileDegree < 90)
@@ -50,5 +51,12 @@ public class CamController : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             { if (hit.distance < 2) { transform.position += new Vector3(0, 0, 5); } }
         }
+    }
+
+    void smoothFollow()
+    {
+        Vector3 missilePosition = Missile.transform.position + (Missile.transform.rotation * _offset);
+        transform.position = Vector3.SmoothDamp(transform.position, missilePosition, ref _currentVelocity, smoothSpeed);
+        transform.DOLookAt(new Vector3(Missile.transform.position.x, Missile.transform.position.y + 2, Missile.transform.position.z), 1f);
     }
 }

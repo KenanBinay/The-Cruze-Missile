@@ -22,7 +22,7 @@ public class fuelManager : MonoBehaviour
     {
         fuelSlide.maxValue = fuelCountdown;
 
-        missileObj = GameObject.Find("Missile_main");
+        missileObj = GameObject.Find("Missile");
         missileRb = missileObj.GetComponent<Rigidbody>();
 
         anim_outOfFuel.enabled = false;
@@ -44,13 +44,13 @@ public class fuelManager : MonoBehaviour
                 fuelSlide.value = fuelCountdown;
 
                 fillArea.color = Color.Lerp(fillArea.color, targetColor, 0.1f);
-            }
-            else { missileRb.useGravity = true; outOfFuel = true; anim_outOfFuel.enabled = true; }
-        }
 
-        if (fuelCountdown > 20) targetColor = a;
-        if (fuelCountdown > 15 && fuelCountdown < 20) targetColor = b;
-        if (fuelCountdown > 8 && fuelCountdown < 15) targetColor = c;
-        if (fuelCountdown < 8) targetColor = d;
+                if (fuelCountdown > 20) targetColor = a;
+                if (fuelCountdown > 15 && fuelCountdown < 20) targetColor = b;
+                if (fuelCountdown > 8 && fuelCountdown < 15) targetColor = c;
+                if (fuelCountdown < 8) targetColor = d;
+            }
+            else { missileRb.useGravity = true; outOfFuel = true; anim_outOfFuel.enabled = true; }          
+        }   
     }
 }
