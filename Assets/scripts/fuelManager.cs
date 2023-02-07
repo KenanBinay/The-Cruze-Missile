@@ -25,7 +25,7 @@ public class fuelManager : MonoBehaviour
         missileObj = GameObject.Find("Missile");
         missileRb = missileObj.GetComponent<Rigidbody>();
 
-        anim_outOfFuel.enabled = false;
+        anim_outOfFuel.enabled = outOfFuel = false;
 
         fuelBar.SetActive(false);
 

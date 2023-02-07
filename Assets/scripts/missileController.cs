@@ -11,6 +11,7 @@ public class missileController : MonoBehaviour
     public static Vector2 handleInput;
     public Transform hudYawUi, cam;
     public GameObject mainHudUi, warningUi, hitFlash_image, hitEffect_particle;
+    public GameObject[] fullJet_missileParticles, outOfFuel_missileParticles;
     Rigidbody rigidM;
 
     public float flySpeed, yawAmount;
@@ -26,6 +27,12 @@ public class missileController : MonoBehaviour
         pitch = 0f;
         outside = ciwsHit = crashed = targetHit = missileYawPitchSet = clickFixRot = false;
         rigidM = gameObject.GetComponent<Rigidbody>();
+
+        for (int i = 0; i < fullJet_missileParticles.Length; i++)
+        {
+            fullJet_missileParticles[i].SetActive(true);
+            outOfFuel_missileParticles[i].SetActive(false);
+        }
     }
 
     void FixedUpdate()
@@ -64,6 +71,12 @@ public class missileController : MonoBehaviour
             }
 
             if (ciwsHit) mainHudUi.transform.DOShakeScale(0.4f, 0.03f).onComplete = mHudTweenDone;
+
+            // setting missile nozzle particles when outOfFuel is true
+            if (fuelManager.outOfFuel)
+            {
+                fullJet_missileParticles[0].SetActive(false); outOfFuel_missileParticles[0].SetActive(true);             
+            }
         }
         if (crashed || targetHit) // exploding effect call
         {
