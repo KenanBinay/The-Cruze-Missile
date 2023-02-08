@@ -214,8 +214,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetColor: {r: 0.27450982, g: 1, b: 0.17254902, a: 1}
-  needBoxIndicator: 1
-  needArrowIndicator: 0
+  needBoxIndicator: 0
+  needArrowIndicator: 1
   needDistanceText: 0
   indicator: {fileID: 0}
 --- !u!1 &4854597276407951510
@@ -988,8 +988,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetColor: {r: 0.27450982, g: 1, b: 0.17254902, a: 1}
-  needBoxIndicator: 1
-  needArrowIndicator: 0
+  needBoxIndicator: 0
+  needArrowIndicator: 1
   needDistanceText: 0
   indicator: {fileID: 0}
 --- !u!1 &4854597277178708258
@@ -1124,8 +1124,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetColor: {r: 0.27450982, g: 1, b: 0.17254902, a: 1}
-  needBoxIndicator: 1
-  needArrowIndicator: 0
+  needBoxIndicator: 0
+  needArrowIndicator: 1
   needDistanceText: 0
   indicator: {fileID: 0}
 --- !u!1 &4854597277315107727
