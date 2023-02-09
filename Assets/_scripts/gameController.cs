@@ -9,15 +9,14 @@ using UnityEngine.UI;
 public class gameController : MonoBehaviour
 {
     public FxController script_fx;
-//    public targetController script_targetSelection;
     public missileSpawnManager script_missileSelection;
     public ciwsSpawner script_ciwsSpawner;
-   // public propAircraftController script_aircraftTargetSelection;
 
     public Camera mainCam;
     public Animator startAnim;
 
-    public GameObject missileHud, missileBody, warningUi, arrrowIndicator, tutoUi, joystickMain, ciwslockedUi, missionComplete_Ui, missionFailed_Ui, jet_main, onPlay_Ui, onPauseSlide_Ui;
+    public GameObject missileHud, missileBody, warningUi, arrrowIndicator, tutoUi, joystickMain, ciwslockedUi,
+        missionComplete_Ui, missionFailed_Ui, jet_main, pauseButton_Ui, fuelBar_Ui, missionInfo_Ui, onPauseSlide_Ui;
     public Sprite iconPause, iconPlay;
     public Image iconPausePlay;
 
@@ -25,7 +24,7 @@ public class gameController : MonoBehaviour
 
     public static bool startDelay, screenClickedOnPlay;
 
-    bool countdownBool, gameover, paused;
+    bool countdownBool, gameover, paused, sceneLoadButtonClick;
     float rayLenght, countdownVal;
     RaycastHit hit;
 
@@ -43,7 +42,7 @@ public class gameController : MonoBehaviour
         missileHud.SetActive(false);
         joystickMain.SetActive(false);
 
-        startDelay = screenClickedOnPlay = gameover = false;
+        startDelay = screenClickedOnPlay = gameover = sceneLoadButtonClick = false;
 
         if (PlayerPrefs.GetInt("mission", 0) == 0) { PlayerPrefs.SetInt("mission", 1); }
 
@@ -105,17 +104,23 @@ public class gameController : MonoBehaviour
             missionComplete_Ui.SetActive(true);
             missionDoneTxt.text = "MISSION " + missionCurrentVal + " COMPLETE";
             gameover = true;
+
+            mainCam.cullingMask -= (1 << LayerMask.NameToLayer("missile"));
         }
         if (missileController.crashed && !gameover)
         {
             arrrowIndicator.SetActive(false);
             missileHud.SetActive(false);
             joystickMain.SetActive(false);
-            onPlay_Ui.SetActive(false);
+            pauseButton_Ui.SetActive(false);
+            fuelBar_Ui.SetActive(false);
+            missionInfo_Ui.SetActive(false);
 
             missionFailed_Ui.SetActive(true);
             missionFailedTxt.text = "MISSION " + missionCurrentVal + " FAILED";
             gameover = true;
+
+            mainCam.cullingMask -= (1 << LayerMask.NameToLayer("missile"));
         }
 
         //calculate main height to ground by using missiles position in unity
@@ -146,6 +151,7 @@ public class gameController : MonoBehaviour
         loadMissilePos();
 
         yield return new WaitForSeconds(3.5f);
+
         mainCam.cullingMask += (1 << LayerMask.NameToLayer("missile"));
         loadMapAssets();
         startDelay = true;
@@ -161,7 +167,7 @@ public class gameController : MonoBehaviour
 
     public void loadMission(int sceneId)
     {
-        StartCoroutine(loadSceneAsync(sceneId));
+        if (!sceneLoadButtonClick) sceneLoadButtonClick = true; StartCoroutine(loadSceneAsync(sceneId));
     }
 
     public void pausePlay()
