@@ -60,7 +60,7 @@ public class gameController : MonoBehaviour
     }
     public void loadMissilePos()
     {
-        script_missileSelection.missileSpawn();
+     //   script_missileSelection.missileSpawn();
     }
 
     void Update()
@@ -199,6 +199,7 @@ public class gameController : MonoBehaviour
 
     IEnumerator loadSceneAsync(int sceneId)
     {
+        DOTween.KillAll();
         if (Time.timeScale != 1) Time.timeScale = 1;
 
         yield return new WaitForSeconds(0.2f);

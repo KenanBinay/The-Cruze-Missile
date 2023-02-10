@@ -11,15 +11,12 @@ public class targetIndicator : MonoBehaviour
     public Texture bottomRightBorder;
 
     List<Collider> targets = new List<Collider>();
-    Camera targetCamera;
+    public Camera targetCamera;
     public Collider targetCollider;
 
     void Start()
     {
-        targetCamera = GetComponent<Camera>();
-        if (targetController.target_type == 0) { targetCollider = GameObject.Find("targetObject_static").GetComponent<Collider>(); }
-        if (targetController.target_type == 1) { targetCollider = propCarController.vehicle.GetComponent<Collider>(); }
-        if (targetController.target_type == 2) { targetCollider = propAircraftController.aircraft.GetComponent<BoxCollider>(); }
+
     }
 
     void Update()
@@ -37,6 +34,7 @@ public class targetIndicator : MonoBehaviour
             }
             targets.Add(targetCollider);
         }
+        if (targetCollider == null && targetController.target_type == 0) { targetCollider = GameObject.Find("targetObject_static").GetComponent<Collider>(); }
         if (targetCollider == null && targetController.target_type == 1) { targetCollider = propCarController.vehicle.GetComponent<Collider>(); }
         if (targetCollider == null && targetController.target_type == 2) { targetCollider = propAircraftController.aircraft.GetComponent<Collider>(); }
     }

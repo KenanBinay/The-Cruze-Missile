@@ -60,7 +60,8 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
     public virtual void OnPointerDown(PointerEventData eventData)
     {
-        input = Vector2.zero;
+       // if (missileSpawnManager.missileRot == 0) { input = Vector2.zero; }
+        if (missileSpawnManager.missileRot != 0) { input = new Vector3(missileSpawnManager.missileRot, 0,0); missileSpawnManager.missileRot = 0; }   
         OnDrag(eventData);
     }
 
@@ -78,7 +79,7 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
             FormatInput();
             HandleInput(input.magnitude, input.normalized, radius, cam);
             handle.anchoredPosition = input * radius * handleRange;
-            missileController.handleInput = input;
+            missileController.handleInput = input;        
         }
     }
 

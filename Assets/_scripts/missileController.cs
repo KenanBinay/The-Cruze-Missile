@@ -15,8 +15,8 @@ public class missileController : MonoBehaviour
     Rigidbody rigidM;
 
     public float flySpeed, yawAmount;
-    float yaw, pitch, yawHudHorizontal, yawHudVertical;
-    bool missileYawPitchSet, clickFixRot;
+    public static float yaw, pitch, yawHudHorizontal, yawHudVertical;
+    bool missileYawPitchSet, clickCheckMissileRot;
 
     public static bool crashed, targetHit, outside, ciwsHit;
     public static int hitVal;
@@ -24,8 +24,9 @@ public class missileController : MonoBehaviour
     void Start()
     {
         hitVal = 0;
-        pitch = 0f;
-        outside = ciwsHit = crashed = targetHit = missileYawPitchSet = clickFixRot = false;
+        pitch = yaw = 0f;
+
+        outside = ciwsHit = crashed = targetHit = missileYawPitchSet = clickCheckMissileRot = false;
         rigidM = gameObject.GetComponent<Rigidbody>();
 
         for (int i = 0; i < fullJet_missileParticles.Length; i++)
@@ -41,41 +42,34 @@ public class missileController : MonoBehaviour
         {
             moveForward();
 
-            if (!gameController.screenClickedOnPlay)
+            //   if (!clickCheckMissileRot) checkMissileRotOnClick();
+
+            //input controlling yaw & pitch 
+            yaw += handleInput.x * yawAmount * Time.deltaTime / 1.2f;
+            pitch += handleInput.y * yawAmount * Time.deltaTime / 1.2f;
+
+            if (yawHudHorizontal <= -90 && handleInput.x < 0 || yawHudHorizontal >= 90 && handleInput.x > 0) { }
+            else { yawHudHorizontal += handleInput.x * yawAmount * Time.deltaTime; }
+
+            yawHudVertical += handleInput.y * yawAmount * Time.deltaTime;
+
+            //apply rotation
+            if (handleInput.x != 0 || handleInput.y != 0)
             {
-                if (missileSpawnManager.spawnedTop) yaw = 0;
-                if (missileSpawnManager.spawnedRight) yaw = 90;
-                if (missileSpawnManager.spawnedLeft) yaw = -90;
-                if (missileSpawnManager.spawnedBottom) yaw = 180;
-
-                pitch = 0;
+                //  transform.localRotation = Quaternion.Euler(Vector3.up * yaw + Vector3.left * pitch);
+                transform.Rotate(-1 * handleInput.y / 1.5f, handleInput.x / 1.5f, 0f);
             }
-            else
-            {
-                if (!clickFixRot) setRotOnClick();
 
-                //input controlling yaw & pitch 
-                yaw += handleInput.x * yawAmount * Time.deltaTime / 1.2f;
-                pitch += handleInput.y * yawAmount * Time.deltaTime / 1.2f;
+            if (handleInput == Vector2.zero) { hudYawUi.DOLocalRotate(new Vector3(yawHudVertical, 0, 0), 1); yawHudHorizontal = 0; }
+            else { hudYawUi.localRotation = Quaternion.Euler(Vector3.back * yawHudHorizontal + Vector3.right * yawHudVertical); }
 
-                if (yawHudHorizontal <= -90 && handleInput.x < 0 || yawHudHorizontal >= 90 && handleInput.x > 0) { }
-                else { yawHudHorizontal += handleInput.x * yawAmount * Time.deltaTime; }
-
-                yawHudVertical += handleInput.y * yawAmount * Time.deltaTime;
-
-                //apply rotation
-                transform.localRotation = Quaternion.Euler(Vector3.up * yaw + Vector3.left * pitch);
-
-                if (handleInput == Vector2.zero) { hudYawUi.DOLocalRotate(new Vector3(yawHudVertical, 0, 0), 1); yawHudHorizontal = 0; }
-                else { hudYawUi.localRotation = Quaternion.Euler(Vector3.back * yawHudHorizontal + Vector3.right * yawHudVertical); }
-            }
 
             if (ciwsHit) mainHudUi.transform.DOShakeScale(0.4f, 0.03f).onComplete = mHudTweenDone;
 
             // setting missile nozzle particles when outOfFuel is true
             if (fuelManager.outOfFuel)
             {
-                fullJet_missileParticles[0].SetActive(false); outOfFuel_missileParticles[0].SetActive(true);             
+                fullJet_missileParticles[0].SetActive(false); outOfFuel_missileParticles[0].SetActive(true);
             }
         }
         if (crashed || targetHit) // exploding effect call
@@ -91,17 +85,16 @@ public class missileController : MonoBehaviour
     void moveForward() 
     {
          transform.position += transform.forward * flySpeed * Time.deltaTime; 
-      //  transform.DOMove(transform.forward, flySpeed);
     }
 
-    void setRotOnClick()
+    void checkMissileRotOnClick()
     {
-        if (missileSpawnManager.spawnedTop) yaw = 0;
-        if (missileSpawnManager.spawnedRight) yaw = 90;
-        if (missileSpawnManager.spawnedLeft) yaw = -90;
-        if (missileSpawnManager.spawnedBottom) yaw = 180;
+        if (missileSpawnManager.spawnedTop && yaw != 0) yaw = 0;
+        if (missileSpawnManager.spawnedRight && yaw != 90) yaw = 90;
+        if (missileSpawnManager.spawnedLeft && yaw != -90) yaw = -90;
+        if (missileSpawnManager.spawnedBottom && yaw != 180) yaw = 180;
 
-        clickFixRot = true;
+        clickCheckMissileRot = true;
     }
 
     void mHudTweenDone() { ciwsHit = false; mainHudUi.transform.localScale = new Vector3(1, 1, 1); }
