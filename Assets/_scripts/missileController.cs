@@ -25,6 +25,7 @@ public class missileController : MonoBehaviour
     {
         hitVal = 0;
         pitch = yaw = 0f;
+        handleInput = Vector2.zero;
 
         outside = ciwsHit = crashed = targetHit = missileYawPitchSet = clickCheckMissileRot = false;
         rigidM = gameObject.GetComponent<Rigidbody>();
@@ -41,8 +42,6 @@ public class missileController : MonoBehaviour
         if (gameController.startDelay && !crashed && !targetHit)
         {
             moveForward();
-
-            //   if (!clickCheckMissileRot) checkMissileRotOnClick();
 
             //input controlling yaw & pitch 
             yaw += handleInput.x * yawAmount * Time.deltaTime / 1.2f;

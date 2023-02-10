@@ -1324,7 +1324,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.1951609, y: 2.0289104, z: 4.9758844}
+  m_Size: {x: 2.97, y: 2.0289104, z: 5.86}
   m_Center: {x: 0.04604854, y: 1.0963691, z: 0.080539465}
 --- !u!114 &1794396716772207020
 MonoBehaviour:
@@ -4529,7 +4529,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.1845555, y: 3.9012952, z: 13.38024}
+  m_Size: {x: 4.6, y: 3.9012952, z: 14.53}
   m_Center: {x: -1.0769882, y: 2.0325475, z: -0.09943246}
 --- !u!114 &3368351139220490070
 MonoBehaviour:
@@ -4598,7 +4598,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.1951609, y: 2.5216863, z: 5.976136}
+  m_Size: {x: 3.55, y: 2.5216863, z: 6.29}
   m_Center: {x: 0.04604852, y: 1.3427557, z: 0.022817133}
 --- !u!114 &7328581955883520544
 MonoBehaviour:
@@ -9649,7 +9649,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.0662675, y: 3.6476288, z: 13.38024}
+  m_Size: {x: 3.97, y: 3.6476288, z: 14.56}
   m_Center: {x: -0.046104904, y: 1.9057144, z: -0.099432476}
 --- !u!114 &7323754229825891756
 MonoBehaviour:
@@ -9803,7 +9803,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.9803319, y: 1.8982124, z: 5.420409}
+  m_Size: {x: 2.92, y: 2.14, z: 6.22}
   m_Center: {x: -0.00642103, y: 1.0280285, z: 0.2440722}
 --- !u!114 &3083509480271246517
 MonoBehaviour:
@@ -14645,7 +14645,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.1951609, y: 2.5216863, z: 5.976136}
+  m_Size: {x: 3.55, y: 2.5216863, z: 6.29}
   m_Center: {x: 0.04604852, y: 1.3427557, z: 0.022817133}
 --- !u!114 &9008517329952476713
 MonoBehaviour:
@@ -19095,7 +19095,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.1951609, y: 2.0289104, z: 4.9758844}
+  m_Size: {x: 2.97, y: 2.0289104, z: 5.86}
   m_Center: {x: 0.04604854, y: 1.0963691, z: 0.080539465}
 --- !u!114 &2552994316851137368
 MonoBehaviour:
@@ -21198,7 +21198,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.0662675, y: 3.6476288, z: 13.38024}
+  m_Size: {x: 3.97, y: 3.6476288, z: 14.56}
   m_Center: {x: -0.046104904, y: 1.9057144, z: -0.099432476}
 --- !u!114 &6175961261423582577
 MonoBehaviour:
@@ -21733,7 +21733,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.9803319, y: 1.8982124, z: 5.420409}
+  m_Size: {x: 2.92, y: 2.14, z: 6.22}
   m_Center: {x: -0.00642103, y: 1.0280285, z: 0.2440722}
 --- !u!114 &7424213477854754550
 MonoBehaviour:
@@ -26106,7 +26106,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.1845555, y: 3.9012952, z: 13.38024}
+  m_Size: {x: 4.6, y: 3.9012952, z: 14.53}
   m_Center: {x: -1.0769882, y: 2.0325475, z: -0.09943246}
 --- !u!114 &6850714423757618071
 MonoBehaviour:
@@ -27105,7 +27105,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.9803319, y: 1.8982124, z: 5.420409}
+  m_Size: {x: 2.92, y: 2.14, z: 6.22}
   m_Center: {x: -0.00642103, y: 1.0280285, z: 0.2440722}
 --- !u!114 &7424213478442266468
 MonoBehaviour:
@@ -31304,7 +31304,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.1951609, y: 2.0289104, z: 4.9758844}
+  m_Size: {x: 2.97, y: 2.0289104, z: 5.86}
   m_Center: {x: 0.04604854, y: 1.0963691, z: 0.080539465}
 --- !u!114 &6501150390876024785
 MonoBehaviour:
@@ -32252,7 +32252,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.0662675, y: 3.6476288, z: 13.38024}
+  m_Size: {x: 3.97, y: 3.6476288, z: 14.56}
   m_Center: {x: -0.046104904, y: 1.9057144, z: -0.099432476}
 --- !u!114 &3267450036798546003
 MonoBehaviour:
@@ -33421,7 +33421,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.1951609, y: 2.5216863, z: 5.976136}
+  m_Size: {x: 3.55, y: 2.5216863, z: 6.29}
   m_Center: {x: 0.04604852, y: 1.3427557, z: 0.022817133}
 --- !u!114 &8879481308931494593
 MonoBehaviour:

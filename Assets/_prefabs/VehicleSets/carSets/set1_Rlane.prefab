@@ -902,7 +902,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.1951609, y: 2.5216863, z: 5.976136}
+  m_Size: {x: 3.55, y: 2.5216863, z: 6.29}
   m_Center: {x: 0.04604852, y: 1.3427557, z: 0.022817133}
 --- !u!114 &3941981412058407400
 MonoBehaviour:
@@ -5868,7 +5868,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.1845555, y: 3.9012952, z: 13.38024}
+  m_Size: {x: 4.6, y: 3.9012952, z: 14.53}
   m_Center: {x: -1.0769882, y: 2.0325475, z: -0.09943246}
 --- !u!114 &6663028455753661062
 MonoBehaviour:
@@ -6274,7 +6274,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.9803319, y: 1.8982124, z: 5.420409}
+  m_Size: {x: 2.92, y: 2.14, z: 6.22}
   m_Center: {x: -0.00642103, y: 1.0280285, z: 0.2440722}
 --- !u!114 &4087842004582026582
 MonoBehaviour:
@@ -9041,8 +9041,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4087842004783131334}
   - component: {fileID: 4087842004783131335}
-  - component: {fileID: 2543174728110261194}
   - component: {fileID: 1889539580811293481}
+  - component: {fileID: 7657178928126970229}
   m_Layer: 0
   m_Name: Truck with trailer (1)
   m_TagString: crashColl
@@ -11702,19 +11702,6 @@ MonoBehaviour:
   lastSrcRotation: {x: -0.0044165407, y: 0.94436246, z: 0.012691442, w: 0.32863203}
   wpsDropdown: 1
   dropToFloorOffset: 0
---- !u!65 &2543174728110261194
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4087842004783131337}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.0662675, y: 3.6476288, z: 13.38024}
-  m_Center: {x: -0.046104904, y: 1.9057144, z: -0.099432476}
 --- !u!114 &1889539580811293481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11732,6 +11719,19 @@ MonoBehaviour:
   needArrowIndicator: 1
   needDistanceText: 0
   indicator: {fileID: 0}
+--- !u!65 &7657178928126970229
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4087842004783131337}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.97, y: 3.6476288, z: 14.56}
+  m_Center: {x: -0.046104904, y: 1.9057144, z: -0.099432476}
 --- !u!1 &4087842004812088863
 GameObject:
   m_ObjectHideFlags: 0
@@ -14702,7 +14702,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.1951609, y: 2.0289104, z: 4.9758844}
+  m_Size: {x: 2.97, y: 2.0289104, z: 5.86}
   m_Center: {x: 0.04604854, y: 1.0963691, z: 0.080539465}
 --- !u!114 &4687006392025047525
 MonoBehaviour:
@@ -15831,8 +15831,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4087842005463173792}
   - component: {fileID: 4087842005463173793}
-  - component: {fileID: 1865430590840147243}
   - component: {fileID: 8153295081818242514}
+  - component: {fileID: 2904867791951841335}
   m_Layer: 0
   m_Name: Truck with trailer (2)
   m_TagString: crashColl
@@ -17457,19 +17457,6 @@ MonoBehaviour:
   lastSrcRotation: {x: 0.01847799, y: 0.18896447, z: -0.0035563973, w: 0.98180366}
   wpsDropdown: 1
   dropToFloorOffset: 0
---- !u!65 &1865430590840147243
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4087842005463173795}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.0662675, y: 3.6476288, z: 13.38024}
-  m_Center: {x: -0.046104904, y: 1.9057144, z: -0.099432476}
 --- !u!114 &8153295081818242514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17487,6 +17474,19 @@ MonoBehaviour:
   needArrowIndicator: 1
   needDistanceText: 0
   indicator: {fileID: 0}
+--- !u!65 &2904867791951841335
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4087842005463173795}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.97, y: 3.6476288, z: 14.56}
+  m_Center: {x: -0.046104904, y: 1.9057144, z: -0.099432476}
 --- !u!1 &4087842005548139209
 GameObject:
   m_ObjectHideFlags: 0
@@ -19501,7 +19501,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.1951609, y: 2.0289104, z: 4.9758844}
+  m_Size: {x: 2.97, y: 2.0289104, z: 5.86}
   m_Center: {x: 0.04604854, y: 1.0963691, z: 0.080539465}
 --- !u!114 &2869068888431070320
 MonoBehaviour:
@@ -20671,7 +20671,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.9803319, y: 1.8982124, z: 5.420409}
+  m_Size: {x: 2.92, y: 2.14, z: 6.22}
   m_Center: {x: -0.00642103, y: 1.0280285, z: 0.2440722}
 --- !u!114 &4087842006209696964
 MonoBehaviour:
@@ -24097,6 +24097,7 @@ GameObject:
   - component: {fileID: 5693023031697317572}
   - component: {fileID: 4920885061997282431}
   - component: {fileID: 311498666525549066}
+  - component: {fileID: 2147012899592822037}
   m_Layer: 0
   m_Name: Truck with trailer
   m_TagString: crashColl
@@ -27118,6 +27119,19 @@ MonoBehaviour:
   needArrowIndicator: 1
   needDistanceText: 0
   indicator: {fileID: 0}
+--- !u!65 &2147012899592822037
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4920885061997282430}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.97, y: 3.6476288, z: 14.56}
+  m_Center: {x: -0.046104904, y: 1.9057144, z: -0.099432476}
 --- !u!1 &4965499069514457327
 GameObject:
   m_ObjectHideFlags: 0
@@ -30633,7 +30647,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.1845555, y: 3.9012952, z: 13.38024}
+  m_Size: {x: 4.6, y: 3.9012952, z: 14.53}
   m_Center: {x: -1.0769882, y: 2.0325475, z: -0.09943246}
 --- !u!114 &4528713412212785456
 MonoBehaviour:
@@ -30786,7 +30800,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.1951609, y: 2.5216863, z: 5.976136}
+  m_Size: {x: 3.55, y: 2.5216863, z: 6.29}
   m_Center: {x: 0.04604852, y: 1.3427557, z: 0.022817133}
 --- !u!114 &8887085418768621683
 MonoBehaviour:
@@ -36156,7 +36170,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.1951609, y: 2.0289104, z: 4.9758844}
+  m_Size: {x: 2.97, y: 2.0289104, z: 5.86}
   m_Center: {x: 0.04604854, y: 1.0963691, z: 0.080539465}
 --- !u!114 &7876421904067476996
 MonoBehaviour:
@@ -36393,7 +36407,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.1951609, y: 2.5216863, z: 5.976136}
+  m_Size: {x: 3.55, y: 2.5216863, z: 6.29}
   m_Center: {x: 0.04604852, y: 1.3427557, z: 0.022817133}
 --- !u!114 &937699707347090359
 MonoBehaviour:
@@ -39744,7 +39758,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.9803319, y: 1.8982124, z: 5.420409}
+  m_Size: {x: 2.92, y: 2.14, z: 6.22}
   m_Center: {x: -0.00642103, y: 1.0280285, z: 0.2440722}
 --- !u!114 &8464559474607558421
 MonoBehaviour:

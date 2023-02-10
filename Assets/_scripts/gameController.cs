@@ -9,7 +9,6 @@ using UnityEngine.UI;
 public class gameController : MonoBehaviour
 {
     public FxController script_fx;
-    public missileSpawnManager script_missileSelection;
     public ciwsSpawner script_ciwsSpawner;
 
     public Camera mainCam;
@@ -24,7 +23,7 @@ public class gameController : MonoBehaviour
 
     public static bool startDelay, screenClickedOnPlay;
 
-    bool countdownBool, gameover, paused, sceneLoadButtonClick;
+    bool countdownBool, gameover, paused,waitForReload;
     float rayLenght, countdownVal;
     RaycastHit hit;
 
@@ -37,12 +36,12 @@ public class gameController : MonoBehaviour
 
     void Start()
     {
-        rayLenght = 400;
+        rayLenght = 600;
 
         missileHud.SetActive(false);
         joystickMain.SetActive(false);
 
-        startDelay = screenClickedOnPlay = gameover = sceneLoadButtonClick = false;
+        startDelay = screenClickedOnPlay = gameover = false;
 
         if (PlayerPrefs.GetInt("mission", 0) == 0) { PlayerPrefs.SetInt("mission", 1); }
 
@@ -58,10 +57,6 @@ public class gameController : MonoBehaviour
     {  
         script_ciwsSpawner.ciwsSpawn();
     }
-    public void loadMissilePos()
-    {
-     //   script_missileSelection.missileSpawn();
-    }
 
     void Update()
     {
@@ -69,21 +64,23 @@ public class gameController : MonoBehaviour
         {
             if (!screenClickedOnPlay & Input.GetMouseButtonDown(0)) { tutoUi.SetActive(false); screenClickedOnPlay = true; }
 
-     //       Debug.DrawRay(missileBody.transform.position, Vector3.down * rayLenght, Color.red);
+            Debug.DrawRay(missileBody.transform.position, Vector3.down * rayLenght, Color.red);
             Ray rayDown = new Ray(missileBody.transform.position, Vector3.down);
 
             if (Physics.Raycast(rayDown, out hit))
             {
                 if (hit.collider.tag == "crashColl")
-                    if (hit.distance < 2) 
-                    { 
-                        missileController.crashed = true; 
-                        if (!FxController.fxExplode) script_fx.crashFx(); 
+                {
+                    if (hit.distance < 2)
+                    {
+                        missileController.crashed = true;
+                        if (!FxController.fxExplode) script_fx.crashFx();
                     }
-                if (hit.collider.tag == "plane") 
-                { 
-                    missileController.crashed = true; 
-                    if (!FxController.fxExplode) script_fx.crashFx(); Debug.Log("plane ray hit"); 
+                }                 
+                if (hit.collider.tag == "plane")
+                {
+                    missileController.crashed = true;
+                    if (!FxController.fxExplode) script_fx.crashFx(); Debug.Log("plane ray hit");
                 }
             }
         }
@@ -148,8 +145,6 @@ public class gameController : MonoBehaviour
 
     IEnumerator delayForStart()
     {
-        loadMissilePos();
-
         yield return new WaitForSeconds(3.5f);
 
         mainCam.cullingMask += (1 << LayerMask.NameToLayer("missile"));
@@ -167,7 +162,14 @@ public class gameController : MonoBehaviour
 
     public void loadMission(int sceneId)
     {
-        if (!sceneLoadButtonClick) sceneLoadButtonClick = true; StartCoroutine(loadSceneAsync(sceneId));
+        // StartCoroutine(loadSceneAsync(sceneId));
+        if(!waitForReload)
+        {
+            if (Time.timeScale != 1) Time.timeScale = 1;
+            DOTween.KillAll();
+            AsyncOperation operation = SceneManager.LoadSceneAsync(sceneId);
+            if (!operation.isDone) { waitForReload = true; }
+        }  
     }
 
     public void pausePlay()
@@ -197,7 +199,7 @@ public class gameController : MonoBehaviour
         }
     }
 
-    IEnumerator loadSceneAsync(int sceneId)
+ /*   IEnumerator loadSceneAsync(int sceneId)
     {
         DOTween.KillAll();
         if (Time.timeScale != 1) Time.timeScale = 1;
@@ -210,5 +212,5 @@ public class gameController : MonoBehaviour
         {
             yield return null;
         }
-    }
+    }*/
 }
