@@ -33,7 +33,7 @@ public class missileSpawnManager : MonoBehaviour
         }
         if (spawnFace == 1)
         {
-            missileController.yaw = missileRot = 90;
+            missileRot = 90;
 
             spawnedRight = true;
 
@@ -49,7 +49,7 @@ public class missileSpawnManager : MonoBehaviour
         }
         if (spawnFace == 2)
         {
-            missileController.yaw = missileRot = -90;
+            missileRot = -90;
 
             spawnedLeft = true;
 
@@ -65,7 +65,7 @@ public class missileSpawnManager : MonoBehaviour
         }
         if (spawnFace == 3)
         {
-            missileController.yaw = missileRot = 180;
+            missileRot = 180;
 
             spawnedBottom = true;
 

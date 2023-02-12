@@ -21,8 +21,8 @@ public class CamController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.DrawRay(transform.position, Vector3.back * 5, Color.blue);
-        Ray ray = new Ray(transform.position, Vector3.back);
+      //  Debug.DrawRay(transform.position, Vector3.back * 5, Color.blue);
+       // Ray ray = new Ray(transform.position, Vector3.back);
 
         if (!missileController.crashed && !missileController.targetHit && gameController.startDelay)
         {
@@ -48,8 +48,8 @@ public class CamController : MonoBehaviour
             transform.DOLookAt(Missile.transform.position, 0.5f);
             transform.DOMoveY(Missile.transform.position.y + 140, 2f);
 
-            if (Physics.Raycast(ray, out hit))
-            { if (hit.distance < 2) { transform.position += new Vector3(0, 0, 5); } }
+       //     if (Physics.Raycast(ray, out hit))
+       //     { if (hit.distance < 2) { transform.position += new Vector3(0, 0, 5); } }
         }
     }
 

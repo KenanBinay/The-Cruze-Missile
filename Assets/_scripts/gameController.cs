@@ -29,6 +29,7 @@ public class gameController : MonoBehaviour
 
     int missionCurrentVal;
 
+    Vector3 targetLine;
     private void Awake()
     {
      //   Debug.unityLogger.logEnabled = false;
@@ -45,7 +46,7 @@ public class gameController : MonoBehaviour
 
         if (PlayerPrefs.GetInt("mission", 0) == 0) { PlayerPrefs.SetInt("mission", 1); }
 
-        missionTxt.text = "MISSION " + PlayerPrefs.GetInt("mission", 0);
+        missionTxt.text = "LEVEL " + PlayerPrefs.GetInt("mission", 0);
         missionCurrentVal = PlayerPrefs.GetInt("mission", 0);
 
         Debug.Log("mission: " + PlayerPrefs.GetInt("mission", 0));     
@@ -99,7 +100,7 @@ public class gameController : MonoBehaviour
             joystickMain.SetActive(false);
 
             missionComplete_Ui.SetActive(true);
-            missionDoneTxt.text = "MISSION " + missionCurrentVal + " COMPLETE";
+            missionDoneTxt.text = "LEVEL " + missionCurrentVal + " COMPLETE";
             gameover = true;
 
             mainCam.cullingMask -= (1 << LayerMask.NameToLayer("missile"));
@@ -114,7 +115,7 @@ public class gameController : MonoBehaviour
             missionInfo_Ui.SetActive(false);
 
             missionFailed_Ui.SetActive(true);
-            missionFailedTxt.text = "MISSION " + missionCurrentVal + " FAILED";
+            missionFailedTxt.text = "LEVEL " + missionCurrentVal + " FAILED";
             gameover = true;
 
             mainCam.cullingMask -= (1 << LayerMask.NameToLayer("missile"));
@@ -162,7 +163,6 @@ public class gameController : MonoBehaviour
 
     public void loadMission(int sceneId)
     {
-        // StartCoroutine(loadSceneAsync(sceneId));
         if(!waitForReload)
         {
             if (Time.timeScale != 1) Time.timeScale = 1;
@@ -198,19 +198,4 @@ public class gameController : MonoBehaviour
             }
         }
     }
-
- /*   IEnumerator loadSceneAsync(int sceneId)
-    {
-        DOTween.KillAll();
-        if (Time.timeScale != 1) Time.timeScale = 1;
-
-        yield return new WaitForSeconds(0.2f);
-
-        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneId);
-
-        while (!operation.isDone)
-        {
-            yield return null;
-        }
-    }*/
 }
