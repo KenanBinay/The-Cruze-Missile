@@ -344,9 +344,9 @@ GameObject:
   - component: {fileID: 1160411320478432766}
   - component: {fileID: 1160411320478432705}
   - component: {fileID: 1160411320478432704}
-  - component: {fileID: 1160411320478432767}
   - component: {fileID: 7852680682705380218}
   - component: {fileID: 3346230831411882680}
+  - component: {fileID: 1042609384511698580}
   m_Layer: 0
   m_Name: Military_Helicopter02
   m_TagString: crashColl
@@ -421,20 +421,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1160411320478432767
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1160411320478432765}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300076, guid: 7c8f1c5ca31156243a1c63f61bd2d8a3, type: 3}
 --- !u!54 &7852680682705380218
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -468,6 +454,20 @@ MonoBehaviour:
   needArrowIndicator: 1
   needDistanceText: 0
   indicator: {fileID: 0}
+--- !u!136 &1042609384511698580
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160411320478432765}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2.3
+  m_Height: 13.89
+  m_Direction: 2
+  m_Center: {x: 0.07, y: 1.7345246, z: -2.2481813}
 --- !u!1 &1160411320929179552
 GameObject:
   m_ObjectHideFlags: 0
@@ -679,11 +679,11 @@ GameObject:
   - component: {fileID: 1160411321265893283}
   - component: {fileID: 1160411321265893288}
   - component: {fileID: 1160411321265893287}
-  - component: {fileID: 1160411321265893286}
   - component: {fileID: 506387362169043024}
   - component: {fileID: 1160411321265893285}
   - component: {fileID: 1160411321265893284}
   - component: {fileID: 8441765814487044119}
+  - component: {fileID: 1004431847091091757}
   m_Layer: 0
   m_Name: Military_Helicopter01
   m_TagString: crashColl
@@ -759,20 +759,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1160411321265893286
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1160411321265893282}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300082, guid: 7c8f1c5ca31156243a1c63f61bd2d8a3, type: 3}
 --- !u!54 &506387362169043024
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1442,6 +1428,20 @@ MonoBehaviour:
   needArrowIndicator: 1
   needDistanceText: 0
   indicator: {fileID: 0}
+--- !u!136 &1004431847091091757
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160411321265893282}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2.3
+  m_Height: 13.89
+  m_Direction: 2
+  m_Center: {x: 0.07, y: 1.7345246, z: -2.2481813}
 --- !u!1 &1160411321335700403
 GameObject:
   m_ObjectHideFlags: 0
@@ -1536,9 +1536,9 @@ GameObject:
   - component: {fileID: 1160411321347024130}
   - component: {fileID: 1160411321347024134}
   - component: {fileID: 1160411321347024133}
-  - component: {fileID: 1160411321347024132}
   - component: {fileID: 2132041746340065218}
   - component: {fileID: 2157290015426757242}
+  - component: {fileID: 2133389495023775166}
   m_Layer: 0
   m_Name: Military_Helicopter03
   m_TagString: crashColl
@@ -1614,20 +1614,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1160411321347024132
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1160411321347024129}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300082, guid: 7c8f1c5ca31156243a1c63f61bd2d8a3, type: 3}
 --- !u!54 &2132041746340065218
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1661,6 +1647,20 @@ MonoBehaviour:
   needArrowIndicator: 1
   needDistanceText: 0
   indicator: {fileID: 0}
+--- !u!136 &2133389495023775166
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160411321347024129}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2.3
+  m_Height: 13.89
+  m_Direction: 2
+  m_Center: {x: 0.07, y: 1.7345246, z: -2.2481813}
 --- !u!1 &1160411321663887326
 GameObject:
   m_ObjectHideFlags: 0

@@ -32,7 +32,7 @@ public class gameController : MonoBehaviour
     Vector3 targetLine;
     private void Awake()
     {
-     //   Debug.unityLogger.logEnabled = false;
+       // Debug.unityLogger.logEnabled = false;
     }
 
     void Start()
@@ -46,7 +46,7 @@ public class gameController : MonoBehaviour
 
         if (PlayerPrefs.GetInt("mission", 0) == 0) { PlayerPrefs.SetInt("mission", 1); }
 
-        missionTxt.text = "LEVEL " + PlayerPrefs.GetInt("mission", 0);
+        missionTxt.text = "TARGET " + PlayerPrefs.GetInt("mission", 0);
         missionCurrentVal = PlayerPrefs.GetInt("mission", 0);
 
         Debug.Log("mission: " + PlayerPrefs.GetInt("mission", 0));     
@@ -98,9 +98,12 @@ public class gameController : MonoBehaviour
             arrrowIndicator.SetActive(false);
             missileHud.SetActive(false);
             joystickMain.SetActive(false);
+            pauseButton_Ui.SetActive(false);
+            fuelBar_Ui.SetActive(false);
+            missionInfo_Ui.SetActive(false);
 
             missionComplete_Ui.SetActive(true);
-            missionDoneTxt.text = "LEVEL " + missionCurrentVal + " COMPLETE";
+            missionDoneTxt.text = "TARGET " + missionCurrentVal + " DESTROYED";
             gameover = true;
 
             mainCam.cullingMask -= (1 << LayerMask.NameToLayer("missile"));
@@ -115,7 +118,7 @@ public class gameController : MonoBehaviour
             missionInfo_Ui.SetActive(false);
 
             missionFailed_Ui.SetActive(true);
-            missionFailedTxt.text = "LEVEL " + missionCurrentVal + " FAILED";
+            missionFailedTxt.text = "TARGET " + missionCurrentVal + " FAILED";
             gameover = true;
 
             mainCam.cullingMask -= (1 << LayerMask.NameToLayer("missile"));

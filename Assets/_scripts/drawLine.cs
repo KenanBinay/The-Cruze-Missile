@@ -5,12 +5,11 @@ using UnityEngine;
 public class drawLine : MonoBehaviour
 {
     private LineRenderer lineRenderer;
-    private float counter, dist;
 
     public Transform missile;
     public Transform target;
 
-    public float lineDrawSpeed = 6f, renderMeterLimit, targetDistance;
+    public float renderMeterLimit, targetDistance;
 
     void Start()
     {
@@ -33,7 +32,6 @@ public class drawLine : MonoBehaviour
                 targetDistance = Vector3.Distance(missile.position, target.position);
                 if (targetDistance < renderMeterLimit)
                 {
-                    Debug.Log("guide lineRender");
                     drawingGuideLine();
                 }
             }
@@ -50,18 +48,8 @@ public class drawLine : MonoBehaviour
 
     void drawingGuideLine()
     {
-        counter += 1f / lineDrawSpeed;
-
-        dist = Vector3.Distance(missile.position, target.position);
-        float x = Mathf.Lerp(0, dist, counter);
-    
-        Vector3 pointA = missile.position;
-        Vector3 pointB = target.position;
-
-        Vector3 pointALongLine = x * Vector3.Normalize(pointB - pointA) + pointA;
-
-        lineRenderer.SetPosition(0, pointA);
-        lineRenderer.SetPosition(1, pointB);
+        lineRenderer.SetPosition(0, missile.position);
+        lineRenderer.SetPosition(1, target.position);
     }
 
     void endGuideLine()

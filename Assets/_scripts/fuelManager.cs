@@ -16,11 +16,12 @@ public class fuelManager : MonoBehaviour
     Color targetColor;
 
     public float fuelCountdown;
+    public static float fuelValue;
     public static bool outOfFuel;
 
     void Start()
     {
-        fuelSlide.maxValue = fuelCountdown;
+        fuelSlide.maxValue = fuelCountdown;     
 
         missileObj = GameObject.Find("Missile");
         missileRb = missileObj.GetComponent<Rigidbody>();
@@ -42,6 +43,7 @@ public class fuelManager : MonoBehaviour
             {
                 fuelCountdown -= Time.deltaTime;
                 fuelSlide.value = fuelCountdown;
+                fuelValue = fuelCountdown;
 
                 fillArea.color = Color.Lerp(fillArea.color, targetColor, 0.1f);
 
