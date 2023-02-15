@@ -18,8 +18,11 @@ public class gameController : MonoBehaviour
         missionComplete_Ui, missionFailed_Ui, jet_main, pauseButton_Ui, fuelBar_Ui, missionInfo_Ui, onPauseSlide_Ui;
     public Sprite iconPause, iconPlay;
     public Image iconPausePlay;
+    public Color safe, mid, critical;
+    Color targetColor;
 
     public TextMeshProUGUI altitute, countdownTxt, missionTxt, missionDoneTxt, missionFailedTxt;
+    public TextMeshPro alt_txt;
 
     public static bool startDelay, screenClickedOnPlay;
 
@@ -124,8 +127,12 @@ public class gameController : MonoBehaviour
             mainCam.cullingMask -= (1 << LayerMask.NameToLayer("missile"));
         }
 
-        //calculate main height to ground by using missiles position in unity
-        altitute.text = missileBody.transform.position.y.ToString("#");
+        //calculate main height to ground by using missiles position in unity & color change
+        alt_txt.text = missileBody.transform.position.y.ToString("ALT " + "#");
+        alt_txt.color = Color.Lerp(alt_txt.color, targetColor, 0.1f);
+        if (missileBody.transform.position.y <= 230 && targetColor != safe) targetColor = safe;
+        if (missileBody.transform.position.y > 230 && missileBody.transform.position.y <= 350 && targetColor != mid) targetColor = mid;
+        if (missileBody.transform.position.y > 400 && targetColor != critical) targetColor = critical;
     }
     void tweenCiwsUi() { ciwslockedUi.SetActive(false); }
 
