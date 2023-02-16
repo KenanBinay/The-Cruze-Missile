@@ -59,12 +59,13 @@ public class missileController : MonoBehaviour
             {
                 transform.Rotate(-1 * handleInput.y / 1.5f, handleInput.x / 1.5f, 0f, Space.Self);
                 missileLastRotation = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 0);
+                hudYawUi.localRotation = Quaternion.Euler(Vector3.back * yawHudHorizontal + Vector3.right * yawHudVertical);
             }
-            if (Input.GetMouseButtonUp(0)) transform.DORotate(missileLastRotation, 0.5f).SetEase(Ease.InOutQuad);       
-
-            /*   if (handleInput == Vector2.zero) { hudYawUi.DOLocalRotate(new Vector3(yawHudVertical, 0, 0), 1); yawHudHorizontal = 0; }
-               else { hudYawUi.localRotation = Quaternion.Euler(Vector3.back * yawHudHorizontal + Vector3.right * yawHudVertical); }
-               if (ciwsHit) mainHudUi.transform.DOShakeScale(0.4f, 0.03f).onComplete = mHudTweenDone; */
+            if (Input.GetMouseButtonUp(0))
+            {
+                transform.DORotate(missileLastRotation, 0.5f).SetEase(Ease.InOutQuad);
+                hudYawUi.DOLocalRotate(new Vector3(yawHudVertical, 0, 0), 0.5f).SetEase(Ease.InOutQuad).onComplete = hudYawRotateOnComplete; 
+            }
 
             // setting missile nozzle particles when outOfFuel is true
             if (fuelManager.outOfFuel)
@@ -96,8 +97,11 @@ public class missileController : MonoBehaviour
 
         clickCheckMissileRot = true;
     }
-
-    void mHudTweenDone() { ciwsHit = false; mainHudUi.transform.localScale = new Vector3(1, 1, 1); }
+    
+    void hudYawRotateOnComplete()
+    {
+        yawHudHorizontal = 0;
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
