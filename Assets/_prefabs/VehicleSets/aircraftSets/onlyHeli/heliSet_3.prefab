@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 2561884629800999471}
   - component: {fileID: 9142511216364967519}
   - component: {fileID: 849526038130619769}
-  - component: {fileID: 6622159125084535072}
+  - component: {fileID: 402542629696088452}
   m_Layer: 0
   m_Name: Military_Helicopter03
   m_TagString: crashColl
@@ -204,8 +204,8 @@ MonoBehaviour:
   needArrowIndicator: 1
   needDistanceText: 0
   indicator: {fileID: 0}
---- !u!136 &6622159125084535072
-CapsuleCollider:
+--- !u!65 &402542629696088452
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -214,10 +214,9 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 2.3
-  m_Height: 13.89
-  m_Direction: 2
-  m_Center: {x: 0.07, y: 1.7345246, z: -2.2481813}
+  serializedVersion: 2
+  m_Size: {x: 4.1583314, y: 3.4690492, z: 11.003324}
+  m_Center: {x: 0.0000038146973, y: 1.7345246, z: -2.2481813}
 --- !u!1 &4854597276407951510
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,7 +232,7 @@ GameObject:
   - component: {fileID: 4854597276407951507}
   - component: {fileID: 4854597276407951504}
   - component: {fileID: 2081124869840343469}
-  - component: {fileID: 5223348133552632620}
+  - component: {fileID: 6048274915221748108}
   m_Layer: 0
   m_Name: Military_Helicopter01
   m_TagString: crashColl
@@ -978,8 +977,8 @@ MonoBehaviour:
   needArrowIndicator: 1
   needDistanceText: 0
   indicator: {fileID: 0}
---- !u!136 &5223348133552632620
-CapsuleCollider:
+--- !u!65 &6048274915221748108
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -988,10 +987,9 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 2.3
-  m_Height: 13.89
-  m_Direction: 2
-  m_Center: {x: 0.07, y: 1.7345246, z: -2.2481813}
+  serializedVersion: 2
+  m_Size: {x: 4.1583314, y: 3.4690492, z: 11.003324}
+  m_Center: {x: 0.0000038146973, y: 1.7345246, z: -2.2481813}
 --- !u!1 &4854597277178708258
 GameObject:
   m_ObjectHideFlags: 0
@@ -1005,7 +1003,7 @@ GameObject:
   - component: {fileID: 4854597277178708286}
   - component: {fileID: 1791439965076608309}
   - component: {fileID: 4539018060336742524}
-  - component: {fileID: 812843535169502271}
+  - component: {fileID: 3444336450183334588}
   m_Layer: 0
   m_Name: Military_Helicopter02
   m_TagString: crashColl
@@ -1114,8 +1112,8 @@ MonoBehaviour:
   needArrowIndicator: 1
   needDistanceText: 0
   indicator: {fileID: 0}
---- !u!136 &812843535169502271
-CapsuleCollider:
+--- !u!65 &3444336450183334588
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1124,10 +1122,9 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 2.3
-  m_Height: 13.89
-  m_Direction: 2
-  m_Center: {x: 0.07, y: 1.7345246, z: -2.2481813}
+  serializedVersion: 2
+  m_Size: {x: 4.1583314, y: 3.4690492, z: 11.003324}
+  m_Center: {x: 0.0000038146973, y: 1.7345246, z: -2.2481813}
 --- !u!1 &4854597277315107727
 GameObject:
   m_ObjectHideFlags: 0

@@ -35,7 +35,11 @@ public class gameController : MonoBehaviour
     Vector3 targetLine;
     private void Awake()
     {
-       // Debug.unityLogger.logEnabled = false;
+        if (Application.isMobilePlatform)
+        {
+            Debug.unityLogger.logEnabled = false;
+            QualitySettings.vSyncCount = 0;
+        }
     }
 
     void Start()

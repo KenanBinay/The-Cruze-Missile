@@ -64,7 +64,7 @@ public class missileController : MonoBehaviour
             if (Input.GetMouseButtonUp(0))
             {
                 transform.DORotate(missileLastRotation, 0.5f).SetEase(Ease.InOutQuad);
-                hudYawUi.DOLocalRotate(new Vector3(yawHudVertical, 0, 0), 0.5f).SetEase(Ease.InOutQuad).onComplete = hudYawRotateOnComplete; 
+                hudYawUi.DOLocalRotate(new Vector3(0, 0, 0), 0.5f).SetEase(Ease.InOutQuad).onComplete = hudYawRotateOnComplete; 
             }
 
             // setting missile nozzle particles when outOfFuel is true
@@ -100,7 +100,7 @@ public class missileController : MonoBehaviour
     
     void hudYawRotateOnComplete()
     {
-        yawHudHorizontal = 0;
+        yawHudHorizontal = yawHudVertical = 0;
     }
 
     private void OnCollisionEnter(Collision collision)
