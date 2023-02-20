@@ -70,7 +70,8 @@ public class gameController : MonoBehaviour
     {
         if (!missileController.crashed && !missileController.targetHit && startDelay)
         {
-            if (!screenClickedOnPlay & Input.GetMouseButtonDown(0)) { tutoUi.SetActive(false); screenClickedOnPlay = true; }
+            if (!screenClickedOnPlay & Input.GetMouseButtonDown(0)) 
+            { tutoUi.SetActive(false); screenClickedOnPlay = true; }
 
             Debug.DrawRay(missileBody.transform.position, Vector3.down * rayLenght, Color.red);
             Ray rayDown = new Ray(missileBody.transform.position, Vector3.down);

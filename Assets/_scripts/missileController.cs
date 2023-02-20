@@ -87,16 +87,6 @@ public class missileController : MonoBehaviour
     {
          transform.position += transform.forward * flySpeed * Time.deltaTime; 
     }
-
-    void checkMissileRotOnClick()
-    {
-        if (missileSpawnManager.spawnedTop && yaw != 0) yaw = 0;
-        if (missileSpawnManager.spawnedRight && yaw != 90) yaw = 90;
-        if (missileSpawnManager.spawnedLeft && yaw != -90) yaw = -90;
-        if (missileSpawnManager.spawnedBottom && yaw != 180) yaw = 180;
-
-        clickCheckMissileRot = true;
-    }
     
     void hudYawRotateOnComplete()
     {
