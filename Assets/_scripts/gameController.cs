@@ -186,6 +186,16 @@ public class gameController : MonoBehaviour
             if (!operation.isDone) { waitForReload = true; }
         }  
     }
+    public void loadMenu(int sceneId)
+    {
+        if (!waitForReload)
+        {
+            if (Time.timeScale != 1) Time.timeScale = 1;
+            DOTween.KillAll();
+            AsyncOperation operation = SceneManager.LoadSceneAsync(sceneId);
+            if (!operation.isDone) { waitForReload = true; }
+        }
+    }
 
     public void pausePlay()
     {
