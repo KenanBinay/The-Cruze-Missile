@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 public class menuManager : MonoBehaviour
 {
     public int sceneId;
+    bool waitForReload;
+
+    public Animator bottomStart;
 
     void Start()
     {
@@ -14,11 +17,16 @@ public class menuManager : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 
     public void loadMission()
     {
-        SceneManager.LoadScene(sceneId);
+        if (!waitForReload)
+        {
+            bottomStart.SetTrigger("startClick");
+            AsyncOperation operation = SceneManager.LoadSceneAsync(sceneId);
+            if (!operation.isDone) { waitForReload = true; }            
+        }
     }
 }

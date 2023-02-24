@@ -261,7 +261,6 @@ GameObject:
   - component: {fileID: 9137899633489597336}
   - component: {fileID: 4468583672818371860}
   - component: {fileID: 1830462587349615452}
-  - component: {fileID: 7967670961234431828}
   m_Layer: 0
   m_Name: Military_Boat1
   m_TagString: Untagged
@@ -365,19 +364,6 @@ LODGroup:
     renderers:
     - renderer: {fileID: 4468583672818371860}
   m_Enabled: 1
---- !u!65 &7967670961234431828
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5774433042605583344}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 4.710725, y: 3.2627816, z: 9.393134}
-  m_Center: {x: 0, y: 0.46021175, z: 0.87375927}
 --- !u!1 &9137464583237364154
 GameObject:
   m_ObjectHideFlags: 0

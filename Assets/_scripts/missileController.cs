@@ -157,7 +157,7 @@ public class missileController : MonoBehaviour
                 ciwsHit = true;
                 Debug.Log("hit: " + hitVal);  
 
-                if (hitVal >= 2) { crashed = true; }
+                if (hitVal >= 3) { crashed = true; }
                 StartCoroutine(roundHit());
             }
         }

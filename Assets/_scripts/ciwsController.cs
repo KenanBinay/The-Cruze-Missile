@@ -45,8 +45,8 @@ public class ciwsController : MonoBehaviour
         {
             roundEffect.SetActive(true);
 
-            if (gunM != null) gunM.transform.DOLookAt(new Vector3(0, missile.transform.position.y, 0), 2);
-            if (gunUp != null) gunUp.transform.DOLookAt(missile.transform.position, 2);
+            if (gunM != null) gunM.transform.DOLookAt(new Vector3(0, missile.transform.position.y, 0), 4);
+            if (gunUp != null) gunUp.transform.DOLookAt(missile.transform.position, 4);
         }
     }
 
