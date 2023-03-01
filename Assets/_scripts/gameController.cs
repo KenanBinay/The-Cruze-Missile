@@ -9,20 +9,20 @@ using UnityEngine.UI;
 public class gameController : MonoBehaviour
 {
     public FxController script_fx;
-    public ciwsSpawner script_ciwsSpawner;
+    [SerializeField] public ciwsSpawner script_ciwsSpawner;
 
-    public Camera mainCam;
-    public Animator startAnim;
+    [SerializeField] public Camera mainCam;
+    [SerializeField] public Animator startAnim;
 
-    public GameObject missileHud, missileBody, warningUi, arrrowIndicator, tutoUi, joystickMain, ciwslockedUi,
+    [SerializeField]  public GameObject missileHud, missileBody, warningUi, arrrowIndicator, tutoUi, joystickMain, ciwslockedUi,
         missionComplete_Ui, missionFailed_Ui, jet_main, pauseButton_Ui, fuelBar_Ui, missionInfo_Ui, onPauseSlide_Ui;
-    public Sprite iconPause, iconPlay;
-    public Image iconPausePlay;
-    public Color safe, mid, critical;
+    [SerializeField] public Sprite iconPause, iconPlay;
+    [SerializeField] public Image iconPausePlay;
+    [SerializeField] public Color safe, mid, critical;
     Color targetColor;
 
-    public TextMeshProUGUI altitute, countdownTxt, missionTxt, missionDoneTxt, missionFailedTxt;
-    public TextMeshPro alt_txt;
+    [SerializeField] public TextMeshProUGUI altitute, countdownTxt, missionTxt, missionDoneTxt, missionFailedTxt;
+    [SerializeField] public TextMeshPro alt_txt;
 
     public static bool startDelay, screenClickedOnPlay;
 

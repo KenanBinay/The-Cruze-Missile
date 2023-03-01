@@ -19,18 +19,15 @@ public class ciwsController : MonoBehaviour
         DOTween.SetTweensCapacity(3200, 60);
     }
 
-    private void Update()
+    private void LateUpdate()
     {
-        if (ciwsSpawner.ciwsSpawned)
+        if (missileController.crashed || missileController.targetHit || !targetDetected)
         {
-            if (missileController.crashed || missileController.targetHit || !targetDetected)
-            {
-                if (gunM != null) gunM.transform.DORotate(new Vector3(0, 0, 0), 3);
-                if (gunUp != null) gunUp.transform.DORotate(new Vector3(0, 0, 0), 3);
+            if (gunM != null) gunM.transform.DORotate(new Vector3(0, 0, 0), 3);
+            if (gunUp != null) gunUp.transform.DORotate(new Vector3(0, 0, 0), 3);
 
-                roundEffect.SetActive(false);
-                targetDetected = false;
-            }
+            roundEffect.SetActive(false);
+            targetDetected = false;
         }
     }
 

@@ -10,8 +10,8 @@ public class missileController : MonoBehaviour
     public static Vector3 normal;
     public static Vector2 handleInput;
     public Transform hudYawUi, cam;
-    public GameObject mainHudUi, warningUi, hitFlash_image, hitEffect_particle;
-    public GameObject[] fullJet_missileParticles, outOfFuel_missileParticles;
+    [SerializeField] public GameObject mainHudUi, warningUi, hitFlash_image, hitEffect_particle;
+    [SerializeField] public GameObject[] fullJet_missileParticles, outOfFuel_missileParticles;
     Rigidbody rigidM;
 
     public float flySpeed, yawAmount;

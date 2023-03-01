@@ -101,11 +101,11 @@ QualitySettings:
     vSyncCount: 0
     lodBias: 0.7
     maximumLODLevel: 0
-    streamingMipmapsActive: 0
-    streamingMipmapsAddAllCameras: 0
+    streamingMipmapsActive: 1
+    streamingMipmapsAddAllCameras: 1
     streamingMipmapsMemoryBudget: 512
-    streamingMipmapsRenderersPerFrame: 1024
-    streamingMipmapsMaxLevelReduction: 2
+    streamingMipmapsRenderersPerFrame: 512
+    streamingMipmapsMaxLevelReduction: 1
     streamingMipmapsMaxFileIORequests: 1024
     particleRaycastBudget: 2048
     asyncUploadTimeSlice: 2
