@@ -20,9 +20,21 @@ public class drawLine : MonoBehaviour
     {
         if (target == null)
         {
-            if (targetController.target_type == 0) { target = GameObject.Find("targetObject_static").GetComponent<Transform>(); }
-            if (targetController.target_type == 1) { target = propCarController.vehicle.GetComponent<Transform>(); }
-            if (targetController.target_type == 2) { target = propAircraftController.aircraft.GetComponent<Transform>(); }
+            if (targetController.target_type == 0) 
+            {
+                if (GameObject.Find("targetObject_static").GetComponent<Collider>() != null)
+                    target = GameObject.Find("targetObject_static").GetComponent<Transform>();
+            }
+            if (targetController.target_type == 1) 
+            {
+                if (propCarController.vehicle.GetComponent<Collider>() != null)
+                    target = propCarController.vehicle.GetComponent<Transform>(); 
+            }
+            if (targetController.target_type == 2) 
+            {
+                if (propAircraftController.aircraft.GetComponent<Collider>() != null)
+                    target = propAircraftController.aircraft.GetComponent<Transform>(); 
+            }
         }
 
         if (gameController.startDelay)
@@ -44,6 +56,7 @@ public class drawLine : MonoBehaviour
                 }
             }
         }
+
     }
 
     void drawingGuideLine()

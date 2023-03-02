@@ -16,18 +16,21 @@ public class helicopterController : MonoBehaviour
 
     void Update()
     {
-        if (!crashedGround && !missileHit)
+        if (Time.frameCount % 3 == 0)
         {
-            rotorBack.transform.Rotate(new Vector3(1000 * Time.deltaTime, 0, 0));
-            rotorM.transform.Rotate(new Vector3(0, 500 * Time.deltaTime, 0));
-        }
-        if (missileHit && !crashedGround)
-        {
-            rotorBack.transform.Rotate(new Vector3(700 * Time.deltaTime, 0, 0));
-            rotorM.transform.Rotate(new Vector3(0, 400 * Time.deltaTime, 0));
+            if (!crashedGround && !missileHit)
+            {
+                rotorBack.transform.Rotate(new Vector3(1000 * Time.deltaTime, 0, 0));
+                rotorM.transform.Rotate(new Vector3(0, 500 * Time.deltaTime, 0));
+            }
+            if (missileHit && !crashedGround)
+            {
+                rotorBack.transform.Rotate(new Vector3(700 * Time.deltaTime, 0, 0));
+                rotorM.transform.Rotate(new Vector3(0, 400 * Time.deltaTime, 0));
 
-            transform.Rotate(new Vector3(0, 300 * Time.deltaTime, 0));
-            transform.DORotate(new Vector3(25, transform.position.y, transform.position.z), 3f);
+                transform.Rotate(new Vector3(0, 300 * Time.deltaTime, 0));
+                transform.DORotate(new Vector3(25, transform.position.y, transform.position.z), 3f);
+            }
         }
     }
 

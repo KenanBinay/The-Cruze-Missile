@@ -34,9 +34,21 @@ public class targetIndicator : MonoBehaviour
             }
             targets.Add(targetCollider);
         }
-        if (targetCollider == null && targetController.target_type == 0) { targetCollider = GameObject.Find("targetObject_static").GetComponent<Collider>(); }
-        if (targetCollider == null && targetController.target_type == 1) { targetCollider = propCarController.vehicle.GetComponent<Collider>(); }
-        if (targetCollider == null && targetController.target_type == 2) { targetCollider = propAircraftController.aircraft.GetComponent<Collider>(); }
+        if (targetCollider == null && targetController.target_type == 0) 
+        {
+            if (GameObject.Find("targetObject_static").GetComponent<Collider>() != null)
+                targetCollider = GameObject.Find("targetObject_static").GetComponent<Collider>();
+        }
+        if (targetCollider == null && targetController.target_type == 1) 
+        {
+            if (propCarController.vehicle.GetComponent<Collider>() != null)
+                targetCollider = propCarController.vehicle.GetComponent<Collider>(); 
+        }
+        if (targetCollider == null && targetController.target_type == 2) 
+        {
+            if (propAircraftController.aircraft.GetComponent<Collider>() != null)
+                targetCollider = propAircraftController.aircraft.GetComponent<Collider>(); 
+        }
     }
 
     void OnGUI()

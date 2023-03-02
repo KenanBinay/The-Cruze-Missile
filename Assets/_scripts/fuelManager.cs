@@ -52,7 +52,7 @@ public class fuelManager : MonoBehaviour
                 if (fuelCountdown > 8 && fuelCountdown < 15) targetColor = c;
                 if (fuelCountdown < 8) targetColor = d;
             }
-            else { missileRb.useGravity = true; outOfFuel = true; anim_outOfFuel.enabled = true; }          
-        }   
+            else { missileRb.useGravity = true; outOfFuel = true; anim_outOfFuel.enabled = true; }
+        }
     }
 }

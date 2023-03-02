@@ -11,6 +11,6 @@ public class backShineRotate : MonoBehaviour
 
     void LateUpdate()
     {
-        transform.Rotate(new Vector3(0, 0, Time.deltaTime * 9f));
+        if (Time.frameCount % 3 == 0) transform.Rotate(new Vector3(0, 0, Time.deltaTime * 9f));
     }
 }

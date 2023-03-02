@@ -21,13 +21,16 @@ public class ciwsController : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (missileController.crashed || missileController.targetHit || !targetDetected)
+        if (Time.frameCount % 3 == 0)
         {
-            if (gunM != null) gunM.transform.DORotate(new Vector3(0, 0, 0), 3);
-            if (gunUp != null) gunUp.transform.DORotate(new Vector3(0, 0, 0), 3);
+            if (missileController.crashed || missileController.targetHit || !targetDetected)
+            {
+                if (gunM != null) gunM.transform.DORotate(new Vector3(0, 0, 0), 3);
+                if (gunUp != null) gunUp.transform.DORotate(new Vector3(0, 0, 0), 3);
 
-            roundEffect.SetActive(false);
-            targetDetected = false;
+                roundEffect.SetActive(false);
+                targetDetected = false;
+            }
         }
     }
 

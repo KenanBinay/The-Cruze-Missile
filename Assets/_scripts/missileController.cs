@@ -64,11 +64,11 @@ public class missileController : MonoBehaviour
             if (Input.GetMouseButtonUp(0))
             {
                 transform.DORotate(missileLastRotation, 0.5f).SetEase(Ease.InOutQuad);
-                hudYawUi.DOLocalRotate(new Vector3(0, 0, 0), 0.5f).SetEase(Ease.InOutQuad).onComplete = hudYawRotateOnComplete; 
+                hudYawUi.DOLocalRotate(new Vector3(0, 0, 0), 0.5f).SetEase(Ease.InOutQuad).onComplete = hudYawRotateOnComplete;
             }
 
             // setting missile nozzle particles when outOfFuel is true
-            if (fuelManager.outOfFuel)
+            if (fuelManager.outOfFuel && Time.frameCount % 3 == 0)
             {
                 fullJet_missileParticles[0].SetActive(false); outOfFuel_missileParticles[0].SetActive(true);
             }

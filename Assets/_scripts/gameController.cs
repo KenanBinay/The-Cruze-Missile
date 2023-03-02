@@ -44,6 +44,8 @@ public class gameController : MonoBehaviour
 
     void Start()
     {
+        DOTween.KillAll();
+
         rayLenght = 600;
 
         missileHud.SetActive(false);
@@ -70,7 +72,7 @@ public class gameController : MonoBehaviour
     {
         if (!missileController.crashed && !missileController.targetHit && startDelay)
         {
-            if (!screenClickedOnPlay & Input.GetMouseButtonDown(0)) 
+            if (!screenClickedOnPlay & Input.GetMouseButtonDown(0))
             { tutoUi.SetActive(false); screenClickedOnPlay = true; }
 
             Debug.DrawRay(missileBody.transform.position, Vector3.down * rayLenght, Color.red);
@@ -85,7 +87,7 @@ public class gameController : MonoBehaviour
                         missileController.crashed = true;
                         if (!FxController.fxExplode) script_fx.crashFx();
                     }
-                }                 
+                }
                 if (hit.collider.tag == "plane")
                 {
                     missileController.crashed = true;
@@ -132,12 +134,15 @@ public class gameController : MonoBehaviour
             mainCam.cullingMask -= (1 << LayerMask.NameToLayer("missile"));
         }
 
-        //calculate main height to ground by using missiles position in unity & color change
-        alt_txt.text = missileBody.transform.position.y.ToString("ALT " + "#");
-        alt_txt.color = Color.Lerp(alt_txt.color, targetColor, 0.1f);
-        if (missileBody.transform.position.y <= 230 && targetColor != safe) targetColor = safe;
-        if (missileBody.transform.position.y > 230 && missileBody.transform.position.y <= 350 && targetColor != mid) targetColor = mid;
-        if (missileBody.transform.position.y > 400 && targetColor != critical) targetColor = critical;
+        if (Time.frameCount % 3 == 0)
+        {
+            //calculate main height to ground by using missiles position in unity & color change
+            alt_txt.text = missileBody.transform.position.y.ToString("ALT " + "#");
+            alt_txt.color = Color.Lerp(alt_txt.color, targetColor, 0.1f);
+            if (missileBody.transform.position.y <= 230 && targetColor != safe) targetColor = safe;
+            if (missileBody.transform.position.y > 230 && missileBody.transform.position.y <= 350 && targetColor != mid) targetColor = mid;
+            if (missileBody.transform.position.y > 400 && targetColor != critical) targetColor = critical;
+        }
     }
     void tweenCiwsUi() { ciwslockedUi.SetActive(false); }
 
@@ -177,13 +182,13 @@ public class gameController : MonoBehaviour
     }
 
     public void loadMission(int sceneId)
-    {
-        if(!waitForReload)
+    {     
+        if (!waitForReload)
         {
-            if (Time.timeScale != 1) Time.timeScale = 1;
             DOTween.KillAll();
+            if (Time.timeScale != 1) Time.timeScale = 1;          
             AsyncOperation operation = SceneManager.LoadSceneAsync(sceneId);
-            if (!operation.isDone) { waitForReload = true; }
+            if (!operation.isDone) { waitForReload = true;}
         }  
     }
     public void loadMenu(int sceneId)

@@ -10,12 +10,4 @@ public class fuelSpawner : MonoBehaviour
     {
         
     }
-
-    void Update()
-    {
-        if (fuelManager.fuelValue < 15)
-        {
-
-        }
-    }
 }

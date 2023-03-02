@@ -39,7 +39,6 @@ public class roundPool : MonoBehaviour
 		pooledObjects = new List<GameObject>();
 		positions = new List<int>();
 
-
 		for (int i = 0; i < itemsToPool.Count; i++)
 		{
 			ObjectPoolItemToPooledObject(i);
