@@ -17,21 +17,7 @@ public class ciwsController : MonoBehaviour
         roundEffect.SetActive(false);
 
         DOTween.SetTweensCapacity(3200, 60);
-    }
-
-    private void LateUpdate()
-    {
-        if (Time.frameCount % 3 == 0)
-        {
-            if (missileController.crashed || missileController.targetHit || !targetDetected)
-            {
-                if (gunM != null) gunM.transform.DORotate(new Vector3(0, 0, 0), 3);
-                if (gunUp != null) gunUp.transform.DORotate(new Vector3(0, 0, 0), 3);
-
-                roundEffect.SetActive(false);
-                targetDetected = false;
-            }
-        }
+      
     }
 
     public void OnTriggerEnter(Collider other)
@@ -45,8 +31,12 @@ public class ciwsController : MonoBehaviour
         {
             roundEffect.SetActive(true);
 
-            if (gunM != null) gunM.transform.DOLookAt(new Vector3(0, missile.transform.position.y, 0), 4);
-            if (gunUp != null) gunUp.transform.DOLookAt(missile.transform.position, 4);
+            if (gunM != null) gunM.transform.DOLookAt(new Vector3(0, missile.transform.position.y, 0), 3);
+            if (gunUp != null) gunUp.transform.DOLookAt(missile.transform.position, 3);
+        }
+        if (missileController.crashed || missileController.targetHit)
+        {
+            returnStatic();
         }
     }
 
@@ -55,7 +45,20 @@ public class ciwsController : MonoBehaviour
         if (other.gameObject.CompareTag("missileM")) 
         {
             Debug.Log("lockedOff");
-            targetDetected = false;    
+            targetDetected = false;
+            returnStatic();
+        }
+    }
+
+    void returnStatic()
+    {
+        if (missileController.crashed || missileController.targetHit || !targetDetected)
+        {
+            gunM.transform.DORotate(new Vector3(0, 0, 0), 0.5f);
+            gunUp.transform.DORotate(new Vector3(0, 0, 0), 0.5f);
+
+            roundEffect.SetActive(false);
+            targetDetected = false;
         }
     }
 }

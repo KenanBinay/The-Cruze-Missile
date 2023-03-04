@@ -16,7 +16,6 @@ public class missileController : MonoBehaviour
 
     public float flySpeed, yawAmount;
     public static float yaw, pitch, yawHudHorizontal, yawHudVertical;
-    bool missileYawPitchSet, clickCheckMissileRot;
 
     public static bool crashed, targetHit, outside, ciwsHit;
     public static int hitVal;
@@ -29,7 +28,7 @@ public class missileController : MonoBehaviour
         pitch = yaw = 0f;
         handleInput = Vector2.zero;
 
-        outside = ciwsHit = crashed = targetHit = missileYawPitchSet = clickCheckMissileRot = false;
+        outside = ciwsHit = crashed = targetHit = false;
         rigidM = gameObject.GetComponent<Rigidbody>();
 
         for (int i = 0; i < fullJet_missileParticles.Length; i++)
@@ -169,6 +168,10 @@ public class missileController : MonoBehaviour
             outside = true;
             Debug.Log("returnToCombat");
         }
+        if (other.gameObject.CompareTag("ciwsRadar") && !crashed)
+        {
+           // warningUi.SetActive(true);
+        }
     }
     private void OnTriggerExit(Collider other)
     {
@@ -180,6 +183,7 @@ public class missileController : MonoBehaviour
         if (other.gameObject.CompareTag("ciwsRadar"))
         {
             hitVal = 0;
+           // warningUi.SetActive(false);
         }
     }
 

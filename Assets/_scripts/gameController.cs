@@ -37,6 +37,7 @@ public class gameController : MonoBehaviour
     {
         if (Application.isMobilePlatform)
         {
+            Application.targetFrameRate = -1;
             Debug.unityLogger.logEnabled = false;
             QualitySettings.vSyncCount = 0;
         }
@@ -44,7 +45,7 @@ public class gameController : MonoBehaviour
 
     void Start()
     {
-        DOTween.KillAll();
+      
 
         rayLenght = 600;
 
@@ -99,8 +100,8 @@ public class gameController : MonoBehaviour
         if (missileController.outside && !missileController.crashed && !missileController.targetHit) { giveWarning(); }
         else { warningUi.SetActive(false); countdownBool = false; }
 
-        if (ciwsController.targetDetected) { ciwslockedUi.transform.DOScale(new Vector3(1, 1, 1), 0.2f); }
-        else { ciwslockedUi.transform.DOScale(new Vector3(0, 2.5f, 1), 0.2f); }
+        if (ciwsController.targetDetected) { ciwslockedUi.transform.DOLocalMoveY(520, 0.25f); }
+        else { ciwslockedUi.transform.DOLocalMoveY(1200, 0.25f); }
 
         //on missile collide with target or crash
         if (missileController.targetHit && !gameover)
