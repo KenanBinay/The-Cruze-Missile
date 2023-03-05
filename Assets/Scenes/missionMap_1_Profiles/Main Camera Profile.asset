@@ -65,16 +65,16 @@ MonoBehaviour:
     value: 0
   saturation:
     overrideState: 1
-    value: 15
+    value: 21
   brightness:
     overrideState: 0
     value: 0
   postExposure:
-    overrideState: 1
+    overrideState: 0
     value: 0.1
   contrast:
     overrideState: 1
-    value: 10
+    value: 23
   mixerRedOutRedIn:
     overrideState: 0
     value: 100
