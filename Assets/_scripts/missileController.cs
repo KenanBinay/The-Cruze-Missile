@@ -5,6 +5,7 @@ using DG.Tweening;
 
 public class missileController : MonoBehaviour
 {
+    public scoreManager_inGame scoreManager;
     public FxController fx;
 
     public static Vector3 normal;
@@ -100,6 +101,8 @@ public class missileController : MonoBehaviour
             {
                 Debug.Log("crashed");
                 crashed = true;
+
+                scoreManager_inGame.addScore(110);
             }           
         }
         if (collision.gameObject.CompareTag("target"))
@@ -113,6 +116,8 @@ public class missileController : MonoBehaviour
                 collision.gameObject.SetActive(false);
 
                 targetHit = true;
+
+                scoreManager_inGame.addScore(340);
             }
         }
         if (collision.gameObject.CompareTag("vehicleTarget"))
@@ -127,6 +132,8 @@ public class missileController : MonoBehaviour
 
                 targetHit = true;
                 collision.gameObject.transform.DOPause();
+
+                scoreManager_inGame.addScore(370);
             }
         }
         if (collision.gameObject.CompareTag("airTarget"))
@@ -140,6 +147,8 @@ public class missileController : MonoBehaviour
 
                 targetHit = true;
                 collision.gameObject.transform.DOPause();
+
+                scoreManager_inGame.addScore(480);
             }
         }
 
@@ -157,6 +166,7 @@ public class missileController : MonoBehaviour
                 Debug.Log("hit: " + hitVal);  
 
                 if (hitVal >= 3) { crashed = true; }
+                scoreManager_inGame.addScore(130);
                 StartCoroutine(roundHit());
             }
         }
@@ -168,22 +178,20 @@ public class missileController : MonoBehaviour
             outside = true;
             Debug.Log("returnToCombat");
         }
-        if (other.gameObject.CompareTag("ciwsRadar") && !crashed)
-        {
-           // warningUi.SetActive(true);
-        }
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("outside"))
         {
             outside = false;
+
+            scoreManager_inGame.addScore(50);
             Debug.Log("returned");
         }
         if (other.gameObject.CompareTag("ciwsRadar"))
         {
             hitVal = 0;
-           // warningUi.SetActive(false);
+            scoreManager_inGame.addScore(50);
         }
     }
 

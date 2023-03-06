@@ -4,12 +4,14 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class menuManager : MonoBehaviour
 {
     public int sceneId;
+    float scoreBar;
 
-    int selectedMissileNumb, levelBase;
+    int selectedMissileNumb, levelVal;
     bool waitForReload, missileMenuOpened;
 
     public Slider levelSlider;
@@ -19,6 +21,11 @@ public class menuManager : MonoBehaviour
         , bar_missileMenu, barOpened_missileMenu;
 
     [SerializeField] GameObject[] menuSelectedMissiles;
+
+    private void Awake()
+    {
+        DOTween.KillAll();
+    }
 
     void Start()
     {
@@ -31,16 +38,11 @@ public class menuManager : MonoBehaviour
         if (selectedMissileNumb == 4) menuSelectedMissiles[selectedMissileNumb].SetActive(true);
         if (selectedMissileNumb == 5) menuSelectedMissiles[selectedMissileNumb].SetActive(true);
 
-    }
+        scoreBar = PlayerPrefs.GetFloat("sliderScore", 0);
+        levelVal = PlayerPrefs.GetInt("level", 0);
 
-    void Update()
-    {
-        if (levelSlider.value == levelSlider.maxValue)
-        {
-            levelBase += 1;
-            levelSlider.value = 0;
-            levelBase_text.text = levelBase.ToString();
-        }
+        levelSlider.value = scoreBar;
+        levelBase_text.text = levelVal.ToString();
     }
 
     public void loadMission()

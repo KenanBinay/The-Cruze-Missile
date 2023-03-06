@@ -30,10 +30,10 @@ public class ciwsController : MonoBehaviour
         if (other.gameObject.CompareTag("missileM") && !missileController.crashed
             && !missileController.targetHit && ciwsSpawner.ciwsSpawned)
         {
-            roundEffect.SetActive(true);
-
             gunM.transform.DOLookAt(new Vector3(0, missile.transform.position.y, 0), 3);
             gunUp.transform.DOLookAt(missile.transform.position, 3);
+
+            if (!roundEffect.activeSelf) roundEffect.SetActive(true);
         }
         if (other.gameObject.CompareTag("missileM")
             && missileController.crashed || missileController.targetHit)
@@ -55,10 +55,10 @@ public class ciwsController : MonoBehaviour
 
     IEnumerator returnStatic()
     {
-        gunM.transform.DORotate(new Vector3(0, 0, 0), 0.5f);
-        gunUp.transform.DORotate(new Vector3(0, 0, 0), 0.5f);
+        gunM.transform.DORotate(new Vector3(0, 0, 0), 0.7f);
+        gunUp.transform.DORotate(new Vector3(0, 0, 0), 0.7f);
 
-        roundEffect.SetActive(false);
+        if (roundEffect.activeSelf) roundEffect.SetActive(false);
 
         yield return new WaitForSeconds(1);
 

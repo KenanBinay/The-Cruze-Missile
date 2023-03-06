@@ -9,28 +9,39 @@ using UnityEngine.UI;
 public class gameController : MonoBehaviour
 {
     public FxController script_fx;
+    private scoreManager_inGame scoreManager;
     [SerializeField] public ciwsSpawner script_ciwsSpawner;
 
     [SerializeField] public Camera mainCam;
-    [SerializeField] public Animator startAnim;
+    [SerializeField] public Animator startAnim, levelEndUiAnim;
 
-    [SerializeField]  public GameObject missileHud, missileBody, warningUi, arrrowIndicator, tutoUi, joystickMain, ciwslockedUi,
-        missionComplete_Ui, missionFailed_Ui, jet_main, pauseButton_Ui, fuelBar_Ui, missionInfo_Ui, onPauseSlide_Ui;
+    [SerializeField]
+    public GameObject missileHud, missileBody, warningUi, arrrowIndicator, tutoUi,
+        joystickMain, ciwslockedUi, missionComplete_Ui, missionFailed_Ui, jet_main, pauseButton_Ui,
+        fuelBar_Ui, missionInfo_Ui, onPauseSlide_Ui;
+
     [SerializeField] public Sprite iconPause, iconPlay;
     [SerializeField] public Image iconPausePlay;
     [SerializeField] public Color safe, mid, critical;
+    [SerializeField] public Slider levelSlider;
     Color targetColor;
 
-    [SerializeField] public TextMeshProUGUI altitute, countdownTxt, missionTxt, missionDoneTxt, missionFailedTxt;
-    [SerializeField] public TextMeshPro alt_txt;
 
-    public static bool startDelay, screenClickedOnPlay;
+    [SerializeField]
+    public TextMeshProUGUI altitute, countdownTxt, missionTxt, missionDoneTxt,
+        missionFailedTxt, level_txt, scoreVal_txt;
 
-    bool countdownBool, gameover, paused,waitForReload;
+    [SerializeField] public TextMeshPro alt_txt, time_txt;
+
+    public static bool startDelay, screenClickedOnPlay, timeScoreGiven;
+    public static float missionTime, gainedScoreInLevel;
+
+    bool countdownBool, gameover, paused, waitForReload, compeleted_endUiAnim;
     float rayLenght, countdownVal;
+
     RaycastHit hit;
 
-    int missionCurrentVal;
+    int missionCurrentVal, levelValue;
 
     Vector3 targetLine;
     private void Awake()
@@ -41,13 +52,16 @@ public class gameController : MonoBehaviour
             Debug.unityLogger.logEnabled = false;
             QualitySettings.vSyncCount = 0;
         }
+
+        DOTween.KillAll();
     }
 
     void Start()
     {
-      
+        scoreManager = GetComponent<scoreManager_inGame>();
 
         rayLenght = 600;
+        gainedScoreInLevel = missionTime = 0;
 
         missileHud.SetActive(false);
         joystickMain.SetActive(false);
@@ -58,6 +72,9 @@ public class gameController : MonoBehaviour
 
         missionTxt.text = "TARGET " + PlayerPrefs.GetInt("mission", 0);
         missionCurrentVal = PlayerPrefs.GetInt("mission", 0);
+        levelValue = PlayerPrefs.GetInt("level", 0);
+        level_txt.text = levelValue.ToString();
+        levelSlider.value = PlayerPrefs.GetFloat("sliderScore", 0);
 
         Debug.Log("mission: " + PlayerPrefs.GetInt("mission", 0));     
 
@@ -95,6 +112,9 @@ public class gameController : MonoBehaviour
                     if (!FxController.fxExplode) script_fx.crashFx(); Debug.Log("plane ray hit");
                 }
             }
+
+            missionTime += Time.deltaTime;
+            time_txt.text = missionTime.ToString("0.00");
         }
 
         if (missileController.outside && !missileController.crashed && !missileController.targetHit) { giveWarning(); }
@@ -118,6 +138,20 @@ public class gameController : MonoBehaviour
             gameover = true;
 
             mainCam.cullingMask -= (1 << LayerMask.NameToLayer("missile"));
+
+            //giving time score
+            if (!timeScoreGiven)
+            {
+                if (missionTime >= 40) scoreManager_inGame.addScore(70);
+                if (missionTime >= 30 && missionTime < 40) scoreManager_inGame.addScore(170);
+                if (missionTime >= 25 && missionTime < 30) scoreManager_inGame.addScore(200);
+                if (missionTime >= 15 && missionTime < 25) scoreManager_inGame.addScore(360);
+                if (missionTime < 15) scoreManager_inGame.addScore(410);
+
+                timeScoreGiven = true;
+            }
+
+            StartCoroutine(levelEndScoreValueSmoothSet());
         }
         if (missileController.crashed && !gameover)
         {
@@ -130,6 +164,7 @@ public class gameController : MonoBehaviour
 
             missionFailed_Ui.SetActive(true);
             missionFailedTxt.text = "TARGET " + missionCurrentVal + " FAILED";
+
             gameover = true;
 
             mainCam.cullingMask -= (1 << LayerMask.NameToLayer("missile"));
@@ -144,8 +179,27 @@ public class gameController : MonoBehaviour
             if (missileBody.transform.position.y > 230 && missileBody.transform.position.y <= 350 && targetColor != mid) targetColor = mid;
             if (missileBody.transform.position.y > 400 && targetColor != critical) targetColor = critical;
         }
+
+        if (compeleted_endUiAnim)
+        {
+            if (levelSlider.value == levelSlider.maxValue)
+            {
+                levelEndUiAnim.SetTrigger("levelUp");
+
+                levelValue++;
+                level_txt.text = levelValue.ToString();
+                levelSlider.value = 0;
+
+                PlayerPrefs.SetInt("level", levelValue);
+            }
+            if (levelSlider.value != levelSlider.maxValue && scoreManager_inGame.sliderScore > 0)
+            {
+                levelSlider.value += 20;
+                scoreManager_inGame.sliderScore -= 20;
+                PlayerPrefs.SetFloat("sliderScore", levelSlider.value);
+            }
+        }
     }
-    void tweenCiwsUi() { ciwslockedUi.SetActive(false); }
 
     void giveWarning()
     {
@@ -186,7 +240,6 @@ public class gameController : MonoBehaviour
     {     
         if (!waitForReload)
         {
-            DOTween.KillAll();
             if (Time.timeScale != 1) Time.timeScale = 1;          
             AsyncOperation operation = SceneManager.LoadSceneAsync(sceneId);
             if (!operation.isDone) { waitForReload = true;}
@@ -197,7 +250,6 @@ public class gameController : MonoBehaviour
         if (!waitForReload)
         {
             if (Time.timeScale != 1) Time.timeScale = 1;
-            DOTween.KillAll();
             AsyncOperation operation = SceneManager.LoadSceneAsync(sceneId);
             if (!operation.isDone) { waitForReload = true; }
         }
@@ -228,5 +280,16 @@ public class gameController : MonoBehaviour
                 Time.timeScale = 1;
             }
         }
+    }
+
+  
+    IEnumerator levelEndScoreValueSmoothSet()
+    {
+        scoreVal_txt.text = "+" + gainedScoreInLevel;
+        PlayerPrefs.SetFloat("sliderScore", scoreManager_inGame.sliderScore);
+
+        yield return new WaitForSeconds(2.30f);
+        compeleted_endUiAnim = true;
+
     }
 }

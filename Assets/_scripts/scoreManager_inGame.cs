@@ -1,18 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class scoreManager_inGame : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public static float sliderScore;
+
     void Start()
+    {
+        sliderScore = PlayerPrefs.GetFloat("sliderScore", 0);
+    }
+
+    void Update()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public static void addScore(float amount)
     {
-        
+        sliderScore += amount;
+        gameController.gainedScoreInLevel += amount;
+
+        Debug.Log("score added || Score: " + sliderScore);
     }
 }
