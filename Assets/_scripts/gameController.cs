@@ -290,6 +290,5 @@ public class gameController : MonoBehaviour
 
         yield return new WaitForSeconds(2.30f);
         compeleted_endUiAnim = true;
-
     }
 }

@@ -18,7 +18,5 @@ public class scoreManager_inGame : MonoBehaviour
     {
         sliderScore += amount;
         gameController.gainedScoreInLevel += amount;
-
-        Debug.Log("score added || Score: " + sliderScore);
     }
 }
