@@ -14,11 +14,17 @@ public class menuManager : MonoBehaviour
     int selectedMissileNumb, levelVal;
     bool waitForReload, missileMenuOpened;
 
-    public Slider levelSlider;
+    [Header("Slider")]
+    [SerializeField] private Slider levelSlider, loadingSlider;
+    [Header("")]
+
     public Animator bottomStart;
     public TextMeshProUGUI levelBase_text;
-    [SerializeField] public GameObject startMenu_canvas, missileMenu_canvas, missileSelectionBoxes
-        , bar_missileMenu, barOpened_missileMenu;
+
+    [SerializeField]
+    public GameObject startMenu_canvas, missileMenu_canvas, missileSelectionBoxes
+        , bar_missileMenu, barOpened_missileMenu, top_mainCanvas, middile_mainCanvas, bottom_mainCanvas,
+        loadingUi;
 
     [SerializeField] GameObject[] menuSelectedMissiles;
 
@@ -50,8 +56,15 @@ public class menuManager : MonoBehaviour
         if (!waitForReload)
         {
             bottomStart.SetTrigger("startClick");
-            AsyncOperation operation = SceneManager.LoadSceneAsync(sceneId);
-            if (!operation.isDone) { waitForReload = true; }            
+
+            loadingUi.SetActive(true);
+            startMenu_canvas.SetActive(false);
+            missileMenu_canvas.SetActive(false);
+            top_mainCanvas.SetActive(false);
+            middile_mainCanvas.SetActive(false);
+            bottom_mainCanvas.SetActive(false);
+
+            StartCoroutine(loadLevelAsync(sceneId));              
         }
     }
 
@@ -113,6 +126,19 @@ public class menuManager : MonoBehaviour
         {
             bar_missileMenu.SetActive(false);
             barOpened_missileMenu.SetActive(true);
+        }
+    }
+
+    IEnumerator loadLevelAsync(int sceneId)
+    {
+        AsyncOperation loadOperation = SceneManager.LoadSceneAsync(sceneId);
+        if (!loadOperation.isDone) { waitForReload = true; }
+
+        while (!loadOperation.isDone)
+        {
+            float progressValue = Mathf.Clamp01(loadOperation.progress / 0.9f);
+            loadingSlider.value = progressValue;
+            yield return null;
         }
     }
 }

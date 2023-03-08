@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 2238645839374455801}
   - component: {fileID: 803277559953577241}
   - component: {fileID: 4337379857431861668}
+  - component: {fileID: 6776673224684645878}
   m_Layer: 0
   m_Name: Military_Artillery_Truck
-  m_TagString: Untagged
+  m_TagString: crashColl
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,6 +84,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6776673224684645878
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 473303399070359029}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.6405923, y: 2.5162256, z: 7.337169}
+  m_Center: {x: 0, y: 1.2666962, z: 0.5812086}
 --- !u!1 &2866389345508805042
 GameObject:
   m_ObjectHideFlags: 0
