@@ -6614,11 +6614,11 @@ MonoBehaviour:
   loadingUi: {fileID: 203972171}
   menuSelectedMissiles:
   - {fileID: 387432817}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 387432817}
+  - {fileID: 387432817}
+  - {fileID: 387432817}
+  - {fileID: 387432817}
+  - {fileID: 387432817}
 --- !u!4 &1865991871
 Transform:
   m_ObjectHideFlags: 0

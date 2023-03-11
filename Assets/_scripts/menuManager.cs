@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -11,8 +12,9 @@ public class menuManager : MonoBehaviour
     public int sceneId;
     float scoreBar;
 
-    int selectedMissileNumb, levelVal, unlockLevel;
+    int selectedMissileNumb, levelVal, unlockLevel, savedMissile, lastSelectedMissileNumb;
     bool waitForReload, missileMenuOpened;
+    string selectedMissileName;
 
     [Header("Slider")]
     [SerializeField] private Slider levelSlider, loadingSlider;
@@ -37,18 +39,16 @@ public class menuManager : MonoBehaviour
     {
         sceneId = 1;
 
-        if (selectedMissileNumb == 0) menuSelectedMissiles[selectedMissileNumb].SetActive(true);
-        if (selectedMissileNumb == 1) menuSelectedMissiles[selectedMissileNumb].SetActive(true);
-        if (selectedMissileNumb == 2) menuSelectedMissiles[selectedMissileNumb].SetActive(true);
-        if (selectedMissileNumb == 3) menuSelectedMissiles[selectedMissileNumb].SetActive(true);
-        if (selectedMissileNumb == 4) menuSelectedMissiles[selectedMissileNumb].SetActive(true);
-        if (selectedMissileNumb == 5) menuSelectedMissiles[selectedMissileNumb].SetActive(true);
-
         scoreBar = PlayerPrefs.GetFloat("sliderScore", 0);
         levelVal = PlayerPrefs.GetInt("level", 0);
+        lastSelectedMissileNumb = PlayerPrefs.GetInt("lastSelectedMissile");
+
+        menuSelectedMissiles[lastSelectedMissileNumb].SetActive(true);
 
         levelSlider.value = scoreBar;
         levelBase_text.text = levelVal.ToString();
+
+        Debug.Log("last selected missile: " + lastSelectedMissileNumb);
     }
 
     public void loadMission()
@@ -82,6 +82,20 @@ public class menuManager : MonoBehaviour
                 .gameObject;
             GameObject selectIndicator = missileSelected.transform.GetChild(1).gameObject;
                 selectIndicator.SetActive(false);
+
+            selectedMissileName = Enum.GetName(typeof(missileList), a);
+            savedMissile = PlayerPrefs.GetInt(selectedMissileName);
+
+            if (a != 0 && savedMissile == 1)
+            {
+                GameObject unlockedBox = missileSelected.transform.GetChild(3).gameObject;
+                GameObject lockedBox = missileSelected.transform.GetChild(0).gameObject;
+                GameObject levelTxt = missileSelected.transform.GetChild(4).gameObject;
+
+                unlockedBox.SetActive(true);
+                lockedBox.SetActive(false);
+                levelTxt.SetActive(false);
+            }
         }
     }
 
@@ -91,7 +105,7 @@ public class menuManager : MonoBehaviour
         int selectedMissile = int.Parse(split[0]);
         int levelCost = int.Parse(split[1]);
 
-        Debug.Log("missile: " + selectedMissile.ToString() + " || needed level: " + levelCost.ToString());
+        Debug.Log("missile: " + selectedMissile.ToString() + " || required level: " + levelCost.ToString());
 
         for (int a = 0; a < 6; a++)
         {
@@ -111,7 +125,22 @@ public class menuManager : MonoBehaviour
         unlockLevel = levelCost;
         selectedMissileNumb = selectedMissile;
 
-        StartCoroutine(onMissileSelected());
+        //getting name from missileList by enumGetName
+        if (selectedMissileNumb == 0) { savedMissile = 1; }
+        else
+        {
+            selectedMissileName = Enum.GetName(typeof(missileList), selectedMissileNumb);
+            savedMissile = PlayerPrefs.GetInt(selectedMissileName);
+        }
+
+        Debug.Log("Save: " + savedMissile);
+
+        if (unlockLevel <= levelVal && savedMissile == 1) StartCoroutine(onMissileSelected());
+        else
+        {
+            barOpened_missileMenu.SetActive(true);
+            bar_missileMenu.SetActive(false);
+        }
     }
 
     public void unlockMissile_byLevel()
@@ -130,29 +159,35 @@ public class menuManager : MonoBehaviour
             lockedBox.SetActive(false);
             levelTxt.SetActive(false);
 
+            PlayerPrefs.SetInt(selectedMissileName, 1);
+
             Debug.Log("UNLOCKED MISSILE: " + selectedMissileNumb);
+
+            StartCoroutine(onMissileSelected());
         }
     }
 
     IEnumerator onMissileSelected()
     {
-        if (selectedMissileNumb == 0)
+        PlayerPrefs.SetInt("lastSelectedMissile", selectedMissileNumb);
+
+        barOpened_missileMenu.SetActive(false);
+        bar_missileMenu.SetActive(true);
+
+        missileMenuOpened = false;
+        Debug.Log("selected missile: " + selectedMissileNumb);
+
+        yield return new WaitForSeconds(0.3f);
+
+        startMenu_canvas.SetActive(true);
+        missileMenu_canvas.SetActive(false);
+
+        for (int a = 0; a < 6; a++)
         {
-            missileMenuOpened = false;
-
-            yield return new WaitForSeconds(0.3f);
-
-            startMenu_canvas.SetActive(true);
-            missileMenu_canvas.SetActive(false);
-
-            menuSelectedMissiles[selectedMissileNumb].SetActive(true);
+            menuSelectedMissiles[a].SetActive(false);
         }
 
-        if (selectedMissileNumb != 0)
-        {
-            bar_missileMenu.SetActive(false);
-            barOpened_missileMenu.SetActive(true);
-        }
+        menuSelectedMissiles[selectedMissileNumb].SetActive(true);
     }
 
     IEnumerator loadLevelAsync(int sceneId)
