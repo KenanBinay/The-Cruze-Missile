@@ -11,7 +11,7 @@ public class menuManager : MonoBehaviour
     public int sceneId;
     float scoreBar;
 
-    int selectedMissileNumb, levelVal;
+    int selectedMissileNumb, levelVal, unlockLevel;
     bool waitForReload, missileMenuOpened;
 
     [Header("Slider")]
@@ -85,8 +85,14 @@ public class menuManager : MonoBehaviour
         }
     }
 
-    public void selectMissile(int missileNumb)
+    public void selectMissile(string numbers = "0,0")
     {
+        string[] split = numbers.Split(","[0]);
+        int selectedMissile = int.Parse(split[0]);
+        int levelCost = int.Parse(split[1]);
+
+        Debug.Log("missile: " + selectedMissile.ToString() + " || needed level: " + levelCost.ToString());
+
         for (int a = 0; a < 6; a++)
         {
             if (menuSelectedMissiles[a] != null) menuSelectedMissiles[a].SetActive(false);
@@ -95,17 +101,37 @@ public class menuManager : MonoBehaviour
                 .gameObject;
             GameObject selectIndicator = missileSelected.transform.GetChild(1).gameObject;
 
-            if (a == missileNumb)
+            if (a == selectedMissile)
                 selectIndicator.SetActive(true);
 
-            if (a != missileNumb && selectIndicator.activeSelf)
+            if (a != selectedMissile && selectIndicator.activeSelf)
                 selectIndicator.SetActive(false);
         }
 
-        selectedMissileNumb = missileNumb;
-        Debug.Log("missile selected " + missileNumb);
+        unlockLevel = levelCost;
+        selectedMissileNumb = selectedMissile;
 
         StartCoroutine(onMissileSelected());
+    }
+
+    public void unlockMissile_byLevel()
+    {      
+        if (unlockLevel <= levelVal)
+        {
+            GameObject missileSelected = missileSelectionBoxes.transform.Find("missileBox_" +
+          selectedMissileNumb).gameObject;
+
+            GameObject unlockedBox = missileSelected.transform.GetChild(3).gameObject;
+            GameObject lockedBox = missileSelected.transform.GetChild(0).gameObject;
+            GameObject levelTxt = missileSelected.transform.GetChild(4).gameObject;
+
+            unlockedBox.SetActive(true);
+
+            lockedBox.SetActive(false);
+            levelTxt.SetActive(false);
+
+            Debug.Log("UNLOCKED MISSILE: " + selectedMissileNumb);
+        }
     }
 
     IEnumerator onMissileSelected()
