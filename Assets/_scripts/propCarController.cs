@@ -47,12 +47,14 @@ public class propCarController : MonoBehaviour
                 GameObject parentLane = gameObject.transform.Find("set1_Rlane(Clone)").gameObject;
                 vehicle = parentLane.transform.GetChild(vehicleNumb).gameObject;
                 vehicle.GetComponent<Target>().enabled = true;
+                vehicle.GetComponent<BoxCollider>().enabled = true;
             }
             if (parentPropNumb == 1)
             {
                 GameObject parentLane = gameObject.transform.Find("set1_Llane(Clone)").gameObject;
                 vehicle = parentLane.transform.GetChild(vehicleNumb).gameObject;
                 vehicle.GetComponent<Target>().enabled = true;
+                vehicle.GetComponent<BoxCollider>().enabled = true;
             }
             vehicle.tag = "vehicleTarget";
         }

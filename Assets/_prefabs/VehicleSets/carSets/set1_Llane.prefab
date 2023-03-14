@@ -1322,7 +1322,7 @@ BoxCollider:
   m_GameObject: {fileID: 496961782498575033}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 13.637713, y: 1.1893053, z: 10.668611}
   m_Center: {x: -2.5644822, y: 0.55268097, z: 1.1927838}
@@ -4527,7 +4527,7 @@ BoxCollider:
   m_GameObject: {fileID: 1041304916483684862}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 16.896677, y: 2.7091577, z: 21.335842}
   m_Center: {x: -3.1546993, y: 1.312608, z: 2.5822067}
@@ -4596,7 +4596,7 @@ BoxCollider:
   m_GameObject: {fileID: 1210593001545318535}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 13.637713, y: 1.1893053, z: 10.668611}
   m_Center: {x: -2.5644822, y: 0.55268097, z: 1.1927838}
@@ -9647,7 +9647,7 @@ BoxCollider:
   m_GameObject: {fileID: 2015513201204314078}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 16.896677, y: 2.7091577, z: 21.335842}
   m_Center: {x: -3.1546993, y: 1.312608, z: 2.5822067}
@@ -9801,7 +9801,7 @@ BoxCollider:
   m_GameObject: {fileID: 2414214335307820547}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 13.637713, y: 1.1893053, z: 10.668611}
   m_Center: {x: -2.5644822, y: 0.55268097, z: 1.1927838}
@@ -14643,7 +14643,7 @@ BoxCollider:
   m_GameObject: {fileID: 6337436129886788997}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 13.637713, y: 1.1893053, z: 10.668611}
   m_Center: {x: -2.5644822, y: 0.55268097, z: 1.1927838}
@@ -19093,7 +19093,7 @@ BoxCollider:
   m_GameObject: {fileID: 7424213477502345000}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 13.637713, y: 1.1893053, z: 10.668611}
   m_Center: {x: -2.5644822, y: 0.55268097, z: 1.1927838}
@@ -21196,7 +21196,7 @@ BoxCollider:
   m_GameObject: {fileID: 7424213477520019817}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 16.896677, y: 2.7091577, z: 21.335842}
   m_Center: {x: -3.1546993, y: 1.312608, z: 2.5822067}
@@ -21731,7 +21731,7 @@ BoxCollider:
   m_GameObject: {fileID: 7424213477854754555}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 13.637713, y: 1.1893053, z: 10.668611}
   m_Center: {x: -2.5644822, y: 0.55268097, z: 1.1927838}
@@ -26104,7 +26104,7 @@ BoxCollider:
   m_GameObject: {fileID: 7424213477980176886}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 16.896677, y: 2.7091577, z: 21.335842}
   m_Center: {x: -3.1546993, y: 1.312608, z: 2.5822067}
@@ -27103,7 +27103,7 @@ BoxCollider:
   m_GameObject: {fileID: 7424213478442266473}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 13.637713, y: 1.1893053, z: 10.668611}
   m_Center: {x: -2.5644822, y: 0.55268097, z: 1.1927838}
@@ -31302,7 +31302,7 @@ BoxCollider:
   m_GameObject: {fileID: 7424213478821033129}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 13.637713, y: 1.1893053, z: 10.668611}
   m_Center: {x: -2.5644822, y: 0.55268097, z: 1.1927838}
@@ -32250,7 +32250,7 @@ BoxCollider:
   m_GameObject: {fileID: 7424213479004238083}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 16.896677, y: 2.7091577, z: 21.335842}
   m_Center: {x: -3.1546993, y: 1.312608, z: 2.5822067}
@@ -33419,7 +33419,7 @@ BoxCollider:
   m_GameObject: {fileID: 7797002580405921875}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 13.637713, y: 1.1893053, z: 10.668611}
   m_Center: {x: -2.5644822, y: 0.55268097, z: 1.1927838}

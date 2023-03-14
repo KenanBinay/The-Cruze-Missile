@@ -11,8 +11,10 @@ public class missileController : MonoBehaviour
     public static Vector3 normal;
     public static Vector2 handleInput;
     public Transform hudYawUi, cam;
-    [SerializeField] public GameObject mainHudUi, warningUi, hitFlash_image, hitEffect_particle;
-    [SerializeField] public GameObject[] fullJet_missileParticles, outOfFuel_missileParticles;
+    [SerializeField] public GameObject mainHudUi, warningUi, hitFlash_image, hitEffect_particle,
+        missilesParent;
+    [SerializeField] public GameObject fullJet_missileParticle, outOfFuel_missileParticle;
+ 
     Rigidbody rigidM;
 
     public float flySpeed, yawAmount;
@@ -32,11 +34,13 @@ public class missileController : MonoBehaviour
         outside = ciwsHit = crashed = targetHit = false;
         rigidM = gameObject.GetComponent<Rigidbody>();
 
-        for (int i = 0; i < fullJet_missileParticles.Length; i++)
-        {
-            fullJet_missileParticles[i].SetActive(true);
-            outOfFuel_missileParticles[i].SetActive(false);
-        }
+        int selectedMissileNumb = PlayerPrefs.GetInt("lastSelectedMissile");
+        GameObject selectedMissileParent = missilesParent.transform.GetChild(selectedMissileNumb).gameObject;
+        fullJet_missileParticle = selectedMissileParent.transform.GetChild(1).gameObject;
+        outOfFuel_missileParticle = selectedMissileParent.transform.GetChild(2).gameObject;
+
+        fullJet_missileParticle.SetActive(true);
+        outOfFuel_missileParticle.SetActive(false);
     }
 
     void FixedUpdate()
@@ -70,7 +74,7 @@ public class missileController : MonoBehaviour
             // setting missile nozzle particles when outOfFuel is true
             if (fuelManager.outOfFuel && Time.frameCount % 3 == 0)
             {
-                fullJet_missileParticles[0].SetActive(false); outOfFuel_missileParticles[0].SetActive(true);
+                fullJet_missileParticle.SetActive(false); outOfFuel_missileParticle.SetActive(true);
             }
         }
         if (crashed || targetHit) // exploding effect call

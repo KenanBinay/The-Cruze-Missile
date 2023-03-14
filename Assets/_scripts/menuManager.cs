@@ -44,6 +44,9 @@ public class menuManager : MonoBehaviour
         levelVal = PlayerPrefs.GetInt("level", 0);
         lastSelectedMissileNumb = PlayerPrefs.GetInt("lastSelectedMissile");
 
+        for (int a = 0; a < 6; a++)
+        { menuSelectedMissiles[a].SetActive(false); }
+
         menuSelectedMissiles[lastSelectedMissileNumb].SetActive(true);
 
         levelSlider.value = scoreBar;
@@ -181,7 +184,11 @@ public class menuManager : MonoBehaviour
 
         barOpened_missileMenu.SetActive(false);
         bar_missileMenu.SetActive(true);
-        selectedMissile_missileInfo.SetActive(false);
+        if (selectedMissile_missileInfo != null) selectedMissile_missileInfo.SetActive(false);
+        else
+        {
+
+        }
 
         missileMenuOpened = false;
         Debug.Log("selected missile: " + selectedMissileNumb);
