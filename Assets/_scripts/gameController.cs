@@ -16,7 +16,7 @@ public class gameController : MonoBehaviour
     [SerializeField] public Animator startAnim, levelEndUiAnim;
 
     [SerializeField]
-    public GameObject missileHud, missileBody, warningUi, arrrowIndicator, tutoUi,
+    public GameObject missileHud, missileBody, warningUi, tutoUi,
         joystickMain, ciwslockedUi, missionComplete_Ui, missionFailed_Ui, jet_main, pauseButton_Ui,
         fuelBar_Ui, missionInfo_Ui, onPauseSlide_Ui;
 
@@ -105,6 +105,10 @@ public class gameController : MonoBehaviour
                         missileController.crashed = true;
                         if (!FxController.fxExplode) script_fx.crashFx();
                     }
+                    if (hit.distance < 50)
+                    {
+                        missileController.exSpeed = 15;
+                    }
                 }
                 if (hit.collider.tag == "plane")
                 {
@@ -126,7 +130,6 @@ public class gameController : MonoBehaviour
         //on missile collide with target or crash
         if (missileController.targetHit && !gameover)
         {
-            arrrowIndicator.SetActive(false);
             missileHud.SetActive(false);
             joystickMain.SetActive(false);
             pauseButton_Ui.SetActive(false);
@@ -155,7 +158,6 @@ public class gameController : MonoBehaviour
         }
         if (missileController.crashed && !gameover)
         {
-            arrrowIndicator.SetActive(false);
             missileHud.SetActive(false);
             joystickMain.SetActive(false);
             pauseButton_Ui.SetActive(false);
@@ -215,7 +217,8 @@ public class gameController : MonoBehaviour
             countdownVal -= Time.deltaTime;
             int seconds = ((int)countdownVal);
             countdownTxt.text = "00:0" + seconds;
-            if (seconds == 0) { missileController.crashed = true; script_fx.crashFx(); missileHud.SetActive(false); arrrowIndicator.SetActive(false); }
+            if (seconds == 0) 
+            { missileController.crashed = true; script_fx.crashFx(); missileHud.SetActive(false); }
         }
     }
 

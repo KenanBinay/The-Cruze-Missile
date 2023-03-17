@@ -18,7 +18,7 @@ public class missileController : MonoBehaviour
     Rigidbody rigidM;
 
     public float flySpeed, yawAmount;
-    public static float yaw, pitch, yawHudHorizontal, yawHudVertical;
+    public static float yaw, pitch, yawHudHorizontal, yawHudVertical, exSpeed;
 
     public static bool crashed, targetHit, outside, ciwsHit;
     public static int hitVal;
@@ -89,7 +89,8 @@ public class missileController : MonoBehaviour
 
     void moveForward() 
     {
-         transform.position += transform.forward * flySpeed * Time.deltaTime; 
+        float speedM = flySpeed + exSpeed;
+        transform.position += transform.forward * speedM * Time.deltaTime;
     }
     
     void hudYawRotateOnComplete()

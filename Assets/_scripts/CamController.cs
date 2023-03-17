@@ -9,8 +9,9 @@ public class CamController : MonoBehaviour
     private Camera cam;
 
     private Vector3 _currentVelocity = Vector3.one;
-    public float smoothSpeed, smoothLook;
     public Vector3 _offset;
+
+    public float smoothSpeed, smoothLook;
 
     RaycastHit hit;
 
@@ -29,13 +30,14 @@ public class CamController : MonoBehaviour
             smoothFollow();
 
             float missileDegree = Missile.transform.eulerAngles.x;
+
             if (missileDegree > 40 && missileDegree < 90)
             { 
-                if (!diveEffect.activeSelf) diveEffect.SetActive(true);
+                if (!diveEffect.activeSelf) diveEffect.SetActive(true); missileController.exSpeed = 10;
             }
             else
             { 
-                if (diveEffect.activeSelf) diveEffect.SetActive(false); 
+                if (diveEffect.activeSelf) diveEffect.SetActive(false); missileController.exSpeed = 0;
             }
         }
      
