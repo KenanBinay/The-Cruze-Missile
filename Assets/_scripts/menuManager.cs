@@ -43,6 +43,7 @@ public class menuManager : MonoBehaviour
         scoreBar = PlayerPrefs.GetFloat("sliderScore", 0);
         levelVal = PlayerPrefs.GetInt("level", 0);
         lastSelectedMissileNumb = PlayerPrefs.GetInt("lastSelectedMissile");
+        selectedMissileNumb = lastSelectedMissileNumb;
 
         for (int a = 0; a < 6; a++)
         { menuSelectedMissiles[a].SetActive(false); }
@@ -53,6 +54,8 @@ public class menuManager : MonoBehaviour
         levelBase_text.text = levelVal.ToString();
 
         Debug.Log("last selected missile: " + lastSelectedMissileNumb);
+
+        PlayerPrefs.SetInt("missile_0", 1);
     }
 
     public void loadMission()
@@ -85,18 +88,29 @@ public class menuManager : MonoBehaviour
             GameObject missileSelected = missileSelectionBoxes.transform.Find("missileBox_" + a)
                 .gameObject;
             GameObject selectIndicator = missileSelected.transform.GetChild(2).gameObject;
-                selectIndicator.SetActive(false);
+            selectIndicator.SetActive(false);
 
             selectedMissileName = Enum.GetName(typeof(missileList), a);
             missileSave = PlayerPrefs.GetInt(selectedMissileName);
 
-            if (a != 0 && missileSave == 1)
-            {
-                GameObject unlockedBox = missileSelected.transform.GetChild(4).gameObject;
-                GameObject lockedBox = missileSelected.transform.GetChild(1).gameObject;
-                GameObject levelTxt = missileSelected.transform.GetChild(5).gameObject;
+            GameObject selectedBox = missileSelected.transform.GetChild(3).gameObject;
+            GameObject unlockedBox = missileSelected.transform.GetChild(4).gameObject;
+            GameObject lockedBox = missileSelected.transform.GetChild(1).gameObject;
+            GameObject levelTxt = missileSelected.transform.GetChild(5).gameObject;
 
+            if (missileSave == 1 && a != lastSelectedMissileNumb)
+            {
                 unlockedBox.SetActive(true);
+                selectedBox.SetActive(false);
+
+                lockedBox.SetActive(false);
+                levelTxt.SetActive(false);
+            }
+            if (a == lastSelectedMissileNumb)
+            {
+                selectedBox.SetActive(true);
+                unlockedBox.SetActive(false);
+
                 lockedBox.SetActive(false);
                 levelTxt.SetActive(false);
             }
@@ -120,17 +134,17 @@ public class menuManager : MonoBehaviour
             GameObject selectIndicator = missileSelected.transform.GetChild(2).gameObject;
 
             if (a == selectedMissile)
-                selectIndicator.SetActive(true);
+                selectIndicator.SetActive(true); 
 
             if (a != selectedMissile && selectIndicator.activeSelf)
-                selectIndicator.SetActive(false);
+                selectIndicator.SetActive(false); 
         }
 
         unlockLevel = levelCost;
         selectedMissileNumb = selectedMissile;
 
         //getting name from missileList by enumGetName
-        if (selectedMissileNumb == 0) { missileSave = 1; }
+        if (selectedMissileNumb == 0) missileSave = 1;
         else
         {
             selectedMissileName = Enum.GetName(typeof(missileList), selectedMissileNumb);
@@ -160,7 +174,6 @@ public class menuManager : MonoBehaviour
         {
             GameObject missileSelected = missileSelectionBoxes.transform.Find("missileBox_" +
           selectedMissileNumb).gameObject;
-
             GameObject unlockedBox = missileSelected.transform.GetChild(4).gameObject;
             GameObject lockedBox = missileSelected.transform.GetChild(1).gameObject;
             GameObject levelTxt = missileSelected.transform.GetChild(5).gameObject;
@@ -180,15 +193,34 @@ public class menuManager : MonoBehaviour
 
     IEnumerator onMissileSelected()
     {
+        for (int a = 0; a < 6; a++)
+        {
+            GameObject missileSelected = missileSelectionBoxes.transform.Find("missileBox_" + a).gameObject;
+
+            selectedMissileName = Enum.GetName(typeof(missileList), a);
+            missileSave = PlayerPrefs.GetInt(selectedMissileName);
+
+            GameObject selectedBox = missileSelected.transform.GetChild(3).gameObject;
+            GameObject unlockedBox = missileSelected.transform.GetChild(4).gameObject;
+
+            if (a == selectedMissileNumb && !selectedBox.activeSelf && unlockedBox.activeSelf)
+            {
+                selectedBox.SetActive(true);
+                unlockedBox.SetActive(false);
+            }
+            if (selectedBox.activeSelf)
+            {
+                selectedBox.SetActive(false);
+                unlockedBox.SetActive(true);
+            }
+        }          
+
         PlayerPrefs.SetInt("lastSelectedMissile", selectedMissileNumb);
 
         barOpened_missileMenu.SetActive(false);
         bar_missileMenu.SetActive(true);
-        if (selectedMissile_missileInfo != null) selectedMissile_missileInfo.SetActive(false);
-        else
-        {
 
-        }
+        if (selectedMissile_missileInfo != null) selectedMissile_missileInfo.SetActive(false);
 
         missileMenuOpened = false;
         Debug.Log("selected missile: " + selectedMissileNumb);

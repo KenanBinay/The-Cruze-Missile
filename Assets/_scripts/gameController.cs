@@ -33,7 +33,7 @@ public class gameController : MonoBehaviour
 
     [SerializeField] public TextMeshPro alt_txt, time_txt;
 
-    public static bool startDelay, screenClickedOnPlay, timeScoreGiven;
+    public static bool startDelay, screenClickedOnPlay, timeScoreGiven, speedUp_missile;
     public static float missionTime, gainedScoreInLevel;
 
     bool countdownBool, gameover, paused, waitForReload, compeleted_endUiAnim;
@@ -108,7 +108,9 @@ public class gameController : MonoBehaviour
                     if (hit.distance < 50)
                     {
                         missileController.exSpeed = 15;
+                        gameController.speedUp_missile = true;
                     }
+                    else if (hit.distance > 50) gameController.speedUp_missile = false;
                 }
                 if (hit.collider.tag == "plane")
                 {
