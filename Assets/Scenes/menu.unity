@@ -7846,6 +7846,7 @@ MonoBehaviour:
   loadingSlider: {fileID: 1970786484}
   bottomStart: {fileID: 1001729354}
   levelBase_text: {fileID: 1375719997}
+  targetVal_text: {fileID: 1867004609}
   startMenu_canvas: {fileID: 304015243}
   missileMenu_canvas: {fileID: 1336162504}
   missileSelectionBoxes: {fileID: 1654087651}
@@ -7936,7 +7937,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: TARGET 74
+  m_text: TARGET 00
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9e7f84ca37ae6ea45a7357cafb6d4e31, type: 2}
   m_sharedMaterial: {fileID: -4516736786943170049, guid: 9e7f84ca37ae6ea45a7357cafb6d4e31,
@@ -8203,9 +8204,9 @@ RectTransform:
   m_Father: {fileID: 2130831945}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 540, y: 985.12}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 1026, y: 985.12}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1919555158

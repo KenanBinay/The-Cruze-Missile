@@ -11,7 +11,7 @@ public class menuManager : MonoBehaviour
     public int sceneId;
     float scoreBar;
 
-    int selectedMissileNumb, levelVal, unlockLevel, missileSave, lastSelectedMissileNumb;
+    int selectedMissileNumb, levelVal, unlockLevel, missileSave, lastSelectedMissileNumb, targetVal;
     bool waitForReload, missileMenuOpened;
     string selectedMissileName;
 
@@ -20,7 +20,7 @@ public class menuManager : MonoBehaviour
     [Header("")]
 
     public Animator bottomStart;
-    public TextMeshProUGUI levelBase_text;
+    public TextMeshProUGUI levelBase_text, targetVal_text;
 
     [SerializeField]
     public GameObject startMenu_canvas, missileMenu_canvas, missileSelectionBoxes
@@ -43,6 +43,7 @@ public class menuManager : MonoBehaviour
         scoreBar = PlayerPrefs.GetFloat("sliderScore", 0);
         levelVal = PlayerPrefs.GetInt("level", 0);
         lastSelectedMissileNumb = PlayerPrefs.GetInt("lastSelectedMissile");
+        targetVal = PlayerPrefs.GetInt("mission", 0);
         selectedMissileNumb = lastSelectedMissileNumb;
 
         for (int a = 0; a < 6; a++)
@@ -52,6 +53,7 @@ public class menuManager : MonoBehaviour
 
         levelSlider.value = scoreBar;
         levelBase_text.text = levelVal.ToString();
+        targetVal_text.text = "TARGET " + targetVal.ToString();
 
         Debug.Log("last selected missile: " + lastSelectedMissileNumb);
     }

@@ -198,8 +198,8 @@ public class gameController : MonoBehaviour
             }
             if (levelSlider.value != levelSlider.maxValue && scoreManager_inGame.sliderScore > 0)
             {
-                levelSlider.value += 20;
-                scoreManager_inGame.sliderScore -= 20;
+                levelSlider.value += 40;
+                scoreManager_inGame.sliderScore -= 40;
                 PlayerPrefs.SetFloat("sliderScore", levelSlider.value);
             }
         }
@@ -243,16 +243,17 @@ public class gameController : MonoBehaviour
 
     public void loadMission(int sceneId)
     {     
-        if (!waitForReload)
+        if (!waitForReload && scoreManager_inGame.sliderScore <= 0)
         {
             if (Time.timeScale != 1) Time.timeScale = 1;          
             AsyncOperation operation = SceneManager.LoadSceneAsync(sceneId);
             if (!operation.isDone) { waitForReload = true;}
         }  
     }
+
     public void loadMenu(int sceneId)
     {
-        if (!waitForReload)
+        if (!waitForReload && scoreManager_inGame.sliderScore <= 0)
         {
             if (Time.timeScale != 1) Time.timeScale = 1;
             AsyncOperation operation = SceneManager.LoadSceneAsync(sceneId);
@@ -286,7 +287,6 @@ public class gameController : MonoBehaviour
             }
         }
     }
-
   
     IEnumerator levelEndScoreValueSmoothSet()
     {
