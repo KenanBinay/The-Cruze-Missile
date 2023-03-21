@@ -1,6 +1,6 @@
 # The-Cruze-Missile
 
-In Game Footage
+Gameplay Footage
 
-https://user-images.githubusercontent.com/72802504/226456236-c6f78a96-bb26-46d7-84c4-011ed573c305.mp4
+https://user-images.githubusercontent.com/72802504/226609959-c46c8afa-d469-402d-bd8c-29d3da8e2eee.mp4
 
