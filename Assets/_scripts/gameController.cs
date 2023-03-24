@@ -44,6 +44,7 @@ public class gameController : MonoBehaviour
     int missionCurrentVal, levelValue;
 
     Vector3 targetLine;
+
     private void Awake()
     {
         if (Application.isMobilePlatform)
@@ -243,7 +244,7 @@ public class gameController : MonoBehaviour
 
     public void loadMission(int sceneId)
     {     
-        if (!waitForReload && scoreManager_inGame.sliderScore <= 0)
+        if (!waitForReload && scoreManager_inGame.sliderScore <= 0 || missileController.crashed)
         {
             if (Time.timeScale != 1) Time.timeScale = 1;          
             AsyncOperation operation = SceneManager.LoadSceneAsync(sceneId);
@@ -253,7 +254,7 @@ public class gameController : MonoBehaviour
 
     public void loadMenu(int sceneId)
     {
-        if (!waitForReload && scoreManager_inGame.sliderScore <= 0)
+        if (!waitForReload && scoreManager_inGame.sliderScore <= 0 || missileController.crashed)
         {
             if (Time.timeScale != 1) Time.timeScale = 1;
             AsyncOperation operation = SceneManager.LoadSceneAsync(sceneId);

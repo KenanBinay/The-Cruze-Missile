@@ -10,6 +10,8 @@ public class ciwsController : MonoBehaviour
 
     public static bool targetDetected;
 
+    [SerializeField] AudioSource ciwsSource;
+
     void Start()
     {
         missile = GameObject.Find("Missile").gameObject;
@@ -34,6 +36,7 @@ public class ciwsController : MonoBehaviour
             gunUp.transform.DOLookAt(missile.transform.position, 3);
 
             if (!roundEffect.activeSelf) roundEffect.SetActive(true);
+            if (!ciwsSource.isPlaying) ciwsSource.Play();
         }
         if (other.gameObject.CompareTag("missileM")
             && missileController.crashed || missileController.targetHit)
@@ -47,7 +50,7 @@ public class ciwsController : MonoBehaviour
         if (other.gameObject.CompareTag("missileM"))
         {
             Debug.Log("lockedOff");
-            targetDetected = false;
+            targetDetected = false;        
 
             StartCoroutine(returnStatic());
         }
@@ -61,6 +64,8 @@ public class ciwsController : MonoBehaviour
         if (roundEffect.activeSelf) roundEffect.SetActive(false);
 
         yield return new WaitForSeconds(1);
+
+        ciwsSource.Stop();
 
         DOTween.Complete(gunUp, gunM);
     }

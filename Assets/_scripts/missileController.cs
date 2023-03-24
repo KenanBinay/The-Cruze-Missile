@@ -23,8 +23,12 @@ public class missileController : MonoBehaviour
     public static bool crashed, targetHit, outside, ciwsHit;
     public static int hitVal;
 
+    bool speedUp, explosion;
+
     Vector3 missileLastRotation;
 
+    [Header("Audio")]
+    [SerializeField] AudioSource[] missileSources, explosionSources;
     void Start()
     {
         hitVal = 0;
@@ -76,13 +80,30 @@ public class missileController : MonoBehaviour
             {
                 fullJet_missileParticle.SetActive(false); outOfFuel_missileParticle.SetActive(true);
             }
+
+            if (!missileSources[0].isPlaying) missileSources[0].Play();
         }
         if (crashed || targetHit) // exploding effect call
         {
             if (!FxController.fxExplode)
             {
                 if (crashed) Debug.Log("crashed"); fx.crashFx();
-                if (targetHit) Debug.Log("targetHit"); fx.targetHitFx();
+                if (targetHit) Debug.Log("targetHit"); fx.targetHitFx();              
+            }
+            if (!explosion)
+            {
+                missileSources[0].Stop();
+
+                int[] explosions = { 0, 1, 2, 3 };
+                int explode = explosions[Random.Range(0, explosions.Length)];
+                explosionSources[explode].Play();
+
+                explosion = true;
+            }
+            if (missileSources[2].isPlaying || missileSources[3].isPlaying)
+            {
+                missileSources[2].Stop();
+                missileSources[3].Stop();
             }
         }
     }
@@ -91,6 +112,9 @@ public class missileController : MonoBehaviour
     {
         float speedM = flySpeed + exSpeed;
         transform.position += transform.forward * speedM * Time.deltaTime;
+
+        if (exSpeed != 0 && !speedUp) missileSources[1].Play(); speedUp = true;
+        if (exSpeed == 0 && speedUp) speedUp = false;
     }
     
     void hudYawRotateOnComplete()
@@ -175,6 +199,12 @@ public class missileController : MonoBehaviour
                 StartCoroutine(roundHit());
             }
         }
+
+        if (other.gameObject.CompareTag("ciwsRadar"))
+        {
+            missileSources[2].Play();
+            missileSources[3].Play();
+        }
     }
     private void OnTriggerStay(Collider other)
     {
@@ -182,7 +212,7 @@ public class missileController : MonoBehaviour
         {
             outside = true;
             Debug.Log("returnToCombat");
-        }
+        }       
     }
     private void OnTriggerExit(Collider other)
     {
@@ -197,6 +227,9 @@ public class missileController : MonoBehaviour
         {
             hitVal = 0;
             scoreManager_inGame.addScore(50);
+
+            missileSources[2].Stop();
+            missileSources[3].Stop();
         }
     }
 
