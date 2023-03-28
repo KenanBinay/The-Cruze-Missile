@@ -12,6 +12,9 @@ public class helicopterController : MonoBehaviour
     {
         rbHeli = gameObject.GetComponent<Rigidbody>();
         crashedGround = missileHit = false;
+
+        if (PlayerPrefs.GetInt("sfx") == 1)
+            gameObject.GetComponentInChildren<AudioSource>().playOnAwake = true;
     }
 
     void Update()

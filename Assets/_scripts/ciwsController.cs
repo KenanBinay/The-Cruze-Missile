@@ -36,7 +36,10 @@ public class ciwsController : MonoBehaviour
             gunUp.transform.DOLookAt(missile.transform.position, 3);
 
             if (!roundEffect.activeSelf) roundEffect.SetActive(true);
-            if (!ciwsSource.isPlaying) ciwsSource.Play();
+            if (!ciwsSource.isPlaying)
+            {
+                if (PlayerPrefs.GetInt("sfx") == 1) ciwsSource.Play();
+            } 
         }
         if (other.gameObject.CompareTag("missileM")
             && missileController.crashed || missileController.targetHit)

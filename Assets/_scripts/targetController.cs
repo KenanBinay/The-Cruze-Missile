@@ -10,9 +10,11 @@ public class targetController : MonoBehaviour
     int carSpawnPoint;
     public static int target_type;
 
+    [SerializeField] AudioSource staticTargetSource;
     void Start()
     {
         staticTarget = GameObject.Find("targetObject_static");
+        if (PlayerPrefs.GetInt("sfx") == 1) staticTargetSource.playOnAwake = true;
 
         int[] carPoints = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
         carSpawnPoint = carPoints[Random.Range(0, carPoints.Length)];
@@ -21,7 +23,7 @@ public class targetController : MonoBehaviour
         target_type = targetNumbs[Random.Range(0, targetNumbs.Length)];
 
         if (target_type == 0)
-        {
+        {          
             if (carSpawnPoint == 0) { staticTarget.transform.position = spawnPoints[0].position; }
             if (carSpawnPoint == 1) { staticTarget.transform.position = spawnPoints[1].position; }
             if (carSpawnPoint == 2) { staticTarget.transform.position = spawnPoints[2].position; }

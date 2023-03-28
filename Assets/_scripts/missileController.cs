@@ -80,23 +80,23 @@ public class missileController : MonoBehaviour
             {
                 fullJet_missileParticle.SetActive(false); outOfFuel_missileParticle.SetActive(true);
             }
-
-            if (!missileSources[0].isPlaying) missileSources[0].Play();
+            if (!missileSources[0].isPlaying)
+            {
+                if (PlayerPrefs.GetInt("sfx") == 1) missileSources[0].Play();
+            }
         }
         if (crashed || targetHit) // exploding effect call
         {
             if (!FxController.fxExplode)
             {
                 if (crashed) Debug.Log("crashed"); fx.crashFx();
-                if (targetHit) Debug.Log("targetHit"); fx.targetHitFx();              
+                if (targetHit) Debug.Log("targetHit"); fx.targetHitFx();
             }
             if (!explosion)
             {
-                missileSources[0].Stop();
-
                 int[] explosions = { 0, 1, 2, 3 };
                 int explode = explosions[Random.Range(0, explosions.Length)];
-                explosionSources[explode].Play();
+                if (PlayerPrefs.GetInt("sfx") == 1) explosionSources[explode].Play();
 
                 explosion = true;
             }
@@ -108,12 +108,17 @@ public class missileController : MonoBehaviour
         }
     }
 
-    void moveForward() 
+    void moveForward()
     {
         float speedM = flySpeed + exSpeed;
         transform.position += transform.forward * speedM * Time.deltaTime;
 
-        if (exSpeed != 0 && !speedUp) missileSources[1].Play(); speedUp = true;
+        if (exSpeed != 0 && !speedUp)
+        {
+            if (PlayerPrefs.GetInt("sfx") == 1) missileSources[1].Play();
+            speedUp = true;
+        }
+
         if (exSpeed == 0 && speedUp) speedUp = false;
     }
     
@@ -177,13 +182,14 @@ public class missileController : MonoBehaviour
                 targetHit = true;
                 collision.gameObject.transform.DOPause();
 
+                AudioSource audioSource = collision.gameObject.GetComponent<AudioSource>();
+                audioSource.Stop();
+
                 scoreManager_inGame.addScore(480);
             }
         }
-
         rigidM.constraints = RigidbodyConstraints.FreezeAll;
     }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("roundColl"))
@@ -202,8 +208,11 @@ public class missileController : MonoBehaviour
 
         if (other.gameObject.CompareTag("ciwsRadar"))
         {
-            missileSources[2].Play();
-            missileSources[3].Play();
+            if (PlayerPrefs.GetInt("sfx") == 1)
+            {
+                missileSources[2].Play();
+                missileSources[3].Play();
+            }             
         }
     }
     private void OnTriggerStay(Collider other)

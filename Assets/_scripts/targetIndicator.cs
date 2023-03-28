@@ -53,7 +53,7 @@ public class targetIndicator : MonoBehaviour
 
     void OnGUI()
     {
-        if (!missileController.targetHit)
+        if (!missileController.targetHit && gameController.startDelay)
         {
             for (int i = 0; i < targets.Count; i++)
             {

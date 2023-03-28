@@ -45,6 +45,8 @@ public class gameController : MonoBehaviour
 
     Vector3 targetLine;
 
+    [Header("Audio")]
+    [SerializeField] AudioSource[] uiSources;
     private void Awake()
     {
         if (Application.isMobilePlatform)
@@ -124,7 +126,8 @@ public class gameController : MonoBehaviour
             time_txt.text = missionTime.ToString("0.00");
         }
 
-        if (missileController.outside && !missileController.crashed && !missileController.targetHit) { giveWarning(); }
+        if (missileController.outside && !missileController.crashed && !missileController.targetHit) 
+        { giveWarning(); }
         else { warningUi.SetActive(false); countdownBool = false; }
 
         if (ciwsController.targetDetected) { ciwslockedUi.transform.DOLocalMoveY(520, 0.25f); }
@@ -173,6 +176,8 @@ public class gameController : MonoBehaviour
             gameover = true;
 
             mainCam.cullingMask -= (1 << LayerMask.NameToLayer("missile"));
+
+            StartCoroutine(crashSfx());
         }
 
         if (Time.frameCount % 3 == 0)
@@ -195,13 +200,27 @@ public class gameController : MonoBehaviour
                 level_txt.text = levelValue.ToString();
                 levelSlider.value = 0;
 
-                PlayerPrefs.SetInt("level", levelValue);
+                if (PlayerPrefs.GetInt("sfx") == 1) uiSources[1].Play();
+
+                PlayerPrefs.SetInt("level", levelValue);             
             }
             if (levelSlider.value != levelSlider.maxValue && scoreManager_inGame.sliderScore > 0)
             {
                 levelSlider.value += 40;
                 scoreManager_inGame.sliderScore -= 40;
                 PlayerPrefs.SetFloat("sliderScore", levelSlider.value);
+
+                if (PlayerPrefs.GetInt("sfx") == 1)
+                {
+                    if (!uiSources[0].isPlaying) uiSources[0].Play();
+                }                 
+            }
+            if (scoreManager_inGame.sliderScore <= 0)
+            {
+                if (PlayerPrefs.GetInt("sfx") == 1)
+                {
+                    if (uiSources[0].isPlaying) uiSources[0].Stop();
+                }                  
             }
         }
     }
@@ -212,7 +231,7 @@ public class gameController : MonoBehaviour
         {
             warningUi.SetActive(true);
 
-            countdownVal = 6;
+            countdownVal = 8;
             countdownBool = true;
         }
         if (countdownBool)
@@ -294,7 +313,17 @@ public class gameController : MonoBehaviour
         scoreVal_txt.text = "+" + gainedScoreInLevel;
         PlayerPrefs.SetFloat("sliderScore", scoreManager_inGame.sliderScore);
 
-        yield return new WaitForSeconds(2.30f);
+        yield return new WaitForSeconds(1f);
+
+        if (PlayerPrefs.GetInt("sfx") == 1) uiSources[2].Play();
+
+        yield return new WaitForSeconds(1.30f);
         compeleted_endUiAnim = true;
+    }
+
+    IEnumerator crashSfx()
+    {       
+        yield return new WaitForSeconds(1f);
+        if (PlayerPrefs.GetInt("sfx") == 1) uiSources[2].Play();
     }
 }

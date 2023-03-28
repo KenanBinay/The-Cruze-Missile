@@ -11,26 +11,29 @@ public class menuManager : MonoBehaviour
     public int sceneId;
     float scoreBar;
 
-    int selectedMissileNumb, levelVal, unlockLevel, missileSave, lastSelectedMissileNumb, targetVal;
-    bool waitForReload, missileMenuOpened;
+    int selectedMissileNumb, levelVal, unlockLevel, missileSave, lastSelectedMissileNumb, targetVal,
+        soundEffect_value;
+    bool waitForReload, missileMenuOpened, settingsOpened;
     string selectedMissileName;
 
     [Header("Slider")]
     [SerializeField] private Slider levelSlider, loadingSlider;
     [Header("")]
 
-    public Animator bottomStart;
+    public Animator bottomStart, settings_anim;
     public TextMeshProUGUI levelBase_text, targetVal_text;
 
     [SerializeField]
     public GameObject startMenu_canvas, missileMenu_canvas, missileSelectionBoxes
         , bar_missileMenu, barOpened_missileMenu, top_mainCanvas, middile_mainCanvas, bottom_mainCanvas,
-        loadingUi, missileMenu_infoUi;
+        loadingUi, missileMenu_infoUi, sfx_off, settings_values;
 
     private GameObject selectedMissile_missileInfo;
 
     [SerializeField] GameObject[] menuSelectedMissiles;
 
+    [Header("Audio")]
+    [SerializeField] AudioSource[] menuSources;
     private void Awake()
     {
         DOTween.KillAll();
@@ -44,7 +47,11 @@ public class menuManager : MonoBehaviour
         levelVal = PlayerPrefs.GetInt("level", 0);
         lastSelectedMissileNumb = PlayerPrefs.GetInt("lastSelectedMissile");
         targetVal = PlayerPrefs.GetInt("mission", 0);
+        soundEffect_value = PlayerPrefs.GetInt("sfx");
         selectedMissileNumb = lastSelectedMissileNumb;
+
+        if(soundEffect_value == 0) { sfx_off.SetActive(true); Debug.Log("sound effects off"); }
+        else { sfx_off.SetActive(false); Debug.Log("sound effects on"); }
 
         for (int a = 0; a < 6; a++)
         { menuSelectedMissiles[a].SetActive(false); }
@@ -55,7 +62,7 @@ public class menuManager : MonoBehaviour
         levelBase_text.text = levelVal.ToString();
         targetVal_text.text = "TARGET " + targetVal.ToString();
 
-        Debug.Log("last selected missile: " + lastSelectedMissileNumb);
+        Debug.Log("last selected missile: " + lastSelectedMissileNumb);     
     }
 
     public void loadMission()
@@ -191,6 +198,41 @@ public class menuManager : MonoBehaviour
         }
     }
 
+    public void loadSettings()
+    {
+        if (!settingsOpened)
+        {
+            settings_values.SetActive(true);
+            settings_anim.enabled = true;
+            settingsOpened = true;
+        }
+        else
+        {
+            settings_anim.SetTrigger("retract");
+            StartCoroutine(settingsDelay());
+        }
+    }
+
+    public void soundEffectState()
+    {
+        if (soundEffect_value == 0)
+        {
+            soundEffect_value = 1;
+            PlayerPrefs.SetInt("sfx", soundEffect_value);
+            sfx_off.SetActive(false);
+
+            Debug.Log("sfx on");
+        }
+        else
+        {
+            soundEffect_value = 0;
+            PlayerPrefs.SetInt("sfx", soundEffect_value);
+            sfx_off.SetActive(true);
+
+            Debug.Log("sfx off");
+        }
+    }
+
     IEnumerator onMissileSelected()
     {
         int lastSelected = PlayerPrefs.GetInt("lastSelectedMissile");
@@ -251,5 +293,12 @@ public class menuManager : MonoBehaviour
             loadingSlider.value = progressValue;
             yield return null;
         }
+    }
+
+    IEnumerator settingsDelay()
+    {
+        yield return new WaitForSeconds(0.3f);
+        settings_values.SetActive(false);
+        settingsOpened = false;
     }
 }
