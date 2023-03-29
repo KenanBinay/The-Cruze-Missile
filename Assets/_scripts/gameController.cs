@@ -27,7 +27,7 @@ public class gameController : MonoBehaviour
     Color targetColor;
 
 
-    [SerializeField]
+    [SerializeField]    
     public TextMeshProUGUI altitute, countdownTxt, missionTxt, missionDoneTxt,
         missionFailedTxt, level_txt, scoreVal_txt;
 
@@ -58,7 +58,7 @@ public class gameController : MonoBehaviour
 
         DOTween.KillAll();
     }
-
+     
     void Start()
     {
         scoreManager = GetComponent<scoreManager_inGame>();
@@ -93,7 +93,7 @@ public class gameController : MonoBehaviour
     {
         if (!missileController.crashed && !missileController.targetHit && startDelay)
         {
-            if (!screenClickedOnPlay & Input.GetMouseButtonDown(0))
+            if (!screenClickedOnPlay & Input.GetMouseButtonDown(0) && Input.mousePosition.y < 800)
             { tutoUi.SetActive(false); screenClickedOnPlay = true; }
 
             Debug.DrawRay(missileBody.transform.position, Vector3.down * rayLenght, Color.red);

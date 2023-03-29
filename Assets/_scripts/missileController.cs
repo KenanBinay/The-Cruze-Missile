@@ -39,7 +39,8 @@ public class missileController : MonoBehaviour
         rigidM = gameObject.GetComponent<Rigidbody>();
 
         int selectedMissileNumb = PlayerPrefs.GetInt("lastSelectedMissile");
-        GameObject selectedMissileParent = missilesParent.transform.GetChild(selectedMissileNumb).gameObject;
+        GameObject selectedMissileParent = missilesParent.transform.GetChild(selectedMissileNumb)
+            .gameObject;
         fullJet_missileParticle = selectedMissileParent.transform.GetChild(1).gameObject;
         outOfFuel_missileParticle = selectedMissileParent.transform.GetChild(2).gameObject;
 
@@ -54,25 +55,30 @@ public class missileController : MonoBehaviour
             moveForward();
 
             //input controlling yaw & pitch 
-            yaw += handleInput.x * yawAmount * Time.deltaTime / 1.2f;
-            pitch += handleInput.y * yawAmount * Time.deltaTime / 1.2f;
-
-            if (yawHudHorizontal <= -90 && handleInput.x < 0 || yawHudHorizontal >= 90 && handleInput.x > 0) { }
-            else { yawHudHorizontal += handleInput.x * yawAmount * Time.deltaTime; }
-
-            yawHudVertical += handleInput.y * yawAmount * Time.deltaTime;
-
-            //apply rotation
-            if (handleInput.x != 0 || handleInput.y != 0)
+            if (gameController.screenClickedOnPlay)
             {
-                transform.Rotate(-1 * handleInput.y / 1.5f, handleInput.x / 1.5f, 0f, Space.Self);
-                missileLastRotation = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 0);
-                hudYawUi.localRotation = Quaternion.Euler(Vector3.back * yawHudHorizontal + Vector3.right * yawHudVertical);
-            }
-            if (Input.GetMouseButtonUp(0))
-            {
-                transform.DORotate(missileLastRotation, 0.5f).SetEase(Ease.InOutQuad);
-                hudYawUi.DOLocalRotate(new Vector3(0, 0, 0), 0.5f).SetEase(Ease.InOutQuad).onComplete = hudYawRotateOnComplete;
+                yaw += handleInput.x * yawAmount * Time.deltaTime / 1.2f;
+                pitch += handleInput.y * yawAmount * Time.deltaTime / 1.2f;
+
+                if (yawHudHorizontal > -90 && handleInput.x > 0 || yawHudHorizontal < 90 && handleInput.x < 0)
+                { yawHudHorizontal += handleInput.x * yawAmount * Time.deltaTime; }
+
+                yawHudVertical += handleInput.y * yawAmount * Time.deltaTime;
+
+                //apply rotation
+                if (handleInput.x != 0 || handleInput.y != 0)
+                {
+                    transform.Rotate(-1 * handleInput.y / 1.5f, handleInput.x / 1.5f, 0f, Space.Self);
+                    missileLastRotation = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 0);
+                    hudYawUi.localRotation = Quaternion.Euler(Vector3.back * yawHudHorizontal 
+                        + Vector3.right * yawHudVertical);
+                }
+                if (Input.GetMouseButtonUp(0))
+                {
+                    transform.DORotate(missileLastRotation, 0.5f).SetEase(Ease.InOutQuad);
+                    hudYawUi.DOLocalRotate(new Vector3(0, 0, 0), 0.5f).SetEase(Ease.InOutQuad)
+                        .onComplete = hudYawRotateOnComplete;
+                }
             }
 
             // setting missile nozzle particles when outOfFuel is true
