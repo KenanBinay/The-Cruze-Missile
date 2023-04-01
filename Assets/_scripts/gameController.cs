@@ -18,7 +18,7 @@ public class gameController : MonoBehaviour
     [SerializeField]
     public GameObject missileHud, missileBody, warningUi, tutoUi,
         joystickMain, ciwslockedUi, missionComplete_Ui, missionFailed_Ui, jet_main, pauseButton_Ui,
-        fuelBar_Ui, missionInfo_Ui, onPauseSlide_Ui;
+        fuelBar_Ui, missionInfo_Ui, onPauseSlide_Ui, rewardedX2;
 
     [SerializeField] public Sprite iconPause, iconPlay;
     [SerializeField] public Image iconPausePlay;
@@ -220,7 +220,18 @@ public class gameController : MonoBehaviour
                 if (PlayerPrefs.GetInt("sfx") == 1)
                 {
                     if (uiSources[0].isPlaying) uiSources[0].Stop();
-                }                  
+                }
+
+                if (!adController.rewardedGiven)
+                {
+                    rewardedX2.SetActive(true);
+                    rewardedX2.GetComponent<Animator>().enabled = true;
+                }
+                if (adController.rewardedGiven && rewardedX2.activeSelf)
+                {
+                    rewardedX2.SetActive(false);
+                    StartCoroutine(levelEndScoreValueSmoothSet());
+                }
             }
         }
     }
@@ -311,13 +322,8 @@ public class gameController : MonoBehaviour
     IEnumerator levelEndScoreValueSmoothSet()
     {
         scoreVal_txt.text = "+" + gainedScoreInLevel;
-        PlayerPrefs.SetFloat("sliderScore", scoreManager_inGame.sliderScore);
 
-        yield return new WaitForSeconds(1f);
-
-        if (PlayerPrefs.GetInt("sfx") == 1) uiSources[2].Play();
-
-        yield return new WaitForSeconds(1.30f);
+        yield return new WaitForSeconds(2.30f);
         compeleted_endUiAnim = true;
     }
 

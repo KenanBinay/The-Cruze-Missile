@@ -106,10 +106,9 @@ public class missileController : MonoBehaviour
 
                 explosion = true;
             }
-            if (missileSources[2].isPlaying || missileSources[3].isPlaying)
+            for (int i = 0; i < missileSources.Length; i++)
             {
-                missileSources[2].Stop();
-                missileSources[3].Stop();
+                missileSources[i].Stop();
             }
         }
     }
