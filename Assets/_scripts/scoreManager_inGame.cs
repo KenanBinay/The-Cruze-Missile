@@ -9,11 +9,6 @@ public class scoreManager_inGame : MonoBehaviour
         sliderScore = PlayerPrefs.GetFloat("sliderScore", 0);
     }
 
-    void Update()
-    {
-        
-    }
-
     public static void addScore(float amount)
     {
         sliderScore += amount;

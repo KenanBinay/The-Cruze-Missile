@@ -35,6 +35,7 @@ public class gameController : MonoBehaviour
 
     public static bool startDelay, screenClickedOnPlay, timeScoreGiven, speedUp_missile;
     public static float missionTime, gainedScoreInLevel;
+    public static int bannerAd_randomNumb;
 
     bool countdownBool, gameover, paused, waitForReload, compeleted_endUiAnim;
     float rayLenght, countdownVal;
@@ -62,6 +63,10 @@ public class gameController : MonoBehaviour
     void Start()
     {
         scoreManager = GetComponent<scoreManager_inGame>();
+
+        int[] adNumbers = { 1, 2, 3, };
+        bannerAd_randomNumb = adNumbers[Random.Range(0, adNumbers.Length)];
+        Debug.Log(bannerAd_randomNumb);
 
         rayLenght = 600;
         gainedScoreInLevel = missionTime = 0;
