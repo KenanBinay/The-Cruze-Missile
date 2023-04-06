@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using GoogleMobileAds.Api;
-using GoogleMobileAds.Common;
-using UnityEditor.PackageManager.Requests;
+using Unity.VisualScripting;
 
 public class adController : MonoBehaviour
 {
@@ -14,7 +13,7 @@ public class adController : MonoBehaviour
     private BannerView bannerView;
     string idInterstitial, idRewarded, idBanner;
 
-    public static bool rewardedGiven;
+    public static bool rewardedGiven, interstitialGiven;
 
     void Start()
     {
@@ -31,16 +30,27 @@ public class adController : MonoBehaviour
         this.adRewarded.LoadAd(request);
         this.adInterstitial.LoadAd(request);
 
-        if (gameController.bannerAd_randomNumb == 1) 
-        this.bannerView.LoadAd(request);
+        if (gameController.bannerAd_randomNumb == 1 && PlayerPrefs.GetInt("adsRemoved", 0) == 0)
+            this.bannerView.LoadAd(request);
+        if (gameController.bannerAd_randomNumb == 1 && PlayerPrefs.GetInt("adsRemoved", 0) == 1)
+            Debug.Log("adsRemoved 1");
 
         MobileAds.Initialize(initStatus => { });
+    }
+
+    private void Update()
+    {
+        if (missileController.targetHit && PlayerPrefs.GetInt("adsRemoved", 0) == 0)
+        {
+            if (gameController.interstitialAd_randomNumb == 1 && !interstitialGiven) interstitialAd();
+        }
     }
 
     public void interstitialAd()
     {
         if (this.adInterstitial.IsLoaded())
-        {     
+        {
+            interstitialGiven = true;
             this.adInterstitial.Show();
         }
         else

@@ -11,7 +11,6 @@ public class scoreManager_inGame : MonoBehaviour
 
     public static void addScore(float amount)
     {
-        sliderScore += amount;
-        gameController.gainedScoreInLevel += amount;
+        gameController.gainedScoreInLevel = sliderScore += amount;
     }
 }

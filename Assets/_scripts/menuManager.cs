@@ -122,6 +122,8 @@ public class menuManager : MonoBehaviour
                 levelTxt.SetActive(false);
             }
         }
+
+       if(settingsOpened) loadSettings();
     }
 
     public void selectMissile(string numbers = "0,0")
@@ -200,7 +202,7 @@ public class menuManager : MonoBehaviour
 
     public void loadSettings()
     {
-        if (!settingsOpened)
+        if (!settingsOpened && !missileMenuOpened)
         {
             settings_values.SetActive(true);
             settings_anim.enabled = true;

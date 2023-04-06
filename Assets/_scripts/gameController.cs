@@ -35,7 +35,7 @@ public class gameController : MonoBehaviour
 
     public static bool startDelay, screenClickedOnPlay, timeScoreGiven, speedUp_missile;
     public static float missionTime, gainedScoreInLevel;
-    public static int bannerAd_randomNumb;
+    public static int bannerAd_randomNumb, interstitialAd_randomNumb;
 
     bool countdownBool, gameover, paused, waitForReload, compeleted_endUiAnim;
     float rayLenght, countdownVal;
@@ -64,9 +64,11 @@ public class gameController : MonoBehaviour
     {
         scoreManager = GetComponent<scoreManager_inGame>();
 
-        int[] adNumbers = { 1, 2, 3, };
-        bannerAd_randomNumb = adNumbers[Random.Range(0, adNumbers.Length)];
-        Debug.Log(bannerAd_randomNumb);
+        int[] adNumbersBanner = { 1, 2, 3, };
+        bannerAd_randomNumb = adNumbersBanner[Random.Range(0, adNumbersBanner.Length)];
+
+        int[] adNumbersInterstitial = { 1, 2, 3 };
+        interstitialAd_randomNumb = adNumbersInterstitial[Random.Range(0, adNumbersInterstitial.Length)];
 
         rayLenght = 600;
         gainedScoreInLevel = missionTime = 0;
@@ -165,8 +167,10 @@ public class gameController : MonoBehaviour
                 timeScoreGiven = true;
             }
 
+            
             StartCoroutine(levelEndScoreValueSmoothSet());
         }
+
         if (missileController.crashed && !gameover)
         {
             missileHud.SetActive(false);
@@ -194,7 +198,7 @@ public class gameController : MonoBehaviour
             if (missileBody.transform.position.y > 230 && missileBody.transform.position.y <= 350 && targetColor != mid) targetColor = mid;
             if (missileBody.transform.position.y > 400 && targetColor != critical) targetColor = critical;
         }
-
+        
         if (compeleted_endUiAnim)
         {
             if (levelSlider.value == levelSlider.maxValue)
