@@ -13,7 +13,7 @@ public class IapManager : MonoBehaviour
     [SerializeField]
     private GameObject Purchase_icon;
 
-    public string noAds_id = "com.binay.noAds";
+    public string noAds_id = "com.cruisemissile.noads";
     public static bool noAds_bought;
 
     IPurchaseReceipt productReceipt;
