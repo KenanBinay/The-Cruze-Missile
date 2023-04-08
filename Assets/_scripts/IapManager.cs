@@ -1,19 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Purchasing;
 using UnityEngine.Purchasing.Security;
+using UnityEngine.Purchasing;
 using UnityEngine.UI;
 
-public class IapManager : MonoBehaviour
+public class IAPManager : MonoBehaviour
 {
     [SerializeField]
     private Button PurchaseButton;
     [SerializeField]
     private GameObject Purchase_icon;
 
-    public string noAds_id = "com.cruisemissile.noads";
+    public string noAds_id;
     public static bool noAds_bought;
 
     IPurchaseReceipt productReceipt;
@@ -27,7 +26,7 @@ public class IapManager : MonoBehaviour
             Purchase_icon.SetActive(false);
 
             Debug.Log(noAds_id + " purchased");
-        }   
+        }
     }
 
     public void OnPurchaseComplete(UnityEngine.Purchasing.Product product)
@@ -44,7 +43,7 @@ public class IapManager : MonoBehaviour
     }
 
     public void OnPurchaseFailed(UnityEngine.Purchasing.Product product, PurchaseFailureReason reason)
-    {   
+    {
         Debug.Log(product + " || " + reason);
     }
 }

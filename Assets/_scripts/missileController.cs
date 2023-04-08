@@ -188,7 +188,8 @@ public class missileController : MonoBehaviour
                 collision.gameObject.transform.DOPause();
 
                 AudioSource audioSource = collision.gameObject.GetComponent<AudioSource>();
-                audioSource.Stop();
+                if (audioSource.isPlaying) audioSource.Stop();
+                else return;
 
                 scoreManager_inGame.addScore(480);
             }
