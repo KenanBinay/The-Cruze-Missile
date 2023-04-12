@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class missileSelect_inGame : MonoBehaviour
@@ -18,6 +16,8 @@ public class missileSelect_inGame : MonoBehaviour
         int lastSelected = PlayerPrefs.GetInt("lastSelectedMissile");
 
         //     missile = gameObject.transform.GetChild(lastSelected).gameObject;
+        //     missile.SetActive(true);
+
         int layerNumb = gameObject.layer;
         string nameLayer = LayerMask.LayerToName(layerNumb);
 
@@ -29,8 +29,7 @@ public class missileSelect_inGame : MonoBehaviour
         foreach (Transform child in spawnedMissile.transform)
         {
             child.gameObject.layer = LayerMask.NameToLayer(nameLayer); ;        
-        }
-        //     missile.SetActive(true);
+        }       
 
         Debug.Log("selected missile : " + lastSelected);
     }
