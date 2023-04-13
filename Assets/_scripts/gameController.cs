@@ -283,7 +283,7 @@ public class gameController : MonoBehaviour
 
     public void loadMission(int sceneId)
     {     
-        if (!waitForReload && scoreManager_inGame.sliderScore <= 0 || missileController.crashed)
+        if (!waitForReload && scoreManager_inGame.sliderScore <= 0 || missileController.crashed || paused)
         {
             if (Time.timeScale != 1) Time.timeScale = 1;          
             AsyncOperation operation = SceneManager.LoadSceneAsync(sceneId);
@@ -293,7 +293,7 @@ public class gameController : MonoBehaviour
 
     public void loadMenu(int sceneId)
     {
-        if (!waitForReload && scoreManager_inGame.sliderScore <= 0 || missileController.crashed)
+        if (!waitForReload && scoreManager_inGame.sliderScore <= 0 || missileController.crashed || paused)
         {
             if (Time.timeScale != 1) Time.timeScale = 1;
             AsyncOperation operation = SceneManager.LoadSceneAsync(sceneId);
@@ -314,6 +314,7 @@ public class gameController : MonoBehaviour
 
                 Debug.Log("pause");
                 Time.timeScale = 0;
+                AudioListener.pause = true;
             }
             else if (paused)
             {
@@ -324,6 +325,7 @@ public class gameController : MonoBehaviour
 
                 Debug.Log("play");
                 Time.timeScale = 1;
+                AudioListener.pause = false;
             }
         }
     }
