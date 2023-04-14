@@ -92,7 +92,7 @@ public class menuManager : MonoBehaviour
         bar_missileMenu.SetActive(true);
         barOpened_missileMenu.SetActive(false);
 
-        for (int a = 0; a < 6; a++)
+        for (int a = 0; a < 12; a++)
         {
             GameObject missileSelected = missileSelectionBoxes.transform.Find("missileBox_" + a)
                 .gameObject;
@@ -128,13 +128,14 @@ public class menuManager : MonoBehaviour
 
     public void selectMissile(string numbers = "0,0")
     {
+        //getting missile number & levelCost
         string[] split = numbers.Split(","[0]);
         int selectedMissile = int.Parse(split[0]);
         int levelCost = int.Parse(split[1]);
 
         Debug.Log("missile: " + selectedMissile.ToString() + " || required level: " + levelCost.ToString());
 
-        for (int a = 0; a < 6; a++)
+        for (int a = 0; a < 12; a++)
         {
             if (menuSelectedMissiles[a] != null) menuSelectedMissiles[a].SetActive(false);
 
@@ -276,7 +277,7 @@ public class menuManager : MonoBehaviour
         startMenu_canvas.SetActive(true);
         missileMenu_canvas.SetActive(false);
 
-        for (int a = 0; a < 6; a++)
+        for (int a = 0; a < 12; a++)
         {
             menuSelectedMissiles[a].SetActive(false);
         }
