@@ -8,11 +8,16 @@ using UnityEngine.UI;
 public class IAPManager : MonoBehaviour
 {
     [SerializeField]
-    private Button PurchaseButton;
+    Button removeAds_button;
     [SerializeField]
-    private GameObject Purchase_icon;
-
+    GameObject noAds_icon;
     public string noAds_id;
+
+    [SerializeField] 
+    Button[] shopOffer_buttons;
+    [SerializeField]
+    string[] offers_id;
+
     public static bool noAds_bought;
 
     IPurchaseReceipt productReceipt;
@@ -22,8 +27,8 @@ public class IAPManager : MonoBehaviour
         {
             noAds_bought = true;
 
-            PurchaseButton.enabled = false;
-            Purchase_icon.SetActive(false);
+            removeAds_button.enabled = false;
+            noAds_icon.SetActive(false);
 
             Debug.Log(noAds_id + " purchased");
         }
@@ -35,8 +40,8 @@ public class IAPManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("adsRemoved", 1);
 
-            PurchaseButton.enabled = false;
-            Purchase_icon.SetActive(false);
+            removeAds_button.enabled = false;
+            noAds_icon.SetActive(false);
 
             Debug.Log("noAds purchase complete");
         }
