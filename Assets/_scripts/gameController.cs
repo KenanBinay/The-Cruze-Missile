@@ -266,6 +266,8 @@ public class gameController : MonoBehaviour
 
     IEnumerator delayForStart()
     {
+        AudioListener.pause = false;
+
         yield return new WaitForSeconds(3.5f);
 
         mainCam.cullingMask += (1 << LayerMask.NameToLayer("missile"));

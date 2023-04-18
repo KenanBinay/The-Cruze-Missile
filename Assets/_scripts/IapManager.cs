@@ -19,6 +19,7 @@ public class IAPManager : MonoBehaviour
     string[] offers_id;
 
     public static bool noAds_bought;
+    public static int token_value;
 
     IPurchaseReceipt productReceipt;
     private void Awake()

@@ -12,7 +12,7 @@ public class menuManager : MonoBehaviour
     float scoreBar;
 
     int selectedMissileNumb, levelVal, unlockLevel, missileSave, lastSelectedMissileNumb, targetVal,
-        soundEffect_value;
+        soundEffect_value, tokenVal;
     bool waitForReload, missileMenuOpened, settingsOpened;
     string selectedMissileName;
 
@@ -21,12 +21,12 @@ public class menuManager : MonoBehaviour
     [Header("")]
 
     public Animator bottomStart, settings_anim;
-    public TextMeshProUGUI levelBase_text, targetVal_text;
+    public TextMeshProUGUI levelBase_text, targetVal_text, tokenVal_text;
 
     [SerializeField]
     public GameObject startMenu_canvas, missileMenu_canvas, missileSelectionBoxes
         , bar_missileMenu, barOpened_missileMenu, top_mainCanvas, middile_mainCanvas, bottom_mainCanvas,
-        loadingUi, missileMenu_infoUi, sfx_off, settings_values;
+        loadingUi, missileMenu_infoUi, sfx_off, settings_values, IAPAds, tokenShop_canvas;
 
     private GameObject selectedMissile_missileInfo;
 
@@ -47,7 +47,8 @@ public class menuManager : MonoBehaviour
         levelVal = PlayerPrefs.GetInt("level", 0);
         lastSelectedMissileNumb = PlayerPrefs.GetInt("lastSelectedMissile");
         targetVal = PlayerPrefs.GetInt("mission", 0);
-        soundEffect_value = PlayerPrefs.GetInt("sfx");
+        soundEffect_value = PlayerPrefs.GetInt("sfx", 0);
+        tokenVal = PlayerPrefs.GetInt("tokens", 0);
         selectedMissileNumb = lastSelectedMissileNumb;
 
         if(soundEffect_value == 0) { sfx_off.SetActive(true); Debug.Log("sound effects off"); }
@@ -61,6 +62,7 @@ public class menuManager : MonoBehaviour
         levelSlider.value = scoreBar;
         levelBase_text.text = levelVal.ToString();
         targetVal_text.text = "TARGET " + targetVal.ToString();
+        tokenVal_text.text = tokenVal.ToString();
 
         Debug.Log("last selected missile: " + lastSelectedMissileNumb);     
     }
@@ -124,6 +126,24 @@ public class menuManager : MonoBehaviour
         }
 
        if(settingsOpened) loadSettings();
+    }
+
+    public void loadTokenShop()
+    {
+        startMenu_canvas.SetActive(false);
+        IAPAds.SetActive(false);
+        missileMenu_canvas.SetActive(false);
+        bar_missileMenu.SetActive(false);
+
+        tokenShop_canvas.SetActive(true);
+    }
+
+    public void returnHome()
+    {
+        tokenShop_canvas.SetActive(false);
+        if (PlayerPrefs.GetInt("adsRemoved", 0) == 0) IAPAds.SetActive(true);
+
+        startMenu_canvas.SetActive(true);
     }
 
     public void selectMissile(string numbers = "0,0")
