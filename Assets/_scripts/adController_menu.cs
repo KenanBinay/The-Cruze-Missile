@@ -19,7 +19,7 @@ public class adController_menu : MonoBehaviour
 
     void Start()
     {
-        idRewarded = "ca-app-pub-9421503984483424~7002227357";
+        idRewarded = "ca-app-pub-9421503984483424/3742292473";
 
         timeRemaining = PlayerPrefs.GetFloat("countdownVal", timeRemaining);
 
@@ -46,7 +46,7 @@ public class adController_menu : MonoBehaviour
                     timer_text.text = min.ToString("00") + ":" + sec.ToString("00");
                 }
 
-                Debug.Log(min.ToString("00") + ":" + sec.ToString("00"));
+             //   Debug.Log(min.ToString("00") + ":" + sec.ToString("00"));
             }
             else
             {
@@ -111,6 +111,9 @@ public class adController_menu : MonoBehaviour
     public void HandleOnRewardedAdOpening(object sender, EventArgs args) { }
     public void HandleOnRewardedAdClosed(object sender, EventArgs args)
     {
+        int token = PlayerPrefs.GetInt("tokens", 0);
+        token += 1;
+        PlayerPrefs.SetInt("tokens", token);
 
         freeTokenGiven = true;
         timeRemaining = 90;
@@ -120,7 +123,6 @@ public class adController_menu : MonoBehaviour
         claim.SetActive(false);
 
         Debug.Log("token claimed");
-        PlayerPrefs.SetInt("tokenCoolDown", 1);     
 
         adRewarded.OnAdLoaded -= this.HandleOnRewardedAdLoaded;
         adRewarded.OnAdOpening -= this.HandleOnRewardedAdOpening;

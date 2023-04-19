@@ -17,8 +17,8 @@ public class adController : MonoBehaviour
 
     void Start()
     {
-        idInterstitial = "ca-app-pub-9421503984483424~7002227357";
-        idRewarded = "ca-app-pub-9421503984483424~7002227357";
+        idInterstitial = "ca-app-pub-9421503984483424/9436819008";
+        idRewarded = "ca-app-pub-9421503984483424/3742292473";
         idBanner = "ca-app-pub-9421503984483424/6639084408";
 
         this.adRewarded = new RewardedAd(idRewarded);

@@ -67,6 +67,17 @@ public class menuManager : MonoBehaviour
         Debug.Log("last selected missile: " + lastSelectedMissileNumb);     
     }
 
+    private void Update()
+    {
+        if (tokenVal != PlayerPrefs.GetInt("tokens", 0))
+        {
+            tokenVal = PlayerPrefs.GetInt("tokens", 0);
+            tokenVal_text.text = tokenVal.ToString();
+
+            Debug.Log("TOTAL TOKENS: " + tokenVal.ToString());
+        }
+    }
+
     public void loadMission()
     {
         if (!waitForReload)

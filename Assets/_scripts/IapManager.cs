@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Purchasing.Security;
 using UnityEngine.Purchasing;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
 public class IAPManager : MonoBehaviour
 {
@@ -37,6 +38,8 @@ public class IAPManager : MonoBehaviour
 
     public void OnPurchaseComplete(UnityEngine.Purchasing.Product product)
     {
+        int token = PlayerPrefs.GetInt("tokens", 0);
+
         if (product.definition.id == noAds_id)
         {
             PlayerPrefs.SetInt("adsRemoved", 1);
@@ -46,6 +49,17 @@ public class IAPManager : MonoBehaviour
 
             Debug.Log("noAds purchase complete");
         }
+        if (product.definition.id == offers_id[0]) token += 20;
+        if (product.definition.id == offers_id[1]) token += 50;
+        if (product.definition.id == offers_id[2]) token += 80;
+        if (product.definition.id == offers_id[3]) token += 120;
+        if (product.definition.id == offers_id[4]) token += 200;
+        if (product.definition.id == offers_id[5]) token += 350;
+        if (product.definition.id == offers_id[6]) token += 500;
+
+        PlayerPrefs.SetInt("tokens", token);
+
+        Debug.Log(product.definition.id + " token purchased");
     }
 
     public void OnPurchaseFailed(UnityEngine.Purchasing.Product product, PurchaseFailureReason reason)
