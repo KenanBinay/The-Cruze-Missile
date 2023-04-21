@@ -12,7 +12,7 @@ public class menuManager : MonoBehaviour
     float scoreBar;
 
     int selectedMissileNumb, levelVal, unlockLevel, missileSave, lastSelectedMissileNumb, targetVal,
-        soundEffect_value, tokenVal;
+        soundEffect_value, tokenVal, tokenCostUnlock, isVipMissile;
     bool waitForReload, missileMenuOpened, settingsOpened;
     string selectedMissileName;
 
@@ -21,12 +21,12 @@ public class menuManager : MonoBehaviour
     [Header("")]
 
     public Animator bottomStart, settings_anim;
-    public TextMeshProUGUI levelBase_text, targetVal_text, tokenVal_text;
+    public TextMeshProUGUI levelBase_text, targetVal_text, tokenVal_text, tokenCost_text;
 
     [SerializeField]
     public GameObject startMenu_canvas, missileMenu_canvas, missileSelectionBoxes
-        , bar_missileMenu, barOpened_missileMenu, top_mainCanvas, middile_mainCanvas, bottom_mainCanvas,
-        loadingUi, missileMenu_infoUi, sfx_off, settings_values, IAPAds, tokenShop_canvas;
+        , unlock_missileMenu_nonVip, unlock_missileMenu_vip, top_mainCanvas, middile_mainCanvas, bottom_mainCanvas,
+        loadingUi, sfx_off, settings_values, IAPAds, tokenShop_canvas;
 
     private GameObject selectedMissile_missileInfo;
 
@@ -102,8 +102,8 @@ public class menuManager : MonoBehaviour
         missileMenuOpened = true;
         startMenu_canvas.SetActive(false);
         missileMenu_canvas.SetActive(true);
-        bar_missileMenu.SetActive(true);
-        barOpened_missileMenu.SetActive(false);
+        unlock_missileMenu_nonVip.SetActive(false);
+        unlock_missileMenu_vip.SetActive(false);
 
         for (int a = 0; a < 12; a++)
         {
@@ -144,7 +144,7 @@ public class menuManager : MonoBehaviour
         startMenu_canvas.SetActive(false);
         IAPAds.SetActive(false);
         missileMenu_canvas.SetActive(false);
-        bar_missileMenu.SetActive(false);
+        unlock_missileMenu_nonVip.SetActive(false);
 
         tokenShop_canvas.SetActive(true);
     }
@@ -157,14 +157,19 @@ public class menuManager : MonoBehaviour
         startMenu_canvas.SetActive(true);
     }
 
-    public void selectMissile(string numbers = "0,0")
+    public void selectMissile(string numbers = "0,0,0,0")
     {
         //getting missile number & levelCost
         string[] split = numbers.Split(","[0]);
         int selectedMissile = int.Parse(split[0]);
         int levelCost = int.Parse(split[1]);
+        int tokenCost = int.Parse(split[2]);
+        int isVip = int.Parse(split[3]);
 
-        Debug.Log("missile: " + selectedMissile.ToString() + " || required level: " + levelCost.ToString());
+        tokenCost_text.text = tokenCost.ToString();
+
+        Debug.Log("missile: " + selectedMissile.ToString()
+            + " || required level: " + levelCost.ToString() + " || required token: " + tokenCost);
 
         for (int a = 0; a < 12; a++)
         {
@@ -183,8 +188,10 @@ public class menuManager : MonoBehaviour
 
         unlockLevel = levelCost;
         selectedMissileNumb = selectedMissile;
+        tokenCostUnlock = tokenCost;
+        isVipMissile = isVip;
 
-        //getting name from missileList by enumGetName
+        //getting name from missileList by enumGetName 
         if (selectedMissileNumb == 0) missileSave = 1;
         else
         {
@@ -197,14 +204,31 @@ public class menuManager : MonoBehaviour
         if (missileSave == 1) StartCoroutine(onMissileSelected());
         else
         {
-            barOpened_missileMenu.SetActive(true);
-            bar_missileMenu.SetActive(false);
+            Debug.Log("missile is not unlocked");
+
+            unlock_missileMenu_nonVip.SetActive(false);
+            unlock_missileMenu_vip.SetActive(false);
 
             if (selectedMissile_missileInfo != null) selectedMissile_missileInfo.SetActive(false);
 
-            GameObject missiles = missileMenu_infoUi.transform.Find("missiles").gameObject;
-            selectedMissile_missileInfo = missiles.transform.GetChild(selectedMissileNumb).gameObject;
+            if (isVip == 0)
+            {
+                GameObject missiles = unlock_missileMenu_nonVip.transform.Find("missiles").gameObject;
+                selectedMissile_missileInfo = missiles.transform.GetChild(selectedMissileNumb).gameObject;
 
+                unlock_missileMenu_nonVip.SetActive(true);
+            }
+            if (isVip == 1)
+            {
+                GameObject missiles = unlock_missileMenu_vip.transform.Find("missiles").gameObject;
+                selectedMissile_missileInfo = missiles.transform.GetChild(selectedMissileNumb).gameObject;
+
+                TextMeshProUGUI tokenCostButton_text = unlock_missileMenu_vip.GetComponentInChildren<TextMeshProUGUI>();
+                tokenCostButton_text.text = tokenCost.ToString();
+
+                unlock_missileMenu_vip.SetActive(true);
+            }
+            
             selectedMissile_missileInfo.SetActive(true);
         }
     }
@@ -230,6 +254,33 @@ public class menuManager : MonoBehaviour
 
             StartCoroutine(onMissileSelected());
         }
+    }
+
+    public void unlockMissile_byToken()
+    {
+        int x = PlayerPrefs.GetInt("tokens", 0);
+
+        if (x >= tokenCostUnlock)
+        {
+            Debug.Log("unlock via token " + tokenCostUnlock);
+            x -= tokenCostUnlock;
+            PlayerPrefs.SetInt("tokens", x);
+
+            GameObject missileSelected = missileSelectionBoxes.transform.Find("missileBox_" +
+        selectedMissileNumb).gameObject;
+            GameObject unlockedBox = missileSelected.transform.GetChild(4).gameObject;
+            GameObject lockedBox = missileSelected.transform.GetChild(1).gameObject;
+
+            unlockedBox.SetActive(true);
+            lockedBox.SetActive(false);
+
+            PlayerPrefs.SetInt(selectedMissileName, 1);
+
+            Debug.Log("UNLOCKED MISSILE: " + selectedMissileNumb);
+
+            StartCoroutine(onMissileSelected());
+        }
+        else Debug.Log("need more token to unlock");
     }
 
     public void loadSettings()
@@ -295,8 +346,8 @@ public class menuManager : MonoBehaviour
 
         PlayerPrefs.SetInt("lastSelectedMissile", selectedMissileNumb);
 
-        barOpened_missileMenu.SetActive(false);
-        bar_missileMenu.SetActive(true);
+        unlock_missileMenu_nonVip.SetActive(false);
+        unlock_missileMenu_vip.SetActive(false);
 
         if (selectedMissile_missileInfo != null) selectedMissile_missileInfo.SetActive(false);
 
