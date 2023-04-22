@@ -38,14 +38,14 @@ public class missileController : MonoBehaviour
         outside = ciwsHit = crashed = targetHit = false;
         rigidM = gameObject.GetComponent<Rigidbody>();
 
+        //getting last selected missile number 
         int selectedMissileNumb = PlayerPrefs.GetInt("lastSelectedMissile");
-        GameObject selectedMissileParent = missilesParent.transform.GetChild(selectedMissileNumb)
-            .gameObject;
+        GameObject selectedMissileParent = missilesParent.transform.GetChild(0).gameObject;
+
         fullJet_missileParticle = selectedMissileParent.transform.GetChild(1).gameObject;
         outOfFuel_missileParticle = selectedMissileParent.transform.GetChild(2).gameObject;
 
-        fullJet_missileParticle.SetActive(true);
-        outOfFuel_missileParticle.SetActive(false);
+        if (fullJet_missileParticle == null || outOfFuel_missileParticle == null) return;
     }
 
     void FixedUpdate()
@@ -84,7 +84,8 @@ public class missileController : MonoBehaviour
             // setting missile nozzle particles when outOfFuel is true
             if (fuelManager.outOfFuel && Time.frameCount % 3 == 0)
             {
-                fullJet_missileParticle.SetActive(false); outOfFuel_missileParticle.SetActive(true);
+                fullJet_missileParticle.SetActive(false); 
+                outOfFuel_missileParticle.SetActive(true);
             }
             if (!missileSources[0].isPlaying)
             {
