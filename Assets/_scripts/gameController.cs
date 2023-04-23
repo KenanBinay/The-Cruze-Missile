@@ -166,8 +166,7 @@ public class gameController : MonoBehaviour
 
                 timeScoreGiven = true;
             }
-
-            
+          
             StartCoroutine(levelEndScoreValueSmoothSet());
         }
 

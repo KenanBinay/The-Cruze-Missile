@@ -22,23 +22,12 @@ public class missileSelect_inGame : MonoBehaviour
         string nameLayer = LayerMask.LayerToName(layerNumb);
 
         GameObject spawnedMissile = Instantiate(missilePrefabs[lastSelected], transform);
-        GameObject particle_0 = spawnedMissile.transform.GetChild(1).gameObject;
-        GameObject particle_1 = spawnedMissile.transform.GetChild(2).gameObject;
-
-        spawnedMissile.layer = LayerMask.NameToLayer(nameLayer);
-        Debug.Log(spawnedMissile.layer);
-
-        foreach (Transform child in spawnedMissile.transform)
+        //getting all child objects 
+        Transform[] allChildren = this.transform.GetComponentsInChildren<Transform>();
+    
+        for (int i = 0; i < allChildren.Length; i++)
         {
-            child.gameObject.layer = LayerMask.NameToLayer(nameLayer);
-        }
-        foreach (Transform child in particle_0.transform)
-        {
-            child.gameObject.layer = LayerMask.NameToLayer(nameLayer);
-        }
-        foreach (Transform child in particle_1.transform)
-        {
-            child.gameObject.layer = LayerMask.NameToLayer(nameLayer);
+            allChildren[i].gameObject.layer = LayerMask.NameToLayer(nameLayer);
         }
 
         Debug.Log("selected missile : " + lastSelected);

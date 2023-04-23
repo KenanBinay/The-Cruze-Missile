@@ -20,10 +20,10 @@ public class missileController : MonoBehaviour
     public float flySpeed, yawAmount;
     public static float yaw, pitch, yawHudHorizontal, yawHudVertical, exSpeed;
 
-    public static bool crashed, targetHit, outside, ciwsHit;
+    public static bool crashed, targetHit, outside, ciwsHit, speedUp;
     public static int hitVal;
 
-    bool speedUp, explosion;
+    bool explosion;
 
     Vector3 missileLastRotation;
 
