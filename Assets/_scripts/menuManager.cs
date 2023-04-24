@@ -31,6 +31,7 @@ public class menuManager : MonoBehaviour
     private GameObject selectedMissile_missileInfo;
 
     [SerializeField] GameObject[] menuSelectedMissiles;
+    public Sprite[] missileSprites;
 
     [Header("Audio")]
     [SerializeField] AudioSource[] menuSources;
@@ -214,22 +215,26 @@ public class menuManager : MonoBehaviour
             if (isVip == 0)
             {
                 GameObject missiles = unlock_missileMenu_nonVip.transform.Find("missiles").gameObject;
-                selectedMissile_missileInfo = missiles.transform.GetChild(selectedMissileNumb).gameObject;
+                missiles.GetComponent<Image>().sprite = missileSprites[selectedMissileNumb];
+
+                //   selectedMissile_missileInfo = missiles.transform.GetChild(selectedMissileNumb).gameObject;
 
                 unlock_missileMenu_nonVip.SetActive(true);
             }
             if (isVip == 1)
             {
                 GameObject missiles = unlock_missileMenu_vip.transform.Find("missiles").gameObject;
-                selectedMissile_missileInfo = missiles.transform.GetChild(selectedMissileNumb).gameObject;
+                missiles.GetComponent<Image>().sprite = missileSprites[selectedMissileNumb];
+
+                //   selectedMissile_missileInfo = missiles.transform.GetChild(selectedMissileNumb).gameObject;
 
                 TextMeshProUGUI tokenCostButton_text = unlock_missileMenu_vip.GetComponentInChildren<TextMeshProUGUI>();
                 tokenCostButton_text.text = tokenCost.ToString();
 
                 unlock_missileMenu_vip.SetActive(true);
             }
-            
-            selectedMissile_missileInfo.SetActive(true);
+
+           // selectedMissile_missileInfo.SetActive(true);
         }
     }
 

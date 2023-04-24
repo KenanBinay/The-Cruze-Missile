@@ -10,6 +10,7 @@ public class missileAnim_manager : MonoBehaviour
     void Start()
     {
         missileAnim = GetComponent<Animator>();
+        missileAnim.SetTrigger("close");
     }
 
     void Update()
