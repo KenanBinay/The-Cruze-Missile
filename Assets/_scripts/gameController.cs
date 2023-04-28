@@ -197,7 +197,7 @@ public class gameController : MonoBehaviour
             if (missileBody.transform.position.y > 230 && missileBody.transform.position.y <= 350 && targetColor != mid) targetColor = mid;
             if (missileBody.transform.position.y > 400 && targetColor != critical) targetColor = critical;
         }
-        
+
         if (compeleted_endUiAnim)
         {
             if (levelSlider.value == levelSlider.maxValue)
@@ -208,9 +208,9 @@ public class gameController : MonoBehaviour
                 level_txt.text = levelValue.ToString();
                 levelSlider.value = 0;
 
-                if (PlayerPrefs.GetInt("sfx") == 1) uiSources[1].Play();
+                uiSources[1].Play();
 
-                PlayerPrefs.SetInt("level", levelValue);             
+                PlayerPrefs.SetInt("level", levelValue);
             }
             if (levelSlider.value != levelSlider.maxValue && scoreManager_inGame.sliderScore > 0)
             {
@@ -218,17 +218,11 @@ public class gameController : MonoBehaviour
                 scoreManager_inGame.sliderScore -= 40;
                 PlayerPrefs.SetFloat("sliderScore", levelSlider.value);
 
-                if (PlayerPrefs.GetInt("sfx") == 1)
-                {
-                    if (!uiSources[0].isPlaying) uiSources[0].Play();
-                }                 
+                if (!uiSources[0].isPlaying) uiSources[0].Play();
             }
             if (scoreManager_inGame.sliderScore <= 0)
             {
-                if (PlayerPrefs.GetInt("sfx") == 1)
-                {
-                    if (uiSources[0].isPlaying) uiSources[0].Stop();
-                }
+                if (uiSources[0].isPlaying) uiSources[0].Stop();
 
                 if (!adController.rewardedGiven)
                 {
@@ -265,7 +259,8 @@ public class gameController : MonoBehaviour
 
     IEnumerator delayForStart()
     {
-        AudioListener.pause = false;
+        if (PlayerPrefs.GetInt("sfx") == 0) AudioListener.pause = true;
+        else AudioListener.pause = false;
 
         yield return new WaitForSeconds(3.5f);
 
@@ -342,6 +337,6 @@ public class gameController : MonoBehaviour
     IEnumerator crashSfx()
     {       
         yield return new WaitForSeconds(1f);
-        if (PlayerPrefs.GetInt("sfx") == 1) uiSources[2].Play();
+        uiSources[2].Play();
     }
 }
