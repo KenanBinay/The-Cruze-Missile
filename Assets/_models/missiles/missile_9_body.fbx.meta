@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1f7310bbd4cb5ec49aa69204ca35c8c8
+guid: 8049225ebcab9b746816febcf1e0c014
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material.001
-    second: {fileID: 2100000, guid: 06d18dac06299a8459342396598caad9, type: 2}
+      name: HA-555
+    second: {fileID: 2100000, guid: efa93668d34e51f4ea77903971ab7698, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
