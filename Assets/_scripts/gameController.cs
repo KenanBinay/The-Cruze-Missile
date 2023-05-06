@@ -35,7 +35,7 @@ public class gameController : MonoBehaviour
 
     public static bool startDelay, screenClickedOnPlay, timeScoreGiven, speedUp_missile;
     public static float missionTime, gainedScoreInLevel;
-    public static int bannerAd_randomNumb, interstitialAd_randomNumb;
+    public static int bannerAd_randomNumb, interstitialAd_randomNumb, tokenCostRefuel;
 
     bool countdownBool, gameover, paused, waitForReload, compeleted_endUiAnim;
     float rayLenght, countdownVal;
@@ -325,7 +325,17 @@ public class gameController : MonoBehaviour
             }
         }
     }
-  
+
+    public void RefuelWithToken()
+    {
+        int x = PlayerPrefs.GetInt("tokens", 0);
+        x -= tokenCostRefuel;
+        PlayerPrefs.SetInt("tokens", x);
+        fuelManager.refuel = true;
+
+        Debug.Log("Refuel by Token || TOTAL: " + x);
+    }
+
     IEnumerator levelEndScoreValueSmoothSet()
     {
         scoreVal_txt.text = "+" + gainedScoreInLevel;

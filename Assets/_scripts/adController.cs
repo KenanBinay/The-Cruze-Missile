@@ -13,7 +13,7 @@ public class adController : MonoBehaviour
     private BannerView bannerView;
     string idInterstitial, idRewarded, idBanner;
 
-    public static bool rewardedGiven, interstitialGiven;
+    public static bool rewardedGiven, interstitialGiven, x2Reward, fuelOffer;
 
     void Start()
     {
@@ -63,6 +63,26 @@ public class adController : MonoBehaviour
     {
         if (this.adRewarded.IsLoaded())
         {
+            x2Reward = true;
+
+            adRewarded.OnAdLoaded += this.HandleOnRewardedAdLoaded;
+            adRewarded.OnAdOpening += this.HandleOnRewardedAdOpening;
+            adRewarded.OnAdClosed += this.HandleOnRewardedAdClosed;
+
+            this.adRewarded.Show();
+        }
+        else
+        {
+            Debug.Log("no rewarded ads");
+        }
+    }
+
+    public void refuelRewardedAd()
+    {
+        if (this.adRewarded.IsLoaded())
+        {
+            fuelOffer = true;
+
             adRewarded.OnAdLoaded += this.HandleOnRewardedAdLoaded;
             adRewarded.OnAdOpening += this.HandleOnRewardedAdOpening;
             adRewarded.OnAdClosed += this.HandleOnRewardedAdClosed;
@@ -79,9 +99,19 @@ public class adController : MonoBehaviour
     public void HandleOnRewardedAdOpening(object sender, EventArgs args) { }
     public void HandleOnRewardedAdClosed(object sender, EventArgs args)
     {
-        scoreManager_inGame.addScore(gameController.gainedScoreInLevel);
-        Debug.Log("2X SCORE: " + gameController.gainedScoreInLevel);
-        rewardedGiven = true;
+        if (x2Reward)
+        {
+            scoreManager_inGame.addScore(gameController.gainedScoreInLevel);
+            Debug.Log("2X SCORE: " + gameController.gainedScoreInLevel);
+            rewardedGiven = true;
+            x2Reward = false;
+        }
+
+        if (fuelOffer)
+        {
+            fuelManager.refuel = true;
+            Debug.Log("fuelGiven");
+        }
 
         adRewarded.OnAdLoaded -= this.HandleOnRewardedAdLoaded;
         adRewarded.OnAdOpening -= this.HandleOnRewardedAdOpening;

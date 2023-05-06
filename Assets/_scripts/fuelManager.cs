@@ -8,25 +8,26 @@ public class fuelManager : MonoBehaviour
     GameObject missileObj;
 
     public GameObject fuelBar;
-    public Animator anim_outOfFuel;
+    public Animator anim_outOfFuel, fuelOffer_anim;
     public Slider fuelSlide;
     private Image fillArea;
 
     public Color a, b, c, d;
     Color targetColor;
 
-    public float fuelCountdown;
+    public float fuelCountdownVal, countdown;
     public static float fuelValue;
-    public static bool outOfFuel;
+    public static bool outOfFuel, refuel, refuelAnimPlayed;
 
     void Start()
     {
-        fuelSlide.maxValue = fuelCountdown;     
+        countdown = fuelCountdownVal;
+        fuelSlide.maxValue = fuelCountdownVal;     
 
         missileObj = GameObject.Find("Missile");
         missileRb = missileObj.GetComponent<Rigidbody>();
 
-        anim_outOfFuel.enabled = outOfFuel = false;
+        anim_outOfFuel.enabled = outOfFuel = refuelAnimPlayed = false;
 
         fuelBar.SetActive(false);
 
@@ -37,22 +38,39 @@ public class fuelManager : MonoBehaviour
     {
         if (gameController.startDelay && !missileController.targetHit && !missileController.crashed)
         {
+            if (refuel)
+            {
+                fuelOffer_anim.SetTrigger("offerClose");
+
+                fuelCountdownVal = countdown;
+                fuelSlide.maxValue = fuelCountdownVal;
+                refuel = refuelAnimPlayed = false;
+            }
+
             if (!fuelBar.activeSelf) { fuelBar.SetActive(true); }
 
-            if (fuelCountdown > 0)
+            if (fuelCountdownVal > 0)
             {
-                fuelCountdown -= Time.deltaTime;
-                fuelSlide.value = fuelCountdown;
-                fuelValue = fuelCountdown;
+                fuelCountdownVal -= Time.deltaTime;
+                fuelSlide.value = fuelCountdownVal;
+                fuelValue = fuelCountdownVal;
 
                 fillArea.color = Color.Lerp(fillArea.color, targetColor, 0.1f);
 
-                if (fuelCountdown > 20) targetColor = a;
-                if (fuelCountdown > 15 && fuelCountdown < 20) targetColor = b;
-                if (fuelCountdown > 8 && fuelCountdown < 15) targetColor = c;
-                if (fuelCountdown < 8) targetColor = d;
+                if (fuelCountdownVal > 20) targetColor = a;
+                if (fuelCountdownVal > 15 && fuelCountdownVal < 20) targetColor = b;
+                if (fuelCountdownVal > 8 && fuelCountdownVal < 15)
+                {
+                    targetColor = c;
+                   if(!refuelAnimPlayed) fuelOffer_anim.SetTrigger("offerOpen"); refuelAnimPlayed = true;
+                } 
+                if (fuelCountdownVal < 8) targetColor = d;
             }
             else { missileRb.useGravity = true; outOfFuel = true; anim_outOfFuel.enabled = true; }
+        }
+        if(missileController.targetHit && missileController.crashed)
+        {
+            fuelOffer_anim.SetTrigger("offerClose");          
         }
     }
 }
