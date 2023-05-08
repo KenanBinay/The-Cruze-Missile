@@ -32,8 +32,9 @@ public class adController : MonoBehaviour
 
         if (gameController.bannerAd_randomNumb == 1 && PlayerPrefs.GetInt("adsRemoved", 0) == 0)
             this.bannerView.LoadAd(request);
-        if (gameController.bannerAd_randomNumb == 1 && PlayerPrefs.GetInt("adsRemoved", 0) == 1)
-            Debug.Log("adsRemoved 1");
+
+        if (PlayerPrefs.GetInt("adsRemoved", 0) == 1)
+            Debug.Log("ADS BLOCKED NO ADS");
 
         MobileAds.Initialize(initStatus => { });
     }
@@ -42,7 +43,11 @@ public class adController : MonoBehaviour
     {
         if (missileController.targetHit && PlayerPrefs.GetInt("adsRemoved", 0) == 0)
         {
-            if (gameController.interstitialAd_randomNumb == 1 && !interstitialGiven) interstitialAd();
+            if (gameController.interstitialAd_randomNumb == 2 && !interstitialGiven) interstitialAd();
+        }
+        if(missileController.crashed && PlayerPrefs.GetInt("adsRemoved", 0) == 0)
+        {
+            if (gameController.interstitialAd_randomNumb == 2 && !interstitialGiven) interstitialAd();
         }
     }
 
@@ -50,6 +55,7 @@ public class adController : MonoBehaviour
     {
         if (this.adInterstitial.IsLoaded())
         {
+            Debug.Log("interstitial ads");
             interstitialGiven = true;
             this.adInterstitial.Show();
         }

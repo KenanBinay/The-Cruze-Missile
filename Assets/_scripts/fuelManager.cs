@@ -34,9 +34,9 @@ public class fuelManager : MonoBehaviour
         fillArea = fuelSlide.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>();
     }
 
-    void LateUpdate()
+    void Update()
     {
-        if (gameController.startDelay && !missileController.targetHit && !missileController.crashed)
+        if (gameController.startDelay && !missileController.targetHit || !missileController.crashed)
         {
             if (refuel)
             {
@@ -68,9 +68,10 @@ public class fuelManager : MonoBehaviour
             }
             else { missileRb.useGravity = true; outOfFuel = true; anim_outOfFuel.enabled = true; }
         }
-        if(missileController.targetHit && missileController.crashed)
+        if(missileController.targetHit || missileController.crashed)
         {
-            fuelOffer_anim.SetTrigger("offerClose");          
+            fuelOffer_anim.SetTrigger("offerClose");
+            refuelAnimPlayed = false;
         }
     }
 }

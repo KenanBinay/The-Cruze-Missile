@@ -32,6 +32,7 @@ public class gameController : MonoBehaviour
         missionFailedTxt, level_txt, scoreVal_txt;
 
     [SerializeField] public TextMeshPro alt_txt, time_txt;
+    [SerializeField] TextMeshProUGUI tokenCost_txt;
 
     public static bool startDelay, screenClickedOnPlay, timeScoreGiven, speedUp_missile;
     public static float missionTime, gainedScoreInLevel;
@@ -72,6 +73,7 @@ public class gameController : MonoBehaviour
 
         rayLenght = 600;
         gainedScoreInLevel = missionTime = 0;
+        tokenCostRefuel = 1;
 
         missileHud.SetActive(false);
         joystickMain.SetActive(false);
@@ -328,12 +330,7 @@ public class gameController : MonoBehaviour
 
     public void RefuelWithToken()
     {
-        int x = PlayerPrefs.GetInt("tokens", 0);
-        x -= tokenCostRefuel;
-        PlayerPrefs.SetInt("tokens", x);
-        fuelManager.refuel = true;
-
-        Debug.Log("Refuel by Token || TOTAL: " + x);
+        StartCoroutine(refuelTokenDelay());
     }
 
     IEnumerator levelEndScoreValueSmoothSet()
@@ -348,5 +345,23 @@ public class gameController : MonoBehaviour
     {       
         yield return new WaitForSeconds(1f);
         uiSources[2].Play();
+    }
+
+    IEnumerator refuelTokenDelay()
+    {
+        if (tokenCostRefuel % 2 == 0) tokenCostRefuel = tokenCostRefuel * 2;
+
+        int x = PlayerPrefs.GetInt("tokens", 0);
+
+        x -= tokenCostRefuel;
+
+        PlayerPrefs.SetInt("tokens", x);
+        fuelManager.refuel = true;
+
+        Debug.Log("Refuel by Token || TOTAL: " + x);
+
+        yield return new WaitForSeconds(1f);
+
+        tokenCost_txt.text = tokenCostRefuel.ToString() + " TOKEN";
     }
 }
