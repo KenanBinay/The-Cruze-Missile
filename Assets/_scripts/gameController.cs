@@ -348,9 +348,7 @@ public class gameController : MonoBehaviour
     }
 
     IEnumerator refuelTokenDelay()
-    {
-        if (tokenCostRefuel % 2 == 0) tokenCostRefuel = tokenCostRefuel * 2;
-
+    {      
         int x = PlayerPrefs.GetInt("tokens", 0);
 
         x -= tokenCostRefuel;
@@ -362,6 +360,7 @@ public class gameController : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
+        tokenCostRefuel = tokenCostRefuel * 2;
         tokenCost_txt.text = tokenCostRefuel.ToString() + " TOKEN";
     }
 }
