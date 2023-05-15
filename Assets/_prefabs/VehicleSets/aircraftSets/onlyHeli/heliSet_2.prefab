@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 7852680682705380218}
   - component: {fileID: 3346230831411882680}
   - component: {fileID: 426369179703282543}
+  - component: {fileID: 6027501615401697935}
   m_Layer: 0
   m_Name: Military_Helicopter02
   m_TagString: crashColl
@@ -301,6 +302,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.1583314, y: 3.4690492, z: 11.003324}
   m_Center: {x: 0.0000038146973, y: 1.7345246, z: -2.2481813}
+--- !u!114 &6027501615401697935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160411320478432765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3f0ff14bd241b14a8f2ad6a5c079f07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotorBack: {fileID: 0}
+  rotorM: {fileID: 0}
 --- !u!1 &1160411320929179552
 GameObject:
   m_ObjectHideFlags: 0
@@ -1372,6 +1387,7 @@ GameObject:
   - component: {fileID: 2132041746340065218}
   - component: {fileID: 2157290015426757242}
   - component: {fileID: 5674459774855921336}
+  - component: {fileID: 9169097895907288053}
   m_Layer: 0
   m_Name: Military_Helicopter03
   m_TagString: crashColl
@@ -1494,6 +1510,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.1583314, y: 3.4690492, z: 11.003324}
   m_Center: {x: 0.0000038146973, y: 1.7345246, z: -2.2481813}
+--- !u!114 &9169097895907288053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160411321347024129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3f0ff14bd241b14a8f2ad6a5c079f07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotorBack: {fileID: 0}
+  rotorM: {fileID: 0}
 --- !u!1 &1160411321970429693
 GameObject:
   m_ObjectHideFlags: 0

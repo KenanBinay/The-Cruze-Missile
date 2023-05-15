@@ -11,8 +11,6 @@ public class helicopterController : MonoBehaviour
     void Start()
     {
         rbHeli = gameObject.GetComponent<Rigidbody>();
-        rb_backRotor = gameObject.GetComponent<Rigidbody>();
-        rb_mainRotor = gameObject.GetComponent<Rigidbody>();
 
         crashedGround = missileHit = false;
 
@@ -22,13 +20,13 @@ public class helicopterController : MonoBehaviour
 
     void Update()
     {
-        if (Time.frameCount % 2 == 0)
+        if (Time.frameCount % 2 == 0 && rotorBack != null && rotorM != null)
         {
             if (!crashedGround && !missileHit)
             {
                 rotorBack.transform.Rotate(new Vector3(1000 * Time.deltaTime, 0, 0));
                 rotorM.transform.Rotate(new Vector3(0, 500 * Time.deltaTime, 0));
-            }      
+            }
         }
     }
 
@@ -37,11 +35,16 @@ public class helicopterController : MonoBehaviour
         if (collision.gameObject.CompareTag("missileM"))
         {
             rbHeli.useGravity = true;
-            rb_backRotor.useGravity = true;
-            rb_mainRotor.useGravity = true;
-
-            rotorBack.GetComponent<Collider>().enabled = true;
-            rotorM.GetComponent<Collider>().enabled = true;
+            if (rb_backRotor != null)
+            {
+                rb_backRotor.useGravity = true;
+                rotorBack.GetComponent<Collider>().enabled = true;
+            }         
+            if (rb_mainRotor != null) 
+            {
+                rb_mainRotor.useGravity = true;
+                rotorM.GetComponent<Collider>().enabled = true;
+            }
 
             missileHit = true;
             if (transform != null) transform.DOPause();

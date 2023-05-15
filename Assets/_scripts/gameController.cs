@@ -18,14 +18,13 @@ public class gameController : MonoBehaviour
     [SerializeField]
     public GameObject missileHud, missileBody, warningUi, tutoUi,
         joystickMain, ciwslockedUi, missionComplete_Ui, missionFailed_Ui, jet_main, pauseButton_Ui,
-        fuelBar_Ui, missionInfo_Ui, onPauseSlide_Ui, rewardedX2;
+        missionInfo_Ui, onPauseSlide_Ui, rewardedX2;
 
     [SerializeField] public Sprite iconPause, iconPlay;
     [SerializeField] public Image iconPausePlay;
     [SerializeField] public Color safe, mid, critical;
     [SerializeField] public Slider levelSlider;
     Color targetColor;
-
 
     [SerializeField]    
     public TextMeshProUGUI altitute, countdownTxt, missionTxt, missionDoneTxt,
@@ -34,11 +33,11 @@ public class gameController : MonoBehaviour
     [SerializeField] public TextMeshPro alt_txt, time_txt;
     [SerializeField] TextMeshProUGUI tokenCost_txt;
 
-    public static bool startDelay, screenClickedOnPlay, timeScoreGiven, speedUp_missile;
+    public static bool startDelay, screenClickedOnPlay, timeScoreGiven, speedUp_missile, gameover;
     public static float missionTime, gainedScoreInLevel;
     public static int bannerAd_randomNumb, interstitialAd_randomNumb, tokenCostRefuel;
 
-    bool countdownBool, gameover, paused, waitForReload, compeleted_endUiAnim;
+    bool countdownBool, paused, waitForReload, compeleted_endUiAnim;
     float rayLenght, countdownVal;
 
     RaycastHit hit;
@@ -148,7 +147,7 @@ public class gameController : MonoBehaviour
             missileHud.SetActive(false);
             joystickMain.SetActive(false);
             pauseButton_Ui.SetActive(false);
-            fuelBar_Ui.SetActive(false);
+
             missionInfo_Ui.SetActive(false);
 
             missionComplete_Ui.SetActive(true);
@@ -177,7 +176,7 @@ public class gameController : MonoBehaviour
             missileHud.SetActive(false);
             joystickMain.SetActive(false);
             pauseButton_Ui.SetActive(false);
-            fuelBar_Ui.SetActive(false);
+
             missionInfo_Ui.SetActive(false);
 
             missionFailed_Ui.SetActive(true);

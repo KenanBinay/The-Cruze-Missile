@@ -19,7 +19,10 @@ public class adController_menu : MonoBehaviour
 
     void Start()
     {
-        idRewarded = "ca-app-pub-9421503984483424/3742292473";
+        MobileAds.Initialize(initStatus => { });
+
+        //  idRewarded = "ca-app-pub-9421503984483424/3742292473";
+        idRewarded = "ca-app-pub-3940256099942544/5224354917";
 
         timeRemaining = PlayerPrefs.GetFloat("countdownVal", timeRemaining);
 

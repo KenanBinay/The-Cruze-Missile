@@ -2135,6 +2135,7 @@ GameObject:
   - component: {fileID: 5985505695348236134}
   - component: {fileID: 899929956952766388}
   - component: {fileID: 5828140559182244316}
+  - component: {fileID: 5196282992184741090}
   - component: {fileID: 8766831092754064955}
   m_Layer: 0
   m_Name: Military_Helicopter03
@@ -2244,6 +2245,20 @@ MonoBehaviour:
   needArrowIndicator: 1
   needDistanceText: 0
   indicator: {fileID: 0}
+--- !u!114 &5196282992184741090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6145949867264984330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3f0ff14bd241b14a8f2ad6a5c079f07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotorBack: {fileID: 0}
+  rotorM: {fileID: 0}
 --- !u!65 &8766831092754064955
 BoxCollider:
   m_ObjectHideFlags: 0

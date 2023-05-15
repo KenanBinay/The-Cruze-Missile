@@ -36,7 +36,7 @@ public class fuelManager : MonoBehaviour
 
     void Update()
     {
-        if (gameController.startDelay && !missileController.targetHit || !missileController.crashed)
+        if (gameController.startDelay && !gameController.gameover)
         {
             if (refuel)
             {
@@ -68,7 +68,7 @@ public class fuelManager : MonoBehaviour
             }
             else { missileRb.useGravity = true; outOfFuel = true; anim_outOfFuel.enabled = true; }
         }
-        if(missileController.targetHit || missileController.crashed)
+        if (gameController.gameover && refuelAnimPlayed)
         {
             fuelOffer_anim.SetTrigger("offerClose");
             refuelAnimPlayed = false;
