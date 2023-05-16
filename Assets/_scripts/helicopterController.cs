@@ -35,6 +35,7 @@ public class helicopterController : MonoBehaviour
         if (collision.gameObject.CompareTag("missileM"))
         {
             rbHeli.useGravity = true;
+            rbHeli.constraints -= RigidbodyConstraints.FreezeAll;
             if (rb_backRotor != null)
             {
                 rb_backRotor.useGravity = true;
