@@ -143,6 +143,7 @@ public class menuManager : MonoBehaviour
         IAPAds.SetActive(false);
         missileMenu_canvas.SetActive(false);
         unlock_missileMenu_nonVip.SetActive(false);
+        unlock_missileMenu_vip.SetActive(false);
 
         tokenShop_canvas.SetActive(true);
     }
@@ -150,6 +151,10 @@ public class menuManager : MonoBehaviour
     public void returnHome()
     {
         tokenShop_canvas.SetActive(false);
+        missileMenu_canvas.SetActive(false);
+        unlock_missileMenu_nonVip.SetActive(false);
+        unlock_missileMenu_vip.SetActive(false);
+
         if (PlayerPrefs.GetInt("adsRemoved", 0) == 0) IAPAds.SetActive(true);
 
         startMenu_canvas.SetActive(true);

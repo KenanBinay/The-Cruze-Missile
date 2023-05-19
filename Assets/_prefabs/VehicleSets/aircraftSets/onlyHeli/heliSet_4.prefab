@@ -608,6 +608,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotorBack: {fileID: 8477501477032381043}
   rotorM: {fileID: 6083725681750651226}
+  fireParticle: {fileID: 6074985060737552801, guid: e9b1771fa3b4ead4ab3fe9d92f944711,
+    type: 3}
 --- !u!114 &4700636084236434273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1253,6 +1255,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotorBack: {fileID: 2634123295328544825}
   rotorM: {fileID: 3098992913909695515}
+  fireParticle: {fileID: 6074985060737552801, guid: e9b1771fa3b4ead4ab3fe9d92f944711,
+    type: 3}
 --- !u!114 &4700636085695383302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2259,6 +2263,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotorBack: {fileID: 0}
   rotorM: {fileID: 0}
+  fireParticle: {fileID: 6074985060737552801, guid: e9b1771fa3b4ead4ab3fe9d92f944711,
+    type: 3}
 --- !u!65 &8766831092754064955
 BoxCollider:
   m_ObjectHideFlags: 0

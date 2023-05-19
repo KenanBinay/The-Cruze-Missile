@@ -106,6 +106,7 @@ public class missileController : MonoBehaviour
                 if (PlayerPrefs.GetInt("sfx") == 1) explosionSources[explode].Play();
 
                 explosion = true;
+                rigidM.constraints = RigidbodyConstraints.FreezeAll;
             }
             for (int i = 0; i < missileSources.Length; i++)
             {
@@ -195,7 +196,6 @@ public class missileController : MonoBehaviour
                 scoreManager_inGame.addScore(480);
             }
         }
-        rigidM.constraints = RigidbodyConstraints.FreezeAll;
     }
     private void OnTriggerEnter(Collider other)
     {

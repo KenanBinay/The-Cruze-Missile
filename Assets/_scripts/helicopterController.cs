@@ -5,12 +5,14 @@ using DG.Tweening;
 
 public class helicopterController : MonoBehaviour
 {
-    public GameObject rotorBack, rotorM;
+    public GameObject rotorBack, rotorM, fireParticle;
     Rigidbody rbHeli, rb_backRotor, rb_mainRotor;
     bool crashedGround, missileHit;
     void Start()
     {
         rbHeli = gameObject.GetComponent<Rigidbody>();
+        if (rb_backRotor != null) rb_backRotor = rotorBack.GetComponent<Rigidbody>();
+        if (rb_mainRotor != null) rb_mainRotor = rotorM.GetComponent<Rigidbody>();
 
         crashedGround = missileHit = false;
 
@@ -32,24 +34,29 @@ public class helicopterController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("missileM"))
+        if (collision.gameObject.CompareTag("missileM") && !missileHit)
         {
+            GameObject fire = Instantiate(fireParticle,
+                new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), 
+                fireParticle.transform.rotation);
+
+            fire.transform.parent = rbHeli.transform;
+
             rbHeli.useGravity = true;
             rbHeli.constraints -= RigidbodyConstraints.FreezeAll;
             if (rb_backRotor != null)
             {
-                rb_backRotor.useGravity = true;
                 rotorBack.GetComponent<Collider>().enabled = true;
-            }         
-            if (rb_mainRotor != null) 
+                rb_backRotor.useGravity = true;
+            }
+            if (rb_mainRotor != null)
             {
-                rb_mainRotor.useGravity = true;
                 rotorM.GetComponent<Collider>().enabled = true;
+                rb_mainRotor.useGravity = true;
             }
 
             missileHit = true;
             if (transform != null) transform.DOPause();
         }
-        if (collision.gameObject.CompareTag("crashColl")) { crashedGround = true; }
     }
 }

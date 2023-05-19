@@ -316,6 +316,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotorBack: {fileID: 0}
   rotorM: {fileID: 0}
+  fireParticle: {fileID: 6074985060737552801, guid: e9b1771fa3b4ead4ab3fe9d92f944711,
+    type: 3}
 --- !u!1 &1160411320929179552
 GameObject:
   m_ObjectHideFlags: 0
@@ -638,6 +640,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotorBack: {fileID: 1956100030525128563}
   rotorM: {fileID: 6334042133931783735}
+  fireParticle: {fileID: 6074985060737552801, guid: e9b1771fa3b4ead4ab3fe9d92f944711,
+    type: 3}
 --- !u!114 &1160411321265893284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1524,6 +1528,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotorBack: {fileID: 0}
   rotorM: {fileID: 0}
+  fireParticle: {fileID: 6074985060737552801, guid: e9b1771fa3b4ead4ab3fe9d92f944711,
+    type: 3}
 --- !u!1 &1160411321970429693
 GameObject:
   m_ObjectHideFlags: 0
