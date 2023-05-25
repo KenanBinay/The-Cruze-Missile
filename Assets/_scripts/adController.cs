@@ -18,14 +18,9 @@ public class adController : MonoBehaviour
 
     void Start()
     {
-        MobileAds.Initialize(initStatus => { });
-
-        //  idInterstitial = "ca-app-pub-9421503984483424/9436819008";
-        idInterstitial = "ca-app-pub-3940256099942544/1033173712";
-        //    idRewarded = "ca-app-pub-9421503984483424/3742292473";
-        idRewarded = "ca-app-pub-3940256099942544/5224354917";
-        // idBanner = "ca-app-pub-9421503984483424/6639084408";
-        idBanner = "ca-app-pub-3940256099942544/6300978111";
+        idInterstitial = "ca-app-pub-9421503984483424/9436819008";
+        idRewarded = "ca-app-pub-9421503984483424/3742292473";
+        idBanner = "ca-app-pub-9421503984483424/6639084408";
 
         this.adRewarded = new RewardedAd(idRewarded);
         this.adInterstitial = new InterstitialAd(idInterstitial);
@@ -41,6 +36,8 @@ public class adController : MonoBehaviour
 
         if (PlayerPrefs.GetInt("adsRemoved", 0) == 1)
             Debug.Log("ADS BLOCKED NO ADS");
+
+        MobileAds.Initialize(initStatus => { });
     }
 
     private void Update()

@@ -18,11 +18,8 @@ public class adController_menu : MonoBehaviour
     public static bool freeTokenGiven;
 
     void Start()
-    {
-        MobileAds.Initialize(initStatus => { });
-
-        //  idRewarded = "ca-app-pub-9421503984483424/3742292473";
-        idRewarded = "ca-app-pub-3940256099942544/5224354917";
+    {    
+        idRewarded = "ca-app-pub-9421503984483424/3742292473";
 
         timeRemaining = PlayerPrefs.GetFloat("countdownVal", timeRemaining);
 
@@ -96,17 +93,18 @@ public class adController_menu : MonoBehaviour
 
     public void freeTokenClaim()
     {
-        if (this.adRewarded.IsLoaded()&&!freeTokenGiven)
+        if (!this.adRewarded.IsLoaded() || freeTokenGiven)
+        {
+            Debug.Log("no rewarded ads");
+        }
+        if (this.adRewarded.IsLoaded() && !freeTokenGiven)
         {
             adRewarded.OnAdLoaded += this.HandleOnRewardedAdLoaded;
             adRewarded.OnAdOpening += this.HandleOnRewardedAdOpening;
             adRewarded.OnAdClosed += this.HandleOnRewardedAdClosed;
 
+            Debug.Log("rewarded ad taken");
             this.adRewarded.Show();
-        }
-        if (!this.adRewarded.IsLoaded()||freeTokenGiven)
-        {
-            Debug.Log("no rewarded ads");
         }
     }
 

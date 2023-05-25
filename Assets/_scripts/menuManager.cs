@@ -146,10 +146,15 @@ public class menuManager : MonoBehaviour
         unlock_missileMenu_vip.SetActive(false);
 
         tokenShop_canvas.SetActive(true);
+
+        missileMenuOpened = true;
+        if (settingsOpened) loadSettings();
     }
 
     public void returnHome()
     {
+        missileMenuOpened = false;
+
         tokenShop_canvas.SetActive(false);
         missileMenu_canvas.SetActive(false);
         unlock_missileMenu_nonVip.SetActive(false);

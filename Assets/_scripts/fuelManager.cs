@@ -17,7 +17,7 @@ public class fuelManager : MonoBehaviour
 
     public float fuelCountdownVal, countdown;
     public static float fuelValue;
-    public static bool outOfFuel, refuel, refuelAnimPlayed;
+    public static bool outOfFuel, refuel, refuelAnimPlayed, recoverGravity;
 
     void Start()
     {
@@ -62,11 +62,27 @@ public class fuelManager : MonoBehaviour
                 if (fuelCountdownVal > 8 && fuelCountdownVal < 15)
                 {
                     targetColor = c;
-                   if(!refuelAnimPlayed) fuelOffer_anim.SetTrigger("offerOpen"); refuelAnimPlayed = true;
+
+                    if (!refuelAnimPlayed)
+                    {
+                        fuelOffer_anim.SetTrigger("offerOpen");
+                        refuelAnimPlayed = true;
+                    }
                 } 
                 if (fuelCountdownVal < 8) targetColor = d;
             }
-            else { missileRb.useGravity = true; outOfFuel = true; anim_outOfFuel.enabled = true; }
+            else 
+            {
+                if (refuelAnimPlayed)
+                {
+                    missileRb.useGravity = true;
+                    anim_outOfFuel.enabled = true;
+                    outOfFuel = true;
+
+                    fuelOffer_anim.SetTrigger("offerClose");
+                    refuelAnimPlayed = false;
+                }
+            }
         }
         if (gameController.gameover && refuelAnimPlayed)
         {
