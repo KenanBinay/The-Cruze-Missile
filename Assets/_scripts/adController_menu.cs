@@ -102,7 +102,7 @@ public class adController_menu : MonoBehaviour
             this.adRewarded.Show();
         }
     }
-
+    
     public void HandleOnRewardedAdLoaded(object sender, EventArgs args) { }
     public void HandleOnRewardedAdOpening(object sender, EventArgs args) { }
     public void HandleOnRewardedAdClosed(object sender, EventArgs args)

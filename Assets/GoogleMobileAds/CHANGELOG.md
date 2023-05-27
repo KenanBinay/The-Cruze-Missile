@@ -1,65 +1,6 @@
 Google Mobile Ads Unity Plugin Change Log
 
 **************
-Version 7.3.1
-**************
-
-Plugin:
-- Fixed [#1799](https://github.com/googleads/googleads-mobile-unity/issues/1799) RewardedAd OnAdFailedToPresentFullScreenContent called twice.
-
-**************
-Version 7.3.0
-**************
-
-Plugin:
-- Requires using Google Mobile Ads Android SDK v21.3.0 or higher.
-- Requires using Google Mobile Ads iOS SDK v9.11.0 or higher.
-- Added response information for ad networks to the [ad response](https://developers.google.com/admob/unity/response-info).
-
-Built and tested with:
-- Google Mobile Ads Android SDK 21.3.0.
-- Google Mobile Ads iOS SDK 9.11.0
-- External Dependency Manager for Unity 1.2.171.
-
-**************
-Version 7.2.0
-**************
-
-Plugin:
-- Added settings to optimize Android initialization and ad loading thread usage.
-- Fixed issue with AppOpenAd.GetResponseInfo() not completing on Android.
-- Fixed display issue for AdInspector on the Unity Editor platform.
-
-Built and tested with:
-- Google Mobile Ads Android SDK 21.0.0.
-- Google Mobile Ads iOS SDK 9.9.0
-- External Dependency Manager for Unity 1.2.171.
-
-**************
-Version 7.1.0
-**************
-
-Plugin:
-- Added AppStateEventNotifier as a better option to OnApplicationPause for app open ads.
-
-Built and tested with:
-- Google Mobile Ads Android SDK 21.0.0.
-- Google Mobile Ads iOS SDK 9.0.0
-- External Dependency Manager for Unity 1.2.171.
-
-**************
-Version 7.0.2
-**************
-
-Plugin:
-- Added support for GMA Android SDK v21. Requires using GMA Android SDK v21.0.0 or higher.
-
-Built and tested with:
-- Google Mobile Ads Android SDK 21.0.0.
-- Google Mobile Ads iOS SDK 9.0.0
-- External Dependency Manager for Unity 1.2.171.
-
-**************
 Version 7.0.1
 **************
 
@@ -69,11 +10,6 @@ Plugin:
 - Fixed Github issue [2003](https://github.com/googleads/googleads-mobile-unity/issues/2003) related to Ad Inspector crash.
 - Added Dummy AdInspector for Unity editor.
 
-Built and tested with:
-- Google Play services 20.2.0
-- Google Mobile Ads iOS SDK 9.0.0
-- External Dependency Manager for Unity 1.2.171.
-
 **************
 Version 7.0.0
 **************
@@ -82,11 +18,6 @@ Plugin:
 - Added support for GMA iOS SDK v9. Requires using GMA iOS SDK v9.0.0 or higher.
 - Fixed https://github.com/googleads/googleads-mobile-unity/issues/1620
 - Updated to use External Dependency Manager for Unity 1.2.169.
-
-Built and tested with:
-- Google Play services 20.2.0
-- Google Mobile Ads iOS SDK 9.0.0
-- External Dependency Manager for Unity 1.2.171.
 
 **************
 Version 6.1.2
