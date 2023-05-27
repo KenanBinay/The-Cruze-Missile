@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Purchasing.Security;
 using UnityEngine.Purchasing;
 using UnityEngine.UI;
-using Unity.VisualScripting;
 
-public class IAPManager : MonoBehaviour
+public class IapManager : MonoBehaviour
 {
     [SerializeField]
     Button removeAds_button;

@@ -1,10 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using GoogleMobileAds.Api;
-using Unity.VisualScripting;
 
 public class adController : MonoBehaviour
 {

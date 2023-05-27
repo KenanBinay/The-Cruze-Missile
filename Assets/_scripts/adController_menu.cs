@@ -1,11 +1,7 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using GoogleMobileAds.Api;
-using UnityEngine.UI;
 using TMPro;
-using static System.Net.Mime.MediaTypeNames;
 
 public class adController_menu : MonoBehaviour
 {
@@ -45,7 +41,6 @@ public class adController_menu : MonoBehaviour
                     TextMeshProUGUI timer_text = countdown_text.GetComponent<TextMeshProUGUI>();
                     timer_text.text = min.ToString("00") + ":" + sec.ToString("00");
                 }
-
              //   Debug.Log(min.ToString("00") + ":" + sec.ToString("00"));
             }
             else
