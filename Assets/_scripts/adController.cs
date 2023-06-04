@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using GoogleMobileAds;
 using GoogleMobileAds.Api;
 
 public class adController : MonoBehaviour
@@ -18,14 +19,11 @@ public class adController : MonoBehaviour
         idRewarded = "ca-app-pub-9421503984483424/3742292473";
         idBanner = "ca-app-pub-9421503984483424/6639084408";
 
-        this.adRewarded = new RewardedAd(idRewarded);
-        this.adInterstitial = new InterstitialAd(idInterstitial);
+        MobileAds.Initialize(initStatus => { requestAd(); });
+
         this.bannerView = new BannerView(idBanner, AdSize.Banner, AdPosition.Bottom);
 
-        AdRequest request = new AdRequest.Builder().Build();
-
-        this.adRewarded.LoadAd(request);
-        this.adInterstitial.LoadAd(request);
+        var request = new AdRequest();
 
         if (gameController.bannerAd_randomNumb == 1 && PlayerPrefs.GetInt("adsRemoved", 0) == 0)
             this.bannerView.LoadAd(request);
@@ -33,7 +31,6 @@ public class adController : MonoBehaviour
         if (PlayerPrefs.GetInt("adsRemoved", 0) == 1)
             Debug.Log("ADS BLOCKED NO ADS");
 
-        MobileAds.Initialize(initStatus => { });
     }
 
     private void Update()
@@ -42,15 +39,47 @@ public class adController : MonoBehaviour
         {
             if (gameController.interstitialAd_randomNumb == 2 && !interstitialGiven) interstitialAd();
         }
-        if(missileController.crashed && PlayerPrefs.GetInt("adsRemoved", 0) == 0)
+        if (missileController.crashed && PlayerPrefs.GetInt("adsRemoved", 0) == 0)
         {
             if (gameController.interstitialAd_randomNumb == 2 && !interstitialGiven) interstitialAd();
         }
     }
 
+    private void requestAd()
+    {
+        if (adRewarded != null)
+        {
+            adRewarded.Destroy();
+            adRewarded = null;
+        }
+
+        Debug.Log("Loading the rewarded ad.");
+
+        var adRequest = new AdRequest();
+        adRequest.Keywords.Add("unity-admob-sample");
+
+        RewardedAd.Load(idRewarded, adRequest,
+          (RewardedAd ad, LoadAdError error) =>
+          {
+              // if error is not null, the load request failed.
+              if (error != null || ad == null)
+              {
+                  Debug.LogError("rewarded interstitial ad failed to load an ad " +
+                                 "with error : " + error);
+                  return;
+              }
+
+              Debug.Log("Rewarded interstitial ad loaded with response : "
+                        + ad.GetResponseInfo());
+
+              adRewarded = ad;
+              RegisterEventHandlers(adRewarded);
+          });
+    }
+
     public void interstitialAd()
     {
-        if (this.adInterstitial.IsLoaded())
+        if (adInterstitial.CanShowAd())
         {
             Debug.Log("interstitial ads");
             interstitialGiven = true;
@@ -63,16 +92,15 @@ public class adController : MonoBehaviour
     }
 
     public void x2RewardedAd()
-    {
-        if (this.adRewarded.IsLoaded())
+    {   
+        if (this.adRewarded.CanShowAd())
         {
             x2Reward = true;
 
-            adRewarded.OnAdLoaded += this.HandleOnRewardedAdLoaded;
-            adRewarded.OnAdOpening += this.HandleOnRewardedAdOpening;
-            adRewarded.OnAdClosed += this.HandleOnRewardedAdClosed;
+            adRewarded.Show((Reward reward) =>
+            {
 
-            this.adRewarded.Show();
+            });
         }
         else
         {
@@ -81,16 +109,15 @@ public class adController : MonoBehaviour
     }
 
     public void refuelRewardedAd()
-    {
-        if (this.adRewarded.IsLoaded())
+    {  
+        if (this.adRewarded.CanShowAd())
         {
             fuelOffer = true;
 
-            adRewarded.OnAdLoaded += this.HandleOnRewardedAdLoaded;
-            adRewarded.OnAdOpening += this.HandleOnRewardedAdOpening;
-            adRewarded.OnAdClosed += this.HandleOnRewardedAdClosed;
+            adRewarded.Show((Reward reward) =>
+            {
 
-            this.adRewarded.Show();
+            });
         }
         else
         {
@@ -98,26 +125,23 @@ public class adController : MonoBehaviour
         }
     }
 
-    public void HandleOnRewardedAdLoaded(object sender, EventArgs args) { }
-    public void HandleOnRewardedAdOpening(object sender, EventArgs args) { }
-    public void HandleOnRewardedAdClosed(object sender, EventArgs args)
+    private void RegisterEventHandlers(RewardedAd ad)
     {
-        if (x2Reward)
+        ad.OnAdFullScreenContentClosed += () =>
         {
-            scoreManager_inGame.addScore(gameController.gainedScoreInLevel);
-            Debug.Log("2X SCORE: " + gameController.gainedScoreInLevel);
-            rewardedGiven = true;
-            x2Reward = false;
-        }
+            if (x2Reward)
+            {
+                scoreManager_inGame.addScore(gameController.gainedScoreInLevel);
+                Debug.Log("2X SCORE: " + gameController.gainedScoreInLevel);
+                rewardedGiven = true;
+                x2Reward = false;
+            }
 
-        if (fuelOffer)
-        {
-            fuelManager.refuel = true;
-            Debug.Log("fuelGiven");
-        }
-
-        adRewarded.OnAdLoaded -= this.HandleOnRewardedAdLoaded;
-        adRewarded.OnAdOpening -= this.HandleOnRewardedAdOpening;
-        adRewarded.OnAdClosed -= this.HandleOnRewardedAdClosed;
+            if (fuelOffer)
+            {
+                fuelManager.refuel = true;
+                Debug.Log("fuelGiven");
+            }
+        };
     }
 }

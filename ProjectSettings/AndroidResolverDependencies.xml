@@ -1,6 +1,6 @@
 <dependencies>
   <packages>
-    <package>com.google.android.gms:play-services-ads:20.6.0</package>
+    <package>com.google.android.gms:play-services-ads:22.1.0</package>
     <package>com.google.android.ump:user-messaging-platform:2.0.0</package>
     <package>com.unity3d.mediation:admob-adapter:[1.0,2.0[</package>
     <package>com.unity3d.mediation:mediation-sdk:[1.0,2.0[</package>

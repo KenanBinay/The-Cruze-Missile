@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: f6190f2d34454c59917a4c1305f171d3
+guid: 919b0e1bd9b2475b8c6fe779b3320a0c
 labels:
 - gvh
-- gvh_version-7.0.1
+- gvh_version-8.3.0
 - gvhp_exportpath-Plugins/Android/googlemobileads-unity.aar
 timeCreated: 1480838400
 PluginImporter:
@@ -67,6 +67,11 @@ PluginImporter:
       settings:
         CPU: AnyCPU
     iOS:
+      enabled: 0
+      settings:
+        CompileFlags:
+        FrameworkDependencies:
+    tvOS:
       enabled: 0
       settings:
         CompileFlags:

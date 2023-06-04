@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using GoogleMobileAds;
 using GoogleMobileAds.Api;
 using TMPro;
 
@@ -14,15 +15,22 @@ public class adController_menu : MonoBehaviour
     public static bool freeTokenGiven;
 
     void Start()
-    {    
+    {
         idRewarded = "ca-app-pub-9421503984483424/3742292473";
+
+        MobileAds.Initialize((InitializationStatus initStatus) => { requestAd(); });
 
         timeRemaining = PlayerPrefs.GetFloat("countdownVal", timeRemaining);
 
-        if (PlayerPrefs.GetInt("tokenCoolDown") == 0) freeTokenGiven = false; 
-        else freeTokenGiven = true;
+        if (PlayerPrefs.GetInt("tokenCoolDown") == 0) freeTokenGiven = false;
+        if (PlayerPrefs.GetFloat("countdownVal", timeRemaining) > 0)
+        {
+            freeTokenGiven = true;
 
-        requestAd(); 
+            countdown_text.SetActive(true);
+            claimed.SetActive(true);
+            claim.SetActive(false);
+        }
     }
 
     private void Update()
@@ -41,7 +49,7 @@ public class adController_menu : MonoBehaviour
                     TextMeshProUGUI timer_text = countdown_text.GetComponent<TextMeshProUGUI>();
                     timer_text.text = min.ToString("00") + ":" + sec.ToString("00");
                 }
-             //   Debug.Log(min.ToString("00") + ":" + sec.ToString("00"));
+                //   Debug.Log(min.ToString("00") + ":" + sec.ToString("00"));
             }
             else
             {
@@ -58,70 +66,72 @@ public class adController_menu : MonoBehaviour
 
     private void requestAd()
     {
-        this.adRewarded = new RewardedAd(idRewarded);
+        if (adRewarded != null)
+        {
+            adRewarded.Destroy();
+            adRewarded = null;
+        }
 
-        AdRequest request = new AdRequest.Builder().Build();
+        Debug.Log("Loading the rewarded ad.");
 
-        this.adRewarded.LoadAd(request);
+        var adRequest = new AdRequest();
+        adRequest.Keywords.Add("unity-admob-sample");
 
-        MobileAds.Initialize(initStatus => { });
+        RewardedAd.Load(idRewarded, adRequest,
+          (RewardedAd ad, LoadAdError error) =>
+          {
+              // if error is not null, the load request failed.
+              if (error != null || ad == null)
+              {
+                  Debug.LogError("rewarded interstitial ad failed to load an ad " +
+                                 "with error : " + error);
+                  return;
+              }
 
-        if (this.adRewarded.IsLoaded() && !freeTokenGiven)
+              Debug.Log("Rewarded interstitial ad loaded with response : "
+                        + ad.GetResponseInfo());
+
+              adRewarded = ad;
+              RegisterEventHandlers(adRewarded);
+          });
+
+        if (!freeTokenGiven)
         {
             if (claimed != null && claim != null)
             {
                 claimed.SetActive(false);
                 claim.SetActive(true);
                 countdown_text.SetActive(false);
-            }         
-        }
-        if (freeTokenGiven)
-        {
-            if (claimed != null && claim != null)
-            {
-                claimed.SetActive(true);
-                claim.SetActive(false);
-                countdown_text.SetActive(true);
             }
         }
     }
 
-    public void freeTokenClaim()
+    public void ShowRewardedAd()
     {
-        if (!this.adRewarded.IsLoaded() || freeTokenGiven)
+        if (adRewarded != null && adRewarded.CanShowAd() && !freeTokenGiven)
         {
-            Debug.Log("no rewarded ads");
-        }
-        if (this.adRewarded.IsLoaded() && !freeTokenGiven)
-        {
-            adRewarded.OnAdLoaded += this.HandleOnRewardedAdLoaded;
-            adRewarded.OnAdOpening += this.HandleOnRewardedAdOpening;
-            adRewarded.OnAdClosed += this.HandleOnRewardedAdClosed;
+            adRewarded.Show((Reward reward) =>
+            {
+                // TODO: Reward the user.
 
-            Debug.Log("rewarded ad taken");
-            this.adRewarded.Show();
+            });
         }
     }
-    
-    public void HandleOnRewardedAdLoaded(object sender, EventArgs args) { }
-    public void HandleOnRewardedAdOpening(object sender, EventArgs args) { }
-    public void HandleOnRewardedAdClosed(object sender, EventArgs args)
+
+    private void RegisterEventHandlers(RewardedAd ad)
     {
-        int token = PlayerPrefs.GetInt("tokens", 0);
-        token += 1;
-        PlayerPrefs.SetInt("tokens", token);
+        ad.OnAdFullScreenContentClosed += () =>
+        {
+            int token = PlayerPrefs.GetInt("tokens", 0);
+            token += 1;
+            PlayerPrefs.SetInt("tokens", token);
 
-        freeTokenGiven = true;
-        timeRemaining = 90;
+            freeTokenGiven = true;
+            timeRemaining = 90;
 
-        countdown_text.SetActive(true);
-        claimed.SetActive(true);
-        claim.SetActive(false);
-
-        Debug.Log("token claimed");
-
-        adRewarded.OnAdLoaded -= this.HandleOnRewardedAdLoaded;
-        adRewarded.OnAdOpening -= this.HandleOnRewardedAdOpening;
-        adRewarded.OnAdClosed -= this.HandleOnRewardedAdClosed;
+            countdown_text.SetActive(true);
+            claimed.SetActive(true);
+            claim.SetActive(false);
+        };
     }
 }

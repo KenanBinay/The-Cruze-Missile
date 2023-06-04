@@ -89,5 +89,9 @@ public class fuelManager : MonoBehaviour
             fuelOffer_anim.SetTrigger("offerClose");
             refuelAnimPlayed = false;
         }
+        if(gameController.gameover||missileController.crashed||missileController.targetHit)
+        {
+            fuelBar.SetActive(false);
+        }
     }
 }
