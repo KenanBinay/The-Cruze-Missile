@@ -19,7 +19,10 @@ public class adController : MonoBehaviour
         idRewarded = "ca-app-pub-9421503984483424/3742292473";
         idBanner = "ca-app-pub-9421503984483424/6639084408";
 
-        MobileAds.Initialize(initStatus => { requestAd(); });
+        MobileAds.Initialize(initStatus => 
+        { 
+            loadRewardedAd(); loadInterstitialAd();
+        });
 
         this.bannerView = new BannerView(idBanner, AdSize.Banner, AdPosition.Bottom);
 
@@ -37,15 +40,15 @@ public class adController : MonoBehaviour
     {
         if (missileController.targetHit && PlayerPrefs.GetInt("adsRemoved", 0) == 0)
         {
-            if (gameController.interstitialAd_randomNumb == 2 && !interstitialGiven) interstitialAd();
+            if (gameController.interstitialAd_randomNumb == 1 && !interstitialGiven) showInterstitial();
         }
         if (missileController.crashed && PlayerPrefs.GetInt("adsRemoved", 0) == 0)
         {
-            if (gameController.interstitialAd_randomNumb == 2 && !interstitialGiven) interstitialAd();
+            if (gameController.interstitialAd_randomNumb == 2 && !interstitialGiven) showInterstitial();
         }
     }
 
-    private void requestAd()
+    private void loadRewardedAd()
     {
         if (adRewarded != null)
         {
@@ -77,17 +80,51 @@ public class adController : MonoBehaviour
           });
     }
 
-    public void interstitialAd()
+    private void loadInterstitialAd()
     {
-        if (adInterstitial.CanShowAd())
+        if (adInterstitial != null)
         {
-            Debug.Log("interstitial ads");
+            adInterstitial.Destroy();
+            adInterstitial = null;
+        }
+
+        Debug.Log("Loading the interstitial ad.");
+
+        // create our request used to load the ad.
+        var adRequest = new AdRequest();
+        adRequest.Keywords.Add("unity-admob-sample");
+
+        // send the request to load the ad.
+        InterstitialAd.Load(idInterstitial, adRequest,
+            (InterstitialAd ad, LoadAdError error) =>
+            {
+                // if error is not null, the load request failed.
+                if (error != null || ad == null)
+                {
+                    Debug.LogError("interstitial ad failed to load an ad " +
+                                   "with error : " + error);
+                    return;
+                }
+
+                Debug.Log("Interstitial ad loaded with response : "
+                          + ad.GetResponseInfo());
+
+                adInterstitial = ad;
+            });
+    }
+
+    public void showInterstitial()
+    {
+        if (adInterstitial != null && adInterstitial.CanShowAd())
+        {
+            Debug.Log("Showing interstitial ad.");
             interstitialGiven = true;
-            this.adInterstitial.Show();
+
+            adInterstitial.Show();
         }
         else
         {
-            Debug.Log("no interstitial ads");
+            Debug.LogError("Interstitial ad is not ready yet.");
         }
     }
 
@@ -104,7 +141,7 @@ public class adController : MonoBehaviour
         }
         else
         {
-            Debug.Log("no rewarded ads");
+            Debug.LogError("Rewarded ad is not ready yet.");
         }
     }
 
@@ -121,7 +158,7 @@ public class adController : MonoBehaviour
         }
         else
         {
-            Debug.Log("no rewarded ads");
+            Debug.LogError("Rewarded ad is not ready yet.");
         }
     }
 

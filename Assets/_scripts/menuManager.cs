@@ -62,7 +62,7 @@ public class menuManager : MonoBehaviour
         targetVal_text.text = "TARGET " + targetVal.ToString();
         tokenVal_text.text = tokenVal.ToString();
 
-        Debug.Log("last selected missile: " + lastSelectedMissileNumb);     
+        Debug.Log("last selected missile: " + lastSelectedMissileNumb);
     }
 
     private void Update()

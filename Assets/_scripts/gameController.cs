@@ -63,10 +63,10 @@ public class gameController : MonoBehaviour
     {
         scoreManager = GetComponent<scoreManager_inGame>();
 
-        int[] adNumbersBanner = { 1, 2, 3, };
+        int[] adNumbersBanner = { 1, 2};
         bannerAd_randomNumb = adNumbersBanner[Random.Range(0, adNumbersBanner.Length)];
 
-        int[] adNumbersInterstitial = { 1, 2, 3 };
+        int[] adNumbersInterstitial = { 1, 2 };
         interstitialAd_randomNumb = adNumbersInterstitial[Random.Range(0, adNumbersInterstitial.Length)];
 
         rayLenght = 600;
