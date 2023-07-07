@@ -24,7 +24,7 @@ public class adController : MonoBehaviour
             loadRewardedAd(); loadInterstitialAd();
         });
 
-        this.bannerView = new BannerView(idBanner, AdSize.Banner, AdPosition.Bottom);
+        this.bannerView = new BannerView(idBanner, AdSize.Banner, AdPosition.Top);
 
         var request = new AdRequest();
 
