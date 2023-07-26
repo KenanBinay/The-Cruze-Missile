@@ -290,7 +290,18 @@ public class menuManager : MonoBehaviour
 
             StartCoroutine(onMissileSelected());
         }
-        else Debug.Log("need more token to unlock");
+        else
+        {
+            Debug.Log("need more token to unlock");
+
+            startMenu_canvas.SetActive(false);
+            IAPAds.SetActive(false);
+            missileMenu_canvas.SetActive(false);
+            unlock_missileMenu_nonVip.SetActive(false);
+            unlock_missileMenu_vip.SetActive(false);
+
+            tokenShop_canvas.SetActive(true);
+        }
     }
 
     public void loadSettings()
