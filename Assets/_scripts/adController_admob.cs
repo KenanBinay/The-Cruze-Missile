@@ -3,7 +3,7 @@ using UnityEngine;
 using GoogleMobileAds;
 using GoogleMobileAds.Api;
 
-public class adController : MonoBehaviour
+public class adController_admob : MonoBehaviour
 {
     private InterstitialAd adInterstitial;
     private RewardedAd adRewarded;

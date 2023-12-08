@@ -1,6 +1,8 @@
 {
   "dependencies": {
+    "com.revenuecat.purchases-unity": "6.6.0",
     "com.unity.adaptiveperformance.samsung.android": "4.0.2",
+    "com.unity.ads": "4.4.2",
     "com.unity.ai.navigation": "1.1.3",
     "com.unity.collab-proxy": "2.0.4",
     "com.unity.feature.mobile": "1.0.0",
@@ -49,5 +51,15 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
-  }
+  },
+  "scopedRegistries": [
+    {
+      "name": "OpenUPM",
+      "url": "https://package.openupm.com",
+      "scopes": [
+        "com.openupm",
+        "com.revenuecat.purchases-unity"
+      ]
+    }
+  ]
 }

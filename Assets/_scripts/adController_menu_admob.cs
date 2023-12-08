@@ -4,7 +4,7 @@ using GoogleMobileAds;
 using GoogleMobileAds.Api;
 using TMPro;
 
-public class adController_menu : MonoBehaviour
+public class adController_menu_admob : MonoBehaviour
 {
     private RewardedAd adRewarded;
     string idRewarded;
