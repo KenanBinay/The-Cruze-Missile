@@ -3579,7 +3579,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &304015244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16465,9 +16465,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1865991873}
-        m_TargetAssemblyTypeName: adController_menu, Assembly-CSharp
-        m_MethodName: ShowRewardedAd
+      - m_Target: {fileID: 1865991875}
+        m_TargetAssemblyTypeName: adController_menu_unityAds, Assembly-CSharp
+        m_MethodName: ShowAd
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -21616,6 +21616,8 @@ GameObject:
   - component: {fileID: 1865991870}
   - component: {fileID: 1865991874}
   - component: {fileID: 1865991873}
+  - component: {fileID: 1865991875}
+  - component: {fileID: 1865991876}
   m_Layer: 0
   m_Name: menuManager
   m_TagString: Untagged
@@ -21694,7 +21696,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1865991869}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 422535c950c2ba946aa3b5c69a638e2e, type: 3}
   m_Name: 
@@ -21733,6 +21735,38 @@ MonoBehaviour:
   - com.cruisemissile.200tokens
   - com.cruisemissile.350tokens
   - com.cruisemissile.500tokens
+--- !u!114 &1865991875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1865991869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34e5c15f6649ff342a9145f1b3d33b50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _androidAdUnitId: Rewarded_Android
+  _iOSAdUnitId: Rewarded_iOS
+  claimed: {fileID: 1368457306}
+  claim: {fileID: 1493240083}
+  countdown_text: {fileID: 1904515038}
+--- !u!114 &1865991876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1865991869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1b625a806a12a341af241ed9b7aee86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _androidGameId: 5212643
+  _iOSGameId: 5212642
+  _testMode: 1
 --- !u!1 &1867004607
 GameObject:
   m_ObjectHideFlags: 0
@@ -22730,7 +22764,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1903085778
 RectTransform:
   m_ObjectHideFlags: 0
