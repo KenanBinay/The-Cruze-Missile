@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Advertisements;
 using TMPro;
 
@@ -30,10 +27,7 @@ public class adController_menu_unityAds : MonoBehaviour, IUnityAdsLoadListener, 
 
     void Start()
     {
-        LoadAd();
-
         timeRemaining = PlayerPrefs.GetFloat("countdownVal", timeRemaining);
-
         if (PlayerPrefs.GetInt("tokenCoolDown") == 0) freeTokenGiven = false;
         if (timeRemaining > 0)
         {
@@ -44,6 +38,8 @@ public class adController_menu_unityAds : MonoBehaviour, IUnityAdsLoadListener, 
             claimed.SetActive(true);
             claim.SetActive(false);
         }
+
+        LoadAd();
     }
 
     private void Update()

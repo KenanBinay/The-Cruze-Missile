@@ -224,12 +224,12 @@ public class gameController : MonoBehaviour
             {
                 if (uiSources[0].isPlaying) uiSources[0].Stop();
 
-                if (!adController_admob.rewardedGiven)
+                if (!adController_unityAds.rewardedGiven)
                 {
                     rewardedX2.SetActive(true);
                     rewardedX2.GetComponent<Animator>().enabled = true;
                 }
-                if (adController_admob.rewardedGiven && rewardedX2.activeSelf)
+                if (adController_unityAds.rewardedGiven && rewardedX2.activeSelf)
                 {
                     rewardedX2.SetActive(false);
                     StartCoroutine(levelEndScoreValueSmoothSet());

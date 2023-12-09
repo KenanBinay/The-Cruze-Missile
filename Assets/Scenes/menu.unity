@@ -5821,7 +5821,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!1 &574635214
 GameObject:
@@ -21615,7 +21615,6 @@ GameObject:
   - component: {fileID: 1865991871}
   - component: {fileID: 1865991870}
   - component: {fileID: 1865991874}
-  - component: {fileID: 1865991873}
   - component: {fileID: 1865991875}
   - component: {fileID: 1865991876}
   m_Layer: 0
@@ -21689,21 +21688,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1865991873
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1865991869}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 422535c950c2ba946aa3b5c69a638e2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  claimed: {fileID: 1368457306}
-  claim: {fileID: 1493240083}
-  countdown_text: {fileID: 1904515038}
 --- !u!114 &1865991874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21744,7 +21728,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1865991869}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34e5c15f6649ff342a9145f1b3d33b50, type: 3}
+  m_Script: {fileID: 11500000, guid: 4eec40e9c922f2441b18027e3ad5dbab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _androidAdUnitId: Rewarded_Android
@@ -21761,7 +21745,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1865991869}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1b625a806a12a341af241ed9b7aee86, type: 3}
+  m_Script: {fileID: 11500000, guid: 92e9ef1c90fbe784cbd887042c0e2122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _androidGameId: 5212643

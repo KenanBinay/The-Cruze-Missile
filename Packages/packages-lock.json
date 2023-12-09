@@ -7,13 +7,6 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
-    "com.revenuecat.purchases-unity": {
-      "version": "6.6.0",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://package.openupm.com"
-    },
     "com.unity.adaptiveperformance": {
       "version": "4.0.1",
       "depth": 1,
