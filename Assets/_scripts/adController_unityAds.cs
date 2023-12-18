@@ -40,8 +40,6 @@ public class adController_unityAds : MonoBehaviour, IUnityAdsLoadListener, IUnit
 
     void Start()
     {
-        Advertisement.Banner.SetPosition(_bannerPosition);
-
         LoadRewardedAd();
         LoadInterstitialAd();
         LoadBanner();
@@ -78,6 +76,7 @@ public class adController_unityAds : MonoBehaviour, IUnityAdsLoadListener, IUnit
 
         // Load the Ad Unit with banner content:
         Advertisement.Banner.Load(_adUnitId_banner, options);
+        Advertisement.Banner.SetPosition(_bannerPosition);
         ShowBannerAd();
     }
 

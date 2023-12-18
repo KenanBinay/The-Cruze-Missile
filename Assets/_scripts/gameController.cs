@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using DG.Tweening;
 using UnityEngine.UI;
+using UnityEngine.Advertisements;
 
 public class gameController : MonoBehaviour
 {
@@ -193,9 +194,15 @@ public class gameController : MonoBehaviour
             //calculate main height to ground by using missiles position in unity & color change
             alt_txt.text = missileBody.transform.position.y.ToString("ALT " + "#");
             alt_txt.color = Color.Lerp(alt_txt.color, targetColor, 0.1f);
-            if (missileBody.transform.position.y <= 230 && targetColor != safe) targetColor = safe;
-            if (missileBody.transform.position.y > 230 && missileBody.transform.position.y <= 350 && targetColor != mid) targetColor = mid;
-            if (missileBody.transform.position.y > 400 && targetColor != critical) targetColor = critical;
+
+            if (missileBody.transform.position.y <= 230 && targetColor != safe) 
+                targetColor = safe;
+
+            if (missileBody.transform.position.y > 230 && missileBody.transform.position.y 
+                <= 350 && targetColor != mid) targetColor = mid;
+
+            if (missileBody.transform.position.y > 400 && targetColor != critical) 
+                targetColor = critical;
         }
 
         if (compeleted_endUiAnim)
@@ -279,20 +286,26 @@ public class gameController : MonoBehaviour
 
     public void loadMission(int sceneId)
     {     
-        if (!waitForReload && scoreManager_inGame.sliderScore <= 0 || missileController.crashed || paused)
+        if (!waitForReload && scoreManager_inGame.sliderScore <= 0 || missileController.crashed 
+            || paused)
         {
-            if (Time.timeScale != 1) Time.timeScale = 1;          
+            Advertisement.Banner.Hide();
+            if (Time.timeScale != 1) Time.timeScale = 1;           
             AsyncOperation operation = SceneManager.LoadSceneAsync(sceneId);
+
             if (!operation.isDone) { waitForReload = true;}
         }  
     }
 
     public void loadMenu(int sceneId)
     {
-        if (!waitForReload && scoreManager_inGame.sliderScore <= 0 || missileController.crashed || paused)
+        if (!waitForReload && scoreManager_inGame.sliderScore <= 0 || missileController.crashed 
+            || paused)
         {
+            Advertisement.Banner.Hide();
             if (Time.timeScale != 1) Time.timeScale = 1;
             AsyncOperation operation = SceneManager.LoadSceneAsync(sceneId);
+
             if (!operation.isDone) { waitForReload = true; }
         }
     }
