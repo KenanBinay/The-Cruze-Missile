@@ -341,7 +341,8 @@ public class gameController : MonoBehaviour
 
     public void RefuelWithToken()
     {
-        StartCoroutine(refuelTokenDelay());
+        if (PlayerPrefs.GetInt("tokens", 0) > 0)
+            StartCoroutine(refuelTokenDelay());
     }
 
     IEnumerator levelEndScoreValueSmoothSet()
