@@ -83,6 +83,8 @@ public class IapManager : MonoBehaviour//, IStoreListener
         if (product.definition.id == offers_id[4]) token += 200;
         if (product.definition.id == offers_id[5]) token += 350;
         if (product.definition.id == offers_id[6]) token += 500;
+        if (product.definition.id == offers_id[7]) token += 15000;
+        if (product.definition.id == offers_id[8]) token += 50000;
 
         PlayerPrefs.SetInt("tokens", token);
 
