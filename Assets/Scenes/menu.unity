@@ -4470,7 +4470,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00024414062, y: -400}
+  m_AnchoredPosition: {x: -0.00024414062, y: -452.80817}
   m_SizeDelta: {x: 12.41, y: 905.6162}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &356727349
@@ -6963,7 +6963,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36a5f511b0d8142cba0aeb92d0b264c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  productId: com.cruisemissile.50000tokens
+  productId: com.cruisemissile.offer9
   buttonType: 0
   consumePurchase: 1
   onTransactionsRestored:
@@ -18629,7 +18629,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36a5f511b0d8142cba0aeb92d0b264c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  productId: com.cruisemissile.15000tokens
+  productId: com.cruisemissile.offer8
   buttonType: 0
   consumePurchase: 1
   onTransactionsRestored:
@@ -25010,8 +25010,8 @@ MonoBehaviour:
   - com.cruisemissile.200tokens
   - com.cruisemissile.350tokens
   - com.cruisemissile.500tokens
-  - com.cruisemissile.15000tokens
-  - com.cruisemissile.50000tokens
+  - com.cruisemissile.offer8
+  - com.cruisemissile.offer9
 --- !u!114 &1865991875
 MonoBehaviour:
   m_ObjectHideFlags: 0
